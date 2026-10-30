@@ -6,18 +6,18 @@ interface Props {
 const { currentPath = '' } = Astro.props;
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-[#fafafa]/90 backdrop-blur-md">
+<header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-[#fafafa]/90 backdrop-blur-md dark:border-[#262626] dark:bg-[#000000]/85">
   <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
     <!-- Brand / Logo -->
     <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-80">
       <div class="relative flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-[#0070f3] via-[#7928ca] to-[#ff0080] p-[1.5px] shadow-xs">
-        <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#171717]">
-          <span class="text-xs font-semibold text-white">CM</span>
+        <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#171717] preserve-dark">
+          <span class="text-xs font-semibold text-white preserve-text">CM</span>
         </div>
       </div>
       <div class="flex flex-col">
-        <span class="text-sm font-semibold tracking-tight text-[#171717]">Color Mixer</span>
-        <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block">realcolormixer.com</span>
+        <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">Color Mixer</span>
+        <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block dark:text-[#737373]">realcolormixer.com</span>
       </div>
     </a>
 
@@ -27,8 +27,8 @@ const { currentPath = '' } = Astro.props;
         href="/mix"
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
           currentPath.startsWith('/mix')
-            ? 'bg-[#171717] text-white shadow-xs'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717]'
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
@@ -39,8 +39,8 @@ const { currentPath = '' } = Astro.props;
         href="/color-wheel"
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
           currentPath.startsWith('/color-wheel')
-            ? 'bg-[#171717] text-white shadow-xs'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717]'
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
@@ -50,28 +50,34 @@ const { currentPath = '' } = Astro.props;
 
     <!-- Language Selector Pill & Actions -->
     <div class="flex items-center gap-2">
-      <div class="relative inline-flex items-center rounded-full border border-[#ebebeb] bg-white px-2 py-1 text-[11px] font-medium text-[#4d4d4d] shadow-2xs">
-        <svg class="mr-1.5 h-3.5 w-3.5 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="relative inline-flex items-center rounded-full border border-[#ebebeb] bg-white px-2 py-1 text-[11px] font-medium text-[#4d4d4d] shadow-2xs dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1a1]">
+        <svg class="mr-1.5 h-3.5 w-3.5 text-[#8f8f8f] dark:text-[#737373]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
         </svg>
-        <span id="current-lang-label" class="font-semibold text-[#171717]">ES</span>
-        <span class="mx-1 text-[#ebebeb]">|</span>
-        <button id="toggle-lang-btn" type="button" class="cursor-pointer text-[#8f8f8f] hover:text-[#171717]" title="Switch language (Spanish / English / Deutsch / Português)">
+        <span id="current-lang-label" class="font-semibold text-[#171717] dark:text-[#ededed]">ES</span>
+        <span class="mx-1 text-[#ebebeb] dark:text-[#333333]">|</span>
+        <button id="toggle-lang-btn" type="button" class="cursor-pointer text-[#8f8f8f] hover:text-[#171717] dark:text-[#737373] dark:hover:text-[#ededed]" title="Switch language (Spanish / English / Deutsch / Português)">
           EN
         </button>
       </div>
 
-      <a
-        href="https://github.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        class="hidden h-8 w-8 items-center justify-center rounded-full border border-[#ebebeb] bg-white text-[#4d4d4d] transition-colors hover:bg-[#f2f2f2] hover:text-[#171717] md:inline-flex"
+      <!-- Dark / Light Mode Toggle Button -->
+      <button
+        id="theme-toggle-btn"
+        type="button"
+        class="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-[#ebebeb] bg-white text-[#4d4d4d] shadow-2xs transition-colors hover:bg-[#f2f2f2] hover:text-[#171717] dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]"
+        aria-label="Toggle dark mode"
+        title="Toggle dark / light mode"
       >
-        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+        <!-- Sun icon (shown in dark mode to switch to light) -->
+        <svg id="theme-sun-icon" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
-      </a>
+        <!-- Moon icon (shown in light mode to switch to dark) -->
+        <svg id="theme-moon-icon" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
     </div>
   </div>
 </header>
@@ -104,5 +110,42 @@ const { currentPath = '' } = Astro.props;
     updateLangUI();
     window.dispatchEvent(new CustomEvent('rcm:langchange', { detail: { lang: languages[currentIdx] } }));
   });
-</script>
 
+  // Dark / Light Mode Toggle handler
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const sunIcon = document.getElementById('theme-sun-icon');
+  const moonIcon = document.getElementById('theme-moon-icon');
+
+  function updateThemeUI() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (sunIcon && moonIcon) {
+      if (isDark) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+        themeToggleBtn?.setAttribute('aria-label', 'Switch to light mode');
+        themeToggleBtn?.setAttribute('title', 'Switch to light mode');
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+        themeToggleBtn?.setAttribute('aria-label', 'Switch to dark mode');
+        themeToggleBtn?.setAttribute('title', 'Switch to dark mode');
+      }
+    }
+  }
+
+  // Initialize UI state immediately
+  updateThemeUI();
+
+  themeToggleBtn?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('rcm_theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('rcm_theme', 'dark');
+    }
+    updateThemeUI();
+    window.dispatchEvent(new CustomEvent('rcm:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
+  });
+</script>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-canvas: #fafafa;
   --color-canvas-elevated: #ffffff;
@@ -32,6 +34,150 @@
   }
 }
 
+/* ============================================================
+   DARK MODE COMPREHENSIVE STYLING & TOKENS
+   ============================================================ */
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #000000;
+  color: #ededed;
+}
+
+/* Surfaces & card backgrounds */
+html.dark .bg-white:not([style*="background"]):not(.preserve-color):not([data-preserve-color]) {
+  background-color: #0a0a0a;
+}
+
+html.dark .bg-\[\#fafafa\]:not([style*="background"]):not(.preserve-color):not([data-preserve-color]) {
+  background-color: #000000;
+}
+
+html.dark .bg-\[\#fafafa\]\/90 {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+html.dark .bg-\[\#f2f2f2\]:not([style*="background"]):not(.preserve-color) {
+  background-color: #171717;
+}
+
+/* Borders & Dividers */
+html.dark .border-\[\#ebebeb\] {
+  border-color: #262626;
+}
+
+html.dark .divide-\[\#ebebeb\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #262626;
+}
+
+html.dark .border-black\/10 {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Typography */
+html.dark .text-\[\#171717\]:not(.preserve-text):not(.preserve-dark) {
+  color: #ededed;
+}
+
+html.dark .text-\[\#4d4d4d\] {
+  color: #a1a1a1;
+}
+
+html.dark .text-\[\#8f8f8f\] {
+  color: #737373;
+}
+
+html.dark .text-\[\#a1a1a1\] {
+  color: #525252;
+}
+
+/* Primary buttons & active pills (Invert: Black in light -> Crisp White in dark) */
+html.dark .bg-\[\#171717\].text-white:not(.preserve-dark) {
+  background-color: #ededed;
+  color: #000000;
+}
+
+html.dark .bg-\[\#171717\].text-white:not(.preserve-dark):hover {
+  background-color: #ffffff;
+}
+
+/* Secondary & Interactive Hovers */
+html.dark .hover\:bg-\[\#fafafa\]:hover {
+  background-color: #141414;
+}
+
+html.dark .hover\:bg-\[\#ebebeb\]:hover {
+  background-color: #1f1f1f;
+}
+
+html.dark .hover\:bg-\[\#f2f2f2\]:hover {
+  background-color: #1f1f1f;
+}
+
+html.dark .hover\:text-\[\#171717\]:hover {
+  color: #ffffff;
+}
+
+html.dark .group:hover .group-hover\:text-\[\#171717\] {
+  color: #ededed;
+}
+
+html.dark .hover\:border-\[\#171717\]\/30:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Range Sliders */
+html.dark input[type="range"].accent-\[\#171717\] {
+  accent-color: #0070f3;
+}
+
+/* Form Inputs */
+html.dark input[type="text"],
+html.dark input[type="number"],
+html.dark select {
+  background-color: #141414;
+  color: #ededed;
+  border-color: #262626;
+}
+
+html.dark input[type="text"]:focus,
+html.dark input[type="number"]:focus {
+  border-color: #0070f3;
+  outline: none;
+}
+
+/* Tables */
+html.dark table thead {
+  background-color: #0d0d0d;
+}
+
+html.dark table thead th {
+  color: #8f8f8f;
+}
+
+/* Code & Pre tags */
+html.dark pre,
+html.dark code {
+  color: #ededed;
+}
+
+/* Status & Accessibility Badges in Dark Mode */
+html.dark .bg-emerald-100 {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+html.dark .text-emerald-800 {
+  color: #34d399;
+}
+html.dark .bg-red-100 {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+html.dark .text-red-800 {
+  color: #f87171;
+}
+
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -48,3 +194,9 @@
   background: #cbd5e1;
 }
 
+html.dark ::-webkit-scrollbar-thumb {
+  background: #262626;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #383838;
+}
