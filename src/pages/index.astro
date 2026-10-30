@@ -1,11 +1,216 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Color Mixer - Realistic Color Mixing & Johannes Itten Harmony Color Wheel"
+  description="Real physical color mixing with Kubelka-Munk pigment physics and Johannes Itten's Bauhaus 12-hue artist color wheel. Free online color tools for artists and designers."
+  currentPath="/"
+>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden border-b border-[#ebebeb] bg-white py-16 sm:py-24">
+    <!-- Vercel Geist Mesh Gradient Bloom -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+      <div class="absolute -top-[30%] left-[25%] h-[400px] w-[600px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[10%] h-[350px] w-[500px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <!-- Eyebrow -->
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+          <span>Next-Generation Color Science Platform</span>
+        </div>
+
+        <h1 class="mt-6 text-4xl font-semibold tracking-tight text-[#171717] sm:text-5xl lg:text-6xl">
+          Color mixing that behaves like real paint.
+        </h1>
+
+        <p class="mt-4 text-base leading-relaxed text-[#4d4d4d] sm:text-lg">
+          Stop getting muddy grey when blending blue and yellow. Color Mixer combines physical <strong>Kubelka-Munk pigment absorption</strong> with the classical <strong>Johannes Itten Bauhaus color wheel</strong>.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/mix"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-[#171717] px-6 text-sm font-medium text-white shadow-xs transition-colors hover:bg-[#333333]"
+          >
+            Open Color Mixer
+          </a>
+          <a
+            href="/color-wheel"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-[#ebebeb] bg-white px-6 text-sm font-medium text-[#171717] shadow-2xs transition-colors hover:bg-[#fafafa]"
+          >
+            Explore Color Wheel
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Tools Showcase Grid -->
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]">Precision Engineered</span>
+        <h2 class="mt-1 text-2xl font-semibold tracking-tight text-[#171717] sm:text-3xl">
+          Two dedicated tools. Zero muddy compromises.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <!-- Card 1: /mix -->
+        <a
+          href="/mix"
+          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] bg-white p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 hover:shadow-md"
+        >
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-500 to-emerald-400 text-white shadow-xs">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </span>
+              <span class="font-mono text-xs text-[#8f8f8f] group-hover:text-[#171717]">/mix →</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717]">
+              Real Color Mixer
+            </h3>
+
+            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
+              Physically accurate pigment mixing using the Kubelka-Munk theory. Blend up to 6 custom colors or traditional artist paint tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White).
+            </p>
+
+            <ul class="mt-4 space-y-2 text-xs text-[#4d4d4d]">
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Blue + Yellow = Vibrant Green (#3D933E)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>4 Blending Modes: Real Paint (RYB), OKLCH, RGB, CMYK</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Live WCAG 2.1 Contrast & Component Preview</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[#ebebeb]">
+            <span class="text-xs font-medium text-[#0070f3] group-hover:underline">Launch Mixer Tool &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Card 2: /color-wheel -->
+        <a
+          href="/color-wheel"
+          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] bg-white p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 hover:shadow-md"
+        >
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-rose-500 via-amber-400 to-indigo-500 text-white shadow-xs">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+              </span>
+              <span class="font-mono text-xs text-[#8f8f8f] group-hover:text-[#171717]">/color-wheel →</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717]">
+              Harmony Color Wheel
+            </h3>
+
+            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
+              Interactive dual-mode color wheel. Switch seamlessly between Johannes Itten's classical Bauhaus 12-hue artist wheel and modern digital screen wheels.
+            </p>
+
+            <ul class="mt-4 space-y-2 text-xs text-[#4d4d4d]">
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Itten RYB: Red opposite Green, Blue opposite Orange</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>6 Harmony Schemes (Complementary, Triadic, Analogous...)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>9-Step Tint & Shade scale (50-900) + CVD Colorblind Simulator</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[#ebebeb]">
+            <span class="text-xs font-medium text-[#0070f3] group-hover:underline">Launch Color Wheel &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitor Comparison Section -->
+  <section class="border-t border-[#ebebeb] bg-[#fafafa] py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]">Side-by-Side Comparison</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight text-[#171717] sm:text-3xl">
+          Physical Pigment Science vs. Standard Digital Tools
+        </h2>
+      </div>
+
+      <div class="mt-10 overflow-x-auto rounded-xl border border-[#ebebeb] bg-white shadow-2xs">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="border-b border-[#ebebeb] bg-[#fafafa] text-xs font-mono uppercase text-[#8f8f8f]">
+            <tr>
+              <th class="p-4 sm:p-5">Feature</th>
+              <th class="p-4 sm:p-5 text-[#8f8f8f]">Standard Digital Tools</th>
+              <th class="p-4 sm:p-5 text-[#171717] font-bold">realcolormixer.com</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#ebebeb] text-[#4d4d4d]">
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Blue + Yellow Mix Result</td>
+              <td class="p-4 sm:p-5 text-red-600 font-mono">Muddy Brown/Grey (#808040)</td>
+              <td class="p-4 sm:p-5 text-emerald-600 font-semibold font-mono">Vibrant Green (#3D933E)</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Mixing Physics</td>
+              <td class="p-4 sm:p-5">Digital RGB / HSL Average</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Subtractive Kubelka-Munk (K/S)</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Color Wheel Theory</td>
+              <td class="p-4 sm:p-5">RGB Only (Red opp. Cyan)</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Dual Mode: Johannes Itten RYB + Digital RGB</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Accessibility Scoring</td>
+              <td class="p-4 sm:p-5 text-[#8f8f8f]">None</td>
+              <td class="p-4 sm:p-5 text-emerald-600 font-medium">Real-time WCAG 2.1 AA / AAA Badges</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Tints, Shades & Tones</td>
+              <td class="p-4 sm:p-5 text-[#8f8f8f]">Single Hex Swatch</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Full 9-Step Scale (50 to 900)</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Color Blindness Simulator</td>
+              <td class="p-4 sm:p-5 text-[#8f8f8f]">None</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Protanopia, Deuteranopia, Tritanopia, Mono</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Developer Code Export</td>
+              <td class="p-4 sm:p-5">Plain HEX copy</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717]">Tailwind v4 Config, CSS Vars, CSS color-mix(), SVG</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 </Layout>

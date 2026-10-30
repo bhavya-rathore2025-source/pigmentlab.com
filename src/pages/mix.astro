@@ -1,0 +1,753 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Real Color Mixer - Subtractive Paint Pigments (Kubelka-Munk) | realcolormixer.com"
+  description="The world's most accurate online color mixer. Uses real subtractive pigment physics (Kubelka-Munk theory) so Blue + Yellow produces vibrant Green, not muddy grey. Supports OKLCH, RGB, and CMYK."
+  currentPath="/mix"
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] bg-white py-10 sm:py-14">
+    <!-- Subtle Geist Mesh Gradient Bloom in background -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+          <span>Kubelka-Munk Subtractive Physics</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] sm:text-4xl lg:text-5xl">
+          Real Color Mixer
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] sm:text-base">
+          Digital tools average RGB channels into dirty brownish-grey. Color Mixer simulates true light absorption and pigment scattering — mix <span class="font-medium text-[#002185]">Blue</span> and <span class="font-medium text-[#cda000]">Yellow</span> to get vibrant <span class="font-medium text-[#168a35]">Green</span>.
+        </p>
+
+        <!-- Mode Switcher Tabs (Geist Pill style) -->
+        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] bg-[#fafafa] p-1 shadow-2xs">
+          <button
+            type="button"
+            data-mode="paint"
+            class="mode-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+          >
+            🎨 Real Paint (RYB / KM)
+          </button>
+          <button
+            type="button"
+            data-mode="oklch"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+          >
+            💻 Modern Web (OKLCH)
+          </button>
+          <button
+            type="button"
+            data-mode="rgb"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+          >
+            🖥️ Digital Screen (RGB)
+          </button>
+          <button
+            type="button"
+            data-mode="cmyk"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+          >
+            🖨️ Print Inks (CMYK)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tool Workspace -->
+  <section class="py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        
+        <!-- Left Column: Color Ingredients (7 cols) -->
+        <div class="space-y-6 lg:col-span-7">
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-4">
+              <div>
+                <h2 class="text-base font-semibold text-[#171717]">Mixing Palette</h2>
+                <p class="text-xs text-[#8f8f8f]">Adjust proportions and colors to create your custom blend.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  id="random-mix-btn"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
+                  title="Load a preset recipe"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>Preset</span>
+                </button>
+                <button
+                  id="reset-mix-btn"
+                  type="button"
+                  class="inline-flex items-center rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
+                  title="Reset to 50/50 Blue & Yellow"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <!-- Color Slots Container -->
+            <div id="color-slots" class="mt-4 space-y-4">
+              <!-- Dynamically rendered slots -->
+            </div>
+
+            <!-- Add Color & Formula Action Bar -->
+            <div class="mt-6 flex flex-col items-start justify-between gap-3 border-t border-[#ebebeb] pt-4 sm:flex-row sm:items-center">
+              <button
+                id="add-color-btn"
+                type="button"
+                class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#171717] shadow-2xs transition-colors hover:bg-[#f2f2f2]"
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>Add Color (Max 6)</span>
+              </button>
+
+              <div id="parts-formula" class="font-mono text-xs text-[#8f8f8f]">
+                Formula: <span class="text-[#171717] font-semibold">1:1 Paint Mix</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Physical Paint Tubes Swatches -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+              Artist Pigment Quick Presets
+            </h3>
+            <p class="mt-1 text-xs text-[#8f8f8f]">Click any traditional tube to quickly load it into an active slot:</p>
+            <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+              <button type="button" data-hex="#002185" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #002185;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Ultramarine</span>
+              </button>
+              <button type="button" data-hex="#FCD200" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #FCD200;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Cadmium Yellow</span>
+              </button>
+              <button type="button" data-hex="#C41E3A" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #C41E3A;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Crimson Red</span>
+              </button>
+              <button type="button" data-hex="#FFFFFF" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #FFFFFF;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Titanium White</span>
+              </button>
+              <button type="button" data-hex="#111111" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #111111;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Mars Black</span>
+              </button>
+              <button type="button" data-hex="#123524" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #123524;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Phthalo Green</span>
+              </button>
+              <button type="button" data-hex="#8A3324" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #8A3324;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Burnt Umber</span>
+              </button>
+              <button type="button" data-hex="#E08031" class="tube-preset flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 text-left hover:bg-[#fafafa] transition-colors">
+                <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: #E08031;"></span>
+                <span class="text-xs truncate font-medium text-[#171717]">Yellow Ochre</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Result Output & Preview Studio (5 cols) -->
+        <div class="space-y-6 lg:col-span-5">
+          <!-- Main Result Swatch Card -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]">
+                Mixed Color Result
+              </span>
+              <span id="blend-mode-tag" class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]">
+                Kubelka-Munk
+              </span>
+            </div>
+
+            <!-- Big Color Swatch Box -->
+            <div class="relative mt-4 flex h-36 w-full items-center justify-center rounded-xl border border-black/10 p-4 transition-colors shadow-inner" id="result-swatch-box">
+              <div class="rounded-lg bg-black/40 backdrop-blur-md px-3.5 py-1.5 text-center text-white shadow-sm">
+                <div id="result-hex-display" class="font-mono text-xl font-bold tracking-wider">#3D933E</div>
+                <div id="result-rgb-display" class="text-[11px] font-mono text-white/80">rgb(61, 147, 62)</div>
+              </div>
+            </div>
+
+            <!-- Color Format Codes Grid -->
+            <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">HEX</span>
+                  <span id="code-hex" class="font-mono font-medium text-[#171717]">#3D933E</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-hex" title="Copy HEX">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">HSL</span>
+                  <span id="code-hsl" class="font-mono font-medium text-[#171717]">121°, 41%, 41%</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-hsl" title="Copy HSL">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">CMYK</span>
+                  <span id="code-cmyk" class="font-mono font-medium text-[#171717]">59, 0, 58, 42</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-cmyk" title="Copy CMYK">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">OKLCH</span>
+                  <span id="code-oklch" class="font-mono font-medium text-[#171717]">0.58, 0.14, 142</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-oklch" title="Copy OKLCH">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- CSS Snippet Generator -->
+            <div class="mt-4 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono text-[#8f8f8f]">Modern CSS Output</span>
+                <button type="button" id="copy-css-snippet" class="text-xs font-medium text-[#0070f3] hover:underline cursor-pointer">
+                  Copy Code
+                </button>
+              </div>
+              <pre id="css-snippet-code" class="mt-1 font-mono text-xs text-[#171717] overflow-x-auto whitespace-pre-wrap">background-color: #3D933E;</pre>
+            </div>
+          </div>
+
+          <!-- Real-Time WCAG 2.1 Contrast Matrix -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                WCAG 2.1 Accessibility
+              </h3>
+              <span class="text-[11px] text-[#8f8f8f]">Legibility scoring</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <!-- On White -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
+                <div class="text-[11px] text-[#8f8f8f]">Against White Text</div>
+                <div id="wcag-white-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.32:1</div>
+                <div class="mt-2 flex items-center justify-center gap-1">
+                  <span id="badge-white-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Large</span>
+                  <span id="badge-white-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-red-100 text-red-800">AAA Fail</span>
+                </div>
+              </div>
+
+              <!-- On Black -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
+                <div class="text-[11px] text-[#8f8f8f]">Against Black Text</div>
+                <div id="wcag-black-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.86:1</div>
+                <div class="mt-2 flex items-center justify-center gap-1">
+                  <span id="badge-black-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Pass</span>
+                  <span id="badge-black-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AAA Large</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Design Mockup Preview Studio -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+              Live UI Component Preview
+            </h3>
+            <p class="mt-1 text-xs text-[#8f8f8f]">See how this mixed color performs in realistic design components:</p>
+
+            <div class="mt-4 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4">
+              <!-- Component 1: Action Button -->
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-[#8f8f8f]">CTA Button</span>
+                <button
+                  type="button"
+                  id="preview-btn"
+                  class="rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors"
+                  style="background-color: #3D933E;"
+                >
+                  Confirm Action
+                </button>
+              </div>
+
+              <!-- Component 2: Outline Tag -->
+              <div class="flex items-center justify-between border-t border-[#ebebeb] pt-3">
+                <span class="text-xs text-[#8f8f8f]">Status Tag</span>
+                <span
+                  id="preview-tag"
+                  class="inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-medium"
+                  style="background-color: rgba(61, 147, 62, 0.12); color: #3D933E; border: 1px solid #3D933E;"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full" style="background-color: #3D933E;"></span>
+                  Verified Mix
+                </span>
+              </div>
+
+              <!-- Component 3: Card Accent -->
+              <div
+                id="preview-card"
+                class="rounded-lg bg-white p-3 text-xs shadow-2xs border-l-4"
+                style="border-left-color: #3D933E;"
+              >
+                <div class="font-semibold text-[#171717]">Card Headline Accent</div>
+                <div class="text-[#8f8f8f] mt-0.5">Component preview dynamically renders the pigment mixture.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational & SEO Content Section -->
+  <section class="border-t border-[#ebebeb] bg-white py-16">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-neutral max-w-none">
+        <h2 class="text-2xl font-bold tracking-tight text-[#171717]">
+          Why Digital Color Mixers Give Muddy Brown (And How Real Paint Works)
+        </h2>
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d]">
+          If you have ever tried mixing <strong>Blue</strong> and <strong>Yellow</strong> on a digital screen using regular graphic software or standard web tools, you likely noticed a disappointing result: instead of the vibrant green you get with real paint, you get a dull, desaturated brownish-grey.
+        </p>
+        
+        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
+          Additive vs. Subtractive Color Mixing: The Crucial Difference
+        </h3>
+        <p class="text-sm leading-relaxed text-[#4d4d4d]">
+          Computer screens emit light using the <strong>Additive RGB model</strong>. When you average Red, Green, and Blue pixels together, light channels cancel each other out towards grey. In physical reality, however, artists, painters, and printers work with <strong>Subtractive Pigments</strong>.
+        </p>
+
+        <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4">
+            <div class="font-mono text-xs font-semibold text-[#0070f3] uppercase">1. Additive RGB (Digital Screens)</div>
+            <p class="mt-1 text-xs text-[#4d4d4d]">
+              Colors add light together. Used in monitors, televisions, and smartphone displays. Red + Green = Yellow. Red + Green + Blue = White light.
+            </p>
+          </div>
+          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4">
+            <div class="font-mono text-xs font-semibold text-[#3D933E] uppercase">2. Subtractive Pigments (Kubelka-Munk)</div>
+            <p class="mt-1 text-xs text-[#4d4d4d]">
+              Each pigment absorbs (subtracts) specific wavelengths of light. Blue paint absorbs red/yellow; yellow paint absorbs blue/violet. The only light both reflect is <strong>Green</strong>.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
+          The Kubelka-Munk Equation: The Physics Inside Real Color Mixer
+        </h3>
+        <p class="text-sm leading-relaxed text-[#4d4d4d]">
+          Our tool implements the scientific <strong>Kubelka-Munk equation</strong>:
+        </p>
+        <div class="rounded-md border border-[#ebebeb] bg-[#fafafa] p-3 font-mono text-xs text-[#171717]">
+          K/S = (1 - R)² / (2R)
+        </div>
+        <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
+          Where <strong>K</strong> is the absorption coefficient, <strong>S</strong> is the scattering coefficient, and <strong>R</strong> is spectral reflectance. By calculating the weighted sum of absorption and scattering for each pigment, Color Mixer produces true-to-life paint blends.
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
+          Common Paint Recipes (Guía de Mezcla de Colores)
+        </h3>
+        <ul class="mt-2 list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
+          <li><strong>How to mix vibrant Green:</strong> 1 part Ultramarine Blue (#002185) + 1 part Cadmium Yellow (#FCD200).</li>
+          <li><strong>How to mix rich Brown (Marrom / Braun):</strong> 1 part Crimson Red + 1 part Cadmium Yellow + 0.5 parts Ultramarine Blue, or mix Red and Green with a touch of Yellow.</li>
+          <li><strong>How to mix Flesh / Skin tones:</strong> Titanium White base + Yellow Ochre + touch of Crimson Red.</li>
+          <li><strong>How to mix Deep Purple / Violet:</strong> Ultramarine Blue + Quinacridone Magenta (using pure red will produce a browner tint).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import {
+    mixPigmentsKubelkaMunk,
+    mixOklch,
+    mixRgb,
+    mixCmyk,
+    hexToRgb,
+    rgbToHex,
+    rgbToHsl,
+    rgbToCmyk,
+    rgbToOklch,
+    getWcagContrast,
+    getContrastRating,
+    type ColorWeight
+  } from '../utils/colorPhysics';
+
+  // State
+  let currentMode: 'paint' | 'oklch' | 'rgb' | 'cmyk' = 'paint';
+  let colors: ColorWeight[] = [
+    { hex: '#002185', weight: 50 }, // Ultramarine Blue
+    { hex: '#FCD200', weight: 50 }, // Cadmium Yellow
+  ];
+
+  // DOM elements
+  const slotsContainer = document.getElementById('color-slots');
+  const addColorBtn = document.getElementById('add-color-btn');
+  const resetBtn = document.getElementById('reset-mix-btn');
+  const randomBtn = document.getElementById('random-mix-btn');
+  const partsFormulaEl = document.getElementById('parts-formula');
+  const modeBtns = document.querySelectorAll('.mode-btn');
+
+  // Outputs
+  const swatchBox = document.getElementById('result-swatch-box');
+  const hexDisplay = document.getElementById('result-hex-display');
+  const rgbDisplay = document.getElementById('result-rgb-display');
+  const codeHex = document.getElementById('code-hex');
+  const codeHsl = document.getElementById('code-hsl');
+  const codeCmyk = document.getElementById('code-cmyk');
+  const codeOklch = document.getElementById('code-oklch');
+  const blendModeTag = document.getElementById('blend-mode-tag');
+  const cssSnippetCode = document.getElementById('css-snippet-code');
+  const copyCssBtn = document.getElementById('copy-css-snippet');
+
+  // WCAG outputs
+  const wcagWhiteRatio = document.getElementById('wcag-white-ratio');
+  const wcagBlackRatio = document.getElementById('wcag-black-ratio');
+  const badgeWhiteAa = document.getElementById('badge-white-aa');
+  const badgeWhiteAaa = document.getElementById('badge-white-aaa');
+  const badgeBlackAa = document.getElementById('badge-black-aa');
+  const badgeBlackAaa = document.getElementById('badge-black-aaa');
+
+  // UI Previews
+  const previewBtn = document.getElementById('preview-btn');
+  const previewTag = document.getElementById('preview-tag');
+  const previewCard = document.getElementById('preview-card');
+
+  // Presets
+  const MIX_PRESETS = [
+    [ { hex: '#002185', weight: 50 }, { hex: '#FCD200', weight: 50 } ], // Vibrant Green
+    [ { hex: '#C41E3A', weight: 45 }, { hex: '#FCD200', weight: 40 }, { hex: '#002185', weight: 15 } ], // Rich Brown
+    [ { hex: '#C41E3A', weight: 50 }, { hex: '#002185', weight: 50 } ], // Deep Royal Purple
+    [ { hex: '#FFFFFF', weight: 70 }, { hex: '#E08031', weight: 20 }, { hex: '#C41E3A', weight: 10 } ], // Skin Tone
+    [ { hex: '#123524', weight: 40 }, { hex: '#002185', weight: 30 }, { hex: '#FFFFFF', weight: 30 } ], // Muted Teal
+  ];
+
+  function renderSlots() {
+    if (!slotsContainer) return;
+    slotsContainer.innerHTML = '';
+
+    colors.forEach((col, idx) => {
+      const slotEl = document.createElement('div');
+      slotEl.className = 'flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 transition-colors';
+
+      slotEl.innerHTML = `
+        <div class="flex items-center gap-3">
+          <input
+            type="color"
+            value="${col.hex}"
+            data-index="${idx}"
+            class="color-picker-input h-8 w-8 cursor-pointer rounded-md border border-[#ebebeb] p-0 bg-transparent"
+          />
+          <div class="flex flex-col">
+            <input
+              type="text"
+              value="${col.hex.toUpperCase()}"
+              data-index="${idx}"
+              maxlength="7"
+              class="hex-text-input w-24 rounded border border-[#ebebeb] bg-white px-2 py-0.5 font-mono text-xs uppercase font-medium text-[#171717]"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-1 items-center gap-3">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="${col.weight}"
+            data-index="${idx}"
+            class="weight-slider h-1.5 flex-1 cursor-pointer accent-[#171717]"
+          />
+          <span class="weight-label font-mono text-xs font-semibold text-[#171717] w-12 text-right">
+            ${col.weight}%
+          </span>
+        </div>
+
+        <div>
+          ${
+            colors.length > 2
+              ? `<button
+                  type="button"
+                  data-remove="${idx}"
+                  class="remove-slot-btn rounded p-1 text-[#8f8f8f] hover:bg-[#ebebeb] hover:text-[#ee0000] transition-colors"
+                  title="Remove color"
+                >
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>`
+              : `<span class="w-6 inline-block"></span>`
+          }
+        </div>
+      `;
+
+      slotsContainer.appendChild(slotEl);
+    });
+
+    attachSlotListeners();
+    updateMix();
+  }
+
+  function attachSlotListeners() {
+    // Color pickers
+    document.querySelectorAll('.color-picker-input').forEach((input) => {
+      input.addEventListener('input', (e) => {
+        const target = e.target as HTMLInputElement;
+        const idx = parseInt(target.dataset.index || '0', 10);
+        colors[idx].hex = target.value;
+        const textInput = target.closest('div')?.querySelector('.hex-text-input') as HTMLInputElement;
+        if (textInput) textInput.value = target.value.toUpperCase();
+        updateMix();
+      });
+    });
+
+    // Hex text inputs
+    document.querySelectorAll('.hex-text-input').forEach((input) => {
+      input.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        let val = target.value.trim();
+        if (!val.startsWith('#')) val = '#' + val;
+        if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+          const idx = parseInt(target.dataset.index || '0', 10);
+          colors[idx].hex = val;
+          const pickerInput = target.closest('div')?.parentElement?.querySelector('.color-picker-input') as HTMLInputElement;
+          if (pickerInput) pickerInput.value = val;
+          updateMix();
+        } else {
+          target.value = colors[parseInt(target.dataset.index || '0', 10)].hex.toUpperCase();
+        }
+      });
+    });
+
+    // Sliders
+    document.querySelectorAll('.weight-slider').forEach((slider) => {
+      slider.addEventListener('input', (e) => {
+        const target = e.target as HTMLInputElement;
+        const idx = parseInt(target.dataset.index || '0', 10);
+        const val = parseInt(target.value, 10);
+        colors[idx].weight = val;
+        const label = target.parentElement?.querySelector('.weight-label');
+        if (label) label.textContent = `${val}%`;
+        updateMix();
+      });
+    });
+
+    // Remove buttons
+    document.querySelectorAll('.remove-slot-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = (e.currentTarget as HTMLElement).dataset.remove;
+        if (target !== undefined) {
+          const idx = parseInt(target, 10);
+          colors.splice(idx, 1);
+          renderSlots();
+        }
+      });
+    });
+  }
+
+  function updateMix() {
+    let mixedHex = '#FFFFFF';
+
+    if (currentMode === 'paint') {
+      mixedHex = mixPigmentsKubelkaMunk(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Kubelka-Munk (RYB)';
+    } else if (currentMode === 'oklch') {
+      mixedHex = mixOklch(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Perceptual (OKLCH)';
+    } else if (currentMode === 'rgb') {
+      mixedHex = mixRgb(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Screen (Linear RGB)';
+    } else if (currentMode === 'cmyk') {
+      mixedHex = mixCmyk(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Subtractive (CMYK)';
+    }
+
+    // Update Swatch Box
+    if (swatchBox) swatchBox.style.backgroundColor = mixedHex;
+    if (hexDisplay) hexDisplay.textContent = mixedHex;
+
+    const rgb = hexToRgb(mixedHex);
+    if (rgbDisplay) rgbDisplay.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+
+    // Update Codes
+    if (codeHex) codeHex.textContent = mixedHex;
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+    if (codeHsl) codeHsl.textContent = `${hsl.h}°, ${hsl.s}%, ${hsl.l}%`;
+    const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+    if (codeCmyk) codeCmyk.textContent = `${cmyk.c}, ${cmyk.m}, ${cmyk.y}, ${cmyk.k}`;
+    const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+    if (codeOklch) codeOklch.textContent = `${oklch.l}, ${oklch.c}, ${oklch.h}°`;
+
+    // Modern CSS Code Generator
+    if (cssSnippetCode) {
+      if (currentMode === 'oklch' && colors.length === 2) {
+        cssSnippetCode.textContent = `/* Modern CSS color-mix() */\nbackground-color: color-mix(in oklch, ${colors[0].hex} ${colors[0].weight}%, ${colors[1].hex} ${colors[1].weight}%);`;
+      } else {
+        cssSnippetCode.textContent = `/* Real Color Mix Result */\nbackground-color: ${mixedHex};\n--color-mixed: ${mixedHex};`;
+      }
+    }
+
+    // Formula indicator
+    if (partsFormulaEl) {
+      const parts = colors.map((c, i) => `${c.weight} pts`).join(' : ');
+      partsFormulaEl.innerHTML = `Formula: <span class="text-[#171717] font-semibold">${parts}</span>`;
+    }
+
+    // WCAG Accessibility calculation
+    const contrastWhite = getWcagContrast(mixedHex, '#FFFFFF');
+    const contrastBlack = getWcagContrast(mixedHex, '#171717');
+    const scoreWhite = getContrastRating(contrastWhite);
+    const scoreBlack = getContrastRating(contrastBlack);
+
+    if (wcagWhiteRatio) wcagWhiteRatio.textContent = scoreWhite.ratioText;
+    if (wcagBlackRatio) wcagBlackRatio.textContent = scoreBlack.ratioText;
+
+    updateBadge(badgeWhiteAa, scoreWhite.aaNormal, 'AA Pass', 'AA Fail');
+    updateBadge(badgeWhiteAaa, scoreWhite.aaaNormal, 'AAA Pass', 'AAA Fail');
+    updateBadge(badgeBlackAa, scoreBlack.aaNormal, 'AA Pass', 'AA Fail');
+    updateBadge(badgeBlackAaa, scoreBlack.aaaNormal, 'AAA Pass', 'AAA Fail');
+
+    // Live UI Component Previews
+    if (previewBtn) {
+      previewBtn.style.backgroundColor = mixedHex;
+      // choose text color based on best contrast
+      previewBtn.style.color = contrastWhite >= contrastBlack ? '#FFFFFF' : '#171717';
+    }
+
+    if (previewTag) {
+      previewTag.style.backgroundColor = `${mixedHex}1F`; // ~12% opacity
+      previewTag.style.borderColor = mixedHex;
+      previewTag.style.color = mixedHex;
+    }
+
+    if (previewCard) {
+      previewCard.style.borderLeftColor = mixedHex;
+    }
+  }
+
+  function updateBadge(el: HTMLElement | null, pass: boolean, passText: string, failText: string) {
+    if (!el) return;
+    el.textContent = pass ? passText : failText;
+    el.className = `rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+      pass ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
+    }`;
+  }
+
+  // Tube Preset buttons
+  document.querySelectorAll('.tube-preset').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const hex = (e.currentTarget as HTMLElement).dataset.hex;
+      if (hex) {
+        // replace the first color or cycle
+        colors[colors.length - 1].hex = hex;
+        renderSlots();
+      }
+    });
+  });
+
+  // Mode button switcher
+  modeBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      modeBtns.forEach((b) => {
+        b.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+        b.classList.add('text-[#4d4d4d]');
+      });
+      target.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+      target.classList.remove('text-[#4d4d4d]');
+
+      currentMode = (target.dataset.mode || 'paint') as any;
+      updateMix();
+    });
+  });
+
+  // Add Color Button
+  addColorBtn?.addEventListener('click', () => {
+    if (colors.length < 6) {
+      colors.push({ hex: '#C41E3A', weight: 50 });
+      renderSlots();
+    }
+  });
+
+  // Reset Button
+  resetBtn?.addEventListener('click', () => {
+    colors = [
+      { hex: '#002185', weight: 50 },
+      { hex: '#FCD200', weight: 50 },
+    ];
+    renderSlots();
+  });
+
+  // Random Preset Button
+  let presetIdx = 0;
+  randomBtn?.addEventListener('click', () => {
+    presetIdx = (presetIdx + 1) % MIX_PRESETS.length;
+    colors = JSON.parse(JSON.stringify(MIX_PRESETS[presetIdx]));
+    renderSlots();
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const targetId = (e.currentTarget as HTMLElement).dataset.target;
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el && el.textContent) {
+          navigator.clipboard.writeText(el.textContent);
+          const original = btn.innerHTML;
+          btn.innerHTML = `<span class="text-[10px] text-emerald-600 font-mono">Copied!</span>`;
+          setTimeout(() => {
+            btn.innerHTML = original;
+          }, 1500);
+        }
+      }
+    });
+  });
+
+  // Copy CSS Snippet
+  copyCssBtn?.addEventListener('click', () => {
+    if (cssSnippetCode?.textContent) {
+      navigator.clipboard.writeText(cssSnippetCode.textContent);
+      const original = copyCssBtn.textContent;
+      copyCssBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        copyCssBtn.textContent = original;
+      }, 1500);
+    }
+  });
+
+  // Initial render
+  renderSlots();
+</script>
+

@@ -1,0 +1,965 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Harmony Color Wheel - Johannes Itten Bauhaus (RYB) & Digital RGB | realcolormixer.com"
+  description="Interactive color wheel with Johannes Itten 12-hue Bauhaus artist wheel (Red opposite Green) and digital RGB modes. Generate complementary, analogous, and triadic palettes with WCAG contrast and shade scales."
+  currentPath="/color-wheel"
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] bg-white py-10 sm:py-14">
+    <!-- Geist Mesh Gradient Bloom -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+      <div class="absolute -top-[20%] left-[10%] h-[320px] w-[450px] rounded-full bg-gradient-to-tr from-[#ff4d4d]/30 via-[#f9cb28]/30 to-[#00dfd8]/30 blur-3xl"></div>
+      <div class="absolute -top-[25%] right-[20%] h-[320px] w-[450px] rounded-full bg-gradient-to-bl from-[#7928ca]/30 via-[#ff0080]/30 to-[#007cf0]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff0080]"></span>
+          <span>Johannes Itten Bauhaus Wheel & Modern Harmonies</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] sm:text-4xl lg:text-5xl">
+          Harmony Color Wheel
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] sm:text-base">
+          Standard screen pickers only use digital RGB angles (Red opposite Cyan). Color Mixer provides a 1-click toggle to switch between the <span class="font-medium text-[#171717]">Klassischer Itten Farbkreis (RYB)</span> used by artists where <strong class="text-[#c41e3a]">Red</strong> is opposite <strong class="text-[#14b82a]">Green</strong>, and the standard <span class="font-medium text-[#171717]">Digital Web Wheel</span>.
+        </p>
+
+        <!-- Mode Switcher Tabs (Itten vs Digital RGB) -->
+        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] bg-[#fafafa] p-1 shadow-2xs">
+          <button
+            type="button"
+            id="wheel-mode-itten"
+            data-wheel="itten"
+            class="wheel-mode-btn active cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+          >
+            🎨 Klassischer Itten (RYB Artist Wheel)
+          </button>
+          <button
+            type="button"
+            id="wheel-mode-rgb"
+            data-wheel="rgb"
+            class="wheel-mode-btn cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+          >
+            💻 Digital Screen Wheel (RGB / Web)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tool Canvas Section -->
+  <section class="py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Harmony Mode Filter Bar -->
+      <div class="mb-8 flex flex-wrap items-center justify-center gap-1.5">
+        <button
+          type="button"
+          data-harmony="complementary"
+          class="harmony-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+        >
+          Complementary (Opuestos)
+        </button>
+        <button
+          type="button"
+          data-harmony="analogous"
+          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+        >
+          Analogous (Análogos)
+        </button>
+        <button
+          type="button"
+          data-harmony="triadic"
+          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+        >
+          Triadic (Tríada)
+        </button>
+        <button
+          type="button"
+          data-harmony="tetradic"
+          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+        >
+          Tetradic (Tétrada)
+        </button>
+        <button
+          type="button"
+          data-harmony="split"
+          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+        >
+          Split-Complementary
+        </button>
+        <button
+          type="button"
+          data-harmony="monochromatic"
+          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+        >
+          Monochromatic
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        
+        <!-- Left Column: Interactive Wheel Canvas (6 cols) -->
+        <div class="space-y-6 lg:col-span-6">
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-4">
+              <div>
+                <h2 class="text-base font-semibold text-[#171717]">Interactive Canvas</h2>
+                <p id="wheel-desc-tag" class="text-xs text-[#8f8f8f]">
+                  Drag the node to rotate harmonies. Mode: Itten RYB (Red opposite Green).
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  id="random-hue-btn"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
+                  title="Randomize hue"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>Shuffle</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="relative mx-auto mt-6 flex items-center justify-center">
+              <canvas
+                id="color-wheel-canvas"
+                width="360"
+                height="360"
+                class="touch-none cursor-crosshair rounded-full border border-[#ebebeb] shadow-xs select-none max-w-full"
+              ></canvas>
+            </div>
+
+            <!-- Precision Controls (Sliders & Hex) -->
+            <div class="mt-6 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4 text-xs">
+              <div class="flex items-center justify-between gap-4">
+                <span class="w-20 font-mono text-[#8f8f8f]">Hue Angle</span>
+                <input
+                  type="range"
+                  id="hue-slider"
+                  min="0"
+                  max="359"
+                  value="0"
+                  class="h-1.5 flex-1 cursor-pointer accent-[#171717]"
+                />
+                <span id="hue-value-label" class="w-12 text-right font-mono font-semibold text-[#171717]">0°</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-4">
+                <span class="w-20 font-mono text-[#8f8f8f]">Saturation</span>
+                <input
+                  type="range"
+                  id="sat-slider"
+                  min="20"
+                  max="100"
+                  value="100"
+                  class="h-1.5 flex-1 cursor-pointer accent-[#171717]"
+                />
+                <span id="sat-value-label" class="w-12 text-right font-mono font-semibold text-[#171717]">100%</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-4">
+                <span class="w-20 font-mono text-[#8f8f8f]">Lightness</span>
+                <input
+                  type="range"
+                  id="light-slider"
+                  min="20"
+                  max="80"
+                  value="50"
+                  class="h-1.5 flex-1 cursor-pointer accent-[#171717]"
+                />
+                <span id="light-value-label" class="w-12 text-right font-mono font-semibold text-[#171717]">50%</span>
+              </div>
+
+              <div class="flex items-center justify-between border-t border-[#ebebeb] pt-3">
+                <span class="font-mono text-[#8f8f8f]">Direct Base Hex</span>
+                <div class="flex items-center gap-2">
+                  <span id="base-color-dot" class="h-4 w-4 rounded-full border border-black/10 bg-[#FF0000]"></span>
+                  <input
+                    type="text"
+                    id="base-hex-input"
+                    value="#FF0000"
+                    maxlength="7"
+                    class="w-24 rounded border border-[#ebebeb] bg-white px-2 py-0.5 font-mono text-xs uppercase font-medium text-[#171717]"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Vision Deficiency Simulator -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                Color Blindness Simulation
+              </h3>
+              <span class="text-[11px] text-[#8f8f8f]">8% of users</span>
+            </div>
+            <p class="mt-2 text-xs text-[#8f8f8f]">Test how people with color vision deficiency perceive your palette:</p>
+            <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+              <button type="button" data-cvd="normal" class="cvd-btn active rounded-md border border-[#ebebeb] bg-[#171717] px-2.5 py-1.5 text-xs font-medium text-white transition-colors">
+                Normal Vision
+              </button>
+              <button type="button" data-cvd="protanopia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors">
+                Protanopia (Red-Blind)
+              </button>
+              <button type="button" data-cvd="deuteranopia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors">
+                Deuteranopia (Green-Blind)
+              </button>
+              <button type="button" data-cvd="tritanopia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors">
+                Tritanopia (Blue-Blind)
+              </button>
+              <button type="button" data-cvd="achromatopsia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors">
+                Achromatopsia (Monochrome)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Harmony Swatches, 9-Shade Scales & WCAG (6 cols) -->
+        <div class="space-y-6 lg:col-span-6">
+          
+          <!-- Palette Swatches Card -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-4">
+              <h2 class="text-base font-semibold text-[#171717]">Harmonious Palette</h2>
+              <span id="palette-count-tag" class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]">
+                2 Colors
+              </span>
+            </div>
+
+            <!-- Dynamic Swatches Row -->
+            <div id="harmony-swatches-grid" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <!-- Swatches injected by JS -->
+            </div>
+
+            <!-- Dynamic 9-Step Shade & Tint Scale (Tailwind 50-900) -->
+            <div class="mt-6 border-t border-[#ebebeb] pt-4">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                  9-Step Tints & Shades Scale
+                </span>
+                <span id="active-scale-label" class="font-mono text-xs text-[#8f8f8f]">
+                  Base Color
+                </span>
+              </div>
+              <p class="mt-1 text-xs text-[#8f8f8f]">Click any shade below to copy its HEX code directly into your clipboard:</p>
+
+              <div id="shade-scale-strip" class="mt-3 flex overflow-x-auto rounded-lg border border-[#ebebeb] shadow-inner">
+                <!-- 50 to 900 swatches -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-Time WCAG 2.1 Contrast Matrix -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                Palette WCAG Contrast Matrix
+              </h3>
+              <span class="text-[11px] text-[#8f8f8f]">Contrast between palette colors</span>
+            </div>
+
+            <div id="wcag-contrast-matrix" class="mt-4 space-y-2 text-xs">
+              <!-- Matrix rows injected by JS -->
+            </div>
+          </div>
+
+          <!-- Multi-Format Developer Export -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                Developer & Designer Exports
+              </h3>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  id="download-svg-btn"
+                  class="inline-flex items-center gap-1 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] hover:text-[#171717] transition-colors"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  <span>SVG Palette</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Export Code Formats -->
+            <div class="mt-4 space-y-3">
+              <!-- Tailwind Config -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[11px] text-[#8f8f8f]">Tailwind CSS Theme Token Config</span>
+                  <button type="button" id="copy-tailwind-btn" class="font-medium text-[#0070f3] hover:underline cursor-pointer">
+                    Copy Code
+                  </button>
+                </div>
+                <pre id="tailwind-export-code" class="mt-1 font-mono text-[11px] text-[#171717] overflow-x-auto whitespace-pre-wrap"></pre>
+              </div>
+
+              <!-- CSS Variables -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[11px] text-[#8f8f8f]">CSS Custom Properties (:root)</span>
+                  <button type="button" id="copy-css-vars-btn" class="font-medium text-[#0070f3] hover:underline cursor-pointer">
+                    Copy CSS
+                  </button>
+                </div>
+                <pre id="css-vars-export-code" class="mt-1 font-mono text-[11px] text-[#171717] overflow-x-auto whitespace-pre-wrap"></pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational & SEO Section -->
+  <section class="border-t border-[#ebebeb] bg-white py-16">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-neutral max-w-none">
+        <h2 class="text-2xl font-bold tracking-tight text-[#171717]">
+          Klassischer Farbkreis nach Johannes Itten (The Traditional RYB Wheel)
+        </h2>
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d]">
+          In 1961, Bauhaus master Johannes Itten published <em>The Art of Color</em>, introducing the 12-hue color wheel that became the foundation of modern art schools, graphic design, and interior decor worldwide.
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
+          Why Digital RGB Wheels Fail Artists
+        </h3>
+        <p class="text-sm leading-relaxed text-[#4d4d4d]">
+          Most digital applications only build on the computer screen’s <strong>additive RGB hue spectrum</strong>. On a standard RGB wheel:
+        </p>
+        <ul class="list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
+          <li><strong>Red</strong> is placed opposite <strong>Cyan</strong>.</li>
+          <li><strong>Blue</strong> is placed opposite <strong>Yellow</strong>.</li>
+        </ul>
+        <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
+          To fine artists, interior decorators, and fashion stylists, this feels completely wrong! In classical color harmony and physical pigment interaction:
+        </p>
+        <ul class="list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
+          <li><strong>Red is opposite Green</strong> (Complementary).</li>
+          <li><strong>Blue is opposite Orange</strong> (Complementary).</li>
+          <li><strong>Yellow is opposite Purple / Violet</strong> (Complementary).</li>
+        </ul>
+
+        <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 text-center">
+            <div class="text-xs font-mono font-semibold text-[#c41e3a] uppercase">Red & Green</div>
+            <p class="mt-1 text-[11px] text-[#4d4d4d]">The ultimate dynamic contrast. Creates high energy in fashion and holiday aesthetics.</p>
+          </div>
+          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 text-center">
+            <div class="text-xs font-mono font-semibold text-[#004cff] uppercase">Blue & Orange</div>
+            <p class="mt-1 text-[11px] text-[#4d4d4d]">The legendary "Teal & Orange" Hollywood cinema grade and warm/cool temperature balance.</p>
+          </div>
+          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 text-center">
+            <div class="text-xs font-mono font-semibold text-[#ffd700] uppercase">Yellow & Purple</div>
+            <p class="mt-1 text-[11px] text-[#4d4d4d]">Maximum lightness contrast. A light pure hue against the deepest dark hue.</p>
+          </div>
+        </div>
+
+        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
+          Color Harmony Rules Explained (Armonía de Colores)
+        </h3>
+        <p class="text-sm leading-relaxed text-[#4d4d4d]">
+          <strong>1. Complementary (Opuestos):</strong> Two colors directly across from one another (180°). Provides maximum contrast and visual punch.<br>
+          <strong>2. Analogous (Análogos):</strong> Colors positioned side-by-side (30° apart). Creates serene, comfortable, cohesive nature-inspired palettes.<br>
+          <strong>3. Triadic (Tríada):</strong> Three colors evenly spaced at 120° angles forming an equilateral triangle. Offers vibrant balance without aggressive clash.<br>
+          <strong>4. Tetradic (Tétrada):</strong> Four colors forming a rectangle or square (90° apart). Offers rich variety best used with one dominant hue.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import {
+    ittenAngleToRgbHue,
+    rgbHueToIttenAngle,
+    hslToRgb,
+    rgbToHex,
+    rgbToHsl,
+    hexToRgb,
+    getWcagContrast,
+    getContrastRating,
+    simulateColorBlindness,
+    generatePaletteScale
+  } from '../utils/colorPhysics';
+
+  // State
+  let wheelMode: 'itten' | 'rgb' = 'itten';
+  let harmonyType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic' = 'complementary';
+  let currentHue = 0; // 0 to 359 (in Itten angle if wheelMode='itten', or in RGB hue if wheelMode='rgb')
+  let currentSat = 100;
+  let currentLight = 50;
+  let currentCvd: 'normal' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia' = 'normal';
+  let selectedSwatchHex = '';
+
+  // DOM
+  const canvas = document.getElementById('color-wheel-canvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  const hueSlider = document.getElementById('hue-slider') as HTMLInputElement;
+  const satSlider = document.getElementById('sat-slider') as HTMLInputElement;
+  const lightSlider = document.getElementById('light-slider') as HTMLInputElement;
+  const hueValueLabel = document.getElementById('hue-value-label');
+  const satValueLabel = document.getElementById('sat-value-label');
+  const lightValueLabel = document.getElementById('light-value-label');
+  const baseHexInput = document.getElementById('base-hex-input') as HTMLInputElement;
+  const baseColorDot = document.getElementById('base-color-dot');
+  const wheelDescTag = document.getElementById('wheel-desc-tag');
+  const randomHueBtn = document.getElementById('random-hue-btn');
+
+  // Palette & Scales DOM
+  const swatchesGrid = document.getElementById('harmony-swatches-grid');
+  const shadeScaleStrip = document.getElementById('shade-scale-strip');
+  const activeScaleLabel = document.getElementById('active-scale-label');
+  const wcagMatrix = document.getElementById('wcag-contrast-matrix');
+  const paletteCountTag = document.getElementById('palette-count-tag');
+
+  // Export DOM
+  const tailwindExportCode = document.getElementById('tailwind-export-code');
+  const cssVarsExportCode = document.getElementById('css-vars-export-code');
+  const copyTailwindBtn = document.getElementById('copy-tailwind-btn');
+  const copyCssVarsBtn = document.getElementById('copy-css-vars-btn');
+  const downloadSvgBtn = document.getElementById('download-svg-btn');
+
+  // Wheel Mode Buttons
+  const wheelModeIttenBtn = document.getElementById('wheel-mode-itten');
+  const wheelModeRgbBtn = document.getElementById('wheel-mode-rgb');
+  const harmonyBtns = document.querySelectorAll('.harmony-btn');
+  const cvdBtns = document.querySelectorAll('.cvd-btn');
+
+  // Initialize Canvas Size for Retina Screens
+  const size = 360;
+  const radius = size / 2;
+  const center = { x: radius, y: radius };
+
+  function renderWheel() {
+    ctx.clearRect(0, 0, size, size);
+
+    // Draw Wheel Gradient Ring
+    const innerRadius = 24;
+    const outerRadius = radius - 8;
+
+    // Draw in radial slices
+    const steps = 360;
+    for (let i = 0; i < steps; i++) {
+      const angle = (i * Math.PI) / 180;
+      const nextAngle = ((i + 1.5) * Math.PI) / 180;
+
+      // Determine RGB hue
+      const rgbHue = wheelMode === 'itten' ? ittenAngleToRgbHue(i) : i;
+      const rgb = hslToRgb(rgbHue, currentSat, currentLight);
+
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y);
+      ctx.arc(center.x, center.y, outerRadius, angle, nextAngle);
+      ctx.closePath();
+
+      // Create radial fade towards center white
+      const grad = ctx.createRadialGradient(center.x, center.y, innerRadius, center.x, center.y, outerRadius);
+      grad.addColorStop(0, '#ffffff');
+      grad.addColorStop(1, `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`);
+
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Inner White Hole Mask
+    ctx.beginPath();
+    ctx.arc(center.x, center.y, innerRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#ebebeb';
+    ctx.stroke();
+
+    // Compute Active Harmony Points
+    const angles = computeHarmonyAngles(currentHue, harmonyType);
+    const rDist = (outerRadius - innerRadius) * (currentSat / 100) + innerRadius;
+
+    // Draw Connecting Polygon/Lines
+    if (angles.length > 1) {
+      ctx.beginPath();
+      angles.forEach((ang, idx) => {
+        const rad = (ang * Math.PI) / 180;
+        const px = center.x + Math.cos(rad) * rDist;
+        const py = center.y + Math.sin(rad) * rDist;
+        if (idx === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      });
+      ctx.closePath();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'rgba(23, 23, 23, 0.4)';
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Draw Nodes for Each Harmony Color
+    angles.forEach((ang, idx) => {
+      const rad = (ang * Math.PI) / 180;
+      const px = center.x + Math.cos(rad) * rDist;
+      const py = center.y + Math.sin(rad) * rDist;
+
+      const rgbHue = wheelMode === 'itten' ? ittenAngleToRgbHue(ang) : ang;
+      const rgb = hslToRgb(rgbHue, currentSat, currentLight);
+      let hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+      hex = simulateColorBlindness(hex, currentCvd);
+
+      ctx.beginPath();
+      ctx.arc(px, py, idx === 0 ? 11 : 8, 0, Math.PI * 2);
+      ctx.fillStyle = hex;
+      ctx.fill();
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = idx === 0 ? '#171717' : '#ffffff';
+      ctx.stroke();
+
+      // Shadow
+      ctx.shadowColor = 'rgba(0,0,0,0.15)';
+      ctx.shadowBlur = 4;
+    });
+
+    ctx.shadowBlur = 0;
+  }
+
+  function computeHarmonyAngles(baseAngle: number, type: string): number[] {
+    const norm = (a: number) => ((a % 360) + 360) % 360;
+
+    switch (type) {
+      case 'complementary':
+        return [norm(baseAngle), norm(baseAngle + 180)];
+      case 'analogous':
+        return [norm(baseAngle - 30), norm(baseAngle), norm(baseAngle + 30)];
+      case 'triadic':
+        return [norm(baseAngle), norm(baseAngle + 120), norm(baseAngle + 240)];
+      case 'tetradic':
+        return [norm(baseAngle), norm(baseAngle + 90), norm(baseAngle + 180), norm(baseAngle + 270)];
+      case 'split':
+        return [norm(baseAngle), norm(baseAngle + 150), norm(baseAngle + 210)];
+      case 'monochromatic':
+        return [norm(baseAngle)];
+      default:
+        return [norm(baseAngle)];
+    }
+  }
+
+  function getPaletteColors(): { name: string; hex: string }[] {
+    const angles = computeHarmonyAngles(currentHue, harmonyType);
+
+    if (harmonyType === 'monochromatic') {
+      const baseRgbHue = wheelMode === 'itten' ? ittenAngleToRgbHue(currentHue) : currentHue;
+      const lightSteps = [80, 60, 45, 25];
+      return lightSteps.map((l, i) => {
+        const rgb = hslToRgb(baseRgbHue, currentSat, l);
+        let hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+        hex = simulateColorBlindness(hex, currentCvd);
+        return { name: `Mono ${i + 1}`, hex };
+      });
+    }
+
+    return angles.map((ang, i) => {
+      const rgbHue = wheelMode === 'itten' ? ittenAngleToRgbHue(ang) : ang;
+      const rgb = hslToRgb(rgbHue, currentSat, currentLight);
+      let hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+      hex = simulateColorBlindness(hex, currentCvd);
+
+      let name = i === 0 ? 'Base' : `Harmony ${i}`;
+      if (harmonyType === 'complementary' && i === 1) name = 'Opposite';
+      if (harmonyType === 'triadic') name = i === 0 ? 'Primary' : `Triad ${i}`;
+      if (harmonyType === 'analogous') name = i === 1 ? 'Base' : `Neighbor ${i + 1}`;
+
+      return { name, hex };
+    });
+  }
+
+  function updatePaletteUI() {
+    const palette = getPaletteColors();
+    if (!palette.length) return;
+
+    if (!selectedSwatchHex || !palette.some((p) => p.hex === selectedSwatchHex)) {
+      selectedSwatchHex = palette[0].hex;
+    }
+
+    if (paletteCountTag) paletteCountTag.textContent = `${palette.length} Colors`;
+
+    // Render Swatches
+    if (swatchesGrid) {
+      swatchesGrid.innerHTML = '';
+      palette.forEach((item, idx) => {
+        const isSelected = item.hex === selectedSwatchHex;
+        const card = document.createElement('div');
+        card.className = `flex items-center justify-between rounded-xl border ${
+          isSelected ? 'border-[#171717] ring-1 ring-[#171717]' : 'border-[#ebebeb]'
+        } bg-[#fafafa] p-3 transition-all cursor-pointer hover:bg-white`;
+
+        card.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="h-10 w-10 rounded-lg border border-black/10 shrink-0 shadow-xs" style="background-color: ${item.hex};"></span>
+            <div>
+              <div class="font-medium text-xs text-[#171717]">${item.name}</div>
+              <div class="font-mono text-xs text-[#8f8f8f]">${item.hex}</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="copy-hex-pill rounded-full border border-[#ebebeb] bg-white px-2.5 py-1 text-[11px] font-mono text-[#4d4d4d] hover:bg-[#ebebeb] hover:text-[#171717] transition-colors"
+            data-hex="${item.hex}"
+          >
+            Copy
+          </button>
+        `;
+
+        card.addEventListener('click', (e) => {
+          if ((e.target as HTMLElement).closest('.copy-hex-pill')) return;
+          selectedSwatchHex = item.hex;
+          updateShadeScale();
+          updatePaletteUI();
+        });
+
+        swatchesGrid.appendChild(card);
+      });
+
+      // Attach copy buttons
+      document.querySelectorAll('.copy-hex-pill').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const hex = (e.currentTarget as HTMLElement).dataset.hex;
+          if (hex) {
+            navigator.clipboard.writeText(hex);
+            const original = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => (btn.textContent = original), 1500);
+          }
+        });
+      });
+    }
+
+    updateShadeScale();
+    updateWcagMatrix(palette);
+    updateExportCodes(palette);
+  }
+
+  function updateShadeScale() {
+    if (!shadeScaleStrip || !selectedSwatchHex) return;
+    if (activeScaleLabel) activeScaleLabel.textContent = `Tints & Shades of ${selectedSwatchHex}`;
+
+    const scale = generatePaletteScale(selectedSwatchHex);
+    shadeScaleStrip.innerHTML = '';
+
+    scale.forEach((s) => {
+      const stepEl = document.createElement('button');
+      stepEl.type = 'button';
+      stepEl.title = `${s.label}: ${s.hex} (Click to copy)`;
+      stepEl.className = 'group relative flex-1 h-12 flex flex-col justify-end p-1 transition-transform hover:scale-105';
+      stepEl.style.backgroundColor = s.hex;
+
+      const isLight = s.label === '50' || s.label === '100' || s.label === '200' || s.label === '300';
+      stepEl.innerHTML = `
+        <span class="text-[9px] font-mono font-bold leading-tight ${isLight ? 'text-black/70' : 'text-white/80'}">
+          ${s.label}
+        </span>
+      `;
+
+      stepEl.addEventListener('click', () => {
+        navigator.clipboard.writeText(s.hex);
+        alert(`Copied ${s.label} (${s.hex}) to clipboard!`);
+      });
+
+      shadeScaleStrip.appendChild(stepEl);
+    });
+  }
+
+  function updateWcagMatrix(palette: { name: string; hex: string }[]) {
+    if (!wcagMatrix) return;
+    wcagMatrix.innerHTML = '';
+
+    if (palette.length < 2) {
+      wcagMatrix.innerHTML = `<div class="text-[#8f8f8f] italic py-2">Select a multi-color harmony to view mutual contrast scores.</div>`;
+      return;
+    }
+
+    const base = palette[0];
+    for (let i = 1; i < palette.length; i++) {
+      const comp = palette[i];
+      const ratio = getWcagContrast(base.hex, comp.hex);
+      const rating = getContrastRating(ratio);
+
+      const row = document.createElement('div');
+      row.className = 'flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] p-2.5';
+      row.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="h-4 w-4 rounded-full border border-black/10" style="background-color: ${base.hex};"></span>
+          <span class="text-[#8f8f8f]">vs</span>
+          <span class="h-4 w-4 rounded-full border border-black/10" style="background-color: ${comp.hex};"></span>
+          <span class="font-medium text-[#171717]">${base.name} & ${comp.name}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-mono font-semibold text-[#171717]">${rating.ratioText}</span>
+          <span class="rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+            rating.aaNormal ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
+          }">
+            ${rating.aaNormal ? 'AA Pass' : 'AA Fail'}
+          </span>
+        </div>
+      `;
+      wcagMatrix.appendChild(row);
+    }
+  }
+
+  function updateExportCodes(palette: { name: string; hex: string }[]) {
+    // Tailwind export
+    if (tailwindExportCode) {
+      const lines = palette.map((p, i) => `    'harmony-${i + 1}': '${p.hex}',`).join('\n');
+      tailwindExportCode.textContent = `// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n${lines}\n      }\n    }\n  }\n};`;
+    }
+
+    // CSS variables export
+    if (cssVarsExportCode) {
+      const lines = palette.map((p, i) => `  --color-harmony-${i + 1}: ${p.hex};`).join('\n');
+      cssVarsExportCode.textContent = `:root {\n${lines}\n}`;
+    }
+  }
+
+  // Handle Drag on Canvas
+  let isDragging = false;
+
+  function handleWheelPointer(e: PointerEvent | MouseEvent | TouchEvent) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
+
+    const x = clientX - rect.left - center.x;
+    const y = clientY - rect.top - center.y;
+
+    let rad = Math.atan2(y, x);
+    let deg = (rad * 180) / Math.PI;
+    if (deg < 0) deg += 360;
+
+    currentHue = Math.round(deg);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+
+    updateBaseHexFromState();
+    renderWheel();
+    updatePaletteUI();
+  }
+
+  canvas.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    handleWheelPointer(e);
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) handleWheelPointer(e);
+  });
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Touch Support
+  canvas.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    handleWheelPointer(e);
+  }, { passive: false });
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging) handleWheelPointer(e);
+  }, { passive: false });
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  // Slider Events
+  hueSlider.addEventListener('input', () => {
+    currentHue = parseInt(hueSlider.value, 10);
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    updateBaseHexFromState();
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  satSlider.addEventListener('input', () => {
+    currentSat = parseInt(satSlider.value, 10);
+    if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
+    updateBaseHexFromState();
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  lightSlider.addEventListener('input', () => {
+    currentLight = parseInt(lightSlider.value, 10);
+    if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
+    updateBaseHexFromState();
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  function updateBaseHexFromState() {
+    const rgbHue = wheelMode === 'itten' ? ittenAngleToRgbHue(currentHue) : currentHue;
+    const rgb = hslToRgb(rgbHue, currentSat, currentLight);
+    const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+    if (baseHexInput) baseHexInput.value = hex;
+    if (baseColorDot) baseColorDot.style.backgroundColor = hex;
+  }
+
+  // Direct Hex Input
+  baseHexInput.addEventListener('change', () => {
+    let val = baseHexInput.value.trim();
+    if (!val.startsWith('#')) val = '#' + val;
+    if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+      const rgb = hexToRgb(val);
+      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+      currentSat = hsl.s;
+      currentLight = hsl.l;
+      currentHue = wheelMode === 'itten' ? Math.round(rgbHueToIttenAngle(hsl.h)) : hsl.h;
+
+      if (hueSlider) hueSlider.value = currentHue.toString();
+      if (satSlider) satSlider.value = currentSat.toString();
+      if (lightSlider) lightSlider.value = currentLight.toString();
+      if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+      if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
+      if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
+      if (baseColorDot) baseColorDot.style.backgroundColor = val;
+
+      renderWheel();
+      updatePaletteUI();
+    }
+  });
+
+  // Wheel Mode Switcher
+  wheelModeIttenBtn?.addEventListener('click', () => {
+    wheelMode = 'itten';
+    wheelModeIttenBtn.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+    wheelModeIttenBtn.classList.remove('text-[#4d4d4d]');
+    wheelModeRgbBtn?.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+    wheelModeRgbBtn?.classList.add('text-[#4d4d4d]');
+    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate harmonies. Mode: Itten RYB (Red opposite Green).';
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  wheelModeRgbBtn?.addEventListener('click', () => {
+    wheelMode = 'rgb';
+    wheelModeRgbBtn.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+    wheelModeRgbBtn.classList.remove('text-[#4d4d4d]');
+    wheelModeIttenBtn?.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+    wheelModeIttenBtn?.classList.add('text-[#4d4d4d]');
+    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate harmonies. Mode: Digital RGB (Red opposite Cyan).';
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  // Harmony Switchers
+  harmonyBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      harmonyBtns.forEach((b) => {
+        b.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+        b.classList.add('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
+      });
+      target.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+      target.classList.remove('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
+
+      harmonyType = (target.dataset.harmony || 'complementary') as any;
+      renderWheel();
+      updatePaletteUI();
+    });
+  });
+
+  // CVD Simulator Switchers
+  cvdBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      cvdBtns.forEach((b) => {
+        b.classList.remove('bg-[#171717]', 'text-white');
+        b.classList.add('bg-[#fafafa]', 'text-[#4d4d4d]');
+      });
+      target.classList.add('bg-[#171717]', 'text-white');
+      target.classList.remove('bg-[#fafafa]', 'text-[#4d4d4d]');
+
+      currentCvd = (target.dataset.cvd || 'normal') as any;
+      renderWheel();
+      updatePaletteUI();
+    });
+  });
+
+  // Shuffle Button
+  randomHueBtn?.addEventListener('click', () => {
+    currentHue = Math.floor(Math.random() * 360);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    updateBaseHexFromState();
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  // Copy buttons
+  copyTailwindBtn?.addEventListener('click', () => {
+    if (tailwindExportCode?.textContent) {
+      navigator.clipboard.writeText(tailwindExportCode.textContent);
+      const original = copyTailwindBtn.textContent;
+      copyTailwindBtn.textContent = 'Copied!';
+      setTimeout(() => (copyTailwindBtn.textContent = original), 1500);
+    }
+  });
+
+  copyCssVarsBtn?.addEventListener('click', () => {
+    if (cssVarsExportCode?.textContent) {
+      navigator.clipboard.writeText(cssVarsExportCode.textContent);
+      const original = copyCssVarsBtn.textContent;
+      copyCssVarsBtn.textContent = 'Copied!';
+      setTimeout(() => (copyCssVarsBtn.textContent = original), 1500);
+    }
+  });
+
+  // Download SVG
+  downloadSvgBtn?.addEventListener('click', () => {
+    const palette = getPaletteColors();
+    const width = 600;
+    const height = 200;
+    const swatchW = width / palette.length;
+
+    let rects = '';
+    palette.forEach((p, i) => {
+      rects += `
+        <rect x="${i * swatchW}" y="0" width="${swatchW}" height="${height}" fill="${p.hex}" />
+        <text x="${i * swatchW + 10}" y="${height - 20}" font-family="monospace" font-size="14" fill="${
+          getWcagContrast(p.hex, '#FFFFFF') >= 4.5 ? '#FFFFFF' : '#171717'
+        }">${p.hex}</text>
+      `;
+    });
+
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+        ${rects}
+      </svg>
+    `;
+
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `color-palette-${harmonyType}.svg`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // Initial Boot
+  updateBaseHexFromState();
+  renderWheel();
+  updatePaletteUI();
+</script>
+

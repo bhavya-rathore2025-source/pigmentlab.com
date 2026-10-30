@@ -1,0 +1,108 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-[#fafafa]/90 backdrop-blur-md">
+  <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <!-- Brand / Logo -->
+    <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-80">
+      <div class="relative flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-[#0070f3] via-[#7928ca] to-[#ff0080] p-[1.5px] shadow-xs">
+        <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#171717]">
+          <span class="text-xs font-semibold text-white">CM</span>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm font-semibold tracking-tight text-[#171717]">Color Mixer</span>
+        <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block">realcolormixer.com</span>
+      </div>
+    </a>
+
+    <!-- Nav Links (Geist Pill / Square style) -->
+    <nav class="flex items-center gap-1 sm:gap-2">
+      <a
+        href="/mix"
+        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/mix')
+            ? 'bg-[#171717] text-white shadow-xs'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717]'
+        }`}
+      >
+        <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
+        <span>Color Mixer</span>
+      </a>
+
+      <a
+        href="/color-wheel"
+        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/color-wheel')
+            ? 'bg-[#171717] text-white shadow-xs'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717]'
+        }`}
+      >
+        <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
+        <span>Color Wheel</span>
+      </a>
+    </nav>
+
+    <!-- Language Selector Pill & Actions -->
+    <div class="flex items-center gap-2">
+      <div class="relative inline-flex items-center rounded-full border border-[#ebebeb] bg-white px-2 py-1 text-[11px] font-medium text-[#4d4d4d] shadow-2xs">
+        <svg class="mr-1.5 h-3.5 w-3.5 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+        </svg>
+        <span id="current-lang-label" class="font-semibold text-[#171717]">ES</span>
+        <span class="mx-1 text-[#ebebeb]">|</span>
+        <button id="toggle-lang-btn" type="button" class="cursor-pointer text-[#8f8f8f] hover:text-[#171717]" title="Switch language (Spanish / English / Deutsch / Português)">
+          EN
+        </button>
+      </div>
+
+      <a
+        href="https://github.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="hidden h-8 w-8 items-center justify-center rounded-full border border-[#ebebeb] bg-white text-[#4d4d4d] transition-colors hover:bg-[#f2f2f2] hover:text-[#171717] md:inline-flex"
+      >
+        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Simple multilingual toggle handler (stored in localStorage)
+  const langBtn = document.getElementById('toggle-lang-btn');
+  const currentLangLabel = document.getElementById('current-lang-label');
+  const languages = ['ES', 'EN', 'DE', 'PT'];
+  let currentIdx = 0;
+
+  const storedLang = localStorage.getItem('rcm_lang');
+  if (storedLang && languages.includes(storedLang)) {
+    currentIdx = languages.indexOf(storedLang);
+  }
+
+  function updateLangUI() {
+    if (currentLangLabel && langBtn) {
+      currentLangLabel.textContent = languages[currentIdx];
+      const nextIdx = (currentIdx + 1) % languages.length;
+      langBtn.textContent = languages[nextIdx];
+    }
+  }
+
+  updateLangUI();
+
+  langBtn?.addEventListener('click', () => {
+    currentIdx = (currentIdx + 1) % languages.length;
+    localStorage.setItem('rcm_lang', languages[currentIdx]);
+    updateLangUI();
+    window.dispatchEvent(new CustomEvent('rcm:langchange', { detail: { lang: languages[currentIdx] } }));
+  });
+</script>
+
