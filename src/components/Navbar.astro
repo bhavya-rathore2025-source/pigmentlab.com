@@ -12,12 +12,12 @@ const { currentPath = '' } = Astro.props;
     <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-80">
       <div class="relative flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-[#0070f3] via-[#7928ca] to-[#ff0080] p-[1.5px] shadow-xs">
         <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#171717] preserve-dark">
-          <span class="text-xs font-semibold text-white preserve-text">CM</span>
+          <span class="text-xs font-semibold text-white preserve-text">PL</span>
         </div>
       </div>
       <div class="flex flex-col">
-        <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">Color Mixer</span>
-        <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block dark:text-[#737373]">realcolormixer.com</span>
+        <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">PigmentLab</span>
+        <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block dark:text-[#737373]">pigmentlab.com</span>
       </div>
     </a>
 
@@ -27,6 +27,17 @@ const { currentPath = '' } = Astro.props;
         href="/"
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
           currentPath === '/' || currentPath === ''
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <span>Overview</span>
+      </a>
+
+      <a
+        href="/mix"
+        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/mix')
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
@@ -89,7 +100,7 @@ const { currentPath = '' } = Astro.props;
   const languages = ['ES', 'EN', 'DE', 'PT'];
   let currentIdx = 0;
 
-  const storedLang = localStorage.getItem('rcm_lang');
+  const storedLang = localStorage.getItem('pl_lang') || localStorage.getItem('rcm_lang');
   if (storedLang && languages.includes(storedLang)) {
     currentIdx = languages.indexOf(storedLang);
   }
@@ -106,8 +117,9 @@ const { currentPath = '' } = Astro.props;
 
   langBtn?.addEventListener('click', () => {
     currentIdx = (currentIdx + 1) % languages.length;
-    localStorage.setItem('rcm_lang', languages[currentIdx]);
+    localStorage.setItem('pl_lang', languages[currentIdx]);
     updateLangUI();
+    window.dispatchEvent(new CustomEvent('pl:langchange', { detail: { lang: languages[currentIdx] } }));
     window.dispatchEvent(new CustomEvent('rcm:langchange', { detail: { lang: languages[currentIdx] } }));
   });
 
@@ -140,12 +152,13 @@ const { currentPath = '' } = Astro.props;
     const isDark = document.documentElement.classList.contains('dark');
     if (isDark) {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('rcm_theme', 'light');
+      localStorage.setItem('pl_theme', 'light');
     } else {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('rcm_theme', 'dark');
+      localStorage.setItem('pl_theme', 'dark');
     }
     updateThemeUI();
+    window.dispatchEvent(new CustomEvent('pl:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
     window.dispatchEvent(new CustomEvent('rcm:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
   });
 </script>

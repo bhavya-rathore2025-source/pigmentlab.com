@@ -1,47 +1,47 @@
 ---
 ---
 
-<footer class="w-full border-t border-[#ebebeb] bg-[#fafafa] py-12 text-[#4d4d4d]">
+<footer class="w-full border-t border-[#ebebeb] bg-[#fafafa] py-12 text-[#4d4d4d] dark:border-[#262626] dark:bg-[#0a0a0a]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
       <!-- Col 1: Brand & Theory -->
       <div class="space-y-3 md:col-span-1">
         <div class="flex items-center gap-2">
           <div class="flex h-6 w-6 items-center justify-center rounded-md bg-[#171717] text-white preserve-dark">
-            <span class="text-[10px] font-bold preserve-text">CM</span>
+            <span class="text-[10px] font-bold preserve-text">PL</span>
           </div>
-          <span class="text-sm font-semibold tracking-tight text-[#171717]">Color Mixer</span>
+          <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">PigmentLab</span>
         </div>
-        <p class="text-xs leading-relaxed text-[#8f8f8f]">
-          Realistic physical color mixing based on the Kubelka-Munk pigment absorption theory and Johannes Itten's Bauhaus RYB color wheel.
+        <p class="text-xs leading-relaxed text-[#8f8f8f] dark:text-[#a1a1a1]">
+          Realistic physical color tools based on Kubelka-Munk subtractive pigment absorption physics and Johannes Itten's Bauhaus RYB color theory.
         </p>
-        <p class="text-[11px] text-[#a1a1a1]">
-          © {new Date().getFullYear()} realcolormixer.com · Free for commercial use.
+        <p class="text-[11px] text-[#a1a1a1] dark:text-[#737373]">
+          © {new Date().getFullYear()} pigmentlab.com · Free for commercial and creative use.
         </p>
       </div>
 
       <!-- Col 2: Core Tools -->
       <div class="space-y-2">
-        <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase">Tools</h3>
+        <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase dark:text-[#ededed]">Tools</h3>
         <ul class="space-y-1.5 text-xs">
           <li>
-            <a href="/" class="transition-colors hover:text-[#171717]">
-              Real Color Mixer <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d]">RYB / Pigments</span>
+            <a href="/mix" class="transition-colors hover:text-[#171717] dark:hover:text-white">
+              Color Mixer <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">Kubelka-Munk</span>
             </a>
           </li>
           <li>
-            <a href="/color-wheel" class="transition-colors hover:text-[#171717]">
-              Color Wheel Picker <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d]">Itten / Bauhaus</span>
+            <a href="/color-wheel" class="transition-colors hover:text-[#171717] dark:hover:text-white">
+              Color Wheel Picker <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">Itten RYB</span>
             </a>
           </li>
           <li>
-            <a href="/" class="text-[#8f8f8f] transition-colors hover:text-[#171717]">
-              Mezcla de Colores Online (ES)
+            <a href="/" class="transition-colors hover:text-[#171717] dark:hover:text-white">
+              PigmentLab Overview <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">Specs</span>
             </a>
           </li>
           <li>
-            <a href="/color-wheel" class="text-[#8f8f8f] transition-colors hover:text-[#171717]">
-              Rueda de Color & Círculo Cromático
+            <a href="/mix" class="text-[#8f8f8f] transition-colors hover:text-[#171717] dark:text-[#737373] dark:hover:text-white">
+              Mezcla de Colores / Farbensimulator
             </a>
           </li>
         </ul>
@@ -49,32 +49,32 @@
 
       <!-- Col 3: Color Science & Modes -->
       <div class="space-y-2">
-        <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase">Color Science</h3>
-        <ul class="space-y-1.5 text-xs text-[#8f8f8f]">
-          <li><span class="text-[#4d4d4d]">Kubelka-Munk (K/S):</span> Subtractive paint mixing</li>
-          <li><span class="text-[#4d4d4d]">Itten 12-Hue RYB:</span> Traditional artist wheel</li>
-          <li><span class="text-[#4d4d4d]">OKLCH & OKLab:</span> CSS Color Module 4</li>
-          <li><span class="text-[#4d4d4d]">WCAG 2.1:</span> AA / AAA contrast validation</li>
+        <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase dark:text-[#ededed]">Color Science</h3>
+        <ul class="space-y-1.5 text-xs text-[#8f8f8f] dark:text-[#a1a1a1]">
+          <li><span class="text-[#4d4d4d] dark:text-[#d4d4d4]">Kubelka-Munk (K/S):</span> Subtractive paint mixing</li>
+          <li><span class="text-[#4d4d4d] dark:text-[#d4d4d4]">Itten 12-Hue RYB:</span> Traditional artist wheel</li>
+          <li><span class="text-[#4d4d4d] dark:text-[#d4d4d4]">OKLCH & OKLab:</span> CSS Color Module 4</li>
+          <li><span class="text-[#4d4d4d] dark:text-[#d4d4d4]">WCAG 2.1:</span> AA / AAA contrast validation</li>
         </ul>
       </div>
 
       <!-- Col 4: Competitive Advantage -->
       <div class="space-y-2">
-        <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase">Why Better than RGB</h3>
-        <p class="text-xs leading-relaxed text-[#8f8f8f]">
-          Unlike standard digital color tools that blend RGB channels into muddy grey, Color Mixer simulates physical light absorption — giving you true vibrant greens when mixing blue and yellow.
+        <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase dark:text-[#ededed]">Why PigmentLab</h3>
+        <p class="text-xs leading-relaxed text-[#8f8f8f] dark:text-[#a1a1a1]">
+          Standard screen utilities average RGB channels into dull brownish-grey. PigmentLab simulates true physical light absorption and Bauhaus harmonies — giving creators the precision of physical pigments with modern CSS exports.
         </p>
       </div>
     </div>
 
-    <div class="mt-8 flex flex-col items-center justify-between border-t border-[#ebebeb] pt-6 text-[11px] text-[#8f8f8f] sm:flex-row">
+    <div class="mt-8 flex flex-col items-center justify-between border-t border-[#ebebeb] pt-6 text-[11px] text-[#8f8f8f] sm:flex-row dark:border-[#262626] dark:text-[#737373]">
       <div class="flex items-center gap-4">
         <span>Designed with Geist Design System</span>
         <span>·</span>
         <span>Built with Astro & Tailwind v4</span>
       </div>
       <div class="mt-2 flex gap-3 sm:mt-0">
-        <span class="font-mono">realcolormixer.com</span>
+        <span class="font-mono text-[#171717] dark:text-[#ededed]">pigmentlab.com</span>
       </div>
     </div>
   </div>

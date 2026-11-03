@@ -52,8 +52,8 @@ const pageSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    'name': 'Real Color Mixer Online & Hex Color Mixer',
-    'url': 'https://realcolormixer.com',
+    'name': 'PigmentLab Color Mixer Online & Hex Color Mixer',
+    'url': 'https://pigmentlab.com/mix',
     'description': 'Free online color mixer and hex color mixer with Kubelka-Munk pigment physics. Blend colors with realistic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.',
     'applicationCategory': 'DesignApplication',
     'operatingSystem': 'All',
@@ -71,7 +71,7 @@ const pageSchema = [
   title="Color Mixer Online - Hex Color Mixer & Pigment Blending Generator"
   description="Free color mixer online and hex color mixer with realistic Kubelka-Munk pigment physics. Blend colors with proportion sliders, generate CSS color-mix(), and test WCAG contrast. The premier online color mixer."
   keywords="color mixer, color mixer online, online color mixer, color mixer generator, hex color mixer, paint mixer, kubelka munk, real color mixing, css color mix"
-  currentPath="/"
+  currentPath="/mix"
   schema={pageSchema}
 >
   <!-- Hero Section -->
@@ -669,11 +669,11 @@ const pageSchema = [
     { name: 'Yellow Ochre', hex: '#E08031' },
   ];
 
-  const STORAGE_KEY_PRESETS = 'rcm_pigment_presets_v1';
+  const STORAGE_KEY_PRESETS = 'pl_pigment_presets_v1';
 
   function loadPigmentPresets(): PigmentPreset[] {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY_PRESETS);
+      const raw = localStorage.getItem(STORAGE_KEY_PRESETS) || localStorage.getItem('rcm_pigment_presets_v1');
       if (raw) {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.length > 0) {

@@ -16,9 +16,9 @@ interface Props {
 }
 
 const {
-  title = 'Real Color Mixer & Color Wheel Picker | Online Pigment Mixing & Harmonies',
-  description = 'Free online color mixer and color wheel picker. Mix hex colors with real pigment physics (Kubelka-Munk), test complementary color wheel palettes, and generate CSS color-mix() code.',
-  keywords = 'color wheel, color wheel picker, adobe color wheel, color mixer, color wheel chart, complementary color wheel, color mixer online, online color mixer, color mixer generator, hex color mixer, itten color wheel, kubelka munk pigment mixing',
+  title = 'PigmentLab — Real Pigment Physics Color Tools for Artists & Designers',
+  description = 'Free online color tools powered by real Kubelka-Munk pigment physics and Johannes Itten Bauhaus color theory. Mix paint pigments, explore harmonies, and test WCAG contrast.',
+  keywords = 'pigmentlab, pigment lab, pigment color tools, real color tools, kubelka munk color tool, itten color tools, color physics, subtractive color tool',
   currentPath = '',
   lang = 'en',
   canonicalUrl,
@@ -27,36 +27,26 @@ const {
   schema,
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://realcolormixer.com';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://pigmentlab.com';
 const resolvedCanonical = canonicalUrl || `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
 const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
 const defaultSchema = {
   '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  'name': 'Real Color Mixer & Color Wheel Picker',
+  '@type': 'WebSite',
+  'name': 'PigmentLab',
   'url': siteUrl,
   'description': description,
-  'applicationCategory': 'DesignApplication',
-  'operatingSystem': 'All',
-  'browserRequirements': 'Requires JavaScript. Requires HTML5.',
-  'offers': {
-    '@type': 'Offer',
-    'price': '0',
-    'priceCurrency': 'USD'
-  },
-  'featureList': [
-    'Subtractive pigment physics color mixing (Kubelka-Munk theory)',
-    'Johannes Itten 12-hue Bauhaus artist color wheel',
-    'Complementary color wheel harmony generator',
-    'Hex color mixer with multi-pigment proportion sliders',
-    'Real-time WCAG 2.1 AA and AAA contrast ratio checker',
-    'Modern CSS color-mix() and OKLCH blending mode export',
-    'Color blindness simulation (Protanopia, Deuteranopia, Tritanopia, Monochromacy)'
-  ]
+  'potentialAction': {
+    '@type': 'SearchAction',
+    'target': `${siteUrl}/mix?color={search_term_string}`,
+    'query-input': 'required name=search_term_string'
+  }
 };
 
-const finalSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : defaultSchema;
+const schemaList = schema
+  ? (Array.isArray(schema) ? schema : [schema])
+  : [defaultSchema];
 ---
 
 <!doctype html>
@@ -79,12 +69,12 @@ const finalSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : defau
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="author" content="realcolormixer.com" />
+    <meta name="author" content="pigmentlab.com" />
     <meta name="theme-color" content="#171717" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="Real Color Mixer" />
+    <meta property="og:site_name" content="PigmentLab" />
     <meta property="og:url" content={resolvedCanonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -105,13 +95,29 @@ const finalSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : defau
     <meta name="twitter:image:alt" content={title} />
 
     <!-- JSON-LD Structured Data for Google Rich Snippets -->
-    <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+    {schemaList.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
 
     <!-- Dark Mode Init (defaults to dark, respects localStorage if explicitly set to light) -->
     <script is:inline>
       (function () {
         try {
-          const stored = localStorage.getItem('rcm_theme');
+          // Migration from rcm_ to pl_
+          const legacyTheme = localStorage.getItem('rcm_theme');
+          if (legacyTheme && !localStorage.getItem('pl_theme')) {
+            localStorage.setItem('pl_theme', legacyTheme);
+          }
+          const legacyLang = localStorage.getItem('rcm_lang');
+          if (legacyLang && !localStorage.getItem('pl_lang')) {
+            localStorage.setItem('pl_lang', legacyLang);
+          }
+          const legacyPresets = localStorage.getItem('rcm_pigment_presets_v1');
+          if (legacyPresets && !localStorage.getItem('pl_pigment_presets_v1')) {
+            localStorage.setItem('pl_pigment_presets_v1', legacyPresets);
+          }
+
+          const stored = localStorage.getItem('pl_theme') || legacyTheme;
           if (stored === 'light') {
             document.documentElement.classList.remove('dark');
           } else {
