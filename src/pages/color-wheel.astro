@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="mx-auto max-w-3xl text-center">
         <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
           <span class="h-1.5 w-1.5 rounded-full bg-[#ff0080]"></span>
-          <span>Johannes Itten Bauhaus Wheel & Modern Harmonies</span>
+          <span>Johannes Itten Bauhaus Wheel & Color Palettes</span>
         </div>
 
         <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] sm:text-4xl lg:text-5xl">
@@ -112,7 +112,7 @@ import Layout from '../layouts/Layout.astro';
               <div>
                 <h2 class="text-base font-semibold text-[#171717]">Interactive Canvas</h2>
                 <p id="wheel-desc-tag" class="text-xs text-[#8f8f8f]">
-                  Drag the node to rotate harmonies. Mode: Itten RYB (Red opposite Green).
+                  Drag the node to rotate palette colors. Mode: Itten RYB (Red opposite Green).
                 </p>
               </div>
               <div class="flex items-center gap-2">
@@ -232,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
           <!-- Palette Swatches Card -->
           <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
             <div class="flex items-center justify-between border-b border-[#ebebeb] pb-4">
-              <h2 class="text-base font-semibold text-[#171717]">Harmonious Palette</h2>
+              <h2 class="text-base font-semibold text-[#171717]">Color Palette</h2>
               <span id="palette-count-tag" class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]">
                 2 Colors
               </span>
@@ -349,7 +349,7 @@ import Layout from '../layouts/Layout.astro';
           <li><strong>Blue</strong> is placed opposite <strong>Yellow</strong>.</li>
         </ul>
         <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
-          To fine artists, interior decorators, and fashion stylists, this feels completely wrong! In classical color harmony and physical pigment interaction:
+          To fine artists, interior decorators, and fashion stylists, this feels completely wrong! In classical color theory and physical pigment interaction:
         </p>
         <ul class="list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
           <li><strong>Red is opposite Green</strong> (Complementary).</li>
@@ -373,7 +373,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <h3 class="mt-6 text-lg font-semibold text-[#171717]">
-          Color Harmony Rules Explained (Armonía de Colores)
+          Color Palette Schemes Explained
         </h3>
         <p class="text-sm leading-relaxed text-[#4d4d4d]">
           <strong>1. Complementary (Opuestos):</strong> Two colors directly across from one another (180°). Provides maximum contrast and visual punch.<br>
@@ -579,7 +579,7 @@ import Layout from '../layouts/Layout.astro';
       let hex = rgbToHex(rgb.r, rgb.g, rgb.b);
       hex = simulateColorBlindness(hex, currentCvd);
 
-      let name = i === 0 ? 'Base' : `Harmony ${i}`;
+      let name = i === 0 ? 'Base' : `Color ${i + 1}`;
       if (harmonyType === 'complementary' && i === 1) name = 'Opposite';
       if (harmonyType === 'triadic') name = i === 0 ? 'Primary' : `Triad ${i}`;
       if (harmonyType === 'analogous') name = i === 1 ? 'Base' : `Neighbor ${i + 1}`;
@@ -690,7 +690,7 @@ import Layout from '../layouts/Layout.astro';
     wcagMatrix.innerHTML = '';
 
     if (palette.length < 2) {
-      wcagMatrix.innerHTML = `<div class="text-[#8f8f8f] italic py-2">Select a multi-color harmony to view mutual contrast scores.</div>`;
+      wcagMatrix.innerHTML = `<div class="text-[#8f8f8f] italic py-2">Select a multi-color palette to view mutual contrast scores.</div>`;
       return;
     }
 
@@ -725,13 +725,13 @@ import Layout from '../layouts/Layout.astro';
   function updateExportCodes(palette: { name: string; hex: string }[]) {
     // Tailwind export
     if (tailwindExportCode) {
-      const lines = palette.map((p, i) => `    'harmony-${i + 1}': '${p.hex}',`).join('\n');
+      const lines = palette.map((p, i) => `    'color-${i + 1}': '${p.hex}',`).join('\n');
       tailwindExportCode.textContent = `// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n${lines}\n      }\n    }\n  }\n};`;
     }
 
     // CSS variables export
     if (cssVarsExportCode) {
-      const lines = palette.map((p, i) => `  --color-harmony-${i + 1}: ${p.hex};`).join('\n');
+      const lines = palette.map((p, i) => `  --color-${i + 1}: ${p.hex};`).join('\n');
       cssVarsExportCode.textContent = `:root {\n${lines}\n}`;
     }
   }
@@ -847,7 +847,7 @@ import Layout from '../layouts/Layout.astro';
     wheelModeIttenBtn.classList.remove('text-[#4d4d4d]');
     wheelModeRgbBtn?.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
     wheelModeRgbBtn?.classList.add('text-[#4d4d4d]');
-    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate harmonies. Mode: Itten RYB (Red opposite Green).';
+    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate palette colors. Mode: Itten RYB (Red opposite Green).';
     renderWheel();
     updatePaletteUI();
   });
@@ -858,7 +858,7 @@ import Layout from '../layouts/Layout.astro';
     wheelModeRgbBtn.classList.remove('text-[#4d4d4d]');
     wheelModeIttenBtn?.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
     wheelModeIttenBtn?.classList.add('text-[#4d4d4d]');
-    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate harmonies. Mode: Digital RGB (Red opposite Cyan).';
+    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate palette colors. Mode: Digital RGB (Red opposite Cyan).';
     renderWheel();
     updatePaletteUI();
   });
