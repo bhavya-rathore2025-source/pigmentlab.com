@@ -6,16 +6,57 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   currentPath?: string;
   lang?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: string;
+  schema?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const {
-  title = 'Color Mixer - Mezclador Real de Colores & Rueda de Color Itten',
-  description = 'Mezcla colores con física real de pigmentos (Kubelka-Munk) y crea armonías con la rueda de color tradicional de Johannes Itten y moderna OKLCH. Mejor que mezcladores RGB digitales.',
+  title = 'Real Color Mixer & Color Wheel Picker | Online Pigment Mixing & Harmonies',
+  description = 'Free online color mixer and color wheel picker. Mix hex colors with real pigment physics (Kubelka-Munk), test complementary color wheel palettes, and generate CSS color-mix() code.',
+  keywords = 'color wheel, color wheel picker, adobe color wheel, color mixer, color wheel chart, complementary color wheel, color mixer online, online color mixer, color mixer generator, hex color mixer, itten color wheel, kubelka munk pigment mixing',
   currentPath = '',
-  lang = 'es',
+  lang = 'en',
+  canonicalUrl,
+  ogImage = '/og-image.png',
+  ogType = 'website',
+  schema,
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://realcolormixer.com';
+const resolvedCanonical = canonicalUrl || `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
+const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  'name': 'Real Color Mixer & Color Wheel Picker',
+  'url': siteUrl,
+  'description': description,
+  'applicationCategory': 'DesignApplication',
+  'operatingSystem': 'All',
+  'browserRequirements': 'Requires JavaScript. Requires HTML5.',
+  'offers': {
+    '@type': 'Offer',
+    'price': '0',
+    'priceCurrency': 'USD'
+  },
+  'featureList': [
+    'Subtractive pigment physics color mixing (Kubelka-Munk theory)',
+    'Johannes Itten 12-hue Bauhaus artist color wheel',
+    'Complementary color wheel harmony generator',
+    'Hex color mixer with multi-pigment proportion sliders',
+    'Real-time WCAG 2.1 AA and AAA contrast ratio checker',
+    'Modern CSS color-mix() and OKLCH blending mode export',
+    'Color blindness simulation (Protanopia, Deuteranopia, Tritanopia, Monochromacy)'
+  ]
+};
+
+const finalSchema = schema ? (Array.isArray(schema) ? [defaultSchema, ...schema] : [defaultSchema, schema]) : defaultSchema;
 ---
 
 <!doctype html>
@@ -24,7 +65,47 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={resolvedCanonical} />
+
+    <!-- Robots Meta -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Primary SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="realcolormixer.com" />
+    <meta name="theme-color" content="#171717" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Real Color Mixer" />
+    <meta property="og:url" content={resolvedCanonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:secure_url" content={resolvedOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={resolvedCanonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+    <meta name="twitter:image:alt" content={title} />
+
+    <!-- JSON-LD Structured Data for Google Rich Snippets -->
+    <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 
     <!-- Dark Mode Init (defaults to dark, respects localStorage if explicitly set to light) -->
     <script is:inline>
@@ -49,19 +130,6 @@ const {
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content="mezcla de colores, combinacion de colores, rueda de color, farbkreis nach itten, color mixer, color wheel, kubelka munk, real paint mixing, itten color wheel" />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Color Mixer" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
   </head>
   <body class="min-h-screen flex flex-col bg-[#fafafa] text-[#171717] selection:bg-[#171717] selection:text-white dark:bg-[#000000] dark:text-[#ededed] dark:selection:bg-white dark:selection:text-black antialiased">
     <Navbar currentPath={currentPath} />

@@ -1,49 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const platformFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What are the main advantages of Real Color Mixer over standard digital tools?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Real Color Mixer offers three core advantages: 1) Physical Kubelka-Munk pigment physics that blend blue and yellow into vibrant green rather than muddy grey; 2) A dual-mode color wheel supporting Johannes Itten classical artist RYB and digital RGB; and 3) Real-time WCAG 2.1 AA/AAA accessibility scoring with 100% free, privacy-first access without account sign-in.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Who uses Real Color Mixer and what are its primary applications?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'The platform is used across five primary industries: 1) Fine artists and painters to prototype oil and acrylic mixing recipes without wasting paint; 2) UI/UX designers to create accessible palettes with legal WCAG contrast; 3) Front-end developers to generate modern CSS color-mix() code and Tailwind v4 tokens; 4) Interior decorators to test wall paint tints and undertones; and 5) Educators to teach subtractive vs additive color physics.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How do the Color Wheel Picker and Color Mixer tools work together?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'The two tools form an integrated workflow: First, creators use the Color Wheel Picker (/color-wheel) to establish harmonic palettes (such as complementary or triadic schemes) and test accessibility. Next, they transition to the Color Mixer (/mix) to simulate physical pigment blends with proportion sliders or generate native CSS color-mix() tokens.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Is Real Color Mixer free and does it require an Adobe Creative Cloud account?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Real Color Mixer is 100% free and open to all users. Unlike Adobe Color Wheel, you do not need an Adobe Creative Cloud account, subscription, or login to save, test, or export your color palettes and code snippets.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'What export formats are supported for web and graphic designers?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Real Color Mixer supports one-click exports for Tailwind CSS v4 design tokens, CSS custom properties (:root variables), modern CSS color-mix() syntax in OKLCH, downloadable SVG palette swatches, and standard HEX / RGB / HSL values.'
+      }
+    }
+  ]
+};
+
+const pageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'Real Color Mixer',
+    'url': 'https://realcolormixer.com',
+    'description': 'Next-generation color science platform unifying physical Kubelka-Munk pigment optics, classical Johannes Itten Bauhaus harmonies, and modern accessible design tools.'
+  },
+  platformFaqSchema
+];
 ---
 
 <Layout
-  title="Color Mixer - Realistic Color Mixing & Johannes Itten Color Wheel Picker"
-  description="Real physical color mixing with Kubelka-Munk pigment physics and Johannes Itten's Bauhaus 12-hue artist color wheel. Free online color tools for artists and designers."
+  title="Real Color Mixer - Next-Gen Color Science Suite & Paint Tools"
+  description="Discover the advantages and professional uses of Real Color Mixer. Explore subtractive pigment physics, classical Bauhaus harmonies, and accessible digital color tools."
+  keywords="real color mixer, color science platform, pigment physics, physical paint mixer, itten color wheel, accessible color tools, wcag contrast, css color mix"
   currentPath="/"
+  schema={pageSchema}
 >
   <!-- Hero Section -->
-  <section class="relative overflow-hidden border-b border-[#ebebeb] bg-white py-16 sm:py-24">
+  <section class="relative overflow-hidden border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
     <!-- Vercel Geist Mesh Gradient Bloom -->
-    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
       <div class="absolute -top-[30%] left-[25%] h-[400px] w-[600px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
       <div class="absolute -top-[20%] right-[10%] h-[350px] w-[500px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <!-- Eyebrow -->
-        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
-          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+        <!-- Eyebrow Badge -->
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
           <span>Next-Generation Color Science Platform</span>
         </div>
 
-        <h1 class="mt-6 text-4xl font-semibold tracking-tight text-[#171717] sm:text-5xl lg:text-6xl">
-          Color mixing that behaves like real paint.
+        <h1 class="mt-6 text-4xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl">
+          Color science engineered for artists, designers & developers.
         </h1>
 
-        <p class="mt-4 text-base leading-relaxed text-[#4d4d4d] sm:text-lg">
-          Stop getting muddy grey when blending blue and yellow. Color Mixer combines physical <strong>Kubelka-Munk pigment absorption</strong> with the classical <strong>Johannes Itten Bauhaus color wheel</strong>.
+        <p class="mt-5 text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-lg">
+          Stop struggling with muddy RGB averages and rigid screen-only pickers. Real Color Mixer unifies authentic <strong>Kubelka-Munk pigment physics</strong> with <strong>Johannes Itten's Bauhaus color wheel</strong> and modern <strong>WCAG 2.1 accessibility</strong>.
         </p>
 
-        <!-- CTAs -->
+        <!-- Primary CTAs -->
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
             href="/mix"
-            class="inline-flex h-10 items-center justify-center rounded-full bg-[#171717] px-6 text-sm font-medium text-white shadow-xs transition-colors hover:bg-[#333333]"
+            class="inline-flex h-11 items-center justify-center rounded-full bg-[#171717] dark:bg-white px-7 text-sm font-medium text-white dark:text-[#171717] shadow-xs transition-colors hover:bg-[#333333] dark:hover:bg-[#e0e0e0]"
           >
-            Open Color Mixer
+            Launch Color Mixer &rarr;
           </a>
           <a
             href="/color-wheel"
-            class="inline-flex h-10 items-center justify-center rounded-full border border-[#ebebeb] bg-white px-6 text-sm font-medium text-[#171717] shadow-2xs transition-colors hover:bg-[#fafafa]"
+            class="inline-flex h-11 items-center justify-center rounded-full border border-[#ebebeb] dark:border-[#333333] bg-white dark:bg-[#141414] px-7 text-sm font-medium text-[#171717] dark:text-[#ededed] shadow-2xs transition-colors hover:bg-[#fafafa] dark:hover:bg-[#1f1f1f]"
           >
-            Explore Color Wheel
+            Open Color Wheel &rarr;
           </a>
         </div>
       </div>
@@ -51,12 +111,12 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Core Tools Showcase Grid -->
-  <section class="py-16 sm:py-20">
+  <section class="py-16 sm:py-20 bg-white dark:bg-[#0a0a0a]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-10 text-center">
-        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]">Precision Engineered</span>
-        <h2 class="mt-1 text-2xl font-semibold tracking-tight text-[#171717] sm:text-3xl">
-          Two dedicated tools. Zero muddy compromises.
+      <div class="mb-12 text-center">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Dedicated Tool Suite</span>
+        <h2 class="mt-1 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
+          Two specialized tools. One cohesive color ecosystem.
         </h2>
       </div>
 
@@ -64,89 +124,89 @@ import Layout from '../layouts/Layout.astro';
         <!-- Card 1: /mix -->
         <a
           href="/mix"
-          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] bg-white p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 hover:shadow-md"
+          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 dark:hover:border-white/30 hover:shadow-md"
         >
           <div>
             <div class="flex items-center justify-between">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-500 to-emerald-400 text-white shadow-xs">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-500 to-emerald-400 text-white shadow-xs">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </span>
-              <span class="font-mono text-xs text-[#8f8f8f] group-hover:text-[#171717]">/mix →</span>
+              <span class="font-mono text-xs text-[#8f8f8f] dark:text-[#71717a] group-hover:text-[#171717] dark:group-hover:text-white">/mix →</span>
             </div>
 
-            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717]">
-              Real Color Mixer
+            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
+              Real Color Mixer Tool
             </h3>
 
-            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
-              Physically accurate pigment mixing using the Kubelka-Munk theory. Blend up to 6 custom colors or traditional artist paint tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White).
+            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+              Simulate physical paint blending using the Kubelka-Munk theory. Blend custom hex codes or traditional artist pigment tubes with fluid weight sliders and export modern CSS color-mix() code.
             </p>
 
-            <ul class="mt-4 space-y-2 text-xs text-[#4d4d4d]">
+            <ul class="mt-5 space-y-2.5 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
               <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>Blue + Yellow = Vibrant Green (#3D933E)</span>
+                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span><strong>Physical Pigments:</strong> Blue + Yellow = Vibrant Green (#3D933E)</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>4 Blending Modes: Real Paint (RYB), OKLCH, RGB, CMYK</span>
+                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span><strong>4 Blending Modes:</strong> Real Paint (RYB), OKLCH, RGB, CMYK</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>Live WCAG 2.1 Contrast & Component Preview</span>
+                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span><strong>Developer Ready:</strong> Native CSS color-mix() and Tailwind v4 export</span>
               </li>
             </ul>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-[#ebebeb]">
-            <span class="text-xs font-medium text-[#0070f3] group-hover:underline">Launch Mixer Tool &rarr;</span>
+          <div class="mt-6 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
+            <span class="text-xs font-medium text-[#0070f3] dark:text-[#3291ff] group-hover:underline">Open Color Mixer Tool &rarr;</span>
           </div>
         </a>
 
         <!-- Card 2: /color-wheel -->
         <a
           href="/color-wheel"
-          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] bg-white p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 hover:shadow-md"
+          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 dark:hover:border-white/30 hover:shadow-md"
         >
           <div>
             <div class="flex items-center justify-between">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-rose-500 via-amber-400 to-indigo-500 text-white shadow-xs">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-tr from-rose-500 via-amber-400 to-indigo-500 text-white shadow-xs">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                 </svg>
               </span>
-              <span class="font-mono text-xs text-[#8f8f8f] group-hover:text-[#171717]">/color-wheel →</span>
+              <span class="font-mono text-xs text-[#8f8f8f] dark:text-[#71717a] group-hover:text-[#171717] dark:group-hover:text-white">/color-wheel →</span>
             </div>
 
-            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717]">
-              Color Wheel Picker
+            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
+              Color Wheel Picker Tool
             </h3>
 
-            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
-              Interactive dual-mode color wheel. Switch seamlessly between Johannes Itten's classical Bauhaus 12-hue artist wheel and modern digital screen wheels.
+            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+              Interactive dual-mode color wheel. Switch seamlessly between Johannes Itten's classical Bauhaus 12-hue artist wheel and standard digital screen color wheels.
             </p>
 
-            <ul class="mt-4 space-y-2 text-xs text-[#4d4d4d]">
+            <ul class="mt-5 space-y-2.5 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
               <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>Itten RYB: Red opposite Green, Blue opposite Orange</span>
+                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span><strong>Artist RYB Wheel:</strong> Red opposite Green, Blue opposite Orange</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>6 Color Schemes (Complementary, Triadic, Analogous...)</span>
+                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span><strong>Harmonies:</strong> Complementary, Triadic, Analogous, Tetradic</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>9-Step Tint & Shade scale (50-900) + CVD Colorblind Simulator</span>
+                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span><strong>Accessibility:</strong> Real-time WCAG 2.1 contrast + Color-blind simulator</span>
               </li>
             </ul>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-[#ebebeb]">
-            <span class="text-xs font-medium text-[#0070f3] group-hover:underline">Launch Color Wheel &rarr;</span>
+          <div class="mt-6 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
+            <span class="text-xs font-medium text-[#0070f3] dark:text-[#3291ff] group-hover:underline">Explore Color Wheel Tool &rarr;</span>
           </div>
         </a>
       </div>
@@ -154,63 +214,275 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Competitor Comparison Section -->
-  <section class="border-t border-[#ebebeb] bg-[#fafafa] py-16">
+  <section class="border-t border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#0e0e0e] py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]">Side-by-Side Comparison</span>
-        <h2 class="mt-2 text-2xl font-semibold tracking-tight text-[#171717] sm:text-3xl">
-          Physical Pigment Science vs. Standard Digital Tools
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Platform Advantages</span>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
+          Real Color Mixer vs. Legacy Digital Design Tools
         </h2>
+        <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+          See how our physical pigment science and open architecture compare directly against conventional screen utilities.
+        </p>
       </div>
 
-      <div class="mt-10 overflow-x-auto rounded-xl border border-[#ebebeb] bg-white shadow-2xs">
+      <div class="mt-10 overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
         <table class="w-full text-left text-xs sm:text-sm">
-          <thead class="border-b border-[#ebebeb] bg-[#fafafa] text-xs font-mono uppercase text-[#8f8f8f]">
+          <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
             <tr>
               <th class="p-4 sm:p-5">Feature</th>
-              <th class="p-4 sm:p-5 text-[#8f8f8f]">Standard Digital Tools</th>
-              <th class="p-4 sm:p-5 text-[#171717] font-bold">realcolormixer.com</th>
+              <th class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">Standard Screen Tools</th>
+              <th class="p-4 sm:p-5 text-[#171717] dark:text-white font-bold">Real Color Mixer Suite</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-[#ebebeb] text-[#4d4d4d]">
+          <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Blue + Yellow Mix Result</td>
-              <td class="p-4 sm:p-5 text-red-600 font-mono">Muddy Brown/Grey (#808040)</td>
-              <td class="p-4 sm:p-5 text-emerald-600 font-semibold font-mono">Vibrant Green (#3D933E)</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Blue + Yellow Mixing Result</td>
+              <td class="p-4 sm:p-5 text-red-600 dark:text-red-400 font-mono">Muddy Brown/Grey (#808040)</td>
+              <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-semibold font-mono">Vibrant Green (#3D933E)</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Mixing Physics</td>
-              <td class="p-4 sm:p-5">Digital RGB / HSL Average</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Subtractive Kubelka-Munk (K/S)</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Color Mixing Physics</td>
+              <td class="p-4 sm:p-5">Linear Digital RGB Average</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Subtractive Kubelka-Munk (K/S) + OKLCH</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Color Wheel Theory</td>
-              <td class="p-4 sm:p-5">RGB Only (Red opp. Cyan)</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Dual Mode: Johannes Itten RYB + Digital RGB</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Harmonic Color Theory</td>
+              <td class="p-4 sm:p-5">RGB Only (Red opposite Cyan)</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Dual Mode: Johannes Itten RYB + Digital RGB</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Accessibility Scoring</td>
-              <td class="p-4 sm:p-5 text-[#8f8f8f]">None</td>
-              <td class="p-4 sm:p-5 text-emerald-600 font-medium">Real-time WCAG 2.1 AA / AAA Badges</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Account / Subscription Required</td>
+              <td class="p-4 sm:p-5 text-red-600 dark:text-red-400">Frequently required for saving/syncing</td>
+              <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-medium">100% Free & No Sign-In Required</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Tints, Shades & Tones</td>
-              <td class="p-4 sm:p-5 text-[#8f8f8f]">Single Hex Swatch</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Full 9-Step Scale (50 to 900)</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Accessibility Validation</td>
+              <td class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">None or basic external checkers</td>
+              <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-medium">Real-time WCAG 2.1 AA & AAA Badges</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Color Blindness Simulator</td>
-              <td class="p-4 sm:p-5 text-[#8f8f8f]">None</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Protanopia, Deuteranopia, Tritanopia, Mono</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Tonal Scales & Steps</td>
+              <td class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">Single hex code</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Full 9-Step Tint & Shade Scale (50 to 900)</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Developer Code Export</td>
-              <td class="p-4 sm:p-5">Plain HEX copy</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717]">Tailwind v4 Config, CSS Vars, CSS color-mix(), SVG</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Color Vision Deficiency Simulation</td>
+              <td class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">None</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Protanopia, Deuteranopia, Tritanopia, Mono</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Code Generation</td>
+              <td class="p-4 sm:p-5">Manual hex copying</td>
+              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Tailwind CSS v4, CSS Vars, CSS color-mix()</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
+
+  <!-- Comprehensive Editorial Guide on Uses & Advantages (1,000 words) -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Platform Overview & Applications</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          The Advantages, Science & Professional Uses of Real Color Mixer
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          How our dual-tool architecture bridges physical pigment reality with accessible modern web engineering.
+        </p>
+      </div>
+
+      <!-- Main Prose Body -->
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        
+        <!-- Part 1: Why Real Color Mixer Exists -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Why Real Color Mixer Exists: Beyond Digital Screen Limitations
+          </h3>
+          <p>
+            Real Color Mixer represents a fundamental shift in how digital color tools operate. For decades, creators have had to rely on tools that treat color purely as mathematical abstractions of light on computer monitors. While additive RGB color models suit emitting pixels on a screen, they fail to replicate how colors interact physically or how human vision perceives harmony.
+          </p>
+          <p>
+            Real Color Mixer was engineered from the ground up to solve these longstanding limitations. By unifying physical pigment optics with classical Bauhaus color theory and modern web accessibility standards, our platform provides a cohesive color suite. Whether simulating acrylic paint, constructing an accessible design system, or exploring harmonic palettes, understanding these advantages will elevate your workflow.
+          </p>
+        </section>
+
+        <!-- Part 2: Key Advantages -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Key Advantages: Why Real Color Mixer Outperforms Legacy Digital Tools
+          </h3>
+          <p>
+            Standard digital tools force creators to accept compromises. Real Color Mixer delivers five core advantages designed for accuracy and productivity:
+          </p>
+          
+          <div class="space-y-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">A. Authentic Subtractive Pigment Optics Without Muddy Grey</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Standard screen tools linearly average RGB values, turning blue and yellow into muddy brownish-grey (#808040). Real Color Mixer incorporates Kubelka-Munk optical theory, calculating physical absorption and scattering to produce radiant green (#3D933E)—exactly like real physical paint on a palette.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">B. Dual-Mode Harmonic Theory: Johannes Itten RYB Meets Digital Web</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Standard software forces creators into digital screen geometry (Red opposite Cyan), ignoring centuries of art education. Real Color Mixer features a dedicated toggle for Johannes Itten's Bauhaus RYB wheel (Red opposite Green, Blue opposite Orange) alongside digital web wheels, letting artists and web designers work without compromise.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">C. Automated Real-Time WCAG 2.1 Accessibility Validation</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Modern design demands legal accessibility compliance. Real Color Mixer calculates real-time WCAG 2.1 contrast ratios for every color combination and mixed shade. Instant AA and AAA badges confirm whether black or white text meets legibility criteria on buttons, cards, and interactive elements.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">D. Frictionless, Privacy-First Architecture Without Account Paywalls</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Many platforms require paid subscriptions or cloud account logins just to save palettes. Real Color Mixer is completely open, instant, and privacy-respecting, running all calculations locally in your browser with zero sign-ins and zero paywalls.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">E. Developer-Ready Code Exports for Modern CSS and Tailwind</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Modern frontend development requires more than copying isolated hexadecimal codes. Our platform generates production-ready CSS variables, Tailwind CSS v4 design tokens, SVG palette assets, and modern CSS color-mix() code in the perceptually uniform OKLCH color space.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Part 3: Professional Uses Across Industries -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            3. Professional Uses & Real-World Applications Across Industries
+          </h3>
+          <p>
+            Real Color Mixer is engineered to serve the needs of diverse creative disciplines:
+          </p>
+          <ul class="space-y-4 list-disc pl-5">
+            <li>
+              <strong>Fine Artists, Illustrators, and Oil and Acrylic Painters:</strong> For painters working in oils, acrylics, or watercolors, physical pigment is expensive. Blending paint by trial and error leads to wasted supplies. Artists use our physical pigment simulator to prototype mixing recipes—such as Ultramarine Blue, Cadmium Yellow, and Titanium White—before opening a tube, while students use the Itten wheel to master contrast and balance.
+            </li>
+            <li>
+              <strong>UI and UX Designers and Digital Product Teams:</strong> Product designers rely on Real Color Mixer to build accessible design systems. Leveraging complementary and triadic modes, teams construct cohesive brand palettes and apply the 60-30-10 UI rule (60% neutral base, 30% structural tone, 10% high-contrast accent) with verified WCAG AA/AAA scores before handoff.
+            </li>
+            <li>
+              <strong>Front-End Engineers and CSS Architects:</strong> Modern stylesheets use CSS color-mix() and OKLCH to prevent muddy desaturation in gradients. Developers use our platform to test hex ratios, preview components across light and dark modes, and export clean tokens ready for Tailwind config files or CSS stylesheets.
+            </li>
+            <li>
+              <strong>Interior Designers, Crafters, and DIY Home Decorators:</strong> Planning wall paints and textiles requires understanding how pigments absorb light. Decorators use Real Color Mixer to preview architectural tints, test warm versus cool undertones, and formulate custom paint recipes before purchasing supplies.
+            </li>
+            <li>
+              <strong>Educators, Students, and Color Theory Researchers:</strong> Teaching the difference between additive light mixing (RGB) and subtractive absorption (RYB/CMYK) is challenging with conventional software. Educators and design professors use Real Color Mixer to demonstrate spectral reflectance, the Kubelka-Munk equation, and Johannes Itten's contrasts.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Part 4: Integrated Workflow & Internal Links -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            4. The Integrated Creative Workflow: How Our Tools Complement Each Other
+          </h3>
+          <p>
+            Real Color Mixer is organized into two dedicated, specialized tools that form a unified workflow:
+          </p>
+          
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-6 space-y-3">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] font-mono text-xs font-bold">Step 1</span>
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">
+                Selecting & Structuring Palettes on the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] underline underline-offset-2 hover:opacity-80">Color Wheel Picker</a>
+              </h4>
+              <p class="text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Start your creative project on our dedicated <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Wheel Picker</a>. Choose between the classical Johannes Itten Bauhaus wheel or digital screen mode to establish your color foundation. Explore the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">12-hue color wheel chart</a> to understand primary, secondary, and tertiary relationships, and leverage the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">complementary color wheel</a> to select high-impact accent colors. Generate a complete 9-step tint and shade scale and verify color-blindness accessibility.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-6 space-y-3">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] font-mono text-xs font-bold">Step 2</span>
+              <h4 class="text-base font-semibold text-[#111827] dark:text-white">
+                Prototyping & Formulating Blends on the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] underline underline-offset-2 hover:opacity-80">Color Mixer Online</a>
+              </h4>
+              <p class="text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Once your palette hues are established, transition to our <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Mixer Online</a>. Whether you are formulating physical paint mixtures or generating modern CSS tokens, the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">online color mixer</a> enables you to combine up to six colors with fluid percentage sliders. Use the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">hex color mixer</a> to test exact web hexadecimal blends in OKLCH, inspect live button and card mockups, and export production-ready code.
+              </p>
+            </div>
+          </div>
+          
+          <p class="mt-4 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+            By separating harmonic selection from physical blend formulation, Real Color Mixer provides creators with an intuitive, powerful workbench for all color-driven disciplines without keyword or interface confusion.
+          </p>
+        </section>
+
+        <!-- Part 5: FAQ Section -->
+        <section class="space-y-6 pt-6 border-t border-[#e5e7eb] dark:border-[#262626]">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            5. Frequently Asked Questions About the Real Color Mixer Suite
+          </h3>
+
+          <div class="space-y-4">
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What are the main advantages of Real Color Mixer over standard digital tools?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Real Color Mixer provides physical Kubelka-Munk pigment physics that blend blue and yellow into vibrant green rather than muddy grey, a dual-mode color wheel supporting Johannes Itten classical artist RYB and digital RGB, and real-time WCAG 2.1 AA/AAA accessibility scoring with 100% free, privacy-first access without account sign-in.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>Who uses Real Color Mixer and what are its primary applications?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                The platform is used by fine artists and painters to prototype oil and acrylic mixing recipes without wasting paint; UI/UX designers to create accessible palettes with legal WCAG contrast; front-end developers to generate modern CSS color-mix() code and Tailwind v4 tokens; interior decorators to test wall paint tints; and educators to teach subtractive vs additive color physics.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>How do the Color Wheel Picker and Color Mixer tools work together?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                The two tools form an integrated workflow: First, creators use the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Wheel Picker</a> to establish harmonic palettes (such as complementary or triadic schemes) and test accessibility. Next, they transition to the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Mixer</a> to simulate physical pigment blends with proportion sliders or generate native CSS color-mix() tokens.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>Is Real Color Mixer free and does it require an Adobe Creative Cloud account?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Real Color Mixer is 100% free and open to all users. Unlike Adobe Color Wheel, you do not need an Adobe Creative Cloud account, subscription, or login to save, test, or export your color palettes and code snippets.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What export formats are supported for web and graphic designers?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Real Color Mixer supports one-click exports for Tailwind CSS v4 design tokens, CSS custom properties (:root variables), modern CSS color-mix() syntax in OKLCH, downloadable SVG palette swatches, and standard HEX / RGB / HSL values.
+              </p>
+            </details>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </article>
 </Layout>

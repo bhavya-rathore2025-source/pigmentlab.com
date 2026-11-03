@@ -1,42 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const colorWheelFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What is a color wheel picker and how is it used in design?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'A color wheel picker is an interactive design tool that arranges the visible spectrum into a geometric circle. It allows designers and artists to select base hues, adjust saturation and brightness, and calculate mathematically balanced harmony schemes such as complementary, analogous, and triadic palettes.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How does this tool compare to the Adobe Color Wheel?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Unlike Adobe Color Wheel, which relies solely on digital additive RGB angles and requires an Adobe Creative Cloud account to save palettes, our Color Wheel Picker offers a 1-click toggle between classical Johannes Itten artist RYB (Red opposite Green) and digital RGB, real-time WCAG 2.1 AA/AAA contrast scoring, a 9-step tint and shade scale, and zero account or login requirements.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'What is a complementary color wheel and why is it important?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'A complementary color wheel maps colors that sit directly opposite each other across the 360-degree circle (such as Red and Green, or Blue and Orange). These pairs create maximum visual contrast through simultaneous contrast, making them ideal for high-impact call-to-action buttons, badges, and focal points.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'What is the difference between an Itten RYB color wheel chart and a digital RGB wheel?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'On a traditional Johannes Itten RYB color wheel chart, the primary pigments are Red, Yellow, and Blue, placing Red opposite Green and Blue opposite Orange. On a digital RGB screen wheel, the primaries are Red, Green, and Blue light, placing Red opposite Cyan and Blue opposite Yellow.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Can I check accessibility and color blindness on this color wheel?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. Our color wheel picker includes a real-time WCAG 2.1 contrast matrix with AA and AAA pass/fail badges, plus a color vision deficiency simulator supporting Protanopia, Deuteranopia, Tritanopia, and Monochromacy.'
+      }
+    }
+  ]
+};
+
+const pageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'Color Wheel Picker & Harmony Chart',
+    'url': 'https://realcolormixer.com/color-wheel',
+    'description': 'Free online color wheel picker with Johannes Itten RYB artist mode, digital RGB mode, complementary color wheel generator, WCAG 2.1 contrast checking, and 9-step shade scales.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
+  },
+  colorWheelFaqSchema
+];
 ---
 
 <Layout
-  title="Color Wheel Picker - Johannes Itten Bauhaus (RYB) & Digital RGB | realcolormixer.com"
-  description="Interactive online color wheel with Johannes Itten 12-hue Bauhaus artist wheel (Red opposite Green) and digital RGB modes. Generate complementary, analogous, and triadic palettes with WCAG contrast and shade scales."
+  title="Color Wheel Picker & Harmony Chart - Complementary Color Wheel"
+  description="Interactive color wheel picker featuring Johannes Itten's 12-hue Bauhaus artist wheel (RYB) and digital RGB modes. Generate complementary color wheel palettes, 9-step tint scales, and test WCAG contrast. Better than Adobe Color Wheel."
+  keywords="color wheel, color wheel picker, adobe color wheel, color wheel chart, complementary color wheel, itten color wheel, farbkreis itten, color scheme generator, color palette builder"
   currentPath="/color-wheel"
+  schema={pageSchema}
 >
   <!-- Hero Section -->
-  <section class="relative border-b border-[#ebebeb] bg-white py-10 sm:py-14">
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
     <!-- Geist Mesh Gradient Bloom -->
-    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
       <div class="absolute -top-[20%] left-[10%] h-[320px] w-[450px] rounded-full bg-gradient-to-tr from-[#ff4d4d]/30 via-[#f9cb28]/30 to-[#00dfd8]/30 blur-3xl"></div>
       <div class="absolute -top-[25%] right-[20%] h-[320px] w-[450px] rounded-full bg-gradient-to-bl from-[#7928ca]/30 via-[#ff0080]/30 to-[#007cf0]/30 blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
-          <span class="h-1.5 w-1.5 rounded-full bg-[#ff0080]"></span>
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff0080] animate-pulse"></span>
           <span>Johannes Itten Bauhaus Wheel & Color Palettes</span>
         </div>
 
-        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] sm:text-4xl lg:text-5xl">
-          Color Wheel Picker
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Color Wheel Picker & Harmony Chart
         </h1>
 
-        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] sm:text-base">
-          Standard screen pickers only use digital RGB angles (Red opposite Cyan). Color Mixer provides a 1-click toggle to switch between the <span class="font-medium text-[#171717]">Klassischer Itten Farbkreis (RYB)</span> used by artists where <strong class="text-[#c41e3a]">Red</strong> is opposite <strong class="text-[#14b82a]">Green</strong>, and the standard <span class="font-medium text-[#171717]">Digital Web Wheel</span>.
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Standard screen pickers like the Adobe Color Wheel only use digital RGB angles (Red opposite Cyan). Real Color Mixer provides a 1-click toggle to switch between the traditional <strong class="text-[#171717] dark:text-white">Johannes Itten Bauhaus RYB artist color wheel</strong> (where <span class="text-[#c41e3a] font-semibold">Red</span> is opposite <span class="text-[#14b82a] font-semibold">Green</span>) and the standard digital web color wheel chart.
         </p>
 
         <!-- Mode Switcher Tabs (Itten vs Digital RGB) -->
-        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] bg-[#fafafa] p-1 shadow-2xs">
+        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1 shadow-2xs">
           <button
             type="button"
             id="wheel-mode-itten"
             data-wheel="itten"
-            class="wheel-mode-btn active cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+            class="wheel-mode-btn active cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium transition-all bg-[#171717] dark:bg-white text-white dark:text-[#171717] shadow-xs"
           >
             🎨 Klassischer Itten (RYB Artist Wheel)
           </button>
@@ -44,7 +111,7 @@ import Layout from '../layouts/Layout.astro';
             type="button"
             id="wheel-mode-rgb"
             data-wheel="rgb"
-            class="wheel-mode-btn cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+            class="wheel-mode-btn cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
           >
             💻 Digital Screen Wheel (RGB / Web)
           </button>
@@ -327,63 +394,251 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Educational & SEO Section -->
-  <section class="border-t border-[#ebebeb] bg-white py-16">
+  <!-- Comprehensive Educational Guide & SEO Section -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <div class="prose prose-neutral max-w-none">
-        <h2 class="text-2xl font-bold tracking-tight text-[#171717]">
-          Klassischer Farbkreis nach Johannes Itten (The Traditional RYB Wheel)
+      
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Color Theory & Harmony Science</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          The Complete Guide to the Color Wheel, Color Wheel Picker & Harmony Charts
         </h2>
-        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d]">
-          In 1961, Bauhaus master Johannes Itten published <em>The Art of Color</em>, introducing the 12-hue color wheel that became the foundation of modern art schools, graphic design, and interior decor worldwide.
-        </p>
-
-        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
-          Why Digital RGB Wheels Fail Artists
-        </h3>
-        <p class="text-sm leading-relaxed text-[#4d4d4d]">
-          Most digital applications only build on the computer screen’s <strong>additive RGB hue spectrum</strong>. On a standard RGB wheel:
-        </p>
-        <ul class="list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
-          <li><strong>Red</strong> is placed opposite <strong>Cyan</strong>.</li>
-          <li><strong>Blue</strong> is placed opposite <strong>Yellow</strong>.</li>
-        </ul>
-        <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
-          To fine artists, interior decorators, and fashion stylists, this feels completely wrong! In classical color theory and physical pigment interaction:
-        </p>
-        <ul class="list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
-          <li><strong>Red is opposite Green</strong> (Complementary).</li>
-          <li><strong>Blue is opposite Orange</strong> (Complementary).</li>
-          <li><strong>Yellow is opposite Purple / Violet</strong> (Complementary).</li>
-        </ul>
-
-        <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 text-center">
-            <div class="text-xs font-mono font-semibold text-[#c41e3a] uppercase">Red & Green</div>
-            <p class="mt-1 text-[11px] text-[#4d4d4d]">The ultimate dynamic contrast. Creates high energy in fashion and holiday aesthetics.</p>
-          </div>
-          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 text-center">
-            <div class="text-xs font-mono font-semibold text-[#004cff] uppercase">Blue & Orange</div>
-            <p class="mt-1 text-[11px] text-[#4d4d4d]">The legendary "Teal & Orange" Hollywood cinema grade and warm/cool temperature balance.</p>
-          </div>
-          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 text-center">
-            <div class="text-xs font-mono font-semibold text-[#ffd700] uppercase">Yellow & Purple</div>
-            <p class="mt-1 text-[11px] text-[#4d4d4d]">Maximum lightness contrast. A light pure hue against the deepest dark hue.</p>
-          </div>
-        </div>
-
-        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
-          Color Palette Schemes Explained
-        </h3>
-        <p class="text-sm leading-relaxed text-[#4d4d4d]">
-          <strong>1. Complementary (Opuestos):</strong> Two colors directly across from one another (180°). Provides maximum contrast and visual punch.<br>
-          <strong>2. Analogous (Análogos):</strong> Colors positioned side-by-side (30° apart). Creates serene, comfortable, cohesive nature-inspired palettes.<br>
-          <strong>3. Triadic (Tríada):</strong> Three colors evenly spaced at 120° angles forming an equilateral triangle. Offers vibrant balance without aggressive clash.<br>
-          <strong>4. Tetradic (Tétrada):</strong> Four colors forming a rectangle or square (90° apart). Offers rich variety best used with one dominant hue.
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Master color relationships, generate balanced complementary palettes, and understand classical vs digital color spaces.
         </p>
       </div>
+
+      <!-- Main Prose Body -->
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        
+        <!-- Section 1: Color Wheel & Color Wheel Picker -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Understanding the Color Wheel and Interactive Color Wheel Picker
+          </h3>
+          <p>
+            The <strong>color wheel</strong> is the cornerstone of color theory, graphic design, and artistic composition. Originating from Sir Isaac Newton’s 1666 circular refraction diagram and later expanded by Goethe and Bauhaus master Johannes Itten, the <strong>color wheel</strong> maps the continuous spectrum of visible light into a manageable geometric circle. Whether you are creating brand identity guidelines, designing accessible user interfaces, or mixing physical paint on canvas, the <strong>color wheel</strong> enables you to predict visual contrast and balance with scientific certainty.
+          </p>
+          <p>
+            An interactive <strong>color wheel picker</strong> takes this classical foundation and elevates it for the digital age. Instead of manually guessing hex codes or relying on clunky operating system dialogs, a dedicated <strong>color wheel picker</strong> allows you to select a primary base hue, sweep across 360 degrees of tonal variations, and automatically calculate mathematically harmonious secondary and accent colors.
+          </p>
+        </section>
+
+        <!-- Section 2: How to Use the Color Wheel Picker -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. How to Use This Color Wheel Picker: Step-by-Step
+          </h3>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">1</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Choose Wheel Mode</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Toggle between <strong>Klassischer Itten (RYB Artist Wheel)</strong> for traditional art harmony (Red opposite Green) and <strong>Digital Screen Wheel (RGB / Web)</strong> for standard screen coordinates.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">2</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Select Harmony Scheme</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Click a harmony preset: <strong>Complementary</strong>, <strong>Analogous</strong>, <strong>Triadic</strong>, <strong>Tetradic</strong>, <strong>Split-Complementary</strong>, or <strong>Monochromatic</strong>.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">3</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Fine-Tune Saturation & Lightness</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Drag the interactive canvas handles or adjust the fluid sliders to refine the exact chroma and brightness of your base palette.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">4</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Check Contrast & Export</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Verify WCAG 2.1 AA/AAA contrast ratios, test color-blindness perceptions, and copy Tailwind CSS v4 config, CSS variables, or download an SVG swatch palette.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: The 12-Hue Color Wheel Chart -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            3. The 12-Hue Color Wheel Chart: Classical Artist RYB vs. Digital RGB
+          </h3>
+          <p>
+            A <strong>color wheel chart</strong> organizes twelve principal hues into primary, secondary, and tertiary categories. However, the geometric placement of opposite hues differs fundamentally between the traditional artist <strong>color wheel chart</strong> and digital computer screens:
+          </p>
+
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Base Hue</th>
+                  <th class="p-4 sm:p-5 text-[#c41e3a] font-semibold">Artist Wheel (Itten RYB) Opposite</th>
+                  <th class="p-4 sm:p-5 text-[#0070f3] font-semibold">Digital Screen (RGB) Opposite</th>
+                  <th class="p-4 sm:p-5">Color Type</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Red (#E60026)</td>
+                  <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-medium">Green (#00AA44)</td>
+                  <td class="p-4 sm:p-5 text-cyan-600 dark:text-cyan-400">Cyan (#00FFFF)</td>
+                  <td class="p-4 sm:p-5">Primary</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Yellow (#FFE600)</td>
+                  <td class="p-4 sm:p-5 text-purple-600 dark:text-purple-400 font-medium">Purple / Violet (#4C0080)</td>
+                  <td class="p-4 sm:p-5 text-blue-600 dark:text-blue-400">Blue (#0000FF)</td>
+                  <td class="p-4 sm:p-5">Primary (RYB) / Secondary (RGB)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Blue (#0033AA)</td>
+                  <td class="p-4 sm:p-5 text-amber-600 dark:text-amber-400 font-medium">Orange (#FF9900)</td>
+                  <td class="p-4 sm:p-5 text-yellow-600 dark:text-yellow-400">Yellow (#FFFF00)</td>
+                  <td class="p-4 sm:p-5">Primary</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Orange (#FF9900)</td>
+                  <td class="p-4 sm:p-5 text-blue-600 dark:text-blue-400 font-medium">Blue (#0033AA)</td>
+                  <td class="p-4 sm:p-5 text-indigo-600 dark:text-indigo-400">Azure (#007FFF)</td>
+                  <td class="p-4 sm:p-5">Secondary</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Green (#00AA44)</td>
+                  <td class="p-4 sm:p-5 text-red-600 dark:text-red-400 font-medium">Red (#E60026)</td>
+                  <td class="p-4 sm:p-5 text-pink-600 dark:text-pink-400">Magenta (#FF00FF)</td>
+                  <td class="p-4 sm:p-5">Secondary (RYB) / Primary (RGB)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Purple (#4C0080)</td>
+                  <td class="p-4 sm:p-5 text-yellow-600 dark:text-yellow-400 font-medium">Yellow (#FFE600)</td>
+                  <td class="p-4 sm:p-5 text-lime-600 dark:text-lime-400">Chartreuse (#7FFF00)</td>
+                  <td class="p-4 sm:p-5">Secondary</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 4: Complementary Color Wheel -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            4. Mastering the Complementary Color Wheel for Visual Contrast and Conversions
+          </h3>
+          <p>
+            The <strong>complementary color wheel</strong> harmony rule isolates two colors located precisely 180 degrees apart. Because they contain no shared primary wavelengths, placing complementary colors adjacent to each other produces maximum visual vibration—a phenomenon discovered by French chemist Michel Eugène Chevreul known as <em>simultaneous contrast</em>.
+          </p>
+          <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5 sm:p-6 space-y-4">
+            <h4 class="text-sm font-semibold text-[#111827] dark:text-white">The Three Classic Complementary Pairings:</h4>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div class="rounded-lg border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#171717] p-4 text-center">
+                <span class="text-xs font-mono font-semibold text-[#c41e3a] uppercase">Red & Green</span>
+                <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">Highest dynamic energy. Widely used in packaging, culinary branding, and holiday motifs.</p>
+              </div>
+              <div class="rounded-lg border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#171717] p-4 text-center">
+                <span class="text-xs font-mono font-semibold text-[#0070f3] uppercase">Blue & Orange</span>
+                <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">Hollywood’s "Teal & Orange" grade. Perfect balance of warm human skin tones and cool shadow depth.</p>
+              </div>
+              <div class="rounded-lg border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#171717] p-4 text-center">
+                <span class="text-xs font-mono font-semibold text-[#ffd700] uppercase">Yellow & Purple</span>
+                <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">Maximum lightness contrast. A radiant high-luminance hue set against deep chromatic depth.</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            When designing user interfaces, applying a <strong>complementary color wheel</strong> ensures that buttons, callouts, and key interaction states pop effortlessly against neutral backdrops. Remember to balance complementary pairs using the <strong>60-30-10 rule</strong>: 60% neutral background, 30% brand secondary, and 10% complementary accent.
+          </p>
+        </section>
+
+        <!-- Section 5: Adobe Color Wheel Alternative -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            5. Real Color Mixer vs Adobe Color Wheel: Why Switch?
+          </h3>
+          <p>
+            For more than a decade, designers turned to the <strong>adobe color wheel</strong> for basic screen palettes. However, modern creative workflows have evolved beyond the limitations of legacy tools:
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong>No Account Required:</strong> While the <strong>adobe color wheel</strong> prompts you to log into Adobe Creative Cloud to save or manage palettes, Real Color Mixer is 100% open and frictionless.
+            </li>
+            <li>
+              <strong>Real Artist Harmony:</strong> Standard tools like the <strong>adobe color wheel</strong> lock you into digital RGB angles where Red is opposite Cyan. Real Color Mixer provides a one-click toggle to classical Itten Bauhaus RYB harmony.
+            </li>
+            <li>
+              <strong>Integrated Contrast Matrix:</strong> Test real-time WCAG 2.1 compliance with immediate AA and AAA ratings for text legibility.
+            </li>
+            <li>
+              <strong>Modern Code Exports:</strong> Copy Tailwind CSS v4 design tokens, CSS custom properties, and native SVG swatches in one click.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 6: FAQ Section -->
+        <section class="space-y-6 pt-6 border-t border-[#e5e7eb] dark:border-[#262626]">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            6. Frequently Asked Questions About the Color Wheel Picker
+          </h3>
+
+          <div class="space-y-4">
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What is a color wheel picker and how is it used in design?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                A <strong>color wheel picker</strong> is an interactive web tool that organizes the visible hue spectrum in a geometric circle. It lets designers select a base color and compute harmonious color palettes (such as complementary, analogous, and triadic schemes) based on mathematical angular relationships.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>How does this color wheel compare to the Adobe Color Wheel?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Unlike the <strong>adobe color wheel</strong>, our tool offers a 1-click toggle between Johannes Itten's classical artist RYB wheel and modern digital RGB, includes instant WCAG 2.1 AA/AAA accessibility scoring, provides 9-step tint and shade generators, and requires zero account sign-up.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What is a complementary color wheel harmony and why is it important?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                A <strong>complementary color wheel</strong> harmony pairs hues sitting directly opposite each other across the 360-degree circle (like Red and Green in RYB, or Blue and Orange). These pairs create maximum visual contrast, making them ideal for high-impact call-to-action buttons and conversion elements.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What is the difference between an Itten RYB color wheel chart and a digital RGB wheel?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                On an Itten RYB <strong>color wheel chart</strong>, primary pigments are Red, Yellow, and Blue, placing Red opposite Green and Blue opposite Orange. On a digital RGB screen wheel, the primaries are Red, Green, and Blue light, placing Red opposite Cyan and Blue opposite Yellow.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>Can I simulate color blindness on this color wheel picker?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Yes. Our <strong>color wheel picker</strong> includes an accessibility simulator that renders your palette under Protanopia (red-blind), Deuteranopia (green-blind), Tritanopia (blue-blind), and Achromatopsia (monochrome), ensuring your palettes remain distinguishable for all users.
+              </p>
+            </details>
+          </div>
+        </section>
+
+      </div>
     </div>
-  </section>
+  </article>
 </Layout>
 
 <script>

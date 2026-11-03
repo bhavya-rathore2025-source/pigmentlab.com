@@ -151,12 +151,9 @@ SPANISH (/es/ - Latin America & Spain) [From Screenshots]:
 - "mezcla de colores" (Volume: 2,000 in Peru | Position: 2)
 - "combinar colores" (Volume: 600 in Peru | Position: 1)
 - "rueda color" (Volume: 500 in Spain | Position: 6)
-- "combinación de colores ropa" (Volume: >100 | KD: Easy)
 - "circulo cromatico online" (Volume: 40 | Position: 7)
 - "combinar colores online" (Volume: 40 | Position: 9)
 - "rueda de colores rgb" (Volume: 20 | Position: 1)
-- "combinación de colores ropa hombre" (Volume: <100 | KD: Easy)
-- "verde oliva combinacion de colores" (Volume: <100 | KD: N/A)
 
 GERMAN (/de/ - Germany, Austria, Switzerland) [From Screenshots]:
 - "farbkreis" (Volume: >10,000 | KD: Easy) [The #1 German term for Color Wheel!]

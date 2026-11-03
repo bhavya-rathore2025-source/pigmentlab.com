@@ -1,64 +1,131 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const mixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'How does this online color mixer simulate real paint blending?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Our online color mixer implements the Kubelka-Munk subtractive optical theory (K/S ratio). Unlike standard digital tools that linearly average RGB light channels, our pigment physics simulate how physical particles absorb and scatter specific light wavelengths, producing vibrant Green when mixing Blue and Yellow.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Can I mix custom hex codes in this hex color mixer?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. Our hex color mixer allows you to enter any custom hexadecimal color codes, assign proportional weight percentages (from 1% to 100%), and view the resulting mixed color in real time along with RGB, HSL, and modern CSS color-mix() code.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'What is the color mixer generator and how many colors can I blend?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'The color mixer generator is an interactive multi-pigment blending tool that supports blending between 2 and 6 colors simultaneously. You can choose from traditional artist oil tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White) or custom palette swatches.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'What blending modes does this color mixer online support?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Our color mixer online supports 4 distinct blending modes: Real Paint (Subtractive Kubelka-Munk physics), Modern Web (Perceptually uniform OKLCH space), Digital Screen (Linear RGB), and Print & Inks (CMYK).'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Does this hex color mixer test accessibility and text contrast?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. Every blend created in the hex color mixer is immediately evaluated for WCAG 2.1 AA and AAA contrast compliance against both pure black (#000000) and pure white (#FFFFFF) text, complete with live UI component previews.'
+      }
+    }
+  ]
+};
+
+const pageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'Real Color Mixer Online & Hex Color Mixer',
+    'url': 'https://realcolormixer.com/mix',
+    'description': 'Free online color mixer and hex color mixer with Kubelka-Munk pigment physics. Blend colors with realistic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
+  },
+  mixFaqSchema
+];
 ---
 
 <Layout
-  title="Real Color Mixer - Subtractive Paint Pigments (Kubelka-Munk) | realcolormixer.com"
-  description="The world's most accurate online color mixer. Uses real subtractive pigment physics (Kubelka-Munk theory) so Blue + Yellow produces vibrant Green, not muddy grey. Supports OKLCH, RGB, and CMYK."
+  title="Color Mixer Online - Hex Color Mixer & Pigment Blending Generator"
+  description="Free color mixer online and hex color mixer with realistic Kubelka-Munk pigment physics. Blend colors with proportion sliders, generate CSS color-mix(), and test WCAG contrast. The premier online color mixer."
+  keywords="color mixer, color mixer online, online color mixer, color mixer generator, hex color mixer, paint mixer, kubelka munk, real color mixing, css color mix"
   currentPath="/mix"
+  schema={pageSchema}
 >
   <!-- Hero Section -->
-  <section class="relative border-b border-[#ebebeb] bg-white py-10 sm:py-14">
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
     <!-- Subtle Geist Mesh Gradient Bloom in background -->
-    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
       <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
       <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] shadow-2xs">
-          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
-          <span>Kubelka-Munk Subtractive Physics</span>
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Kubelka-Munk Subtractive Physics & CSS color-mix()</span>
         </div>
 
-        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] sm:text-4xl lg:text-5xl">
-          Real Color Mixer
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Real Color Mixer Online & Hex Color Mixer
         </h1>
 
-        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] sm:text-base">
-          Digital tools average RGB channels into dirty brownish-grey. Color Mixer simulates true light absorption and pigment scattering — mix <span class="font-medium text-[#002185]">Blue</span> and <span class="font-medium text-[#cda000]">Yellow</span> to get vibrant <span class="font-medium text-[#168a35]">Green</span>.
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Standard screen tools average RGB channels into dirty brownish-grey. Our <strong>online color mixer</strong> and <strong>color mixer generator</strong> simulates true pigment absorption and light scattering — blend <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Blue</span> and <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Yellow</span> to get vibrant <span class="font-medium text-[#168a35] dark:text-[#47d169]">Green</span> like real physical paint.
         </p>
 
         <!-- Mode Switcher Tabs (Geist Pill style) -->
-        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] bg-[#fafafa] p-1 shadow-2xs">
+        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1 shadow-2xs">
           <button
             type="button"
             data-mode="paint"
-            class="mode-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+            class="mode-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] dark:bg-white text-white dark:text-[#171717] shadow-xs"
           >
             🎨 Real Paint (RYB / KM)
           </button>
           <button
             type="button"
             data-mode="oklch"
-            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
           >
             💻 Modern Web (OKLCH)
           </button>
           <button
             type="button"
             data-mode="rgb"
-            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
           >
             🖥️ Digital Screen (RGB)
           </button>
           <button
             type="button"
             data-mode="cmyk"
-            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-all"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
           >
-            🖨️ Print Inks (CMYK)
+            🖨️ Print & Inks (CMYK)
           </button>
         </div>
       </div>
@@ -335,64 +402,230 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Educational & SEO Content Section -->
-  <section class="border-t border-[#ebebeb] bg-white py-16">
+  <!-- Comprehensive Educational Guide & SEO Section -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <div class="prose prose-neutral max-w-none">
-        <h2 class="text-2xl font-bold tracking-tight text-[#171717]">
-          Why Digital Color Mixers Give Muddy Brown (And How Real Paint Works)
+      
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Pigment Science & Code Generation</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          The Complete Guide to Online Color Mixing & Hex Color Generators
         </h2>
-        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d]">
-          If you have ever tried mixing <strong>Blue</strong> and <strong>Yellow</strong> on a digital screen using regular graphic software or standard web tools, you likely noticed a disappointing result: instead of the vibrant green you get with real paint, you get a dull, desaturated brownish-grey.
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Discover authentic subtractive pigment blending, mix custom hex codes, and export production-ready CSS color-mix() code.
         </p>
+      </div>
+
+      <!-- Main Prose Body -->
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
         
-        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
-          Additive vs. Subtractive Color Mixing: The Crucial Difference
-        </h3>
-        <p class="text-sm leading-relaxed text-[#4d4d4d]">
-          Computer screens emit light using the <strong>Additive RGB model</strong>. When you average Red, Green, and Blue pixels together, light channels cancel each other out towards grey. In physical reality, however, artists, painters, and printers work with <strong>Subtractive Pigments</strong>.
-        </p>
+        <!-- Section 1: Color Mixer & Online Color Mixer -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Why Use an Online Color Mixer with Real Pigment Physics?
+          </h3>
+          <p>
+            An <strong>online color mixer</strong> is an essential tool for painters, crafters, graphic designers, and front-end developers who need to forecast how two or more colors combine. However, almost all standard digital graphics editors and web color tools suffer from a serious limitation: they mix colors using linear RGB channel averaging. When you attempt to blend pure blue and bright yellow in an RGB tool, the mathematical average lands on a dull, lifeless, muddy brownish-grey (#808040).
+          </p>
+          <p>
+            Our <strong>color mixer online</strong> solves this problem by simulating physical pigment behavior through the scientific <strong>Kubelka-Munk theory</strong>. By accounting for the physical absorption and scattering of light waves, our <strong>color mixer</strong> ensures that blending blue and yellow yields radiant, authentic Green (#3D933E)—exactly like mixing oil or acrylic paints on a wooden palette.
+          </p>
+        </section>
 
-        <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4">
-            <div class="font-mono text-xs font-semibold text-[#0070f3] uppercase">1. Additive RGB (Digital Screens)</div>
-            <p class="mt-1 text-xs text-[#4d4d4d]">
-              Colors add light together. Used in monitors, televisions, and smartphone displays. Red + Green = Yellow. Red + Green + Blue = White light.
-            </p>
+        <!-- Section 2: How to Use the Color Mixer Generator -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. How to Use This Color Mixer Generator: Step-by-Step
+          </h3>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">1</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Choose Your Blending Mode</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Select <strong>Real Paint (RYB / KM)</strong> for authentic physical paint absorption, <strong>Modern Web (OKLCH)</strong> for uniform digital gradients, <strong>RGB</strong> for linear screens, or <strong>CMYK</strong> for print ink layering.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">2</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Add Colors or Traditional Pigments</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Mix up to 6 colors at once. Enter custom hex codes directly or choose from classic artist tubes like Ultramarine Blue, Cadmium Yellow, Crimson Red, and Titanium White.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">3</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Adjust Mixing Proportions</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Drag the fluid percentage weight sliders from 1% to 100% to simulate exact recipe proportions (e.g., 70% Titanium White + 20% Yellow Ochre + 10% Crimson Red).
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">4</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Inspect Accessibility & Export Code</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Review live WCAG 2.1 contrast ratios (AA/AAA pass/fail), check component UI previews, and copy native CSS <code>color-mix()</code> code or HEX values with one click.
+              </p>
+            </div>
           </div>
-          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4">
-            <div class="font-mono text-xs font-semibold text-[#3D933E] uppercase">2. Subtractive Pigments (Kubelka-Munk)</div>
-            <p class="mt-1 text-xs text-[#4d4d4d]">
-              Each pigment absorbs (subtracts) specific wavelengths of light. Blue paint absorbs red/yellow; yellow paint absorbs blue/violet. The only light both reflect is <strong>Green</strong>.
-            </p>
+        </section>
+
+        <!-- Section 3: Additive vs Subtractive Physics & Kubelka Munk -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            3. The Science of Subtractive Mixing: Kubelka-Munk vs Additive RGB
+          </h3>
+          <p>
+            Understanding why an <strong>online color mixer</strong> needs physical science requires distinguishing between how monitors display light and how pigments reflect light:
+          </p>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <div class="font-mono text-xs font-semibold text-[#0070f3] uppercase">Additive RGB (Digital Displays)</div>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Computer monitors emit light. Blending red, green, and blue light adds wavelengths together toward white. Mixing complementary screen colors produces grey because opposite wavelengths cancel each other out in the eye's photoreceptors.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <div class="font-mono text-xs font-semibold text-[#168a35] dark:text-[#47d169] uppercase">Subtractive Pigments (Kubelka-Munk)</div>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Physical pigments absorb (subtract) light. Blue paint absorbs red and yellow light; yellow paint absorbs blue and violet light. The only light reflected by both pigments is <strong>vibrant green</strong>.
+              </p>
+            </div>
           </div>
-        </div>
+          <p>
+            Our <strong>color mixer generator</strong> computes this reaction using the Kubelka-Munk equation:
+          </p>
+          <div class="rounded-lg border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-4 font-mono text-xs text-[#111827] dark:text-[#ededed] text-center">
+            K / S = (1 - R)² / (2R)
+          </div>
+          <p class="text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+            Where <em>K</em> is the absorption coefficient, <em>S</em> is the scattering coefficient, and <em>R</em> is the spectral reflectance at each visible wavelength.
+          </p>
+        </section>
 
-        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
-          The Kubelka-Munk Equation: The Physics Inside Real Color Mixer
-        </h3>
-        <p class="text-sm leading-relaxed text-[#4d4d4d]">
-          Our tool implements the scientific <strong>Kubelka-Munk equation</strong>:
-        </p>
-        <div class="rounded-md border border-[#ebebeb] bg-[#fafafa] p-3 font-mono text-xs text-[#171717]">
-          K/S = (1 - R)² / (2R)
-        </div>
-        <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d]">
-          Where <strong>K</strong> is the absorption coefficient, <strong>S</strong> is the scattering coefficient, and <strong>R</strong> is spectral reflectance. By calculating the weighted sum of absorption and scattering for each pigment, Color Mixer produces true-to-life paint blends.
-        </p>
+        <!-- Section 4: Precision Hex Color Mixer -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            4. Precision Hex Color Mixer for Frontend Developers & Designers
+          </h3>
+          <p>
+            For digital designers and web developers, this tool serves as a high-precision <strong>hex color mixer</strong>. Instead of guessing how brand colors blend in modern CSS, you can enter any two or more hex codes and immediately generate modern CSS declarations:
+          </p>
+          <div class="rounded-lg border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-4 font-mono text-xs text-[#111827] dark:text-[#ededed]">
+            background-color: color-mix(in oklch, #0070F3 50%, #FF0080 50%);
+          </div>
+          <p>
+            By mixing in the perceptually uniform <strong>OKLCH</strong> color space, the <strong>hex color mixer</strong> prevents the "grey dead zone" that occurs when blending in standard sRGB, ensuring rich, vibrant UI gradients without clipping. Furthermore, our live contrast score guarantees that text placed on the mixed color will satisfy WCAG 2.1 AA and AAA legal accessibility requirements.
+          </p>
+        </section>
 
-        <h3 class="mt-6 text-lg font-semibold text-[#171717]">
-          Common Paint Recipes (Guía de Mezcla de Colores)
-        </h3>
-        <ul class="mt-2 list-disc pl-5 text-sm space-y-1 text-[#4d4d4d]">
-          <li><strong>How to mix vibrant Green:</strong> 1 part Ultramarine Blue (#002185) + 1 part Cadmium Yellow (#FCD200).</li>
-          <li><strong>How to mix rich Brown (Marrom / Braun):</strong> 1 part Crimson Red + 1 part Cadmium Yellow + 0.5 parts Ultramarine Blue, or mix Red and Green with a touch of Yellow.</li>
-          <li><strong>How to mix Flesh / Skin tones:</strong> Titanium White base + Yellow Ochre + touch of Crimson Red.</li>
-          <li><strong>How to mix Deep Purple / Violet:</strong> Ultramarine Blue + Quinacridone Magenta (using pure red will produce a browner tint).</li>
-        </ul>
+        <!-- Section 5: Real-World Pigment Recipes Table -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            5. Classic Artist Pigment Mixing Recipes & Cheat-Sheet
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Desired Color</th>
+                  <th class="p-4 sm:p-5">Recipe Ingredients</th>
+                  <th class="p-4 sm:p-5">Mixing Proportions</th>
+                  <th class="p-4 sm:p-5">Resulting Hex</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Vibrant Green</td>
+                  <td class="p-4 sm:p-5">Ultramarine Blue + Cadmium Yellow</td>
+                  <td class="p-4 sm:p-5">50% Blue + 50% Yellow</td>
+                  <td class="p-4 sm:p-5 font-mono text-emerald-600 dark:text-emerald-400 font-semibold">#3D933E</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Rich Earth Brown</td>
+                  <td class="p-4 sm:p-5">Crimson Red + Cadmium Yellow + Ultramarine Blue</td>
+                  <td class="p-4 sm:p-5">40% Red + 40% Yellow + 20% Blue</td>
+                  <td class="p-4 sm:p-5 font-mono text-amber-800 dark:text-amber-500 font-semibold">#5C3317</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Warm Flesh Tone</td>
+                  <td class="p-4 sm:p-5">Titanium White + Yellow Ochre + Crimson Red</td>
+                  <td class="p-4 sm:p-5">70% White + 20% Ochre + 10% Red</td>
+                  <td class="p-4 sm:p-5 font-mono text-orange-600 dark:text-orange-400 font-semibold">#E8C4A2</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Deep Velvet Purple</td>
+                  <td class="p-4 sm:p-5">Ultramarine Blue + Quinacridone Magenta</td>
+                  <td class="p-4 sm:p-5">55% Blue + 45% Magenta</td>
+                  <td class="p-4 sm:p-5 font-mono text-purple-600 dark:text-purple-400 font-semibold">#4C1D6E</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 6: FAQ Section -->
+        <section class="space-y-6 pt-6 border-t border-[#e5e7eb] dark:border-[#262626]">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            6. Frequently Asked Questions About Online Color Mixing
+          </h3>
+
+          <div class="space-y-4">
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>How does this online color mixer simulate real paint blending?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Our <strong>online color mixer</strong> implements the Kubelka-Munk subtractive optical theory (K/S ratio). Unlike standard digital tools that linearly average RGB light channels, our pigment physics simulate how physical particles absorb and scatter specific light wavelengths, producing vibrant Green when mixing Blue and Yellow.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>Can I mix custom hex codes in this hex color mixer?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Yes. Our <strong>hex color mixer</strong> allows you to enter any custom hexadecimal color codes, assign proportional weight percentages (from 1% to 100%), and view the resulting mixed color in real time along with RGB, HSL, and modern CSS color-mix() code.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What is the color mixer generator and how many colors can I blend?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                The <strong>color mixer generator</strong> is an interactive multi-pigment blending tool that supports blending between 2 and 6 colors simultaneously. You can choose from traditional artist oil tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White) or custom palette swatches.
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>What blending modes does this color mixer online support?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Our <strong>color mixer online</strong> supports 4 distinct blending modes: Real Paint (Subtractive Kubelka-Munk physics), Modern Web (Perceptually uniform OKLCH space), Digital Screen (Linear RGB), and Print & Inks (CMYK).
+              </p>
+            </details>
+
+            <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                <span>Does this hex color mixer test accessibility and text contrast?</span>
+                <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Yes. Every blend created in the <strong>hex color mixer</strong> is immediately evaluated for WCAG 2.1 AA and AAA contrast compliance against both pure black (#000000) and pure white (#FFFFFF) text, complete with live UI component previews.
+              </p>
+            </details>
+          </div>
+        </section>
+
       </div>
     </div>
-  </section>
+  </article>
 </Layout>
 
 <script>
