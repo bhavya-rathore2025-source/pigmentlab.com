@@ -56,7 +56,7 @@ const defaultSchema = {
   ]
 };
 
-const finalSchema = schema ? (Array.isArray(schema) ? [defaultSchema, ...schema] : [defaultSchema, schema]) : defaultSchema;
+const finalSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : defaultSchema;
 ---
 
 <!doctype html>
