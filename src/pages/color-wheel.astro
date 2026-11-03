@@ -10,7 +10,7 @@ const colorWheelFaqSchema = {
       'name': 'What is a color wheel picker and how is it used in design?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'A color wheel picker is an interactive design tool that arranges the visible spectrum into a geometric circle. It allows designers and artists to select base hues, adjust saturation and brightness, and calculate mathematically balanced harmony schemes such as complementary, analogous, and triadic palettes.'
+        'text': 'A color wheel picker is an interactive design tool that arranges the visible spectrum into a geometric circle. It allows designers and artists to select base hues, adjust saturation and brightness, and calculate mathematically balanced color palettes such as complementary, analogous, and triadic schemes.'
       }
     },
     {
@@ -52,7 +52,7 @@ const pageSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    'name': 'PigmentLab Color Wheel Picker & Harmony Chart',
+    'name': 'PigmentLab Color Wheel Picker & Palette Generator',
     'url': 'https://pigmentlab.com/color-wheel',
     'description': 'Free online color wheel picker with Johannes Itten RYB artist mode, digital RGB mode, complementary color wheel generator, WCAG 2.1 contrast checking, and 9-step shade scales.',
     'applicationCategory': 'DesignApplication',
@@ -68,7 +68,7 @@ const pageSchema = [
 ---
 
 <Layout
-  title="Color Wheel Picker & Harmony Chart - Complementary Color Wheel"
+  title="Color Wheel Picker & Palette Generator - Complementary Color Wheel"
   description="Interactive color wheel picker featuring Johannes Itten's 12-hue Bauhaus artist wheel (RYB) and digital RGB modes. Generate complementary color wheel palettes, 9-step tint scales, and test WCAG contrast. Better than Adobe Color Wheel."
   keywords="color wheel, color wheel picker, adobe color wheel, color wheel chart, complementary color wheel, itten color wheel, farbkreis itten, color scheme generator, color palette builder"
   currentPath="/color-wheel"
@@ -90,7 +90,7 @@ const pageSchema = [
         </div>
 
         <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
-          Color Wheel Picker & Harmony Chart
+          Color Wheel Picker & Palette Generator
         </h1>
 
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
@@ -124,47 +124,47 @@ const pageSchema = [
   <section class="py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
-      <!-- Harmony Mode Filter Bar -->
+      <!-- Palette Scheme Filter Bar -->
       <div class="mb-8 flex flex-wrap items-center justify-center gap-1.5">
         <button
           type="button"
-          data-harmony="complementary"
-          class="harmony-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+          data-scheme="complementary"
+          class="scheme-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
         >
           Complementary (Opuestos)
         </button>
         <button
           type="button"
-          data-harmony="analogous"
-          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+          data-scheme="analogous"
+          class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
         >
           Analogous (Análogos)
         </button>
         <button
           type="button"
-          data-harmony="triadic"
-          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+          data-scheme="triadic"
+          class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
         >
           Triadic (Tríada)
         </button>
         <button
           type="button"
-          data-harmony="tetradic"
-          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+          data-scheme="tetradic"
+          class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
         >
           Tetradic (Tétrada)
         </button>
         <button
           type="button"
-          data-harmony="split"
-          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+          data-scheme="split"
+          class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
         >
           Split-Complementary
         </button>
         <button
           type="button"
-          data-harmony="monochromatic"
-          class="harmony-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+          data-scheme="monochromatic"
+          class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
         >
           Monochromatic
         </button>
@@ -293,7 +293,7 @@ const pageSchema = [
           </div>
         </div>
 
-        <!-- Right Column: Harmony Swatches, 9-Shade Scales & WCAG (6 cols) -->
+        <!-- Right Column: Palette Swatches, 9-Shade Scales & WCAG (6 cols) -->
         <div class="space-y-6 lg:col-span-6">
           
           <!-- Palette Swatches Card -->
@@ -306,7 +306,7 @@ const pageSchema = [
             </div>
 
             <!-- Dynamic Swatches Row -->
-            <div id="harmony-swatches-grid" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div id="palette-swatches-grid" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
               <!-- Swatches injected by JS -->
             </div>
 
@@ -400,9 +400,9 @@ const pageSchema = [
       
       <!-- Section Header -->
       <div class="text-center mb-14">
-        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Color Theory & Harmony Science</span>
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Color Theory & Palette Science</span>
         <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
-          The Complete Guide to the Color Wheel, Color Wheel Picker & Harmony Charts
+          The Complete Guide to the Color Wheel, Color Wheel Picker & Color Palettes
         </h2>
         <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
           Master color relationships, generate balanced complementary palettes, and understand classical vs digital color spaces.
@@ -421,7 +421,7 @@ const pageSchema = [
             The <strong>color wheel</strong> is the cornerstone of color theory, graphic design, and artistic composition. Originating from Sir Isaac Newton’s 1666 circular refraction diagram and later expanded by Goethe and Bauhaus master Johannes Itten, the <strong>color wheel</strong> maps the continuous spectrum of visible light into a manageable geometric circle. Whether you are creating brand identity guidelines, designing accessible user interfaces, or mixing physical paint on canvas, the <strong>color wheel</strong> enables you to predict visual contrast and balance with scientific certainty.
           </p>
           <p>
-            An interactive <strong>color wheel picker</strong> takes this classical foundation and elevates it for the digital age. Instead of manually guessing hex codes or relying on clunky operating system dialogs, a dedicated <strong>color wheel picker</strong> allows you to select a primary base hue, sweep across 360 degrees of tonal variations, and automatically calculate mathematically harmonious secondary and accent colors.
+            An interactive <strong>color wheel picker</strong> takes this classical foundation and elevates it for the digital age. Instead of manually guessing hex codes or relying on clunky operating system dialogs, a dedicated <strong>color wheel picker</strong> allows you to select a primary base hue, sweep across 360 degrees of tonal variations, and automatically calculate balanced secondary and accent palette colors.
           </p>
         </section>
 
@@ -435,14 +435,14 @@ const pageSchema = [
               <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">1</span>
               <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Choose Wheel Mode</h4>
               <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Toggle between <strong>Klassischer Itten (RYB Artist Wheel)</strong> for traditional art harmony (Red opposite Green) and <strong>Digital Screen Wheel (RGB / Web)</strong> for standard screen coordinates.
+                Toggle between <strong>Klassischer Itten (RYB Artist Wheel)</strong> for traditional art color balance (Red opposite Green) and <strong>Digital Screen Wheel (RGB / Web)</strong> for standard screen coordinates.
               </p>
             </div>
             <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
               <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">2</span>
-              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Select Harmony Scheme</h4>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Select Palette Scheme</h4>
               <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Click a harmony preset: <strong>Complementary</strong>, <strong>Analogous</strong>, <strong>Triadic</strong>, <strong>Tetradic</strong>, <strong>Split-Complementary</strong>, or <strong>Monochromatic</strong>.
+                Click a palette preset: <strong>Complementary</strong>, <strong>Analogous</strong>, <strong>Triadic</strong>, <strong>Tetradic</strong>, <strong>Split-Complementary</strong>, or <strong>Monochromatic</strong>.
               </p>
             </div>
             <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
@@ -529,7 +529,7 @@ const pageSchema = [
             4. Mastering the Complementary Color Wheel for Visual Contrast and Conversions
           </h3>
           <p>
-            The <strong>complementary color wheel</strong> harmony rule isolates two colors located precisely 180 degrees apart. Because they contain no shared primary wavelengths, placing complementary colors adjacent to each other produces maximum visual vibration—a phenomenon discovered by French chemist Michel Eugène Chevreul known as <em>simultaneous contrast</em>.
+            The <strong>complementary color wheel</strong> isolates two colors located precisely 180 degrees apart. Because they contain no shared primary wavelengths, placing complementary colors adjacent to each other produces maximum visual vibration—a phenomenon discovered by French chemist Michel Eugène Chevreul known as <em>simultaneous contrast</em>.
           </p>
           <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5 sm:p-6 space-y-4">
             <h4 class="text-sm font-semibold text-[#111827] dark:text-white">The Three Classic Complementary Pairings:</h4>
@@ -566,7 +566,7 @@ const pageSchema = [
               <strong>No Account Required:</strong> While the <strong>adobe color wheel</strong> prompts you to log into Adobe Creative Cloud to save or manage palettes, Real Color Mixer is 100% open and frictionless.
             </li>
             <li>
-              <strong>Real Artist Harmony:</strong> Standard tools like the <strong>adobe color wheel</strong> lock you into digital RGB angles where Red is opposite Cyan. Real Color Mixer provides a one-click toggle to classical Itten Bauhaus RYB harmony.
+              <strong>Real Artist Color Theory:</strong> Standard tools like the <strong>adobe color wheel</strong> lock you into digital RGB angles where Red is opposite Cyan. Real Color Mixer provides a one-click toggle to classical Itten Bauhaus RYB palettes.
             </li>
             <li>
               <strong>Integrated Contrast Matrix:</strong> Test real-time WCAG 2.1 compliance with immediate AA and AAA ratings for text legibility.
@@ -590,7 +590,7 @@ const pageSchema = [
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                A <strong>color wheel picker</strong> is an interactive web tool that organizes the visible hue spectrum in a geometric circle. It lets designers select a base color and compute harmonious color palettes (such as complementary, analogous, and triadic schemes) based on mathematical angular relationships.
+                A <strong>color wheel picker</strong> is an interactive web tool that organizes the visible hue spectrum in a geometric circle. It lets designers select a base color and compute balanced color palettes (such as complementary, analogous, and triadic schemes) based on mathematical angular relationships.
               </p>
             </details>
 
@@ -606,11 +606,11 @@ const pageSchema = [
 
             <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
               <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
-                <span>What is a complementary color wheel harmony and why is it important?</span>
+                <span>What is a complementary color wheel and why is it important?</span>
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                A <strong>complementary color wheel</strong> harmony pairs hues sitting directly opposite each other across the 360-degree circle (like Red and Green in RYB, or Blue and Orange). These pairs create maximum visual contrast, making them ideal for high-impact call-to-action buttons and conversion elements.
+                A <strong>complementary color wheel</strong> pairs hues sitting directly opposite each other across the 360-degree circle (like Red and Green in RYB, or Blue and Orange). These pairs create maximum visual contrast, making them ideal for high-impact call-to-action buttons and conversion elements.
               </p>
             </details>
 
@@ -657,7 +657,7 @@ const pageSchema = [
 
   // State
   let wheelMode: 'itten' | 'rgb' = 'itten';
-  let harmonyType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic' = 'complementary';
+  let schemeType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic' = 'complementary';
   let currentHue = 0; // 0 to 359 (in Itten angle if wheelMode='itten', or in RGB hue if wheelMode='rgb')
   let currentSat = 100;
   let currentLight = 50;
@@ -679,7 +679,7 @@ const pageSchema = [
   const randomHueBtn = document.getElementById('random-hue-btn');
 
   // Palette & Scales DOM
-  const swatchesGrid = document.getElementById('harmony-swatches-grid');
+  const swatchesGrid = document.getElementById('palette-swatches-grid');
   const shadeScaleStrip = document.getElementById('shade-scale-strip');
   const activeScaleLabel = document.getElementById('active-scale-label');
   const wcagMatrix = document.getElementById('wcag-contrast-matrix');
@@ -695,7 +695,7 @@ const pageSchema = [
   // Wheel Mode Buttons
   const wheelModeIttenBtn = document.getElementById('wheel-mode-itten');
   const wheelModeRgbBtn = document.getElementById('wheel-mode-rgb');
-  const harmonyBtns = document.querySelectorAll('.harmony-btn');
+  const schemeBtns = document.querySelectorAll('.scheme-btn');
   const cvdBtns = document.querySelectorAll('.cvd-btn');
 
   // Initialize Canvas Size for Retina Screens
@@ -744,8 +744,8 @@ const pageSchema = [
     ctx.strokeStyle = isDark ? '#262626' : '#ebebeb';
     ctx.stroke();
 
-    // Compute Active Harmony Points
-    const angles = computeHarmonyAngles(currentHue, harmonyType);
+    // Compute Active Palette Points
+    const angles = computeSchemeAngles(currentHue, schemeType);
     const rDist = (outerRadius - innerRadius) * (currentSat / 100) + innerRadius;
 
     // Draw Connecting Polygon/Lines
@@ -766,7 +766,7 @@ const pageSchema = [
       ctx.setLineDash([]);
     }
 
-    // Draw Nodes for Each Harmony Color
+    // Draw Nodes for Each Palette Color
     angles.forEach((ang, idx) => {
       const rad = (ang * Math.PI) / 180;
       const px = center.x + Math.cos(rad) * rDist;
@@ -793,7 +793,7 @@ const pageSchema = [
     ctx.shadowBlur = 0;
   }
 
-  function computeHarmonyAngles(baseAngle: number, type: string): number[] {
+  function computeSchemeAngles(baseAngle: number, type: string): number[] {
     const norm = (a: number) => ((a % 360) + 360) % 360;
 
     switch (type) {
@@ -815,9 +815,9 @@ const pageSchema = [
   }
 
   function getPaletteColors(): { name: string; hex: string }[] {
-    const angles = computeHarmonyAngles(currentHue, harmonyType);
+    const angles = computeSchemeAngles(currentHue, schemeType);
 
-    if (harmonyType === 'monochromatic') {
+    if (schemeType === 'monochromatic') {
       const baseRgbHue = wheelMode === 'itten' ? ittenAngleToRgbHue(currentHue) : currentHue;
       const lightSteps = [80, 60, 45, 25];
       return lightSteps.map((l, i) => {
@@ -835,9 +835,9 @@ const pageSchema = [
       hex = simulateColorBlindness(hex, currentCvd);
 
       let name = i === 0 ? 'Base' : `Color ${i + 1}`;
-      if (harmonyType === 'complementary' && i === 1) name = 'Opposite';
-      if (harmonyType === 'triadic') name = i === 0 ? 'Primary' : `Triad ${i}`;
-      if (harmonyType === 'analogous') name = i === 1 ? 'Base' : `Neighbor ${i + 1}`;
+      if (schemeType === 'complementary' && i === 1) name = 'Opposite';
+      if (schemeType === 'triadic') name = i === 0 ? 'Primary' : `Triad ${i}`;
+      if (schemeType === 'analogous') name = i === 1 ? 'Base' : `Neighbor ${i + 1}`;
 
       return { name, hex };
     });
@@ -1118,18 +1118,18 @@ const pageSchema = [
     updatePaletteUI();
   });
 
-  // Harmony Switchers
-  harmonyBtns.forEach((btn) => {
+  // Palette Scheme Switchers
+  schemeBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget as HTMLElement;
-      harmonyBtns.forEach((b) => {
+      schemeBtns.forEach((b) => {
         b.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
         b.classList.add('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
       });
       target.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
       target.classList.remove('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
 
-      harmonyType = (target.dataset.harmony || 'complementary') as any;
+      schemeType = (target.dataset.scheme || 'complementary') as any;
       renderWheel();
       updatePaletteUI();
     });
@@ -1208,12 +1208,15 @@ const pageSchema = [
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `color-palette-${harmonyType}.svg`;
+    a.download = `color-palette-${schemeType}.svg`;
     a.click();
     URL.revokeObjectURL(url);
   });
 
   // Theme change listener to keep canvas hub synchronized
+  window.addEventListener('pl:themechange', () => {
+    renderWheel();
+  });
   window.addEventListener('rcm:themechange', () => {
     renderWheel();
   });

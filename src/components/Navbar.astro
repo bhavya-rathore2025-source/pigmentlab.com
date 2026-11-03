@@ -24,17 +24,6 @@ const { currentPath = '' } = Astro.props;
     <!-- Nav Links (Geist Pill / Square style) -->
     <nav class="flex items-center gap-1 sm:gap-2">
       <a
-        href="/"
-        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          currentPath === '/' || currentPath === ''
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span>Overview</span>
-      </a>
-
-      <a
         href="/mix"
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
           currentPath.startsWith('/mix')
