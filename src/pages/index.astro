@@ -1,48 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const platformFaqSchema = {
+const mixFaqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   'mainEntity': [
     {
       '@type': 'Question',
-      'name': 'What are the main advantages of Real Color Mixer over standard digital tools?',
+      'name': 'How does this online color mixer simulate real paint blending?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'Real Color Mixer offers three core advantages: 1) Physical Kubelka-Munk pigment physics that blend blue and yellow into vibrant green rather than muddy grey; 2) A dual-mode color wheel supporting Johannes Itten classical artist RYB and digital RGB; and 3) Real-time WCAG 2.1 AA/AAA accessibility scoring with 100% free, privacy-first access without account sign-in.'
+        'text': 'Our online color mixer implements the Kubelka-Munk subtractive optical theory (K/S ratio). Unlike standard digital tools that linearly average RGB light channels, our pigment physics simulate how physical particles absorb and scatter specific light wavelengths, producing vibrant Green when mixing Blue and Yellow.'
       }
     },
     {
       '@type': 'Question',
-      'name': 'Who uses Real Color Mixer and what are its primary applications?',
+      'name': 'Can I mix custom hex codes in this hex color mixer?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'The platform is used across five primary industries: 1) Fine artists and painters to prototype oil and acrylic mixing recipes without wasting paint; 2) UI/UX designers to create accessible palettes with legal WCAG contrast; 3) Front-end developers to generate modern CSS color-mix() code and Tailwind v4 tokens; 4) Interior decorators to test wall paint tints and undertones; and 5) Educators to teach subtractive vs additive color physics.'
+        'text': 'Yes. Our hex color mixer allows you to enter any custom hexadecimal color codes, assign proportional weight percentages (from 1% to 100%), and view the resulting mixed color in real time along with RGB, HSL, and modern CSS color-mix() code.'
       }
     },
     {
       '@type': 'Question',
-      'name': 'How do the Color Wheel Picker and Color Mixer tools work together?',
+      'name': 'What is the color mixer generator and how many colors can I blend?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'The two tools form an integrated workflow: First, creators use the Color Wheel Picker (/color-wheel) to establish harmonic palettes (such as complementary or triadic schemes) and test accessibility. Next, they transition to the Color Mixer (/mix) to simulate physical pigment blends with proportion sliders or generate native CSS color-mix() tokens.'
+        'text': 'The color mixer generator is an interactive multi-pigment blending tool that supports blending between 2 and 6 colors simultaneously. You can choose from traditional artist oil tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White) or custom palette swatches.'
       }
     },
     {
       '@type': 'Question',
-      'name': 'Is Real Color Mixer free and does it require an Adobe Creative Cloud account?',
+      'name': 'What blending modes does this color mixer online support?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'Real Color Mixer is 100% free and open to all users. Unlike Adobe Color Wheel, you do not need an Adobe Creative Cloud account, subscription, or login to save, test, or export your color palettes and code snippets.'
+        'text': 'Our color mixer online supports 4 distinct blending modes: Real Paint (Subtractive Kubelka-Munk physics), Modern Web (Perceptually uniform OKLCH space), Digital Screen (Linear RGB), and Print & Inks (CMYK).'
       }
     },
     {
       '@type': 'Question',
-      'name': 'What export formats are supported for web and graphic designers?',
+      'name': 'Does this hex color mixer test accessibility and text contrast?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'Real Color Mixer supports one-click exports for Tailwind CSS v4 design tokens, CSS custom properties (:root variables), modern CSS color-mix() syntax in OKLCH, downloadable SVG palette swatches, and standard HEX / RGB / HSL values.'
+        'text': 'Yes. Every blend created in the hex color mixer is immediately evaluated for WCAG 2.1 AA and AAA contrast compliance against both pure black (#000000) and pure white (#FFFFFF) text, complete with live UI component previews.'
       }
     }
   ]
@@ -51,432 +51,573 @@ const platformFaqSchema = {
 const pageSchema = [
   {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    'name': 'Real Color Mixer',
+    '@type': 'WebApplication',
+    'name': 'Real Color Mixer Online & Hex Color Mixer',
     'url': 'https://realcolormixer.com',
-    'description': 'Next-generation color science platform unifying physical Kubelka-Munk pigment optics, classical Johannes Itten Bauhaus harmonies, and modern accessible design tools.'
+    'description': 'Free online color mixer and hex color mixer with Kubelka-Munk pigment physics. Blend colors with realistic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
   },
-  platformFaqSchema
+  mixFaqSchema
 ];
 ---
 
 <Layout
-  title="Real Color Mixer - Next-Gen Color Science Suite & Paint Tools"
-  description="Discover the advantages and professional uses of Real Color Mixer. Explore subtractive pigment physics, classical Bauhaus harmonies, and accessible digital color tools."
-  keywords="real color mixer, color science platform, pigment physics, subtractive pigment optics, accessible color tools, wcag contrast, kubelka munk theory, digital color science"
+  title="Color Mixer Online - Hex Color Mixer & Pigment Blending Generator"
+  description="Free color mixer online and hex color mixer with realistic Kubelka-Munk pigment physics. Blend colors with proportion sliders, generate CSS color-mix(), and test WCAG contrast. The premier online color mixer."
+  keywords="color mixer, color mixer online, online color mixer, color mixer generator, hex color mixer, paint mixer, kubelka munk, real color mixing, css color mix"
   currentPath="/"
   schema={pageSchema}
 >
   <!-- Hero Section -->
-  <section class="relative overflow-hidden border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
-    <!-- Vercel Geist Mesh Gradient Bloom -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <!-- Subtle Geist Mesh Gradient Bloom in background -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
-      <div class="absolute -top-[30%] left-[25%] h-[400px] w-[600px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
-      <div class="absolute -top-[20%] right-[10%] h-[350px] w-[500px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <!-- Eyebrow Badge -->
         <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
           <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
-          <span>Next-Generation Color Science Platform</span>
+          <span>Kubelka-Munk Subtractive Physics & CSS color-mix()</span>
         </div>
 
-        <h1 class="mt-6 text-4xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl">
-          Color science engineered for artists, designers & developers.
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Real Color Mixer Online & Hex Color Mixer
         </h1>
 
-        <p class="mt-5 text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-lg">
-          Stop struggling with muddy RGB averages and rigid screen-only pickers. Real Color Mixer unifies authentic <strong>Kubelka-Munk pigment physics</strong> with <strong>Johannes Itten's Bauhaus color wheel</strong> and modern <strong>WCAG 2.1 accessibility</strong>.
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Standard screen tools average RGB channels into dirty brownish-grey. Our <strong>online color mixer</strong> and <strong>color mixer generator</strong> simulates true pigment absorption and light scattering — blend <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Blue</span> and <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Yellow</span> to get vibrant <span class="font-medium text-[#168a35] dark:text-[#47d169]">Green</span> like real physical paint.
         </p>
 
-        <!-- Primary CTAs -->
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="/mix"
-            class="inline-flex h-11 items-center justify-center rounded-full bg-[#171717] dark:bg-white px-7 text-sm font-medium text-white dark:text-[#171717] shadow-xs transition-colors hover:bg-[#333333] dark:hover:bg-[#e0e0e0]"
+        <!-- Mode Switcher Tabs (Geist Pill style) -->
+        <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1 shadow-2xs">
+          <button
+            type="button"
+            data-mode="paint"
+            class="mode-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] dark:bg-white text-white dark:text-[#171717] shadow-xs"
           >
-            Launch Color Mixer &rarr;
-          </a>
-          <a
-            href="/color-wheel"
-            class="inline-flex h-11 items-center justify-center rounded-full border border-[#ebebeb] dark:border-[#333333] bg-white dark:bg-[#141414] px-7 text-sm font-medium text-[#171717] dark:text-[#ededed] shadow-2xs transition-colors hover:bg-[#fafafa] dark:hover:bg-[#1f1f1f]"
+            🎨 Real Paint (RYB / KM)
+          </button>
+          <button
+            type="button"
+            data-mode="oklch"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
           >
-            Open Color Wheel &rarr;
-          </a>
+            💻 Modern Web (OKLCH)
+          </button>
+          <button
+            type="button"
+            data-mode="rgb"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
+          >
+            🖥️ Digital Screen (RGB)
+          </button>
+          <button
+            type="button"
+            data-mode="cmyk"
+            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
+          >
+            🖨️ Print & Inks (CMYK)
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Core Tools Showcase Grid -->
-  <section class="py-16 sm:py-20 bg-white dark:bg-[#0a0a0a]">
+  <!-- Main Tool Workspace -->
+  <section class="py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-12 text-center">
-        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Dedicated Tool Suite</span>
-        <h2 class="mt-1 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
-          Two specialized tools. One cohesive color ecosystem.
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <!-- Card 1: /mix -->
-        <a
-          href="/mix"
-          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 dark:hover:border-white/30 hover:shadow-md"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-500 to-emerald-400 text-white shadow-xs">
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-              </span>
-              <span class="font-mono text-xs text-[#8f8f8f] dark:text-[#71717a] group-hover:text-[#171717] dark:group-hover:text-white">/mix →</span>
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        
+        <!-- Left Column: Color Ingredients (7 cols) -->
+        <div class="space-y-6 lg:col-span-7">
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-4">
+              <div>
+                <h2 class="text-base font-semibold text-[#171717]">Mixing Palette</h2>
+                <p class="text-xs text-[#8f8f8f]">Adjust proportions and colors to create your custom blend.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  id="random-mix-btn"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
+                  title="Load a preset recipe"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>Preset</span>
+                </button>
+                <button
+                  id="reset-mix-btn"
+                  type="button"
+                  class="inline-flex items-center rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
+                  title="Reset to 50/50 Blue & Yellow"
+                >
+                  Reset
+                </button>
+              </div>
             </div>
 
-            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
-              Real Color Mixer Tool
-            </h3>
-
-            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
-              Simulate physical paint blending using the Kubelka-Munk theory. Blend custom hex codes or traditional artist pigment tubes with fluid weight sliders and export modern CSS color-mix() code.
-            </p>
-
-            <ul class="mt-5 space-y-2.5 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
-              <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span><strong>Physical Pigments:</strong> Blue + Yellow = Vibrant Green (#3D933E)</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span><strong>4 Blending Modes:</strong> Real Paint (RYB), OKLCH, RGB, CMYK</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span><strong>Developer Ready:</strong> Native CSS color-mix() and Tailwind v4 export</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
-            <span class="text-xs font-medium text-[#0070f3] dark:text-[#3291ff] group-hover:underline">Open Color Mixer Tool &rarr;</span>
-          </div>
-        </a>
-
-        <!-- Card 2: /color-wheel -->
-        <a
-          href="/color-wheel"
-          class="group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] p-6 sm:p-8 shadow-2xs transition-all hover:border-[#171717]/30 dark:hover:border-white/30 hover:shadow-md"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-tr from-rose-500 via-amber-400 to-indigo-500 text-white shadow-xs">
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                </svg>
-              </span>
-              <span class="font-mono text-xs text-[#8f8f8f] dark:text-[#71717a] group-hover:text-[#171717] dark:group-hover:text-white">/color-wheel →</span>
+            <!-- Color Slots Container -->
+            <div id="color-slots" class="mt-4 space-y-4">
+              <!-- Dynamically rendered slots -->
             </div>
 
-            <h3 class="mt-6 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
-              Color Wheel Picker Tool
+            <!-- Add Color & Formula Action Bar -->
+            <div class="mt-6 flex flex-col items-start justify-between gap-3 border-t border-[#ebebeb] pt-4 sm:flex-row sm:items-center">
+              <button
+                id="add-color-btn"
+                type="button"
+                class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#171717] shadow-2xs transition-colors hover:bg-[#f2f2f2]"
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>Add Color (Max 6)</span>
+              </button>
+
+              <div id="parts-formula" class="font-mono text-xs text-[#8f8f8f]">
+                Formula: <span class="text-[#171717] font-semibold">1:1 Paint Mix</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Physical Paint Tubes Swatches -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#ebebeb] pb-3">
+              <div>
+                <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                  Artist Pigment Quick Presets
+                </h3>
+                <p class="mt-0.5 text-xs text-[#8f8f8f]">Click any tube to load into the active slot:</p>
+              </div>
+              <button
+                type="button"
+                id="reset-presets-btn"
+                class="text-[11px] font-mono text-[#8f8f8f] hover:text-[#171717] dark:hover:text-white cursor-pointer self-start sm:self-auto transition-colors"
+                title="Reset presets to default traditional palette"
+              >
+                Reset Defaults
+              </button>
+            </div>
+
+            <!-- Add custom preset input bar -->
+            <form id="add-preset-form" class="mt-3 flex items-center gap-2">
+              <div class="relative flex-1">
+                <input
+                  type="text"
+                  id="new-preset-hex"
+                  placeholder="Paste HEX (e.g. #3b82f6 or 3b82f6)..."
+                  maxlength="9"
+                  autocomplete="off"
+                  class="w-full rounded-lg border border-[#ebebeb] bg-[#fafafa] dark:bg-[#0a0a0a] px-3 py-1.5 font-mono text-xs text-[#171717] uppercase placeholder:normal-case placeholder:text-[#8f8f8f] focus:outline-none focus:border-[#171717] dark:focus:border-white transition-colors"
+                />
+                <span id="hex-preview-dot" class="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full border border-black/15 shadow-2xs hidden"></span>
+              </div>
+              <button
+                type="submit"
+                id="submit-preset-btn"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-[#ebebeb] bg-[#fafafa] hover:bg-[#ebebeb] dark:hover:bg-[#1f1f1f] px-3 py-1.5 text-xs font-medium text-[#171717] dark:text-[#ededed] transition-colors cursor-pointer shrink-0"
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>Add Preset</span>
+              </button>
+            </form>
+
+            <div id="preset-tubes-grid" class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Real-Time WCAG 2.1 Contrast Matrix -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                WCAG 2.1 Accessibility
+              </h3>
+              <span class="text-[11px] text-[#8f8f8f]">Legibility scoring</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <!-- On White -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
+                <div class="text-[11px] text-[#8f8f8f]">Against White Text</div>
+                <div id="wcag-white-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.32:1</div>
+                <div class="mt-2 flex items-center justify-center gap-1">
+                  <span id="badge-white-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Large</span>
+                  <span id="badge-white-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-red-100 text-red-800">AAA Fail</span>
+                </div>
+              </div>
+
+              <!-- On Black -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
+                <div class="text-[11px] text-[#8f8f8f]">Against Black Text</div>
+                <div id="wcag-black-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.86:1</div>
+                <div class="mt-2 flex items-center justify-center gap-1">
+                  <span id="badge-black-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Pass</span>
+                  <span id="badge-black-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AAA Large</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Result Output & Preview Studio (5 cols) -->
+        <div class="space-y-6 lg:col-span-5">
+          <!-- Main Result Swatch Card -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]">
+                Mixed Color Result
+              </span>
+              <span id="blend-mode-tag" class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]">
+                Kubelka-Munk
+              </span>
+            </div>
+
+            <!-- Big Color Swatch Box -->
+            <div class="relative mt-4 flex h-36 w-full items-center justify-center rounded-xl border border-black/10 p-4 transition-colors shadow-inner" id="result-swatch-box">
+              <div class="rounded-lg bg-black/40 backdrop-blur-md px-3.5 py-1.5 text-center text-white shadow-sm">
+                <div id="result-hex-display" class="font-mono text-xl font-bold tracking-wider">#3D933E</div>
+                <div id="result-rgb-display" class="text-[11px] font-mono text-white/80">rgb(61, 147, 62)</div>
+              </div>
+            </div>
+
+            <!-- Color Format Codes Grid -->
+            <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">HEX</span>
+                  <span id="code-hex" class="font-mono font-medium text-[#171717]">#3D933E</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-hex" title="Copy HEX">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">HSL</span>
+                  <span id="code-hsl" class="font-mono font-medium text-[#171717]">121°, 41%, 41%</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-hsl" title="Copy HSL">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">CMYK</span>
+                  <span id="code-cmyk" class="font-mono font-medium text-[#171717]">59, 0, 58, 42</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-cmyk" title="Copy CMYK">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2">
+                <div class="truncate">
+                  <span class="text-[10px] font-mono text-[#8f8f8f] block">OKLCH</span>
+                  <span id="code-oklch" class="font-mono font-medium text-[#171717]">0.58, 0.14, 142</span>
+                </div>
+                <button type="button" class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]" data-target="code-oklch" title="Copy OKLCH">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- CSS Snippet Generator -->
+            <div class="mt-4 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono text-[#8f8f8f]">Modern CSS Output</span>
+                <button type="button" id="copy-css-snippet" class="text-xs font-medium text-[#0070f3] hover:underline cursor-pointer">
+                  Copy Code
+                </button>
+              </div>
+              <pre id="css-snippet-code" class="mt-1 font-mono text-xs text-[#171717] overflow-x-auto whitespace-pre-wrap">background-color: #3D933E;</pre>
+            </div>
+          </div>
+
+          <!-- Live Design Mockup Preview Studio -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+              Live UI Component Preview
             </h3>
+            <p class="mt-1 text-xs text-[#8f8f8f]">See how this mixed color performs in realistic design components:</p>
 
-            <p class="mt-2 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
-              Interactive dual-mode color wheel. Switch seamlessly between Johannes Itten's classical Bauhaus 12-hue artist wheel and standard digital screen color wheels.
-            </p>
+            <div class="mt-4 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4">
+              <!-- Component 1: Action Button -->
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-[#8f8f8f]">CTA Button</span>
+                <button
+                  type="button"
+                  id="preview-btn"
+                  class="rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors"
+                  style="background-color: #3D933E;"
+                >
+                  Confirm Action
+                </button>
+              </div>
 
-            <ul class="mt-5 space-y-2.5 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
-              <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span><strong>Artist RYB Wheel:</strong> Red opposite Green, Blue opposite Orange</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span><strong>Harmonies:</strong> Complementary, Triadic, Analogous, Tetradic</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span><strong>Accessibility:</strong> Real-time WCAG 2.1 contrast + Color-blind simulator</span>
-              </li>
-            </ul>
+              <!-- Component 2: Outline Tag -->
+              <div class="flex items-center justify-between border-t border-[#ebebeb] pt-3">
+                <span class="text-xs text-[#8f8f8f]">Status Tag</span>
+                <span
+                  id="preview-tag"
+                  class="inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-medium"
+                  style="background-color: rgba(61, 147, 62, 0.12); color: #3D933E; border: 1px solid #3D933E;"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full" style="background-color: #3D933E;"></span>
+                  Verified Mix
+                </span>
+              </div>
+
+              <!-- Component 3: Card Accent -->
+              <div
+                id="preview-card"
+                class="rounded-lg bg-white p-3 text-xs shadow-2xs border-l-4"
+                style="border-left-color: #3D933E;"
+              >
+                <div class="font-semibold text-[#171717]">Card Headline Accent</div>
+                <div class="text-[#8f8f8f] mt-0.5">Component preview dynamically renders the pigment mixture.</div>
+              </div>
+            </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
-            <span class="text-xs font-medium text-[#0070f3] dark:text-[#3291ff] group-hover:underline">Explore Color Wheel Tool &rarr;</span>
-          </div>
-        </a>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Competitor Comparison Section -->
-  <section class="border-t border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#0e0e0e] py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Platform Advantages</span>
-        <h2 class="mt-2 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
-          Real Color Mixer vs. Legacy Digital Design Tools
-        </h2>
-        <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
-          See how our physical pigment science and open architecture compare directly against conventional screen utilities.
-        </p>
-      </div>
-
-      <div class="mt-10 overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
-        <table class="w-full text-left text-xs sm:text-sm">
-          <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
-            <tr>
-              <th class="p-4 sm:p-5">Feature</th>
-              <th class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">Standard Screen Tools</th>
-              <th class="p-4 sm:p-5 text-[#171717] dark:text-white font-bold">Real Color Mixer Suite</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Blue + Yellow Mixing Result</td>
-              <td class="p-4 sm:p-5 text-red-600 dark:text-red-400 font-mono">Muddy Brown/Grey (#808040)</td>
-              <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-semibold font-mono">Vibrant Green (#3D933E)</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Color Mixing Physics</td>
-              <td class="p-4 sm:p-5">Linear Digital RGB Average</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Subtractive Kubelka-Munk (K/S) + OKLCH</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Harmonic Color Theory</td>
-              <td class="p-4 sm:p-5">RGB Only (Red opposite Cyan)</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Dual Mode: Johannes Itten RYB + Digital RGB</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Account / Subscription Required</td>
-              <td class="p-4 sm:p-5 text-red-600 dark:text-red-400">Frequently required for saving/syncing</td>
-              <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-medium">100% Free & No Sign-In Required</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Accessibility Validation</td>
-              <td class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">None or basic external checkers</td>
-              <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-medium">Real-time WCAG 2.1 AA & AAA Badges</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Tonal Scales & Steps</td>
-              <td class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">Single hex code</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Full 9-Step Tint & Shade Scale (50 to 900)</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Color Vision Deficiency Simulation</td>
-              <td class="p-4 sm:p-5 text-[#8f8f8f] dark:text-[#71717a]">None</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Protanopia, Deuteranopia, Tritanopia, Mono</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Code Generation</td>
-              <td class="p-4 sm:p-5">Manual hex copying</td>
-              <td class="p-4 sm:p-5 font-medium text-[#171717] dark:text-white">Tailwind CSS v4, CSS Vars, CSS color-mix()</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comprehensive Editorial Guide on Uses & Advantages (1,000 words) -->
+  <!-- Comprehensive Educational Guide & SEO Section -->
   <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
       <div class="text-center mb-14">
-        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Platform Overview & Applications</span>
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Pigment Science & Code Generation</span>
         <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
-          The Advantages, Science & Professional Uses of Real Color Mixer
+          The Complete Guide to Online Color Mixing & Hex Color Generators
         </h2>
         <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          How our dual-tool architecture bridges physical pigment reality with accessible modern web engineering.
+          Discover authentic subtractive pigment blending, mix custom hex codes, and export production-ready CSS color-mix() code.
         </p>
       </div>
 
       <!-- Main Prose Body -->
       <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
         
-        <!-- Part 1: Why Real Color Mixer Exists -->
+        <!-- Section 1: Color Mixer & Online Color Mixer -->
         <section class="space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
-            1. Why Real Color Mixer Exists: Beyond Digital Screen Limitations
+            1. Why Use an Online Color Mixer with Real Pigment Physics?
           </h3>
           <p>
-            Real Color Mixer represents a fundamental shift in how digital color tools operate. For decades, creators have had to rely on tools that treat color purely as mathematical abstractions of light on computer monitors. While additive RGB color models suit emitting pixels on a screen, they fail to replicate how colors interact physically or how human vision perceives harmony.
+            An <strong>online color mixer</strong> is an essential tool for painters, crafters, graphic designers, and front-end developers who need to forecast how two or more colors combine. However, almost all standard digital graphics editors and web color tools suffer from a serious limitation: they mix colors using linear RGB channel averaging. When you attempt to blend pure blue and bright yellow in an RGB tool, the mathematical average lands on a dull, lifeless, muddy brownish-grey (#808040).
           </p>
           <p>
-            Real Color Mixer was engineered from the ground up to solve these longstanding limitations. By unifying physical pigment optics with classical Bauhaus color theory and modern web accessibility standards, our platform provides a cohesive color suite. Whether simulating acrylic paint, constructing an accessible design system, or exploring harmonic palettes, understanding these advantages will elevate your workflow.
+            Our <strong>color mixer online</strong> solves this problem by simulating physical pigment behavior through the scientific <strong>Kubelka-Munk theory</strong>. By accounting for the physical absorption and scattering of light waves, our <strong>color mixer</strong> ensures that blending blue and yellow yields radiant, authentic Green (#3D933E)—exactly like mixing oil or acrylic paints on a wooden palette.
           </p>
         </section>
 
-        <!-- Part 2: Key Advantages -->
+        <!-- Section 2: How to Use the Color Mixer Generator -->
         <section class="space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
-            2. Key Advantages: Why Real Color Mixer Outperforms Legacy Digital Tools
+            2. How to Use This Color Mixer Generator: Step-by-Step
           </h3>
-          <p>
-            Standard digital tools force creators to accept compromises. Real Color Mixer delivers five core advantages designed for accuracy and productivity:
-          </p>
-          
-          <div class="space-y-4">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">A. Authentic Subtractive Pigment Optics Without Muddy Grey</h4>
-              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Standard screen tools linearly average RGB values, turning blue and yellow into muddy brownish-grey (#808040). Real Color Mixer incorporates Kubelka-Munk optical theory, calculating physical absorption and scattering to produce radiant green (#3D933E)—exactly like real physical paint on a palette.
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">1</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Choose Your Blending Mode</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Select <strong>Real Paint (RYB / KM)</strong> for authentic physical paint absorption, <strong>Modern Web (OKLCH)</strong> for uniform digital gradients, <strong>RGB</strong> for linear screens, or <strong>CMYK</strong> for print ink layering.
               </p>
             </div>
-
             <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">B. Dual-Mode Harmonic Theory: Johannes Itten RYB Meets Digital Web</h4>
-              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Standard software forces creators into digital screen geometry (Red opposite Cyan), ignoring centuries of art education. Real Color Mixer features a dedicated toggle for Johannes Itten's Bauhaus RYB wheel (Red opposite Green, Blue opposite Orange) alongside digital web wheels, letting artists and web designers work without compromise.
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">2</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Add Colors or Traditional Pigments</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Mix up to 6 colors at once. Enter custom hex codes directly or choose from classic artist tubes like Ultramarine Blue, Cadmium Yellow, Crimson Red, and Titanium White.
               </p>
             </div>
-
             <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">C. Automated Real-Time WCAG 2.1 Accessibility Validation</h4>
-              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Modern design demands legal accessibility compliance. Real Color Mixer calculates real-time WCAG 2.1 contrast ratios for every color combination and mixed shade. Instant AA and AAA badges confirm whether black or white text meets legibility criteria on buttons, cards, and interactive elements.
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">3</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Adjust Mixing Proportions</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Drag the fluid percentage weight sliders from 1% to 100% to simulate exact recipe proportions (e.g., 70% Titanium White + 20% Yellow Ochre + 10% Crimson Red).
               </p>
             </div>
-
             <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">D. Frictionless, Privacy-First Architecture Without Account Paywalls</h4>
-              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Many platforms require paid subscriptions or cloud account logins just to save palettes. Real Color Mixer is completely open, instant, and privacy-respecting, running all calculations locally in your browser with zero sign-ins and zero paywalls.
-              </p>
-            </div>
-
-            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">E. Developer-Ready Code Exports for Modern CSS and Tailwind</h4>
-              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Modern frontend development requires more than copying isolated hexadecimal codes. Our platform generates production-ready CSS variables, Tailwind CSS v4 design tokens, SVG palette assets, and modern CSS color-mix() code in the perceptually uniform OKLCH color space.
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold">4</span>
+              <h4 class="mt-3 text-sm font-semibold text-[#111827] dark:text-white">Inspect Accessibility & Export Code</h4>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Review live WCAG 2.1 contrast ratios (AA/AAA pass/fail), check component UI previews, and copy native CSS <code>color-mix()</code> code or HEX values with one click.
               </p>
             </div>
           </div>
         </section>
 
-        <!-- Part 3: Professional Uses Across Industries -->
+        <!-- Section 3: Additive vs Subtractive Physics & Kubelka Munk -->
         <section class="space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
-            3. Professional Uses & Real-World Applications Across Industries
+            3. The Science of Subtractive Mixing: Kubelka-Munk vs Additive RGB
           </h3>
           <p>
-            Real Color Mixer is engineered to serve the needs of diverse creative disciplines:
+            Understanding why an <strong>online color mixer</strong> needs physical science requires distinguishing between how monitors display light and how pigments reflect light:
           </p>
-          <ul class="space-y-4 list-disc pl-5">
-            <li>
-              <strong>Fine Artists, Illustrators, and Oil and Acrylic Painters:</strong> For painters working in oils, acrylics, or watercolors, physical pigment is expensive. Blending paint by trial and error leads to wasted supplies. Artists use our physical pigment simulator to prototype mixing recipes—such as Ultramarine Blue, Cadmium Yellow, and Titanium White—before opening a tube, while students use the Itten wheel to master contrast and balance.
-            </li>
-            <li>
-              <strong>UI and UX Designers and Digital Product Teams:</strong> Product designers rely on Real Color Mixer to build accessible design systems. Leveraging complementary and triadic modes, teams construct cohesive brand palettes and apply the 60-30-10 UI rule (60% neutral base, 30% structural tone, 10% high-contrast accent) with verified WCAG AA/AAA scores before handoff.
-            </li>
-            <li>
-              <strong>Front-End Engineers and CSS Architects:</strong> Modern stylesheets use CSS color-mix() and OKLCH to prevent muddy desaturation in gradients. Developers use our platform to test hex ratios, preview components across light and dark modes, and export clean tokens ready for Tailwind config files or CSS stylesheets.
-            </li>
-            <li>
-              <strong>Interior Designers, Crafters, and DIY Home Decorators:</strong> Planning wall paints and textiles requires understanding how pigments absorb light. Decorators use Real Color Mixer to preview architectural tints, test warm versus cool undertones, and formulate custom paint recipes before purchasing supplies.
-            </li>
-            <li>
-              <strong>Educators, Students, and Color Theory Researchers:</strong> Teaching the difference between additive light mixing (RGB) and subtractive absorption (RYB/CMYK) is challenging with conventional software. Educators and design professors use Real Color Mixer to demonstrate spectral reflectance, the Kubelka-Munk equation, and Johannes Itten's contrasts.
-            </li>
-          </ul>
-        </section>
-
-        <!-- Part 4: Integrated Workflow & Internal Links -->
-        <section class="space-y-4">
-          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
-            4. The Integrated Creative Workflow: How Our Tools Complement Each Other
-          </h3>
-          <p>
-            Real Color Mixer is organized into two dedicated, specialized tools that form a unified workflow:
-          </p>
-          
-          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-4">
-            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-6 space-y-3">
-              <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] font-mono text-xs font-bold">Step 1</span>
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">
-                Selecting & Structuring Palettes on the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] underline underline-offset-2 hover:opacity-80">Color Wheel Picker</a>
-              </h4>
-              <p class="text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Start your creative project on our dedicated <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Wheel Picker</a>. Choose between the classical Johannes Itten Bauhaus wheel or digital screen mode to establish your color foundation. Explore the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">12-hue color wheel chart</a> to understand primary, secondary, and tertiary relationships, and leverage the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">complementary color wheel</a> to select high-impact accent colors. Generate a complete 9-step tint and shade scale and verify color-blindness accessibility.
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <div class="font-mono text-xs font-semibold text-[#0070f3] uppercase">Additive RGB (Digital Displays)</div>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Computer monitors emit light. Blending red, green, and blue light adds wavelengths together toward white. Mixing complementary screen colors produces grey because opposite wavelengths cancel each other out in the eye's photoreceptors.
               </p>
             </div>
-
-            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-6 space-y-3">
-              <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] font-mono text-xs font-bold">Step 2</span>
-              <h4 class="text-base font-semibold text-[#111827] dark:text-white">
-                Prototyping & Formulating Blends on the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] underline underline-offset-2 hover:opacity-80">Color Mixer Online</a>
-              </h4>
-              <p class="text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Once your palette hues are established, transition to our <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Mixer Online</a>. Whether you are formulating physical paint mixtures or generating modern CSS tokens, the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">online color mixer</a> enables you to combine up to six colors with fluid percentage sliders. Use the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">hex color mixer</a> to test exact web hexadecimal blends in OKLCH, inspect live button and card mockups, and export production-ready code.
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <div class="font-mono text-xs font-semibold text-[#168a35] dark:text-[#47d169] uppercase">Subtractive Pigments (Kubelka-Munk)</div>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Physical pigments absorb (subtract) light. Blue paint absorbs red and yellow light; yellow paint absorbs blue and violet light. The only light reflected by both pigments is <strong>vibrant green</strong>.
               </p>
             </div>
           </div>
-          
-          <p class="mt-4 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
-            By separating harmonic selection from physical blend formulation, Real Color Mixer provides creators with an intuitive, powerful workbench for all color-driven disciplines without keyword or interface confusion.
+          <p>
+            Our <strong>color mixer generator</strong> computes this reaction using the Kubelka-Munk equation:
+          </p>
+          <div class="rounded-lg border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-4 font-mono text-xs text-[#111827] dark:text-[#ededed] text-center">
+            K / S = (1 - R)² / (2R)
+          </div>
+          <p class="text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+            Where <em>K</em> is the absorption coefficient, <em>S</em> is the scattering coefficient, and <em>R</em> is the spectral reflectance at each visible wavelength.
           </p>
         </section>
 
-        <!-- Part 5: FAQ Section -->
+        <!-- Section 4: Precision Hex Color Mixer -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            4. Precision Hex Color Mixer for Frontend Developers & Designers
+          </h3>
+          <p>
+            For digital designers and web developers, this tool serves as a high-precision <strong>hex color mixer</strong>. Instead of guessing how brand colors blend in modern CSS, you can enter any two or more hex codes and immediately generate modern CSS declarations:
+          </p>
+          <div class="rounded-lg border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-4 font-mono text-xs text-[#111827] dark:text-[#ededed]">
+            background-color: color-mix(in oklch, #0070F3 50%, #FF0080 50%);
+          </div>
+          <p>
+            By mixing in the perceptually uniform <strong>OKLCH</strong> color space, the <strong>hex color mixer</strong> prevents the "grey dead zone" that occurs when blending in standard sRGB, ensuring rich, vibrant UI gradients without clipping. Furthermore, our live contrast score guarantees that text placed on the mixed color will satisfy WCAG 2.1 AA and AAA legal accessibility requirements.
+          </p>
+        </section>
+
+        <!-- Section 5: Real-World Pigment Recipes Table -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            5. Classic Artist Pigment Mixing Recipes & Cheat-Sheet
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Desired Color</th>
+                  <th class="p-4 sm:p-5">Recipe Ingredients</th>
+                  <th class="p-4 sm:p-5">Mixing Proportions</th>
+                  <th class="p-4 sm:p-5">Resulting Hex</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Vibrant Green</td>
+                  <td class="p-4 sm:p-5">Ultramarine Blue + Cadmium Yellow</td>
+                  <td class="p-4 sm:p-5">50% Blue + 50% Yellow</td>
+                  <td class="p-4 sm:p-5 font-mono text-emerald-600 dark:text-emerald-400 font-semibold">#3D933E</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Rich Earth Brown</td>
+                  <td class="p-4 sm:p-5">Crimson Red + Cadmium Yellow + Ultramarine Blue</td>
+                  <td class="p-4 sm:p-5">40% Red + 40% Yellow + 20% Blue</td>
+                  <td class="p-4 sm:p-5 font-mono text-amber-800 dark:text-amber-500 font-semibold">#5C3317</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Warm Flesh Tone</td>
+                  <td class="p-4 sm:p-5">Titanium White + Yellow Ochre + Crimson Red</td>
+                  <td class="p-4 sm:p-5">70% White + 20% Ochre + 10% Red</td>
+                  <td class="p-4 sm:p-5 font-mono text-orange-600 dark:text-orange-400 font-semibold">#E8C4A2</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Deep Velvet Purple</td>
+                  <td class="p-4 sm:p-5">Ultramarine Blue + Quinacridone Magenta</td>
+                  <td class="p-4 sm:p-5">55% Blue + 45% Magenta</td>
+                  <td class="p-4 sm:p-5 font-mono text-purple-600 dark:text-purple-400 font-semibold">#4C1D6E</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 6: FAQ Section -->
         <section class="space-y-6 pt-6 border-t border-[#e5e7eb] dark:border-[#262626]">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
-            5. Frequently Asked Questions About the Real Color Mixer Suite
+            6. Frequently Asked Questions About Online Color Mixing
           </h3>
 
           <div class="space-y-4">
             <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
               <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
-                <span>What are the main advantages of Real Color Mixer over standard digital tools?</span>
+                <span>How does this online color mixer simulate real paint blending?</span>
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Real Color Mixer provides physical Kubelka-Munk pigment physics that blend blue and yellow into vibrant green rather than muddy grey, a dual-mode color wheel supporting Johannes Itten classical artist RYB and digital RGB, and real-time WCAG 2.1 AA/AAA accessibility scoring with 100% free, privacy-first access without account sign-in.
+                Our <strong>online color mixer</strong> implements the Kubelka-Munk subtractive optical theory (K/S ratio). Unlike standard digital tools that linearly average RGB light channels, our pigment physics simulate how physical particles absorb and scatter specific light wavelengths, producing vibrant Green when mixing Blue and Yellow.
               </p>
             </details>
 
             <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
               <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
-                <span>Who uses Real Color Mixer and what are its primary applications?</span>
+                <span>Can I mix custom hex codes in this hex color mixer?</span>
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                The platform is used by fine artists and painters to prototype oil and acrylic mixing recipes without wasting paint; UI/UX designers to create accessible palettes with legal WCAG contrast; front-end developers to generate modern CSS color-mix() code and Tailwind v4 tokens; interior decorators to test wall paint tints; and educators to teach subtractive vs additive color physics.
+                Yes. Our <strong>hex color mixer</strong> allows you to enter any custom hexadecimal color codes, assign proportional weight percentages (from 1% to 100%), and view the resulting mixed color in real time along with RGB, HSL, and modern CSS color-mix() code.
               </p>
             </details>
 
             <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
               <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
-                <span>How do the Color Wheel Picker and Color Mixer tools work together?</span>
+                <span>What is the color mixer generator and how many colors can I blend?</span>
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                The two tools form an integrated workflow: First, creators use the <a href="/color-wheel" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Wheel Picker</a> to establish harmonic palettes (such as complementary or triadic schemes) and test accessibility. Next, they transition to the <a href="/mix" class="text-[#0070f3] dark:text-[#3291ff] font-medium hover:underline">Color Mixer</a> to simulate physical pigment blends with proportion sliders or generate native CSS color-mix() tokens.
+                The <strong>color mixer generator</strong> is an interactive multi-pigment blending tool that supports blending between 2 and 6 colors simultaneously. You can choose from traditional artist oil tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White) or custom palette swatches.
               </p>
             </details>
 
             <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
               <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
-                <span>Is Real Color Mixer free and does it require an Adobe Creative Cloud account?</span>
+                <span>What blending modes does this color mixer online support?</span>
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Real Color Mixer is 100% free and open to all users. Unlike Adobe Color Wheel, you do not need an Adobe Creative Cloud account, subscription, or login to save, test, or export your color palettes and code snippets.
+                Our <strong>color mixer online</strong> supports 4 distinct blending modes: Real Paint (Subtractive Kubelka-Munk physics), Modern Web (Perceptually uniform OKLCH space), Digital Screen (Linear RGB), and Print & Inks (CMYK).
               </p>
             </details>
 
             <details class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs">
               <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
-                <span>What export formats are supported for web and graphic designers?</span>
+                <span>Does this hex color mixer test accessibility and text contrast?</span>
                 <span class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]">▼</span>
               </summary>
               <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Real Color Mixer supports one-click exports for Tailwind CSS v4 design tokens, CSS custom properties (:root variables), modern CSS color-mix() syntax in OKLCH, downloadable SVG palette swatches, and standard HEX / RGB / HSL values.
+                Yes. Every blend created in the <strong>hex color mixer</strong> is immediately evaluated for WCAG 2.1 AA and AAA contrast compliance against both pure black (#000000) and pure white (#FFFFFF) text, complete with live UI component previews.
               </p>
             </details>
           </div>
@@ -486,3 +627,631 @@ const pageSchema = [
     </div>
   </article>
 </Layout>
+
+<script>
+  import {
+    mixPigmentsKubelkaMunk,
+    mixOklch,
+    mixRgb,
+    mixCmyk,
+    hexToRgb,
+    rgbToHex,
+    rgbToHsl,
+    rgbToCmyk,
+    rgbToOklch,
+    getWcagContrast,
+    getContrastRating,
+    type ColorWeight
+  } from '../utils/colorPhysics';
+
+  // State
+  let currentMode: 'paint' | 'oklch' | 'rgb' | 'cmyk' = 'paint';
+  let colors: ColorWeight[] = [
+    { hex: '#002185', weight: 50 }, // Ultramarine Blue
+    { hex: '#FCD200', weight: 50 }, // Cadmium Yellow
+  ];
+  let activeSlotIndex = 0;
+
+  // Artist Pigment Quick Presets state
+  interface PigmentPreset {
+    name: string;
+    hex: string;
+  }
+
+  const DEFAULT_PIGMENT_PRESETS: PigmentPreset[] = [
+    { name: 'Ultramarine', hex: '#002185' },
+    { name: 'Cadmium Yellow', hex: '#FCD200' },
+    { name: 'Crimson Red', hex: '#C41E3A' },
+    { name: 'Titanium White', hex: '#FFFFFF' },
+    { name: 'Mars Black', hex: '#111111' },
+    { name: 'Phthalo Green', hex: '#123524' },
+    { name: 'Burnt Umber', hex: '#8A3324' },
+    { name: 'Yellow Ochre', hex: '#E08031' },
+  ];
+
+  const STORAGE_KEY_PRESETS = 'rcm_pigment_presets_v1';
+
+  function loadPigmentPresets(): PigmentPreset[] {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY_PRESETS);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+    return JSON.parse(JSON.stringify(DEFAULT_PIGMENT_PRESETS));
+  }
+
+  function savePigmentPresets(presets: PigmentPreset[]) {
+    try {
+      localStorage.setItem(STORAGE_KEY_PRESETS, JSON.stringify(presets));
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  let pigmentPresets: PigmentPreset[] = loadPigmentPresets();
+
+  function normalizeHex(input: string): string | null {
+    let val = input.trim();
+    if (val.startsWith('#')) val = val.substring(1);
+    if (/^[0-9A-Fa-f]{3}$/.test(val)) {
+      val = val.split('').map(c => c + c).join('');
+    }
+    if (/^[0-9A-Fa-f]{6}$/.test(val)) {
+      return '#' + val.toUpperCase();
+    }
+    return null;
+  }
+
+  // DOM elements
+  const slotsContainer = document.getElementById('color-slots');
+  const addColorBtn = document.getElementById('add-color-btn');
+  const resetBtn = document.getElementById('reset-mix-btn');
+  const randomBtn = document.getElementById('random-mix-btn');
+  const partsFormulaEl = document.getElementById('parts-formula');
+  const modeBtns = document.querySelectorAll('.mode-btn');
+
+  // Outputs
+  const swatchBox = document.getElementById('result-swatch-box');
+  const hexDisplay = document.getElementById('result-hex-display');
+  const rgbDisplay = document.getElementById('result-rgb-display');
+  const codeHex = document.getElementById('code-hex');
+  const codeHsl = document.getElementById('code-hsl');
+  const codeCmyk = document.getElementById('code-cmyk');
+  const codeOklch = document.getElementById('code-oklch');
+  const blendModeTag = document.getElementById('blend-mode-tag');
+  const cssSnippetCode = document.getElementById('css-snippet-code');
+  const copyCssBtn = document.getElementById('copy-css-snippet');
+
+  // WCAG outputs
+  const wcagWhiteRatio = document.getElementById('wcag-white-ratio');
+  const wcagBlackRatio = document.getElementById('wcag-black-ratio');
+  const badgeWhiteAa = document.getElementById('badge-white-aa');
+  const badgeWhiteAaa = document.getElementById('badge-white-aaa');
+  const badgeBlackAa = document.getElementById('badge-black-aa');
+  const badgeBlackAaa = document.getElementById('badge-black-aaa');
+
+  // UI Previews
+  const previewBtn = document.getElementById('preview-btn');
+  const previewTag = document.getElementById('preview-tag');
+  const previewCard = document.getElementById('preview-card');
+
+  // Presets
+  const MIX_PRESETS = [
+    [ { hex: '#002185', weight: 50 }, { hex: '#FCD200', weight: 50 } ], // Vibrant Green
+    [ { hex: '#C41E3A', weight: 45 }, { hex: '#FCD200', weight: 40 }, { hex: '#002185', weight: 15 } ], // Rich Brown
+    [ { hex: '#C41E3A', weight: 50 }, { hex: '#002185', weight: 50 } ], // Deep Royal Purple
+    [ { hex: '#FFFFFF', weight: 70 }, { hex: '#E08031', weight: 20 }, { hex: '#C41E3A', weight: 10 } ], // Skin Tone
+    [ { hex: '#123524', weight: 40 }, { hex: '#002185', weight: 30 }, { hex: '#FFFFFF', weight: 30 } ], // Muted Teal
+  ];
+
+  function setActiveSlot(idx: number) {
+    if (idx < 0 || idx >= colors.length) return;
+    activeSlotIndex = idx;
+    updateActiveSlotUI();
+  }
+
+  function updateActiveSlotUI() {
+    if (activeSlotIndex >= colors.length) activeSlotIndex = colors.length - 1;
+    if (activeSlotIndex < 0) activeSlotIndex = 0;
+
+    const cards = document.querySelectorAll('.slot-card');
+    cards.forEach((card, idx) => {
+      const isActive = idx === activeSlotIndex;
+      if (isActive) {
+        card.classList.add('active-slot');
+        card.classList.remove('hover:border-[#8f8f8f]/40');
+      } else {
+        card.classList.remove('active-slot');
+        card.classList.add('hover:border-[#8f8f8f]/40');
+      }
+    });
+
+    // Highlight matching tube preset if any
+    const currentHex = colors[activeSlotIndex]?.hex?.toUpperCase();
+    document.querySelectorAll('.tube-preset').forEach((btn) => {
+      const btnHex = (btn as HTMLElement).dataset.hex?.toUpperCase();
+      if (btnHex === currentHex) {
+        btn.classList.add('border-[#171717]', 'dark:border-white', 'bg-[#fafafa]', 'ring-1', 'ring-[#171717]', 'dark:ring-white');
+      } else {
+        btn.classList.remove('border-[#171717]', 'dark:border-white', 'bg-[#fafafa]', 'ring-1', 'ring-[#171717]', 'dark:ring-white');
+      }
+    });
+  }
+
+  function renderSlots() {
+    if (!slotsContainer) return;
+    slotsContainer.innerHTML = '';
+
+    if (activeSlotIndex >= colors.length) activeSlotIndex = colors.length - 1;
+    if (activeSlotIndex < 0) activeSlotIndex = 0;
+
+    colors.forEach((col, idx) => {
+      const isActive = idx === activeSlotIndex;
+      const slotEl = document.createElement('div');
+      slotEl.dataset.slotIndex = `${idx}`;
+      slotEl.className = `slot-card flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 transition-all cursor-pointer ${
+        isActive ? 'active-slot' : 'hover:border-[#8f8f8f]/40'
+      }`;
+
+      slotEl.innerHTML = `
+        <div class="flex items-center gap-3">
+          <input
+            type="color"
+            value="${col.hex}"
+            data-index="${idx}"
+            class="color-picker-input h-8 w-8 cursor-pointer rounded-md border border-[#ebebeb] p-0 bg-transparent"
+            title="Pick color"
+          />
+          <div class="flex flex-col">
+            <input
+              type="text"
+              value="${col.hex.toUpperCase()}"
+              data-index="${idx}"
+              maxlength="7"
+              class="hex-text-input w-24 rounded border border-[#ebebeb] bg-white px-2 py-0.5 font-mono text-xs uppercase font-medium text-[#171717] focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-1 items-center gap-3">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="${col.weight}"
+            data-index="${idx}"
+            class="weight-slider h-1.5 flex-1 cursor-pointer accent-[#171717]"
+          />
+          <span class="weight-label font-mono text-xs font-semibold text-[#171717] w-12 text-right">
+            ${col.weight}%
+          </span>
+        </div>
+
+        <div>
+          ${
+            colors.length > 2
+              ? `<button
+                  type="button"
+                  data-remove="${idx}"
+                  class="remove-slot-btn rounded p-1 text-[#8f8f8f] hover:bg-[#ebebeb] hover:text-[#ee0000] transition-colors cursor-pointer"
+                  title="Remove color slot"
+                >
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>`
+              : `<span class="w-6 inline-block"></span>`
+          }
+        </div>
+      `;
+
+      slotsContainer.appendChild(slotEl);
+    });
+
+    attachSlotListeners();
+    updateActiveSlotUI();
+    updateMix();
+  }
+
+  function attachSlotListeners() {
+    // Slot card clicks
+    document.querySelectorAll('.slot-card').forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('.remove-slot-btn')) return;
+        const idx = parseInt((card as HTMLElement).dataset.slotIndex || '0', 10);
+        if (activeSlotIndex !== idx) {
+          setActiveSlot(idx);
+        }
+      });
+    });
+
+    // Inputs focus setting active slot
+    document.querySelectorAll('.color-picker-input, .hex-text-input, .weight-slider').forEach((input) => {
+      input.addEventListener('focus', (e) => {
+        const target = e.target as HTMLElement;
+        const idx = parseInt(target.dataset.index || '0', 10);
+        if (activeSlotIndex !== idx) {
+          setActiveSlot(idx);
+        }
+      });
+    });
+
+    // Color pickers
+    document.querySelectorAll('.color-picker-input').forEach((input) => {
+      input.addEventListener('input', (e) => {
+        const target = e.target as HTMLInputElement;
+        const idx = parseInt(target.dataset.index || '0', 10);
+        colors[idx].hex = target.value;
+        const textInput = target.closest('.slot-card')?.querySelector('.hex-text-input') as HTMLInputElement;
+        if (textInput) textInput.value = target.value.toUpperCase();
+        if (activeSlotIndex !== idx) {
+          setActiveSlot(idx);
+        } else {
+          updateActiveSlotUI();
+        }
+        updateMix();
+      });
+    });
+
+    // Hex text inputs
+    document.querySelectorAll('.hex-text-input').forEach((input) => {
+      input.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        let val = target.value.trim();
+        if (!val.startsWith('#')) val = '#' + val;
+        const idx = parseInt(target.dataset.index || '0', 10);
+        if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+          colors[idx].hex = val;
+          const pickerInput = target.closest('.slot-card')?.querySelector('.color-picker-input') as HTMLInputElement;
+          if (pickerInput) pickerInput.value = val;
+          if (activeSlotIndex !== idx) {
+            setActiveSlot(idx);
+          } else {
+            updateActiveSlotUI();
+          }
+          updateMix();
+        } else {
+          target.value = colors[idx].hex.toUpperCase();
+        }
+      });
+    });
+
+    // Sliders
+    document.querySelectorAll('.weight-slider').forEach((slider) => {
+      slider.addEventListener('input', (e) => {
+        const target = e.target as HTMLInputElement;
+        const idx = parseInt(target.dataset.index || '0', 10);
+        const val = parseInt(target.value, 10);
+        colors[idx].weight = val;
+        const label = target.parentElement?.querySelector('.weight-label');
+        if (label) label.textContent = `${val}%`;
+        if (activeSlotIndex !== idx) setActiveSlot(idx);
+        updateMix();
+      });
+    });
+
+    // Remove buttons
+    document.querySelectorAll('.remove-slot-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const target = (e.currentTarget as HTMLElement).dataset.remove;
+        if (target !== undefined) {
+          const idx = parseInt(target, 10);
+          colors.splice(idx, 1);
+          if (activeSlotIndex >= colors.length) {
+            activeSlotIndex = colors.length - 1;
+          } else if (activeSlotIndex === idx) {
+            activeSlotIndex = Math.min(idx, colors.length - 1);
+          } else if (activeSlotIndex > idx) {
+            activeSlotIndex--;
+          }
+          renderSlots();
+        }
+      });
+    });
+  }
+
+  function updateMix() {
+    let mixedHex = '#FFFFFF';
+
+    if (currentMode === 'paint') {
+      mixedHex = mixPigmentsKubelkaMunk(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Kubelka-Munk (RYB)';
+    } else if (currentMode === 'oklch') {
+      mixedHex = mixOklch(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Perceptual (OKLCH)';
+    } else if (currentMode === 'rgb') {
+      mixedHex = mixRgb(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Screen (Linear RGB)';
+    } else if (currentMode === 'cmyk') {
+      mixedHex = mixCmyk(colors);
+      if (blendModeTag) blendModeTag.textContent = 'Subtractive (CMYK)';
+    }
+
+    // Update Swatch Box
+    if (swatchBox) swatchBox.style.backgroundColor = mixedHex;
+    if (hexDisplay) hexDisplay.textContent = mixedHex;
+
+    const rgb = hexToRgb(mixedHex);
+    if (rgbDisplay) rgbDisplay.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+
+    // Update Codes
+    if (codeHex) codeHex.textContent = mixedHex;
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+    if (codeHsl) codeHsl.textContent = `${hsl.h}°, ${hsl.s}%, ${hsl.l}%`;
+    const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+    if (codeCmyk) codeCmyk.textContent = `${cmyk.c}, ${cmyk.m}, ${cmyk.y}, ${cmyk.k}`;
+    const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+    if (codeOklch) codeOklch.textContent = `${oklch.l}, ${oklch.c}, ${oklch.h}°`;
+
+    // Modern CSS Code Generator
+    if (cssSnippetCode) {
+      if (currentMode === 'oklch' && colors.length === 2) {
+        cssSnippetCode.textContent = `/* Modern CSS color-mix() */\nbackground-color: color-mix(in oklch, ${colors[0].hex} ${colors[0].weight}%, ${colors[1].hex} ${colors[1].weight}%);`;
+      } else {
+        cssSnippetCode.textContent = `/* Real Color Mix Result */\nbackground-color: ${mixedHex};\n--color-mixed: ${mixedHex};`;
+      }
+    }
+
+    // Formula indicator
+    if (partsFormulaEl) {
+      const parts = colors.map((c, i) => `${c.weight} pts`).join(' : ');
+      partsFormulaEl.innerHTML = `Formula: <span class="text-[#171717] font-semibold">${parts}</span>`;
+    }
+
+    // WCAG Accessibility calculation
+    const contrastWhite = getWcagContrast(mixedHex, '#FFFFFF');
+    const contrastBlack = getWcagContrast(mixedHex, '#171717');
+    const scoreWhite = getContrastRating(contrastWhite);
+    const scoreBlack = getContrastRating(contrastBlack);
+
+    if (wcagWhiteRatio) wcagWhiteRatio.textContent = scoreWhite.ratioText;
+    if (wcagBlackRatio) wcagBlackRatio.textContent = scoreBlack.ratioText;
+
+    updateBadge(badgeWhiteAa, scoreWhite.aaNormal, 'AA Pass', 'AA Fail');
+    updateBadge(badgeWhiteAaa, scoreWhite.aaaNormal, 'AAA Pass', 'AAA Fail');
+    updateBadge(badgeBlackAa, scoreBlack.aaNormal, 'AA Pass', 'AA Fail');
+    updateBadge(badgeBlackAaa, scoreBlack.aaaNormal, 'AAA Pass', 'AAA Fail');
+
+    // Live UI Component Previews
+    if (previewBtn) {
+      previewBtn.style.backgroundColor = mixedHex;
+      // choose text color based on best contrast
+      previewBtn.style.color = contrastWhite >= contrastBlack ? '#FFFFFF' : '#171717';
+    }
+
+    if (previewTag) {
+      previewTag.style.backgroundColor = `${mixedHex}1F`; // ~12% opacity
+      previewTag.style.borderColor = mixedHex;
+      previewTag.style.color = mixedHex;
+    }
+
+    if (previewCard) {
+      previewCard.style.borderLeftColor = mixedHex;
+    }
+  }
+
+  function updateBadge(el: HTMLElement | null, pass: boolean, passText: string, failText: string) {
+    if (!el) return;
+    el.textContent = pass ? passText : failText;
+    el.className = `rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+      pass ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
+    }`;
+  }
+
+  // Artist Pigment Quick Presets rendering & management
+  const presetGrid = document.getElementById('preset-tubes-grid');
+  const addPresetForm = document.getElementById('add-preset-form') as HTMLFormElement | null;
+  const newPresetInput = document.getElementById('new-preset-hex') as HTMLInputElement | null;
+  const hexPreviewDot = document.getElementById('hex-preview-dot');
+  const resetPresetsBtn = document.getElementById('reset-presets-btn');
+
+  function renderPresets() {
+    if (!presetGrid) return;
+
+    if (pigmentPresets.length === 0) {
+      presetGrid.innerHTML = `
+        <div class="col-span-2 sm:col-span-4 py-4 text-center">
+          <p class="text-xs text-[#8f8f8f]">No presets saved. Paste a hex above to add one, or click Reset Defaults.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const currentHex = colors[activeSlotIndex]?.hex?.toUpperCase();
+
+    presetGrid.innerHTML = pigmentPresets.map((preset, idx) => {
+      const isMatching = preset.hex.toUpperCase() === currentHex;
+      return `
+        <div class="relative group">
+          <button
+            type="button"
+            data-hex="${preset.hex}"
+            class="tube-preset w-full flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 pr-7 text-left hover:bg-[#fafafa] active:scale-[0.98] transition-all cursor-pointer ${
+              isMatching ? 'border-[#171717] dark:border-white ring-1 ring-[#171717] dark:ring-white bg-[#fafafa]' : ''
+            }"
+            title="Load ${preset.name} (${preset.hex}) into active slot"
+          >
+            <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: ${preset.hex};"></span>
+            <span class="text-xs truncate font-medium text-[#171717]">${preset.name}</span>
+          </button>
+          <button
+            type="button"
+            data-delete-preset="${idx}"
+            class="delete-preset-btn absolute right-1.5 top-1/2 -translate-y-1/2 rounded p-1 text-[#8f8f8f] hover:text-[#ee0000] hover:bg-black/5 dark:hover:bg-white/10 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity cursor-pointer"
+            title="Delete preset ${preset.name}"
+          >
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      `;
+    }).join('');
+
+    attachPresetListeners();
+  }
+
+  function attachPresetListeners() {
+    // Tube preset click -> load into active slot
+    presetGrid?.querySelectorAll('.tube-preset').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const hex = (e.currentTarget as HTMLElement).dataset.hex;
+        if (hex) {
+          if (activeSlotIndex < 0 || activeSlotIndex >= colors.length) {
+            activeSlotIndex = 0;
+          }
+          colors[activeSlotIndex].hex = hex;
+          renderSlots();
+          renderPresets();
+        }
+      });
+    });
+
+    // Delete preset
+    presetGrid?.querySelectorAll('.delete-preset-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idxStr = (e.currentTarget as HTMLElement).dataset.deletePreset;
+        if (idxStr !== undefined) {
+          const idx = parseInt(idxStr, 10);
+          pigmentPresets.splice(idx, 1);
+          savePigmentPresets(pigmentPresets);
+          renderPresets();
+        }
+      });
+    });
+  }
+
+  // Live color preview dot when typing / pasting hex
+  newPresetInput?.addEventListener('input', () => {
+    const normalized = normalizeHex(newPresetInput.value);
+    if (normalized && hexPreviewDot) {
+      hexPreviewDot.style.backgroundColor = normalized;
+      hexPreviewDot.classList.remove('hidden');
+    } else if (hexPreviewDot) {
+      hexPreviewDot.classList.add('hidden');
+    }
+  });
+
+  // Handle Add Preset submit
+  addPresetForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!newPresetInput) return;
+    const hex = normalizeHex(newPresetInput.value);
+    if (!hex) {
+      newPresetInput.focus();
+      newPresetInput.classList.add('border-[#ee0000]');
+      setTimeout(() => newPresetInput.classList.remove('border-[#ee0000]'), 1500);
+      return;
+    }
+
+    pigmentPresets.push({ name: hex, hex });
+    savePigmentPresets(pigmentPresets);
+
+    // Apply to active slot immediately
+    if (activeSlotIndex < 0 || activeSlotIndex >= colors.length) {
+      activeSlotIndex = 0;
+    }
+    colors[activeSlotIndex].hex = hex;
+
+    newPresetInput.value = '';
+    if (hexPreviewDot) hexPreviewDot.classList.add('hidden');
+
+    renderSlots();
+    renderPresets();
+  });
+
+  // Reset defaults
+  resetPresetsBtn?.addEventListener('click', () => {
+    pigmentPresets = JSON.parse(JSON.stringify(DEFAULT_PIGMENT_PRESETS));
+    savePigmentPresets(pigmentPresets);
+    renderPresets();
+  });
+
+  // Mode button switcher
+  modeBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      modeBtns.forEach((b) => {
+        b.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+        b.classList.add('text-[#4d4d4d]');
+      });
+      target.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+      target.classList.remove('text-[#4d4d4d]');
+
+      currentMode = (target.dataset.mode || 'paint') as any;
+      updateMix();
+    });
+  });
+
+  // Add Color Button
+  addColorBtn?.addEventListener('click', () => {
+    if (colors.length < 6) {
+      colors.push({ hex: '#C41E3A', weight: 50 });
+      activeSlotIndex = colors.length - 1;
+      renderSlots();
+    }
+  });
+
+  // Reset Button
+  resetBtn?.addEventListener('click', () => {
+    colors = [
+      { hex: '#002185', weight: 50 },
+      { hex: '#FCD200', weight: 50 },
+    ];
+    activeSlotIndex = 0;
+    renderSlots();
+  });
+
+  // Random Preset Button
+  let presetIdx = 0;
+  randomBtn?.addEventListener('click', () => {
+    presetIdx = (presetIdx + 1) % MIX_PRESETS.length;
+    colors = JSON.parse(JSON.stringify(MIX_PRESETS[presetIdx]));
+    activeSlotIndex = 0;
+    renderSlots();
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const targetId = (e.currentTarget as HTMLElement).dataset.target;
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el && el.textContent) {
+          navigator.clipboard.writeText(el.textContent);
+          const original = btn.innerHTML;
+          btn.innerHTML = `<span class="text-[10px] text-emerald-600 font-mono">Copied!</span>`;
+          setTimeout(() => {
+            btn.innerHTML = original;
+          }, 1500);
+        }
+      }
+    });
+  });
+
+  // Copy CSS Snippet
+  copyCssBtn?.addEventListener('click', () => {
+    if (cssSnippetCode?.textContent) {
+      navigator.clipboard.writeText(cssSnippetCode.textContent);
+      const original = copyCssBtn.textContent;
+      copyCssBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        copyCssBtn.textContent = original;
+      }, 1500);
+    }
+  });
+
+  // Initial render
+  renderSlots();
+  renderPresets();
+</script>
+
