@@ -200,3 +200,16 @@ html.dark ::-webkit-scrollbar-thumb {
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: #383838;
 }
+
+/* Active color slot white border */
+.active-slot,
+.active-slot-glow {
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+html:not(.dark) .active-slot,
+html:not(.dark) .active-slot-glow {
+  border-color: #171717 !important;
+  box-shadow: none !important;
+}
