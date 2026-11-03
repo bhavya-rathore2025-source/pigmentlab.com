@@ -173,6 +173,38 @@ import Layout from '../layouts/Layout.astro';
               <!-- Rendered dynamically -->
             </div>
           </div>
+
+          <!-- Real-Time WCAG 2.1 Contrast Matrix -->
+          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
+                WCAG 2.1 Accessibility
+              </h3>
+              <span class="text-[11px] text-[#8f8f8f]">Legibility scoring</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <!-- On White -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
+                <div class="text-[11px] text-[#8f8f8f]">Against White Text</div>
+                <div id="wcag-white-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.32:1</div>
+                <div class="mt-2 flex items-center justify-center gap-1">
+                  <span id="badge-white-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Large</span>
+                  <span id="badge-white-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-red-100 text-red-800">AAA Fail</span>
+                </div>
+              </div>
+
+              <!-- On Black -->
+              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
+                <div class="text-[11px] text-[#8f8f8f]">Against Black Text</div>
+                <div id="wcag-black-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.86:1</div>
+                <div class="mt-2 flex items-center justify-center gap-1">
+                  <span id="badge-black-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Pass</span>
+                  <span id="badge-black-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AAA Large</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Right Column: Result Output & Preview Studio (5 cols) -->
@@ -248,38 +280,6 @@ import Layout from '../layouts/Layout.astro';
                 </button>
               </div>
               <pre id="css-snippet-code" class="mt-1 font-mono text-xs text-[#171717] overflow-x-auto whitespace-pre-wrap">background-color: #3D933E;</pre>
-            </div>
-          </div>
-
-          <!-- Real-Time WCAG 2.1 Contrast Matrix -->
-          <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs">
-            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
-              <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]">
-                WCAG 2.1 Accessibility
-              </h3>
-              <span class="text-[11px] text-[#8f8f8f]">Legibility scoring</span>
-            </div>
-
-            <div class="mt-4 grid grid-cols-2 gap-3">
-              <!-- On White -->
-              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
-                <div class="text-[11px] text-[#8f8f8f]">Against White Text</div>
-                <div id="wcag-white-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.32:1</div>
-                <div class="mt-2 flex items-center justify-center gap-1">
-                  <span id="badge-white-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Large</span>
-                  <span id="badge-white-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-red-100 text-red-800">AAA Fail</span>
-                </div>
-              </div>
-
-              <!-- On Black -->
-              <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center">
-                <div class="text-[11px] text-[#8f8f8f]">Against Black Text</div>
-                <div id="wcag-black-ratio" class="mt-1 font-mono text-lg font-bold text-[#171717]">4.86:1</div>
-                <div class="mt-2 flex items-center justify-center gap-1">
-                  <span id="badge-black-aa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AA Pass</span>
-                  <span id="badge-black-aaa" class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800">AAA Large</span>
-                </div>
-              </div>
             </div>
           </div>
 
