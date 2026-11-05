@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ColorCodesOutput from "../components/ColorCodesOutput.astro";
 
 const mixFaqSchema = {
   "@context": "https://schema.org",
@@ -149,8 +150,53 @@ const pageSchema = [
   <section class="py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-        <!-- Left Column: Color Ingredients (7 cols) -->
+        <!-- Left Column: Mixer Controls & Live Results (7 cols) -->
         <div class="space-y-6 lg:col-span-7">
+          <!-- Main Result Swatch Card -->
+          <div
+            class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs"
+          >
+            <div
+              class="flex items-center justify-between border-b border-[#ebebeb] pb-3"
+            >
+              <span
+                class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]"
+              >
+                Mixed Color Result
+              </span>
+              <span
+                id="blend-mode-tag"
+                class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]"
+              >
+                Real Paint (RYB)
+              </span>
+            </div>
+
+            <!-- Big Color Swatch Box -->
+            <div
+              class="relative mt-4 flex h-36 w-full items-center justify-center rounded-xl border border-black/10 p-4 transition-colors shadow-inner"
+              id="result-swatch-box"
+            >
+              <div
+                class="rounded-lg bg-black/40 backdrop-blur-md px-3.5 py-1.5 text-center text-white shadow-sm"
+              >
+                <div
+                  id="result-hex-display"
+                  class="font-mono text-xl font-bold tracking-wider"
+                >
+                  #3D933E
+                </div>
+                <div
+                  id="result-rgb-display"
+                  class="text-[11px] font-mono text-white/80"
+                >
+                  rgb(61, 147, 62)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mixing Palette Card -->
           <div
             class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs"
           >
@@ -235,6 +281,74 @@ const pageSchema = [
             </div>
           </div>
 
+          <!-- Live Design Mockup Preview Studio -->
+          <div
+            class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs"
+          >
+            <h3
+              class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]"
+            >
+              Live UI Component Preview
+            </h3>
+            <p class="mt-1 text-xs text-[#8f8f8f]">
+              See how this mixed color performs in realistic design components:
+            </p>
+
+            <div
+              class="mt-4 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4"
+            >
+              <!-- Component 1: Action Button -->
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-[#8f8f8f]">CTA Button</span>
+                <button
+                  type="button"
+                  id="preview-btn"
+                  class="rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors"
+                  style="background-color: #3D933E;"
+                >
+                  Confirm Action
+                </button>
+              </div>
+
+              <!-- Component 2: Outline Tag -->
+              <div
+                class="flex items-center justify-between border-t border-[#ebebeb] pt-3"
+              >
+                <span class="text-xs text-[#8f8f8f]">Status Tag</span>
+                <span
+                  id="preview-tag"
+                  class="inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-medium"
+                  style="background-color: rgba(61, 147, 62, 0.12); color: #3D933E; border: 1px solid #3D933E;"
+                >
+                  <span
+                    class="h-1.5 w-1.5 rounded-full"
+                    style="background-color: #3D933E;"></span>
+                  Verified Mix
+                </span>
+              </div>
+
+              <!-- Component 3: Card Accent -->
+              <div
+                id="preview-card"
+                class="rounded-lg bg-white p-3 text-xs shadow-2xs border-l-4"
+                style="border-left-color: #3D933E;"
+              >
+                <div class="font-semibold text-[#171717]">
+                  Card Headline Accent
+                </div>
+                <div class="text-[#8f8f8f] mt-0.5">
+                  Component preview dynamically renders the pigment mixture.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Color Codes, Presets & Accessibility (5 cols) -->
+        <div class="space-y-6 lg:col-span-5">
+          <!-- Color Codes & CSS Output Component (Export Studio) -->
+          <ColorCodesOutput />
+
           <!-- Physical Paint Tubes Swatches -->
           <div
             class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs"
@@ -301,7 +415,7 @@ const pageSchema = [
 
             <div
               id="preset-tubes-grid"
-              class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4"
+              class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2"
             >
               <!-- Rendered dynamically -->
             </div>
@@ -370,274 +484,6 @@ const pageSchema = [
                     class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800"
                     >AAA Large</span
                   >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Result Output & Preview Studio (5 cols) -->
-        <div class="space-y-6 lg:col-span-5">
-          <!-- Main Result Swatch Card -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs"
-          >
-            <div
-              class="flex items-center justify-between border-b border-[#ebebeb] pb-3"
-            >
-              <span
-                class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]"
-              >
-                Mixed Color Result
-              </span>
-              <span
-                id="blend-mode-tag"
-                class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]"
-              >
-                Real Paint (RYB)
-              </span>
-            </div>
-
-            <!-- Big Color Swatch Box -->
-            <div
-              class="relative mt-4 flex h-36 w-full items-center justify-center rounded-xl border border-black/10 p-4 transition-colors shadow-inner"
-              id="result-swatch-box"
-            >
-              <div
-                class="rounded-lg bg-black/40 backdrop-blur-md px-3.5 py-1.5 text-center text-white shadow-sm"
-              >
-                <div
-                  id="result-hex-display"
-                  class="font-mono text-xl font-bold tracking-wider"
-                >
-                  #3D933E
-                </div>
-                <div
-                  id="result-rgb-display"
-                  class="text-[11px] font-mono text-white/80"
-                >
-                  rgb(61, 147, 62)
-                </div>
-              </div>
-            </div>
-
-            <!-- Color Format Codes Grid -->
-            <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
-              <div
-                class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2"
-              >
-                <div class="truncate">
-                  <span class="text-[10px] font-mono text-[#8f8f8f] block"
-                    >HEX</span
-                  >
-                  <span
-                    id="code-hex"
-                    class="font-mono font-medium text-[#171717]">#3D933E</span
-                  >
-                </div>
-                <button
-                  type="button"
-                  class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]"
-                  data-target="code-hex"
-                  title="Copy HEX"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    ><path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                    ></path></svg
-                  >
-                </button>
-              </div>
-
-              <div
-                class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2"
-              >
-                <div class="truncate">
-                  <span class="text-[10px] font-mono text-[#8f8f8f] block"
-                    >HSL</span
-                  >
-                  <span
-                    id="code-hsl"
-                    class="font-mono font-medium text-[#171717]"
-                    >121°, 41%, 41%</span
-                  >
-                </div>
-                <button
-                  type="button"
-                  class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]"
-                  data-target="code-hsl"
-                  title="Copy HSL"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    ><path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                    ></path></svg
-                  >
-                </button>
-              </div>
-
-              <div
-                class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2"
-              >
-                <div class="truncate">
-                  <span class="text-[10px] font-mono text-[#8f8f8f] block"
-                    >CMYK</span
-                  >
-                  <span
-                    id="code-cmyk"
-                    class="font-mono font-medium text-[#171717]"
-                    >59, 0, 58, 42</span
-                  >
-                </div>
-                <button
-                  type="button"
-                  class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]"
-                  data-target="code-cmyk"
-                  title="Copy CMYK"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    ><path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                    ></path></svg
-                  >
-                </button>
-              </div>
-
-              <div
-                class="flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] px-3 py-2"
-              >
-                <div class="truncate">
-                  <span class="text-[10px] font-mono text-[#8f8f8f] block"
-                    >OKLCH</span
-                  >
-                  <span
-                    id="code-oklch"
-                    class="font-mono font-medium text-[#171717]"
-                    >0.58, 0.14, 142</span
-                  >
-                </div>
-                <button
-                  type="button"
-                  class="copy-btn cursor-pointer text-[#8f8f8f] hover:text-[#171717]"
-                  data-target="code-oklch"
-                  title="Copy OKLCH"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    ><path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                    ></path></svg
-                  >
-                </button>
-              </div>
-            </div>
-
-            <!-- CSS Snippet Generator -->
-            <div
-              class="mt-4 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3"
-            >
-              <div class="flex items-center justify-between">
-                <span class="text-[11px] font-mono text-[#8f8f8f]"
-                  >Modern CSS Output</span
-                >
-                <button
-                  type="button"
-                  id="copy-css-snippet"
-                  class="text-xs font-medium text-[#0070f3] hover:underline cursor-pointer"
-                >
-                  Copy Code
-                </button>
-              </div>
-              <pre
-                id="css-snippet-code"
-                class="mt-1 font-mono text-xs text-[#171717] overflow-x-auto whitespace-pre-wrap">background-color: #3D933E;</pre>
-            </div>
-          </div>
-
-          <!-- Live Design Mockup Preview Studio -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs"
-          >
-            <h3
-              class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]"
-            >
-              Live UI Component Preview
-            </h3>
-            <p class="mt-1 text-xs text-[#8f8f8f]">
-              See how this mixed color performs in realistic design components:
-            </p>
-
-            <div
-              class="mt-4 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4"
-            >
-              <!-- Component 1: Action Button -->
-              <div class="flex items-center justify-between">
-                <span class="text-xs text-[#8f8f8f]">CTA Button</span>
-                <button
-                  type="button"
-                  id="preview-btn"
-                  class="rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors"
-                  style="background-color: #3D933E;"
-                >
-                  Confirm Action
-                </button>
-              </div>
-
-              <!-- Component 2: Outline Tag -->
-              <div
-                class="flex items-center justify-between border-t border-[#ebebeb] pt-3"
-              >
-                <span class="text-xs text-[#8f8f8f]">Status Tag</span>
-                <span
-                  id="preview-tag"
-                  class="inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-medium"
-                  style="background-color: rgba(61, 147, 62, 0.12); color: #3D933E; border: 1px solid #3D933E;"
-                >
-                  <span
-                    class="h-1.5 w-1.5 rounded-full"
-                    style="background-color: #3D933E;"></span>
-                  Verified Mix
-                </span>
-              </div>
-
-              <!-- Component 3: Card Accent -->
-              <div
-                id="preview-card"
-                class="rounded-lg bg-white p-3 text-xs shadow-2xs border-l-4"
-                style="border-left-color: #3D933E;"
-              >
-                <div class="font-semibold text-[#171717]">
-                  Card Headline Accent
-                </div>
-                <div class="text-[#8f8f8f] mt-0.5">
-                  Component preview dynamically renders the pigment mixture.
                 </div>
               </div>
             </div>
@@ -1550,7 +1396,7 @@ const pageSchema = [
 
     if (pigmentPresets.length === 0) {
       presetGrid.innerHTML = `
-        <div class="col-span-2 sm:col-span-4 py-4 text-center">
+        <div class="col-span-2 sm:col-span-4 lg:col-span-2 py-4 text-center">
           <p class="text-xs text-[#8f8f8f]">No presets saved. Paste a hex above to add one, or click Reset Defaults.</p>
         </div>
       `;
