@@ -51,7 +51,7 @@
 
     <!-- Description -->
     <text x="0" y="210" fill="#a1a1aa" font-size="20" font-weight="400">
-      True subtractive pigment physics (Kubelka-Munk) meets Johannes
+      True subtractive pigment physics meets Johannes
     </text>
     <text x="0" y="238" fill="#a1a1aa" font-size="20" font-weight="400">
       Itten's Bauhaus color wheel chart. Better than Adobe Color Wheel.
@@ -71,7 +71,7 @@
 
     <!-- Domain Footer -->
     <text x="0" y="380" fill="#71717a" font-size="16" font-family="monospace" font-weight="500">
-      realcolormixer.com • 100% Free • WCAG 2.1 Contrast • CSS color-mix()
+      pigmentlab.com • 100% Free • WCAG 2.1 Contrast • CSS color-mix()
     </text>
   </g>
 
