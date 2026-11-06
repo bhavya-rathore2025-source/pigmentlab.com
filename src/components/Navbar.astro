@@ -18,7 +18,7 @@ const { currentPath = '' } = Astro.props;
     </a>
 
     <!-- Nav Links (Desktop md+) -->
-    <nav class="hidden md:flex items-center gap-1 sm:gap-2">
+    <nav class="hidden md:flex items-center gap-1 sm:gap-1.5">
       <a
         href="/mix"
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
@@ -41,6 +41,28 @@ const { currentPath = '' } = Astro.props;
       >
         <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
         <span>Color Wheel</span>
+      </a>
+
+      <a
+        href="/about"
+        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/about')
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <span>About</span>
+      </a>
+
+      <a
+        href="/contact"
+        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/contact')
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <span>Contact</span>
       </a>
     </nav>
 
@@ -143,6 +165,38 @@ const { currentPath = '' } = Astro.props;
         </div>
         <span class="font-mono text-[10px] opacity-75">PigmentLab</span>
       </a>
+
+      <div class="my-1 border-t border-[#ebebeb] dark:border-[#222222]"></div>
+
+      <a
+        href="/about"
+        class={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/about')
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <span class="font-medium">About Us</span>
+        <span class="font-mono text-[10px] opacity-75">Story & Science</span>
+      </a>
+
+      <a
+        href="/contact"
+        class={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/contact')
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <span class="font-medium">Contact Us</span>
+        <span class="font-mono text-[10px] opacity-75">Support & Feedback</span>
+      </a>
+
+      <div class="flex items-center justify-between px-3 pt-1 text-[11px] text-[#8f8f8f] dark:text-[#737373]">
+        <a href="/privacy" class="hover:underline">Privacy Policy</a>
+        <span>·</span>
+        <a href="/terms" class="hover:underline">Terms & Conditions</a>
+      </div>
     </div>
   </div>
 </header>
