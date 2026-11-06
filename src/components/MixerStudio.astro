@@ -759,7 +759,7 @@ const labels = studioI18n[lang] || studioI18n.de;
   const codeCmyk = document.getElementById("code-cmyk");
   const codeOklch = document.getElementById("code-oklch");
   const cssSnippetCode = document.getElementById("css-snippet-code");
-  const copyCssBtn = document.getElementById("copy-css-btn");
+  const copyCssBtn = document.getElementById("copy-css-btn") || document.getElementById("copy-css-snippet");
 
   const wcagWhiteRatio = document.getElementById("wcag-white-ratio");
   const wcagBlackRatio = document.getElementById("wcag-black-ratio");
@@ -971,8 +971,7 @@ const labels = studioI18n[lang] || studioI18n.de;
 
   function updateMix() {
     const mixedHex = calculateMixedColor();
-    const rgbArr = hexToRgb(mixedHex);
-    const rgb = { r: rgbArr[0], g: rgbArr[1], b: rgbArr[2] };
+    const rgb = hexToRgb(mixedHex);
     const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
     const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
     const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
@@ -1008,7 +1007,15 @@ const labels = studioI18n[lang] || studioI18n.de;
       partsFormula.innerHTML = `Recipe: <span class="font-semibold text-[#171717] dark:text-white">${parts}</span>`;
     }
 
-    if (previewBtn) previewBtn.style.backgroundColor = mixedHex;
+    const contrastWhite = getWcagContrast(mixedHex, "#FFFFFF");
+    const contrastBlack = getWcagContrast(mixedHex, "#171717");
+    const scoreWhite = getContrastRating(contrastWhite);
+    const scoreBlack = getContrastRating(contrastBlack);
+
+    if (previewBtn) {
+      previewBtn.style.backgroundColor = mixedHex;
+      previewBtn.style.color = contrastWhite >= contrastBlack ? "#FFFFFF" : "#171717";
+    }
     if (previewTag) {
       previewTag.style.backgroundColor = `${mixedHex}20`;
       previewTag.style.color = mixedHex;
@@ -1018,19 +1025,13 @@ const labels = studioI18n[lang] || studioI18n.de;
     }
     if (previewCard) previewCard.style.borderLeftColor = mixedHex;
 
-    const scoreWhite = getWcagContrast(mixedHex, "#FFFFFF");
-    const scoreBlack = getWcagContrast(mixedHex, "#000000");
-
     if (wcagWhiteRatio) wcagWhiteRatio.textContent = scoreWhite.ratioText;
     if (wcagBlackRatio) wcagBlackRatio.textContent = scoreBlack.ratioText;
 
-    const ratingWhite = getContrastRating(scoreWhite.ratio);
-    const ratingBlack = getContrastRating(scoreBlack.ratio);
-
-    updateBadge(badgeWhiteAA, ratingWhite.aa, "AA Pass", "AA Fail");
-    updateBadge(badgeWhiteAAA, ratingWhite.aaa, "AAA Large", "AAA Fail");
-    updateBadge(badgeBlackAA, ratingBlack.aa, "AA Pass", "AA Fail");
-    updateBadge(badgeBlackAAA, ratingBlack.aaa, "AAA Large", "AAA Fail");
+    updateBadge(badgeWhiteAA, scoreWhite.aaNormal, "AA Pass", "AA Fail");
+    updateBadge(badgeWhiteAAA, scoreWhite.aaaNormal, "AAA Large", "AAA Fail");
+    updateBadge(badgeBlackAA, scoreBlack.aaNormal, "AA Pass", "AA Fail");
+    updateBadge(badgeBlackAAA, scoreBlack.aaaNormal, "AAA Large", "AAA Fail");
   }
 
   function updateBadge(el: HTMLElement | null, pass: boolean, passText: string, failText: string) {
@@ -1043,18 +1044,24 @@ const labels = studioI18n[lang] || studioI18n.de;
     el.textContent = pass ? passText : failText;
   }
 
+  function updateModeButtonsUI() {
+    document.querySelectorAll(".mode-btn").forEach((b) => {
+      b.classList.remove("active", "bg-[#171717]", "text-white", "dark:bg-white", "dark:text-[#171717]");
+      b.classList.add("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
+    });
+    const activeBtn = document.querySelector(`.mode-btn[data-mode="${currentMode}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add("active", "bg-[#171717]", "text-white", "dark:bg-white", "dark:text-[#171717]");
+      activeBtn.classList.remove("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
+    }
+  }
+
   document.querySelectorAll(".mode-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".mode-btn").forEach((b) => {
-        b.classList.remove("active", "bg-[#171717]", "text-white", "dark:bg-white", "dark:text-[#171717]");
-        b.classList.add("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
-      });
-      btn.classList.add("active", "bg-[#171717]", "text-white", "dark:bg-white", "dark:text-[#171717]");
-      btn.classList.remove("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
-
       const mode = btn.getAttribute("data-mode");
       if (mode) {
         currentMode = mode as any;
+        updateModeButtonsUI();
         persistCurrentState();
         updateMix();
       }
@@ -1079,16 +1086,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     activeSlotIndex = 0;
     currentMode = "paint";
 
-    document.querySelectorAll(".mode-btn").forEach((b) => {
-      b.classList.remove("active", "bg-[#171717]", "text-white", "dark:bg-white", "dark:text-[#171717]");
-      b.classList.add("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
-    });
-    const defaultModeBtn = document.querySelector('.mode-btn[data-mode="paint"]');
-    if (defaultModeBtn) {
-      defaultModeBtn.classList.add("active", "bg-[#171717]", "text-white", "dark:bg-white", "dark:text-[#171717]");
-      defaultModeBtn.classList.remove("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
-    }
-
+    updateModeButtonsUI();
     persistCurrentState();
     renderSlots();
     updateMix();
@@ -1159,7 +1157,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     renderPresets();
   });
 
-  document.querySelectorAll(".copy-code-btn").forEach((btn) => {
+  document.querySelectorAll(".copy-code-btn, .copy-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const targetId = btn.getAttribute("data-target");
       if (targetId) {
@@ -1187,6 +1185,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     }
   });
 
+  updateModeButtonsUI();
   renderPresets();
   renderSlots();
   updateMix();

@@ -679,7 +679,7 @@ const labels = studioI18n[lang] || studioI18n.de;
 
   function calculatePalette() {
     const offsets = SCHEMES[schemeType] || SCHEMES.complementary;
-    const colors: Array<{ hex: string; hsl: [number, number, number]; rgb: [number, number, number]; angle: number }> = [];
+    const colors: Array<{ hex: string; hsl: { h: number; s: number; l: number }; rgb: { r: number; g: number; b: number }; angle: number }> = [];
 
     if (schemeType === 'monochromatic') {
       const rgbBase = wheelMode === 'itten'
@@ -697,8 +697,8 @@ const labels = studioI18n[lang] || studioI18n.de;
       lightSteps.forEach((l) => {
         const rgb = hslToRgb(rgbBase, currentSat, l);
         colors.push({
-          hex: rgbToHex(rgb[0], rgb[1], rgb[2]),
-          hsl: [rgbBase, currentSat, l],
+          hex: rgbToHex(rgb.r, rgb.g, rgb.b),
+          hsl: { h: rgbBase, s: currentSat, l },
           rgb,
           angle: currentHue
         });
@@ -712,8 +712,8 @@ const labels = studioI18n[lang] || studioI18n.de;
 
         const rgb = hslToRgb(rgbHue, currentSat, currentLight);
         colors.push({
-          hex: rgbToHex(rgb[0], rgb[1], rgb[2]),
-          hsl: [rgbHue, currentSat, currentLight],
+          hex: rgbToHex(rgb.r, rgb.g, rgb.b),
+          hsl: { h: rgbHue, s: currentSat, l: currentLight },
           rgb,
           angle: wheelAngle
         });
@@ -734,6 +734,7 @@ const labels = studioI18n[lang] || studioI18n.de;
 
     ctx.clearRect(0, 0, width, height);
 
+    const isDark = document.documentElement.classList.contains('dark');
     const segments = 360;
     const step = (Math.PI * 2) / segments;
 
@@ -747,7 +748,7 @@ const labels = studioI18n[lang] || studioI18n.de;
         : angle;
 
       const rgb = hslToRgb(rgbHue, currentSat, currentLight);
-      let renderHex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+      let renderHex = rgbToHex(rgb.r, rgb.g, rgb.b);
 
       if (currentCvd !== 'normal') {
         const cvdHex = simulateColorBlindness(renderHex, currentCvd as any);
@@ -764,10 +765,10 @@ const labels = studioI18n[lang] || studioI18n.de;
 
     ctx.beginPath();
     ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = isDark ? '#0f0f11' : '#ffffff';
     ctx.fill();
     ctx.lineWidth = 1;
-    ctx.strokeStyle = '#ebebeb';
+    ctx.strokeStyle = isDark ? '#262626' : '#ebebeb';
     ctx.stroke();
 
     const palette = calculatePalette();
@@ -779,19 +780,23 @@ const labels = studioI18n[lang] || studioI18n.de;
       const nodeY = centerY + Math.sin(rad) * handleDistance;
 
       const isBaseNode = index === 0;
+      let nodeHex = color.hex;
+      if (currentCvd !== 'normal') {
+        nodeHex = simulateColorBlindness(nodeHex, currentCvd as any);
+      }
 
       ctx.beginPath();
       ctx.arc(nodeX, nodeY, isBaseNode ? 10 : 7, 0, Math.PI * 2);
-      ctx.fillStyle = color.hex;
+      ctx.fillStyle = nodeHex;
       ctx.fill();
       ctx.lineWidth = isBaseNode ? 3 : 2;
-      ctx.strokeStyle = isBaseNode ? '#171717' : '#ffffff';
+      ctx.strokeStyle = isBaseNode ? (isDark ? '#ffffff' : '#171717') : (isDark ? '#141414' : '#ffffff');
       ctx.stroke();
 
       if (isBaseNode) {
         ctx.beginPath();
         ctx.arc(nodeX, nodeY, 3, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = isDark ? '#ffffff' : '#171717';
         ctx.fill();
       }
     });
@@ -803,7 +808,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(lineX, lineY);
-    ctx.strokeStyle = '#171717';
+    ctx.strokeStyle = isDark ? '#ffffff' : '#171717';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
@@ -811,7 +816,7 @@ const labels = studioI18n[lang] || studioI18n.de;
       ? ittenAngleToRgbHue(currentHue)
       : currentHue;
     const centerRgb = hslToRgb(baseColorRgb, currentSat, currentLight);
-    let centerHex = rgbToHex(centerRgb[0], centerRgb[1], centerRgb[2]);
+    let centerHex = rgbToHex(centerRgb.r, centerRgb.g, centerRgb.b);
 
     if (currentCvd !== 'normal') {
       centerHex = simulateColorBlindness(centerHex, currentCvd as any);
@@ -822,7 +827,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     ctx.fillStyle = centerHex;
     ctx.fill();
     ctx.lineWidth = 2;
-    ctx.strokeStyle = '#ffffff';
+    ctx.strokeStyle = isDark ? '#262626' : '#ffffff';
     ctx.stroke();
   }
 
@@ -859,7 +864,7 @@ const labels = studioI18n[lang] || studioI18n.de;
           </div>
           <div class="h-16 w-full rounded-lg shadow-inner cursor-pointer" style="background-color: ${displayHex};" data-select-hex="${item.hex}"></div>
           <div class="mt-2 flex items-center justify-between font-mono text-[10px] text-[#8f8f8f]">
-            <span>H: ${item.hsl[0]}° S: ${item.hsl[1]}% L: ${item.hsl[2]}%</span>
+            <span>H: ${item.hsl.h}° S: ${item.hsl.s}% L: ${item.hsl.l}%</span>
             <span>Angle: ${item.angle}°</span>
           </div>
         `;
@@ -907,20 +912,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     const scale = generatePaletteScale(selectedSwatchHex);
     shadeScaleStrip.innerHTML = '';
 
-    const steps = [
-      { step: '50', hex: scale[50] },
-      { step: '100', hex: scale[100] },
-      { step: '200', hex: scale[200] },
-      { step: '300', hex: scale[300] },
-      { step: '400', hex: scale[400] },
-      { step: '500', hex: scale[500] },
-      { step: '600', hex: scale[600] },
-      { step: '700', hex: scale[700] },
-      { step: '800', hex: scale[800] },
-      { step: '900', hex: scale[900] },
-    ];
-
-    steps.forEach(({ step, hex }) => {
+    scale.forEach(({ label, hex }) => {
       let displayHex = hex;
       if (currentCvd !== 'normal') {
         displayHex = simulateColorBlindness(hex, currentCvd as any);
@@ -930,13 +922,13 @@ const labels = studioI18n[lang] || studioI18n.de;
       item.type = 'button';
       item.className = 'group relative flex-1 min-w-[34px] h-12 flex flex-col justify-end items-center pb-1 text-[9px] font-mono cursor-pointer transition-transform hover:scale-105';
       item.style.backgroundColor = displayHex;
-      item.title = `Tailwind ${step}: ${hex} (Click to copy)`;
+      item.title = `Tailwind ${label}: ${hex} (Click to copy)`;
 
       const rgb = hexToRgb(hex);
-      const isDark = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000 < 128;
+      const isDark = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000 < 128;
       item.style.color = isDark ? '#ffffff' : '#171717';
 
-      item.innerHTML = `<span class="opacity-0 group-hover:opacity-100 font-bold transition-opacity">${step}</span>`;
+      item.innerHTML = `<span class="opacity-0 group-hover:opacity-100 font-bold transition-opacity">${label}</span>`;
 
       item.addEventListener('click', () => {
         navigator.clipboard.writeText(hex);
@@ -970,16 +962,16 @@ const labels = studioI18n[lang] || studioI18n.de;
             <span class="font-mono text-[11px] font-semibold text-[#171717] dark:text-white">${hex2}</span>
           </div>
           <div class="flex items-center gap-2">
-            <span class="font-mono font-bold text-[#171717] dark:text-white">${ratio}:1</span>
+            <span class="font-mono font-bold text-[#171717] dark:text-white">${rating.ratioText}</span>
             <span class="rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
-              rating.aa ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
+              rating.aaNormal ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
             }">
-              AA ${rating.aa ? '✓' : '✗'}
+              AA ${rating.aaNormal ? '✓' : '✗'}
             </span>
             <span class="rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
-              rating.aaa ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400'
+              rating.aaaNormal ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400'
             }">
-              AAA ${rating.aaa ? '✓' : '✗'}
+              AAA ${rating.aaaNormal ? '✓' : '✗'}
             </span>
           </div>
         `;
@@ -1007,10 +999,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     cssVarsExportCode.textContent = `:root {\n${cssVars}\n}`;
   }
 
-  function updateWheelMode(mode: 'itten' | 'rgb') {
-    wheelMode = mode;
-    persistWheelState();
-
+  function updateWheelModeUI() {
     if (wheelMode === 'itten') {
       ittenModeBtn?.classList.add('active', 'bg-[#171717]', 'text-white', 'dark:bg-white', 'dark:text-[#171717]');
       ittenModeBtn?.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
@@ -1022,7 +1011,38 @@ const labels = studioI18n[lang] || studioI18n.de;
       ittenModeBtn?.classList.remove('active', 'bg-[#171717]', 'text-white', 'dark:bg-white', 'dark:text-[#171717]');
       ittenModeBtn?.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
     }
+  }
 
+  function updateSchemeButtonsUI() {
+    document.querySelectorAll('.scheme-btn').forEach((b) => {
+      const scheme = b.getAttribute('data-scheme');
+      if (scheme === schemeType) {
+        b.classList.add('active', 'bg-[#171717]', 'text-white');
+        b.classList.remove('bg-white', 'text-[#4d4d4d]', 'border', 'border-[#ebebeb]');
+      } else {
+        b.classList.remove('active', 'bg-[#171717]', 'text-white');
+        b.classList.add('bg-white', 'text-[#4d4d4d]', 'border', 'border-[#ebebeb]');
+      }
+    });
+  }
+
+  function updateCvdButtonsUI() {
+    document.querySelectorAll('.cvd-btn').forEach((b) => {
+      const cvd = b.getAttribute('data-cvd');
+      if (cvd === currentCvd) {
+        b.classList.add('active', 'bg-[#171717]', 'text-white');
+        b.classList.remove('bg-[#fafafa]', 'text-[#4d4d4d]');
+      } else {
+        b.classList.remove('active', 'bg-[#171717]', 'text-white');
+        b.classList.add('bg-[#fafafa]', 'text-[#4d4d4d]');
+      }
+    });
+  }
+
+  function updateWheelMode(mode: 'itten' | 'rgb') {
+    wheelMode = mode;
+    persistWheelState();
+    updateWheelModeUI();
     drawWheel();
     renderPaletteUI();
   }
@@ -1032,17 +1052,11 @@ const labels = studioI18n[lang] || studioI18n.de;
 
   document.querySelectorAll('.scheme-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.scheme-btn').forEach((b) => {
-        b.classList.remove('active', 'bg-[#171717]', 'text-white');
-        b.classList.add('bg-white', 'text-[#4d4d4d]', 'border', 'border-[#ebebeb]');
-      });
-      btn.classList.add('active', 'bg-[#171717]', 'text-white');
-      btn.classList.remove('bg-white', 'text-[#4d4d4d]', 'border', 'border-[#ebebeb]');
-
       const scheme = btn.getAttribute('data-scheme');
       if (scheme) {
         schemeType = scheme as any;
         persistWheelState();
+        updateSchemeButtonsUI();
         drawWheel();
         renderPaletteUI();
       }
@@ -1051,17 +1065,11 @@ const labels = studioI18n[lang] || studioI18n.de;
 
   document.querySelectorAll('.cvd-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.cvd-btn').forEach((b) => {
-        b.classList.remove('active', 'bg-[#171717]', 'text-white');
-        b.classList.add('bg-[#fafafa]', 'text-[#4d4d4d]');
-      });
-      btn.classList.add('active', 'bg-[#171717]', 'text-white');
-      btn.classList.remove('bg-[#fafafa]', 'text-[#4d4d4d]');
-
       const cvd = btn.getAttribute('data-cvd');
       if (cvd) {
         currentCvd = cvd as any;
         persistWheelState();
+        updateCvdButtonsUI();
         drawWheel();
         renderPaletteUI();
       }
@@ -1096,15 +1104,15 @@ const labels = studioI18n[lang] || studioI18n.de;
     const val = (e.target as HTMLInputElement).value.trim();
     if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
       const rgb = hexToRgb(val);
-      const hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
       
       const wheelAngle = wheelMode === 'itten'
-        ? rgbHueToIttenAngle(hsl[0])
-        : hsl[0];
+        ? rgbHueToIttenAngle(hsl.h)
+        : hsl.h;
 
       currentHue = wheelAngle;
-      currentSat = hsl[1];
-      currentLight = hsl[2];
+      currentSat = hsl.s;
+      currentLight = hsl.l;
 
       if (hueSlider) hueSlider.value = currentHue.toString();
       if (satSlider) satSlider.value = currentSat.toString();
@@ -1143,7 +1151,9 @@ const labels = studioI18n[lang] || studioI18n.de;
     if (satValueLabel) satValueLabel.textContent = '100%';
     if (lightValueLabel) lightValueLabel.textContent = '50%';
 
-    updateWheelMode('itten');
+    updateWheelModeUI();
+    updateSchemeButtonsUI();
+    updateCvdButtonsUI();
     persistWheelState();
     drawWheel();
     renderPaletteUI();
@@ -1270,8 +1280,14 @@ const labels = studioI18n[lang] || studioI18n.de;
   if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
   if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
 
-  updateWheelMode(wheelMode);
+  updateWheelModeUI();
+  updateSchemeButtonsUI();
+  updateCvdButtonsUI();
   drawWheel();
   renderPaletteUI();
+
+  window.addEventListener('pl:themechange', () => {
+    drawWheel();
+  });
 </script>
 
