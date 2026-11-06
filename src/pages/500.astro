@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  error?: unknown;
+}
+
+const { error } = Astro.props;
+const errorMessage =
+  error instanceof Error
+    ? error.message
+    : typeof error === 'string'
+      ? error
+      : null;
+const errorStack =
+  error instanceof Error && import.meta.env.DEV ? error.stack : null;
+---
+
+<Layout
+  title="500: Spectral Overload — PigmentLab"
+  description="An internal laboratory anomaly occurred while computing pigment physics or loading this view."
+  currentPath="/500"
+  noindex={true}
+>
+  <div class="relative min-h-[calc(100vh-140px)] flex flex-col justify-center overflow-hidden py-12 sm:py-20">
+    <!-- Ambient Anomaly Glow -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20" aria-hidden="true">
+      <div class="absolute -top-[25%] left-[20%] h-[450px] w-[500px] rounded-full bg-gradient-to-tr from-rose-500/30 via-red-600/25 to-amber-500/25 blur-3xl"></div>
+      <div class="absolute -bottom-[20%] right-[20%] h-[400px] w-[450px] rounded-full bg-gradient-to-br from-red-600/25 via-purple-600/30 to-orange-500/25 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full">
+      <!-- Main Status Card -->
+      <div class="rounded-3xl border border-[#ebebeb] dark:border-[#262626] bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md p-6 sm:p-12 shadow-sm text-center">
+        
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 rounded-full border border-rose-200 dark:border-rose-950/60 bg-rose-50 dark:bg-rose-950/30 px-3.5 py-1 text-xs font-mono font-medium text-rose-600 dark:text-rose-400">
+          <span class="h-2 w-2 rounded-full bg-rose-500 animate-ping"></span>
+          <span>HTTP 500 • Spectral Engine Fault</span>
+        </div>
+
+        <!-- Big 500 Header with Diagnostic Icon -->
+        <div class="mt-8 flex flex-col items-center">
+          <!-- Visual Reaction Vessel Fault Icon -->
+          <div class="my-4 flex items-center justify-center">
+            <div class="relative h-24 w-24 sm:h-28 sm:w-28 rounded-3xl border border-rose-200 dark:border-rose-900/40 bg-gradient-to-b from-rose-50 to-orange-50 dark:from-rose-950/20 dark:to-orange-950/10 flex items-center justify-center shadow-inner">
+              <svg class="h-12 w-12 sm:h-14 sm:w-14 text-rose-600 dark:text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+              </svg>
+              <span class="absolute -top-1.5 -right-1.5 h-4 w-4 rounded-full bg-rose-500 ring-4 ring-white dark:ring-[#0a0a0a]"></span>
+            </div>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-[#171717] dark:text-white mt-2">
+            Spectral Overload
+          </h1>
+
+          <p class="mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+            An unexpected error occurred while computing pigment physics or assembling this page. Our laboratory systems halted calculation to protect data integrity.
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            id="reload-page-button"
+            onclick="window.location.reload()"
+            class="inline-flex items-center gap-2 rounded-xl bg-[#171717] hover:bg-[#333333] text-white px-5 py-2.5 text-sm font-medium transition-colors shadow-sm dark:bg-white dark:text-black dark:hover:bg-[#ededed] cursor-pointer"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Reload & Recalculate</span>
+          </button>
+
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] hover:bg-[#f2f2f2] dark:hover:bg-[#1c1c1c] text-[#171717] dark:text-white px-5 py-2.5 text-sm font-medium transition-colors"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span>Return to Safety</span>
+          </a>
+
+          <a
+            href="/contact?subject=Technical+Bug+Report"
+            class="inline-flex items-center gap-2 rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-transparent hover:bg-[#f2f2f2] dark:hover:bg-[#181818] text-[#71717a] dark:text-[#a1a1aa] px-4 py-2.5 text-sm font-medium transition-colors"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <span>Report Anomaly</span>
+          </a>
+        </div>
+
+        <!-- Technical Diagnostics Monospace Box -->
+        <div class="mt-8 pt-8 border-t border-[#ebebeb] dark:border-[#222222] text-left">
+          <div class="rounded-xl border border-[#ebebeb] dark:border-[#242424] bg-[#fafafa] dark:bg-[#111111] p-4 font-mono text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#ebebeb] dark:border-[#222222] text-[#8f8f8f] dark:text-[#71717a]">
+              <span class="flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-rose-500"></span>
+                <span>SPECTRAL_DIAGNOSTICS_REPORT</span>
+              </span>
+              <span id="diagnostic-time" class="text-[11px]"></span>
+            </div>
+
+            <div class="space-y-1">
+              <div><span class="text-[#8f8f8f] dark:text-[#71717a]">Exception:</span> ERR_INTERNAL_SPECTRAL_COLLISION (HTTP 500)</div>
+              <div><span class="text-[#8f8f8f] dark:text-[#71717a]">Engine:</span> Kubelka-Munk Spectral Ray Tracer v1.0</div>
+              <div><span class="text-[#8f8f8f] dark:text-[#71717a]">Recovery Protocol:</span> Session state preserved · Cache reset recommended if repeating</div>
+              {
+                errorMessage && (
+                  <div class="pt-2 text-rose-600 dark:text-rose-400 font-semibold break-all">
+                    Detail: {errorMessage}
+                  </div>
+                )
+              }
+              {
+                errorStack && (
+                  <pre class="mt-2 p-2 rounded bg-black/5 dark:bg-black/40 overflow-x-auto text-[10px] text-[#71717a] dark:text-[#a1a1aa] max-h-36">
+                    {errorStack}
+                  </pre>
+                )
+              }
+            </div>
+          </div>
+
+          <div class="mt-3 flex items-center justify-between text-xs text-[#8f8f8f] dark:text-[#71717a] px-1">
+            <span>Client State: Secure & Uncorrupted</span>
+            <button
+              type="button"
+              id="clear-cache-btn"
+              class="underline hover:text-[#171717] dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Reset local mixer memory
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Alternative Links -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a
+          href="/mix"
+          class="group rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white/70 dark:bg-[#0e0e0e]/70 p-5 hover:border-[#171717] dark:hover:border-white transition-all shadow-2xs"
+        >
+          <div class="flex items-center gap-2 text-xs font-mono text-[#0070f3] dark:text-[#3291ff]">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+            <span>Core Mixer</span>
+          </div>
+          <h2 class="mt-2 text-base font-semibold text-[#171717] dark:text-white group-hover:text-[#0070f3] transition-colors">
+            Open Subtractive Paint Mixer &rarr;
+          </h2>
+          <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Jump directly to the main Kubelka-Munk palette canvas.
+          </p>
+        </a>
+
+        <a
+          href="/color-wheel"
+          class="group rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white/70 dark:bg-[#0e0e0e]/70 p-5 hover:border-[#171717] dark:hover:border-white transition-all shadow-2xs"
+        >
+          <div class="flex items-center gap-2 text-xs font-mono text-purple-600 dark:text-purple-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
+            <span>Bauhaus Theory</span>
+          </div>
+          <h2 class="mt-2 text-base font-semibold text-[#171717] dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+            Johannes Itten Color Wheel &rarr;
+          </h2>
+          <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Explore 12 pure pigment hues and harmonious contrast relations.
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Timestamp update
+    const timeElem = document.getElementById('diagnostic-time');
+    if (timeElem) {
+      timeElem.textContent = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+    }
+
+    // Clear local mixer cache helper
+    const clearCacheBtn = document.getElementById('clear-cache-btn');
+    if (clearCacheBtn) {
+      clearCacheBtn.addEventListener('click', () => {
+        if (confirm('Reset PigmentLab mixer storage to default presets?')) {
+          localStorage.removeItem('pl_color_mixer_state_v1');
+          localStorage.removeItem('rcm_color_mixer_state_v1');
+          localStorage.removeItem('pl_color_wheel_state_v1');
+          localStorage.removeItem('rcm_color_wheel_state_v1');
+          alert('Local pigment storage cleared. Reloading page...');
+          window.location.reload();
+        }
+      });
+    }
+  </script>
+</Layout>
+

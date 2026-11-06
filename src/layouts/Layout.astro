@@ -13,6 +13,7 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   schema?: Record<string, any> | Array<Record<string, any>>;
+  noindex?: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   ogImage = "/og-image.png",
   ogType = "website",
   schema,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site
@@ -82,10 +84,16 @@ const schemaList = schema
     <link rel="canonical" href={resolvedCanonical} />
 
     <!-- Robots Meta -->
-    <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
+    {
+      noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+      )
+    }
 
     <!-- Primary SEO Meta Tags -->
     <title>{title}</title>
