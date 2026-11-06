@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const privacySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  'name': 'Política de Privacidad — PigmentLab',
+  'url': 'https://pigmentlab.com/es/privacy',
+  'description': 'Política de privacidad de PigmentLab. Arquitectura en el cliente, almacenamiento local y respeto a la privacidad sin seguimiento.',
+  'publisher': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com'
+  }
+};
+---
+
+<Layout
+  title="Política de Privacidad — PigmentLab"
+  description="Consulta la política de privacidad de PigmentLab. Funcionamiento local en tu navegador sin rastreo ni venta de datos (conforme RGPD)."
+  keywords="politica de privacidad pigmentlab, rgpd, privacidad, herramientas locales"
+  currentPath="/es/privacy"
+  lang="es"
+  schema={privacySchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 text-center">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
+        Política de Privacidad
+      </h1>
+      <p class="mt-4 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+        PigmentLab se ejecuta completamente en el navegador del usuario. No almacenamos tus mezclas ni tus paletas en servidores remotos.
+      </p>
+    </div>
+  </section>
+</Layout>
+

@@ -2,9 +2,16 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
+// https://docs.astro.build/en/guides/internationalization/
 export default defineConfig({
   site: 'https://pigmentlab.com',
+  i18n: {
+    defaultLocale: 'de',
+    locales: ['de', 'en', 'fr', 'pt', 'es', 'ru'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   redirects: {
     '/privacy-policy': '/privacy',
     '/about-us': '/about',

@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  'name': 'Sobre PigmentLab',
+  'url': 'https://pigmentlab.com/es/about',
+  'description': 'Conoce la historia y los principios científicos de PigmentLab: física de pigmentos sustractivos de Kubelka-Munk y teoría del color de Johannes Itten.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'logo': 'https://pigmentlab.com/favicon.svg'
+  }
+};
+---
+
+<Layout
+  title="Sobre PigmentLab — Ciencia del Color & Rueda de Color Bauhaus"
+  description="Conoce la historia y la óptica física detrás de PigmentLab. La unión del círculo de color tradicional de Johannes Itten con la absorción espectral de pigmentos físicos."
+  keywords="sobre pigmentlab, ciencia del color, física de pigmentos, kubelka munk, johannes itten, rueda de color, mezcla sustractiva"
+  currentPath="/es/about"
+  lang="es"
+  schema={aboutSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+        <span>Nuestra Misión &amp; Fundamentos Científicos</span>
+      </div>
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl">
+        Realismo de Pintura Física para la Era Digital
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Durante décadas, las pantallas forzaron a los creadores a trabajar con luz aditiva RGB, degradando las mezclas a tonos grises. PigmentLab devuelve a la web la absorción física de la luz y la armonía clásica del Bauhaus.
+      </p>
+    </div>
+  </section>
+</Layout>
+

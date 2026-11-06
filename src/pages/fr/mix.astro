@@ -1,0 +1,220 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MixerStudio from '../../components/MixerStudio.astro';
+
+const frenchMixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'Comment faire un mélange de couleur en ligne avec physique réelle ?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Pour réaliser un mélange de couleur sur PigmentLab, sélectionnez le mode Peinture Réelle (optique soustractive des pigments), choisissez deux couleurs ou pigments d\'artistes, et ajustez les proportions de 1% à 100%. Contrairement aux logiciels d\'image classiques qui créent un gris terne, notre outil combine Bleu et Jaune pour donner un Vert éclatant.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Quel est le mélange de couleur pour obtenir du marron ?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Pour obtenir du marron, vous pouvez : 1. Mélanger les trois couleurs primaires (Rouge, Jaune et Bleu) à parts égales. 2. Mélanger deux couleurs complémentaires : Rouge et Vert, ou Bleu et Orange. 3. Pour un marron chaud, combinez une majorité de Jaune avec du Rouge et une petite pointe de Bleu.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Que contient le tableau des mélanges de couleurs primaires ?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Le tableau des mélanges de couleurs primaires détaille les combinaisons fondamentales : Bleu + Jaune donne Vert, Rouge + Jaune donne Orange, et Bleu + Rouge donne Violet. En variant les pourcentages de chaque composant, on obtient toutes les nuances tertiaires.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Ce simulateur convient-il pour le mélange de couleur teinture vêtement et peinture murale ?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Oui. Grâce au calcul soustractif Kubelka-Munk, les prévisions de teinte correspondent exactement au comportement des pigments physiques dans les peintures murales, encres et teintures pour vêtements.'
+      }
+    }
+  ]
+};
+
+const frenchMixSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Mélange de Couleur en Ligne — Tableau des Mélanges de Couleurs',
+    'url': 'https://pigmentlab.com/fr/mix',
+    'description': 'Simulateur de mélange de couleur en ligne avec vraie physique soustractive. Tableau des mélanges de couleurs primaires, comment obtenir du marron, et générateur CSS color-mix().',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'EUR'
+    }
+  },
+  frenchMixFaqSchema
+];
+---
+
+<Layout
+  title="Mélange de Couleur en Ligne — Tableau des Mélanges de Couleurs & Simulateur"
+  description="Simulateur de mélange de couleur en ligne avec physique soustractive réelle. Consultez le tableau des mélanges de couleurs primaires, découvrez le mélange de couleur pour obtenir du marron, et générez du code CSS color-mix(). Idéal pour peinture et teinture vêtement."
+  keywords="mélange de couleur, melange de couleur, tableau des mélanges de couleurs, mélange de couleur primaire, tableau des mélanges de couleurs primaires, melange de couleur pour obtenir du marron, tableau des mélanges de couleurs jaune, tableau des mélanges de couleurs bleu, mélange de couleur teinture vêtement, tableau des mélanges de couleurs pdf"
+  currentPath="/fr/mix"
+  lang="fr"
+  schema={frenchMixSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Physique Soustractive &amp; Tableau des Mélanges</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Simulateur de Mélange de Couleur en Ligne
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Les outils classiques créent un gris terne en mélangeant les canaux RVB. Notre simulateur de <strong class="text-[#171717] dark:text-white">mélange de couleur</strong> reproduit l'absorption physique réelle des pigments : associez <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Bleu</span> et <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Jaune</span> pour obtenir un <span class="font-medium text-[#168a35] dark:text-[#47d169]">Vert</span> lumineux comme dans la vraie peinture.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="fr" />
+
+  <!-- Educational Guide in French -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Optique des Pigments &amp; Recettes</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          Tableau des mélanges de couleurs et guide des mélanges primaires
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Comprendre le mélange de couleur primaire, obtenir du marron parfait et utiliser le tableau pour la peinture ou la teinture vêtement.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Pourquoi utiliser un simulateur de mélange de couleur à physique réelle ?
+          </h3>
+          <p>
+            En peinture comme en teinture de tissu, les pigments absorbent les longueurs d'onde lumineuses au lieu d'en émettre. Lorsqu'on effectue un <strong>mélange de couleur</strong> sur un écran classique avec les canaux RVB, le calcul donne une moyenne grise désagréable (#808040).
+          </p>
+          <p>
+            Notre outil de <strong>mélange de couleur</strong> s'appuie sur la théorie optique de Kubelka-Munk pour calculer la diffusion de la lumière entre particules, délivrant des teintes vibrantes et exactes.
+          </p>
+        </section>
+
+        <!-- Tableau des mélanges de couleurs -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Tableau des mélanges de couleurs primaires
+          </h3>
+          <p>
+            Voici le <strong>tableau des mélanges de couleurs</strong> de base pour artistes, bricoleurs et designers :
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Couleur 1</th>
+                  <th class="p-4 sm:p-5">Couleur 2</th>
+                  <th class="p-4 sm:p-5">Résultat Peinture Réelle (PigmentLab)</th>
+                  <th class="p-4 sm:p-5">Résultat Numérique Standard</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Bleu Phtalo (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Jaune Cadmium (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">Vert Émeraude Vibrant (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Grisâtre terne (#808C43)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Rouge Cadmium (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Jaune Cadmium (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">Orange Lumineux (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Orange décoloré (#F37B13)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Bleu Phtalo (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Rouge Cadmium (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">Violet Profond / Pourpre</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Magenta terne</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Mélange de couleur pour obtenir du marron -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            3. Mélange de couleur pour obtenir du marron
+          </h3>
+          <p>
+            Pour la question fréquente <strong>"melange de couleur pour obtenir du marron"</strong>, voici les 3 techniques les plus efficaces :
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Méthode 1 : 3 Primaires</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Mélangez Rouge + Jaune + Bleu. En augmentant la proportion de jaune, vous obtenez un marron ocre ou caramel.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Méthode 2 : Complémentaires</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Associez Rouge + Vert ou Bleu + Orange. Vous obtenez immédiatement un marron terreux naturel et harmonieux.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Méthode 3 : Nuancer avec Blanc</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Ajoutez du blanc de titane pour créer des beiges et cafés au lait, ou du bleu outremer pour un chocolat noir profond.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Questions Fréquentes
+          </h3>
+          <div class="space-y-4">
+            {frenchMixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+

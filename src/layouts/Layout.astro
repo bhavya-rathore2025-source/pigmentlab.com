@@ -2,13 +2,20 @@
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import {
+  getLangFromUrl,
+  getHreflangLinks,
+  getOgLocale,
+  type SupportedLanguage,
+  defaultLang,
+} from "../i18n/utils";
 
 interface Props {
   title?: string;
   description?: string;
   keywords?: string;
   currentPath?: string;
-  lang?: string;
+  lang?: SupportedLanguage;
   canonicalUrl?: string;
   ogImage?: string;
   ogType?: string;
@@ -17,11 +24,11 @@ interface Props {
 }
 
 const {
-  title = "PigmentLab — Real Pigment Physics Color Tools for Artists & Designers",
-  description = "Free online color tools powered by realistic physical pigment optics and Johannes Itten Bauhaus color theory. Mix paint pigments, generate color palettes, and test WCAG contrast.",
-  keywords = "pigmentlab, pigment lab, pigment color tools, real color tools, physical paint mixer, itten color tools, color physics, subtractive color tool",
-  currentPath = "",
-  lang = "en",
+  title = "PigmentLab — Subtraktive Farbphysik & Johannes Itten Bauhaus Farbtheorie",
+  description = "Kostenlose Online-Farbwerkzeuge basierend auf realistischer physikalischer Pigmentoptik und Johannes Itten Bauhaus-Farbtheorie. Farben mischen, Farbpaletten generieren und WCAG-Kontrast testen.",
+  keywords = "pigmentlab, pigment lab, farbkreis, farben mischen, farbrad, farbkreis itten, farbtheorie, farbpaletten generator",
+  currentPath = Astro.url.pathname,
+  lang,
   canonicalUrl,
   ogImage = "/og-image.png",
   ogType = "website",
@@ -29,14 +36,27 @@ const {
   noindex = false,
 } = Astro.props;
 
+const detectedLang = getLangFromUrl(Astro.url);
+const resolvedLang: SupportedLanguage = lang || detectedLang || defaultLang;
+
 const siteUrl = Astro.site
   ? Astro.site.toString().replace(/\/$/, "")
   : "https://pigmentlab.com";
+
+// If canonicalUrl not explicitly supplied, compute based on current URL path
+const activePathname = currentPath || Astro.url.pathname;
+const normalizedPath = activePathname.endsWith("/") && activePathname.length > 1
+  ? activePathname.slice(0, -1)
+  : activePathname;
 const resolvedCanonical =
-  canonicalUrl || `${siteUrl}${currentPath === "/" ? "" : currentPath}`;
+  canonicalUrl || `${siteUrl}${normalizedPath === "/" ? "" : normalizedPath}`;
+
 const resolvedOgImage = ogImage.startsWith("http")
   ? ogImage
   : `${siteUrl}${ogImage}`;
+
+const ogLocale = getOgLocale(resolvedLang);
+const hreflangLinks = getHreflangLinks(activePathname, siteUrl);
 
 const defaultSchema = {
   "@context": "https://schema.org",
@@ -59,7 +79,7 @@ const schemaList = schema
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth dark">
+<html lang={resolvedLang} class="scroll-smooth dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,6 +102,13 @@ const schemaList = schema
 
     <!-- Canonical URL -->
     <link rel="canonical" href={resolvedCanonical} />
+
+    <!-- Hreflang Alternates for Multilingual SEO -->
+    {
+      hreflangLinks.map((item) => (
+        <link rel="alternate" hreflang={item.hreflang} href={item.href} />
+      ))
+    }
 
     <!-- Robots Meta -->
     {
@@ -115,7 +142,7 @@ const schemaList = schema
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content={title} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -125,39 +152,21 @@ const schemaList = schema
     <meta name="twitter:image" content={resolvedOgImage} />
     <meta name="twitter:image:alt" content={title} />
 
-    <!-- JSON-LD Structured Data for Google Rich Snippets -->
+    <!-- JSON-LD Structured Data for Search Engine Rich Snippets -->
     {
       schemaList.map((item) => (
         <script type="application/ld+json" set:html={JSON.stringify(item)} />
       ))
     }
 
-    <!-- Dark Mode Init (defaults to dark, respects localStorage if explicitly set to light) -->
+    <!-- Dark Mode Init -->
     <script is:inline>
       (function () {
         try {
-          // Migration from rcm_ to pl_
           const legacyTheme = localStorage.getItem("rcm_theme");
           if (legacyTheme && !localStorage.getItem("pl_theme")) {
             localStorage.setItem("pl_theme", legacyTheme);
           }
-          const legacyLang = localStorage.getItem("rcm_lang");
-          if (legacyLang && !localStorage.getItem("pl_lang")) {
-            localStorage.setItem("pl_lang", legacyLang);
-          }
-          const legacyPresets = localStorage.getItem("rcm_pigment_presets_v1");
-          if (legacyPresets && !localStorage.getItem("pl_pigment_presets_v1")) {
-            localStorage.setItem("pl_pigment_presets_v1", legacyPresets);
-          }
-          const legacyMixer = localStorage.getItem("rcm_color_mixer_state_v1");
-          if (legacyMixer && !localStorage.getItem("pl_color_mixer_state_v1")) {
-            localStorage.setItem("pl_color_mixer_state_v1", legacyMixer);
-          }
-          const legacyWheel = localStorage.getItem("rcm_color_wheel_state_v1");
-          if (legacyWheel && !localStorage.getItem("pl_color_wheel_state_v1")) {
-            localStorage.setItem("pl_color_wheel_state_v1", legacyWheel);
-          }
-
           const stored = localStorage.getItem("pl_theme") || legacyTheme;
           if (stored === "light") {
             document.documentElement.classList.remove("dark");
@@ -181,10 +190,10 @@ const schemaList = schema
   <body
     class="min-h-screen flex flex-col bg-[#fafafa] text-[#171717] selection:bg-[#171717] selection:text-white dark:bg-[#000000] dark:text-[#ededed] dark:selection:bg-white dark:selection:text-black antialiased overflow-x-hidden w-full"
   >
-    <Navbar currentPath={currentPath} />
+    <Navbar currentPath={activePathname} lang={resolvedLang} />
     <main class="flex-1 w-full overflow-x-hidden">
       <slot />
     </main>
-    <Footer />
+    <Footer currentPath={activePathname} lang={resolvedLang} />
   </body>
 </html>

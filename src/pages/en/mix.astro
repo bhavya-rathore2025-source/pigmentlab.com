@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MixerStudio from '../../components/MixerStudio.astro';
+
+const mixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'How to mix these colors online?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'To mix colors online in PigmentLab, select your preferred blend mode (Real Paint for physical pigment physics or Modern Web for OKLCH gradients), add your colors by entering custom HEX codes or selecting artist oil pigments, and drag the proportion sliders from 1% to 100%. The mixed result, CSS color-mix() code, and WCAG contrast scores update in real time.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How can I mix all colors together?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'In PigmentLab\'s Real Paint mode (subtractive mixing), blending all primary colors together (Blue, Yellow, and Red) causes the pigments to absorb visible light wavelengths, resulting in a rich dark brown or near-black just like physical paint. In contrast, mixing all colors in Digital Screen mode (additive RGB light) combines wavelengths toward pure white.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How does this online color mixer simulate real paint blending?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Our online color mixer implements realistic subtractive pigment optics. Unlike standard digital tools that linearly average RGB light channels, our physical pigment model simulates how particles absorb and scatter specific light wavelengths, producing vibrant Green when mixing Blue and Yellow.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How do I mix brown using primary colors?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'To mix brown in our paint simulator, blend Red and Green, or mix Blue, Yellow, and Red in a 1:2:2 ratio. You can also mix complementary colors like Orange and Blue with a touch of Yellow Ochre for rich earthy brown tones.'
+      }
+    }
+  ]
+};
+
+const pageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Color Mixer Online & Hex Color Mixer',
+    'url': 'https://pigmentlab.com/en/mix',
+    'description': 'Free online color mixer and hex color mixer with realistic pigment physics. Blend colors with authentic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
+  },
+  mixFaqSchema
+];
+---
+
+<Layout
+  title="Color Mixer Online — Hex Color Mixer & Real Paint Blending Simulator"
+  description="Free color mixer online and hex color mixer with realistic physical pigment physics. Blend colors with proportion sliders, generate CSS color-mix(), and test WCAG contrast. The premier online color mixer."
+  keywords="color mixer, color mixer online, online color mixer, color mixer generator, hex color mixer, paint mixer, kubelka munk, real color mixing, css color mix"
+  currentPath="/en/mix"
+  lang="en"
+  schema={pageSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Subtractive Pigment Physics & CSS color-mix()</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Real Color Mixer Online & Hex Color Mixer
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Standard screen tools average RGB channels into dirty brownish-grey. Our <strong class="text-[#171717] dark:text-white">online color mixer</strong> and <strong class="text-[#171717] dark:text-white">color mixer generator</strong> simulates true pigment absorption and light scattering — blend <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Blue</span> and <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Yellow</span> to get vibrant <span class="font-medium text-[#168a35] dark:text-[#47d169]">Green</span> like real physical paint.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="en" />
+
+  <!-- Educational Guide & SEO Section -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Pigment Science & Code Generation</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          The Complete Guide to Online Color Mixing & Hex Color Generators
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Discover authentic subtractive pigment blending, mix custom hex codes, and export production-ready CSS color-mix() code.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Why Use an Online Color Mixer with Real Pigment Physics?
+          </h3>
+          <p>
+            An <strong>online color mixer</strong> is an essential tool for painters, crafters, graphic designers, and front-end developers who need to forecast how two or more colors combine. However, almost all standard digital graphics editors and web color tools suffer from a serious limitation: they mix colors using linear RGB channel averaging. When you attempt to blend pure blue and bright yellow in an RGB tool, the mathematical average lands on a dull, lifeless, muddy brownish-grey (#808040).
+          </p>
+          <p>
+            Our <strong>color mixer online</strong> solves this problem by simulating physical pigment behavior through subtractive color physics. By accounting for the physical absorption and scattering of light waves, our <strong>hex color mixer</strong> ensures that blending blue and yellow yields radiant, authentic Green (#3D933E)—exactly like mixing oil or acrylic paints on a wooden palette.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Color Mixing Table & Common Recipes
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Color 1</th>
+                  <th class="p-4 sm:p-5">Color 2</th>
+                  <th class="p-4 sm:p-5">Physical Paint Result (Subtractive)</th>
+                  <th class="p-4 sm:p-5">Standard Digital RGB Result</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Phthalo Blue (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Cadmium Yellow (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">Vibrant Green (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Muddy Grey (#808C43)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Cadmium Red (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Cadmium Yellow (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">Vibrant Orange (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Desaturated Orange (#F37B13)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Phthalo Blue (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Cadmium Red (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">Deep Violet / Purple</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Desaturated Magenta</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4">
+            {mixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+

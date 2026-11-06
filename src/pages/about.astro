@@ -4,29 +4,29 @@ import Layout from '../layouts/Layout.astro';
 const aboutSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  'name': 'About PigmentLab',
+  'name': 'Über PigmentLab',
   'url': 'https://pigmentlab.com/about',
-  'description': 'Learn about PigmentLab, our subtractive color science engine, Kubelka-Munk pigment physics, and Johannes Itten Bauhaus color theory.',
+  'description': 'Erfahren Sie mehr über PigmentLab: Die Entstehungsgeschichte, subtraktive Kubelka-Munk Pigmentabsorption und das Bauhaus-Erbe von Johannes Itten.',
   'mainEntity': {
     '@type': 'Organization',
     'name': 'PigmentLab',
     'url': 'https://pigmentlab.com',
     'logo': 'https://pigmentlab.com/favicon.svg',
-    'description': 'Realistic physical color tools based on subtractive pigment absorption physics and Johannes Itten Bauhaus RYB color theory.'
+    'description': 'Realistische physikalische Farbwerkzeuge basierend auf subtraktiver Pigmentabsorption und Johannes Ittens Bauhaus RYB-Farbtheorie.'
   }
 };
 ---
 
 <Layout
-  title="About PigmentLab — Subtractive Color Physics & Bauhaus Color Theory"
-  description="Discover the story, optical physics, and artistic philosophy behind PigmentLab. Bridging Johannes Itten's classical RYB Bauhaus circle with modern spectral Kubelka-Munk pigment absorption."
-  keywords="about pigmentlab, pigment physics, kubelka-munk theory, johannes itten, bauhaus color circle, subtractive mixing, ryb color wheel, digital painting optics"
+  title="Über PigmentLab — Subtraktive Farbphysik & Bauhaus Farblehre"
+  description="Erfahren Sie mehr über PigmentLab: Die Geschichte, optische Physik und Philosophie hinter unserer Farbplattform. Die Verbindung von Johannes Ittens Bauhaus-Farbkreis mit moderner spektraler Pigmentabsorption."
+  keywords="über pigmentlab, pigmentphysik, kubelka-munk theorie, johannes itten, bauhaus farbkreis, subtraktive farbmischung, farbrad, künstlerfarben optik"
   currentPath="/about"
+  lang="de"
   schema={aboutSchema}
 >
   <!-- Hero Section -->
   <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 overflow-hidden">
-    <!-- Ambient Glow -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
       <div class="absolute -top-[30%] left-[20%] h-[400px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/30 via-[#7928ca]/25 to-[#ff0080]/25 blur-3xl"></div>
       <div class="absolute -top-[20%] right-[15%] h-[360px] w-[460px] rounded-full bg-gradient-to-br from-[#00dfd8]/25 via-[#f9cb28]/30 to-[#ff4d4d]/25 blur-3xl"></div>
@@ -34,247 +34,59 @@ const aboutSchema = {
 
     <div class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <!-- Status Pill -->
         <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
           <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
-          <span>Our Mission & Scientific Foundation</span>
+          <span>Unsere Mission &amp; wissenschaftliche Basis</span>
         </div>
 
         <h1 class="mt-6 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl leading-[1.12]">
-          Physical Paint Realism for the Modern Digital Age
+          Echte Malfarben-Optik für das digitale Zeitalter
         </h1>
 
         <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
-          For decades, computer screens have forced creators to work with <strong class="text-[#171717] dark:text-white font-medium">additive RGB light</strong>, which turns mixed paints into dull, murky grey. <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> was born to restore authentic physical light absorption and classical Bauhaus color harmony to the web.
+          Seit Jahrzehnten zwingen Computerbildschirme Kreative zur Arbeit mit <strong class="text-[#171717] dark:text-white font-medium">additivem RGB-Licht</strong>, wodurch gemischte Farben schmutzig und grau werden. <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> bringt authentische physikalische Lichtabsorption und die klassische Bauhaus-Harmonie von Johannes Itten ins Web.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- The "Brown Mud" Problem vs PigmentLab Solution -->
+  <!-- Problem vs Solution -->
   <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-14 sm:py-20">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
-          The Problem with Standard Digital Color Tools
+          Das Problem mit herkömmlichen Farbtools
         </h2>
         <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Why do digital color pickers feel so artificial compared to real oils, gouache, and acrylics?
+          Warum wirken digitale Farbwähler im Vergleich zu echten Öl-, Gouache- und Acrylfarben so künstlich?
         </p>
       </div>
 
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Additive Light Screen Mixing -->
         <div class="rounded-2xl border border-red-200 dark:border-red-950/40 bg-white dark:bg-[#0c0c0c] p-6 sm:p-8 shadow-xs">
           <div class="inline-flex items-center gap-2 rounded-full bg-red-50 dark:bg-red-950/30 px-3 py-1 text-xs font-mono font-medium text-red-600 dark:text-red-400">
-            <span>✕ Standard RGB Averaging</span>
+            <span>✕ Lineares RGB-Mitteln</span>
           </div>
           <h3 class="mt-4 text-xl font-semibold text-[#171717] dark:text-white">
-            Linear RGB Math (Light Emitted)
+            Monitore emittieren Photonen (Licht)
           </h3>
           <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Standard computer monitors emit photons. When you mix Blue <code class="text-xs font-mono bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">(0, 0, 255)</code> and Yellow <code class="text-xs font-mono bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">(255, 255, 0)</code> in traditional code or digital software:
-          </p>
-          <div class="mt-5 rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4 font-mono text-xs">
-            <div class="flex justify-between items-center text-[#8f8f8f] mb-1">
-              <span>RGB Average</span>
-              <span>rgb(128, 128, 128)</span>
-            </div>
-            <div class="h-10 w-full rounded-md flex items-center justify-center font-bold text-white shadow-inner" style="background-color: #808080;">
-              Dull Muddy Grey #808080
-            </div>
-          </div>
-          <p class="mt-4 text-xs text-[#8f8f8f] dark:text-[#737373] leading-relaxed">
-            In physical painting, blue and yellow <strong class="text-[#4d4d4d] dark:text-[#a1a1a1]">never</strong> make grey. They make vibrant green because pigments absorb (subtract) light rather than emitting it.
+            Standard-Monitore strahlen Licht aus. Wer Blau (0, 0, 255) und Gelb (255, 255, 0) in Standardsoftware mischt, erhält mathematisch grauen Schlamm (#808080).
           </p>
         </div>
 
-        <!-- Subtractive Pigment Optics -->
         <div class="rounded-2xl border border-emerald-200 dark:border-emerald-950/40 bg-white dark:bg-[#0c0c0c] p-6 sm:p-8 shadow-xs">
           <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-3 py-1 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400">
-            <span>✓ PigmentLab Subtractive Physics</span>
+            <span>✓ PigmentLab Subtraktive Physik</span>
           </div>
           <h3 class="mt-4 text-xl font-semibold text-[#171717] dark:text-white">
-            Kubelka-Munk Spectral Absorption
+            Kubelka-Munk Spektralabsorption
           </h3>
           <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            PigmentLab models wavelength-dependent absorption (<code class="text-xs font-mono bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">K</code>) and scattering (<code class="text-xs font-mono bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">S</code>) coefficients across the visible 400nm–700nm spectrum:
-          </p>
-          <div class="mt-5 rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4 font-mono text-xs">
-            <div class="flex justify-between items-center text-[#8f8f8f] mb-1">
-              <span>Physical Pigment Mix</span>
-              <span>Cobalt + Hansa Cadmium</span>
-            </div>
-            <div class="h-10 w-full rounded-md flex items-center justify-center font-bold text-white shadow-inner" style="background-color: #168A35;">
-              Vibrant Emerald Green #168A35
-            </div>
-          </div>
-          <p class="mt-4 text-xs text-[#8f8f8f] dark:text-[#737373] leading-relaxed">
-            Blue absorbs red light; yellow absorbs blue light. The only wavelength reflected back to your eyes is emerald green. That is how real paint works!
+            Echte Farbpigmente absorbieren (verschlucken) Lichtteilchen. PigmentLab simuliert diesen Vorgang exakt: Blau und Gelb ergeben strahlendes Grün!
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- The 4 Core Pillars of PigmentLab -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
-          Our Four Pillars of Color Engineering
-        </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Engineered at the intersection of classical art history, optical physics, and modern web specifications.
-        </p>
-      </div>
-
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Pillar 1 -->
-        <div class="flex gap-4">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/40 text-[#0070f3]">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[#171717] dark:text-white">
-              1. Kubelka-Munk Subtractive Physics
-            </h3>
-            <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-              Formulated in 1931 by Paul Kubelka and Franz Munk, this two-flux radiative transfer model describes how light travels through turbid colorant media. By calculating absorption (<code class="text-xs font-mono">K</code>) and scattering (<code class="text-xs font-mono">S</code>) ratios, PigmentLab simulates real physical oil paint, gouache, and watercolor blending on screen.
-            </p>
-          </div>
-        </div>
-
-        <!-- Pillar 2 -->
-        <div class="flex gap-4">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[#171717] dark:text-white">
-              2. Johannes Itten's Bauhaus RYB Wheel
-            </h3>
-            <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-              Johannes Itten, master teacher at the legendary German Bauhaus art school, developed the 12-hue primary Red-Yellow-Blue circle. In Itten's model, complementary colors (Red-Green, Blue-Orange, Yellow-Violet) create maximum harmonic tension and contrast — the foundation of classical painting composition.
-            </p>
-          </div>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="flex gap-4">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[#171717] dark:text-white">
-              3. Modern CSS Color Module 4 & OKLCH
-            </h3>
-            <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-              While our physics simulate traditional paints, our output is designed for 21st-century production code. PigmentLab generates native CSS <code class="text-xs font-mono">color-mix()</code>, perceptually uniform <code class="text-xs font-mono">oklch()</code>, <code class="text-xs font-mono">oklab()</code>, HEX, RGB, and Tailwind tokens ready to copy into your codebase.
-            </p>
-          </div>
-        </div>
-
-        <!-- Pillar 4 -->
-        <div class="flex gap-4">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[#171717] dark:text-white">
-              4. Universal Accessibility (WCAG 2.1 & CVD)
-            </h3>
-            <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-              Beauty and accessibility must go hand in hand. Every swatch and palette produced by PigmentLab is tested for WCAG 2.1 AA/AAA contrast ratios against black and white surfaces, with built-in Daltonization matrices for Deuteranopia, Protanopia, and Tritanopia color blindness verification.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Who PigmentLab is for -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-14 sm:py-20">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
-          Who We Built This For
-        </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Whether you hold a sable paintbrush or write TypeScript in an IDE, PigmentLab speaks your color language.
-        </p>
-      </div>
-
-      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0f0f0f] p-6 shadow-2xs">
-          <span class="text-2xl">🎨</span>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">Artists & Painters</h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Test oil and watercolor recipes before spending money on expensive pigments like Cadmium Yellow, Ultramarine Blue, or Viridian Green. Plan your palette digitally with physical fidelity.
-          </p>
-        </div>
-
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0f0f0f] p-6 shadow-2xs">
-          <span class="text-2xl">💻</span>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">UI/UX & Product Designers</h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Escape generic neon screen gradients. Craft rich, organic color systems grounded in classical harmonies with instant WCAG contrast audits and design token exports.
-          </p>
-        </div>
-
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0f0f0f] p-6 shadow-2xs">
-          <span class="text-2xl">📚</span>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">Educators & Students</h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Demonstrate subtractive light absorption vs additive light emission interactively in real time. Perfect for university art departments, color theory lectures, and physics labs.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Open, Private & Free Philosophy -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#141414] px-3 py-1 text-xs font-mono text-[#4d4d4d] dark:text-[#a1a1aa]">
-        <span>100% Free · Client-Side Execution · Zero Paywalls</span>
-      </div>
-      <h2 class="mt-5 text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
-        Our Commitment to Privacy & Creative Freedom
-      </h2>
-      <p class="mt-4 text-sm sm:text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
-        PigmentLab is free for both personal and commercial creative work. Every color calculation, pigment blend, and palette test executes locally in your browser. We do not track your canvas, sell your browsing data, or lock essential tools behind paywalls.
-      </p>
-
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <a
-          href="/mix"
-          class="inline-flex h-10 items-center justify-center rounded-full bg-[#171717] px-6 text-xs font-medium text-white shadow-xs transition-colors hover:bg-black dark:bg-white dark:text-[#171717] dark:hover:bg-[#ededed]"
-        >
-          Launch Color Mixer →
-        </a>
-        <a
-          href="/color-wheel"
-          class="inline-flex h-10 items-center justify-center rounded-full border border-[#ebebeb] bg-white px-6 text-xs font-medium text-[#171717] shadow-2xs transition-colors hover:bg-[#fafafa] dark:border-[#262626] dark:bg-[#141414] dark:text-white dark:hover:bg-[#1f1f1f]"
-        >
-          Open Color Wheel
-        </a>
-        <a
-          href="/contact"
-          class="inline-flex h-10 items-center justify-center rounded-full border border-[#ebebeb] bg-transparent px-6 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#fafafa] dark:border-[#262626] dark:text-[#a1a1aa] dark:hover:bg-[#141414] dark:hover:text-white"
-        >
-          Get in Touch
-        </a>
       </div>
     </div>
   </section>
 </Layout>
-

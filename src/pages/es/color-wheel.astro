@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ColorWheelStudio from '../../components/ColorWheelStudio.astro';
+
+const esFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': '¿Qué es una rueda de color o círculo cromático online?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Una rueda de color (o círculo cromático) es un diagrama circular que ordena los tonos del espectro visible. Permite a diseñadores, artistas y creadores realizar combinaciones de colores armoniosas como paletas complementarias, análogas y triádicas con base científica.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '¿Cuál es la diferencia entre la rueda de colores Itten y la rueda de colores RGB?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'En el círculo cromático tradicional de Johannes Itten (RYB para artistas), las primarias son Rojo, Amarillo y Azul, situando el Rojo frente al Verde. En una rueda de colores RGB digital, las primarias son luces de pantalla y sitúan el Rojo frente al Cian.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '¿Cómo hacer una combinación de colores complementarios?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'En nuestra rueda de color, las parejas complementarias se ubican a 180 grados de distancia. Al situarse juntas generan un contraste simultáneo que potencia el brillo de ambos tonos, perfecto para destacar elementos clave.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '¿Se puede verificar contraste WCAG y daltonismo?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Sí. Nuestra herramienta calcula en tiempo real las razones de contraste WCAG 2.1 (AA y AAA) e incluye simulación para protanopía, deuteranopía, tritanopía y acromatopsia.'
+      }
+    }
+  ]
+};
+
+const esWheelSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Rueda de Color Online & Círculo Cromático — Combinación de Colores',
+    'url': 'https://pigmentlab.com/es/color-wheel',
+    'description': 'Rueda de color interactiva y círculo cromático online. Alterna entre la rueda clásica de Itten (RYB) y RGB digital. Genera combinación de colores complementarios y prueba el contraste WCAG.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
+  },
+  esFaqSchema
+];
+---
+
+<Layout
+  title="Rueda de Color Online & Círculo Cromático — Combinación de Colores y Paletas"
+  description="Rueda de color interactiva y círculo cromático online. Alterna entre la rueda de colores clásica de Johannes Itten (RYB) y RGB digital. Genera esquemas de combinación de colores complementarios y prueba el contraste WCAG."
+  keywords="rueda de color, rueda color, circulo cromatico online, rueda de colores rgb, combinación de colores, colores complementarios, generador de paletas de colores, armonia de color"
+  currentPath="/es/color-wheel"
+  lang="es"
+  schema={esWheelSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[20%] left-[10%] h-[320px] w-[450px] rounded-full bg-gradient-to-tr from-[#ff4d4d]/30 via-[#f9cb28]/30 to-[#00dfd8]/30 blur-3xl"></div>
+      <div class="absolute -top-[25%] right-[20%] h-[320px] w-[450px] rounded-full bg-gradient-to-bl from-[#7928ca]/30 via-[#ff0080]/30 to-[#007cf0]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff0080] animate-pulse"></span>
+          <span>Círculo Cromático Bauhaus &amp; Rueda de Color</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Rueda de Color Online &amp; Círculo Cromático
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Los selectores digitales habituales solo operan con coordenadas RGB de pantalla. PigmentLab ofrece un botón directo para cambiar al tradicional <strong class="text-[#171717] dark:text-white">círculo cromático de Johannes Itten (RYB)</strong>, donde el <span class="text-[#c41e3a] font-semibold">Rojo</span> se opone al <span class="text-[#14b82a] font-semibold">Verde</span> para lograr una combinación de colores visualmente natural.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <ColorWheelStudio lang="es" />
+
+  <!-- Educational Guide in Spanish -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Teoría del Color &amp; Armonías</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          Guía de la rueda de color, círculo cromático y combinación de colores
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Domina los contrastes simultáneos, genera paletas complementarias y conoce las diferencias entre el modelo de Itten y la rueda de colores RGB.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. ¿Qué es la rueda de color y cómo usar el círculo cromático online?
+          </h3>
+          <p>
+            La <strong>rueda de color</strong> (o <strong>círculo cromático online</strong>) organiza los tonos cromáticos en una circunferencia de 360 grados. Diseñada desde las primeras investigaciones ópticas de Isaac Newton y ampliada en la escuela Bauhaus por Johannes Itten, la <strong>rueda color</strong> permite proyectar contrastes y armonías de forma intuitiva.
+          </p>
+          <p>
+            Nuestra herramienta online agiliza la <strong>combinación de colores</strong> para diseñadores gráficos, ilustradores y desarrolladores web, calculando automáticamente tonos complementarios, análogos y tríadas.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Rueda de colores de Itten (RYB) vs. Rueda de colores RGB
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Tono Base</th>
+                  <th class="p-4 sm:p-5 text-[#c41e3a] font-semibold">Opuesto en Círculo Itten (RYB)</th>
+                  <th class="p-4 sm:p-5 text-[#0070f3] font-semibold">Opuesto en Pantalla (RGB)</th>
+                  <th class="p-4 sm:p-5">Tipo</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Rojo (#E60026)</td>
+                  <td class="p-4 sm:p-5 text-emerald-600 dark:text-emerald-400 font-medium">Verde (#00AA44)</td>
+                  <td class="p-4 sm:p-5 text-cyan-600 dark:text-cyan-400">Cian (#00FFFF)</td>
+                  <td class="p-4 sm:p-5">Primario</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Amarillo (#FFE600)</td>
+                  <td class="p-4 sm:p-5 text-purple-600 dark:text-purple-400 font-medium">Violeta / Morado (#7A0099)</td>
+                  <td class="p-4 sm:p-5 text-blue-600 dark:text-blue-400">Azul (#0000FF)</td>
+                  <td class="p-4 sm:p-5">Primario</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white">Azul (#002185)</td>
+                  <td class="p-4 sm:p-5 text-orange-600 dark:text-orange-400 font-medium">Naranja (#FF6600)</td>
+                  <td class="p-4 sm:p-5 text-yellow-600 dark:text-yellow-400">Amarillo (#FFFF00)</td>
+                  <td class="p-4 sm:p-5">Primario</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Preguntas Frecuentes
+          </h3>
+          <div class="space-y-4">
+            {esFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+

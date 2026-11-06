@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  'name': 'Sobre a PigmentLab',
+  'url': 'https://pigmentlab.com/pt/about',
+  'description': 'Conheça a história e os princípios científicos da PigmentLab: física de pigmentos subtrativos Kubelka-Munk e o círculo cromático Bauhaus de Johannes Itten.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'logo': 'https://pigmentlab.com/favicon.svg'
+  }
+};
+---
+
+<Layout
+  title="Sobre a PigmentLab — Ciência das Cores & Círculo Cromático Bauhaus"
+  description="Conheça a história e a física por trás da PigmentLab. Unindo o clássico círculo de cores RYB de Johannes Itten com a absorção óptica de pigmentos físicos."
+  keywords="sobre pigmentlab, ciência das cores, física de pigmentos, kubelka munk, johannes itten, círculo cromático, mistura subtrativa"
+  currentPath="/pt/about"
+  lang="pt"
+  schema={aboutSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+        <span>Nossa Missão &amp; Base Científica</span>
+      </div>
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl">
+        Realismo de Tintas Físicas para o Mundo Digital
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Por décadas, as telas forçaram os criadores a trabalhar com luz aditiva RVB, transformando tintas misturadas em cinza opaco. A PigmentLab resgata a absorção de luz real e a harmonia das cores Bauhaus na Web.
+      </p>
+    </div>
+  </section>
+</Layout>
+

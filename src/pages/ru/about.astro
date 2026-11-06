@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  'name': 'О проекте PigmentLab',
+  'url': 'https://pigmentlab.com/ru/about',
+  'description': 'Узнайте о миссии и научных принципах PigmentLab: субтрактивная физика пигментов Кубелки-Мунка и цветовой круг Иоганнеса Иттена.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'logo': 'https://pigmentlab.com/favicon.svg'
+  }
+};
+---
+
+<Layout
+  title="О проекте PigmentLab — Физика Цвета & Круг Баухаус"
+  description="История создания, оптическая физика и философия PigmentLab. Объединение традиционного круга RYB Иоганнеса Иттена и спектрального поглощения пигментов."
+  keywords="о pigmentlab, наука о цвете, физика пигментов, кубелка мунк, иттен, цветовой круг, субтрактивное смешивание"
+  currentPath="/ru/about"
+  lang="ru"
+  schema={aboutSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+        <span>Наша миссия и научный фундамент</span>
+      </div>
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl">
+        Реализм физических красок в цифровом мире
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Десятилетиями мониторы заставляли работать с аддитивным светом RGB, превращающим смешение красок в тусклую серость. PigmentLab возвращает веб-пространству подлинное субтрактивное поглощение света и гармонию Баухаус.
+      </p>
+    </div>
+  </section>
+</Layout>
+

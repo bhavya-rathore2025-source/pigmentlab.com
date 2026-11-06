@@ -1,15 +1,32 @@
 ---
+import {
+  languages,
+  useTranslations,
+  useTranslatedPath,
+  type SupportedLanguage,
+  defaultLang,
+} from '../i18n/utils';
+
 interface Props {
   currentPath?: string;
+  lang?: SupportedLanguage;
 }
 
-const { currentPath = '' } = Astro.props;
+const { currentPath = '/', lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const isMixActive = currentPath === translatePath('/mix') || currentPath.endsWith('/mix');
+const isWheelActive = currentPath === translatePath('/color-wheel') || currentPath.endsWith('/color-wheel');
+const isAboutActive = currentPath === translatePath('/about') || currentPath.endsWith('/about');
+const isContactActive = currentPath === translatePath('/contact') || currentPath.endsWith('/contact');
+const isHomeActive = currentPath === translatePath('/') || currentPath === `/${lang}` || currentPath === '/';
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-[#fafafa]/90 backdrop-blur-md dark:border-[#262626] dark:bg-[#000000]/85">
   <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
     <!-- Brand / Logo -->
-    <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-80 shrink-0">
+    <a href={translatePath('/')} class="group flex items-center gap-2.5 transition-opacity hover:opacity-80 shrink-0">
       <img src="/favicon.svg" alt="PigmentLab" class="h-7 w-7 rounded-lg object-contain" width="28" height="28" />
       <div class="flex flex-col">
         <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">PigmentLab</span>
@@ -20,63 +37,101 @@ const { currentPath = '' } = Astro.props;
     <!-- Nav Links (Desktop md+) -->
     <nav class="hidden md:flex items-center gap-1 sm:gap-1.5">
       <a
-        href="/mix"
+        href={translatePath('/mix')}
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/mix')
+          isMixActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
-        <span>Color Mixer</span>
+        <span>{t('nav.mixer')}</span>
       </a>
 
       <a
-        href="/color-wheel"
+        href={translatePath('/color-wheel')}
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/color-wheel')
+          isWheelActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
-        <span>Color Wheel</span>
+        <span>{t('nav.wheel')}</span>
       </a>
 
       <a
-        href="/about"
+        href={translatePath('/about')}
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/about')
+          isAboutActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
-        <span>About</span>
+        <span>{t('nav.about')}</span>
       </a>
 
       <a
-        href="/contact"
+        href={translatePath('/contact')}
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/contact')
+          isContactActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
-        <span>Contact</span>
+        <span>{t('nav.contact')}</span>
       </a>
     </nav>
 
-    <!-- Language Selector Pill, Dark Mode & Mobile Menu Button -->
+    <!-- Language Selector Dropdown, Dark Mode & Mobile Menu Button -->
     <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-      <div class="relative inline-flex items-center rounded-full border border-[#ebebeb] bg-white px-2 py-1 text-[11px] font-medium text-[#4d4d4d] shadow-2xs dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1a1]">
-        <svg class="mr-1 sm:mr-1.5 h-3.5 w-3.5 text-[#8f8f8f] dark:text-[#737373]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-        </svg>
-        <span id="current-lang-label" class="font-semibold text-[#171717] dark:text-[#ededed]">ES</span>
-        <span class="mx-0.5 sm:mx-1 text-[#ebebeb] dark:text-[#333333]">|</span>
-        <button id="toggle-lang-btn" type="button" class="cursor-pointer text-[#8f8f8f] hover:text-[#171717] dark:text-[#737373] dark:hover:text-[#ededed]" title="Switch language (Spanish / English / Deutsch / Português)">
-          EN
+      
+      <!-- Multilingual Language Selector -->
+      <div class="relative" id="lang-picker-container">
+        <button
+          id="lang-menu-btn"
+          type="button"
+          class="inline-flex h-8 items-center gap-1 rounded-full border border-[#ebebeb] bg-white px-2.5 text-xs font-medium text-[#4d4d4d] shadow-2xs hover:border-[#171717] dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1a1] dark:hover:border-white transition-colors cursor-pointer"
+          aria-label={t('nav.switchLang')}
+          aria-expanded="false"
+        >
+          <svg class="h-3.5 w-3.5 text-[#8f8f8f] dark:text-[#737373]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+          <span class="font-semibold uppercase text-[#171717] dark:text-[#ededed]">{lang}</span>
+          <svg class="h-3 w-3 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </button>
+
+        <div
+          id="lang-menu-dropdown"
+          class="hidden absolute right-0 mt-1.5 w-36 rounded-xl border border-[#ebebeb] bg-white py-1 shadow-lg dark:border-[#262626] dark:bg-[#141414] z-50 divide-y divide-[#f2f2f2] dark:divide-[#222222]"
+        >
+          <div class="px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-[#8f8f8f] dark:text-[#737373]">
+            {t('nav.switchLang')}
+          </div>
+          <div class="py-0.5">
+            {Object.entries(languages).map(([code, label]) => {
+              const targetUrl = translatePath(currentPath, code as SupportedLanguage);
+              const isActive = code === lang;
+              return (
+                <a
+                  href={targetUrl}
+                  class={`flex items-center justify-between px-3 py-1.5 text-xs transition-colors ${
+                    isActive
+                      ? 'font-semibold text-[#171717] bg-[#f5f5f5] dark:text-white dark:bg-[#222222]'
+                      : 'text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] dark:text-[#a1a1aa] dark:hover:bg-[#1a1a1a] dark:hover:text-white'
+                  }`}
+                  hreflang={code}
+                >
+                  <span>{label}</span>
+                  <span class="font-mono text-[10px] uppercase text-[#8f8f8f]">{code}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <!-- Dark / Light Mode Toggle Button -->
@@ -87,11 +142,9 @@ const { currentPath = '' } = Astro.props;
         aria-label="Toggle dark mode"
         title="Toggle dark / light mode"
       >
-        <!-- Sun icon (shown in dark mode to switch to light) -->
         <svg id="theme-sun-icon" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
-        <!-- Moon icon (shown in light mode to switch to dark) -->
         <svg id="theme-moon-icon" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
@@ -122,46 +175,46 @@ const { currentPath = '' } = Astro.props;
   >
     <div class="flex flex-col gap-2">
       <a
-        href="/mix"
+        href={translatePath('/mix')}
         class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/mix')
+          isMixActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <div class="flex items-center gap-2.5">
           <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
-          <span class="font-semibold">Color Mixer Online</span>
+          <span class="font-semibold">{t('nav.mixer')}</span>
         </div>
-        <span class="font-mono text-[10px] opacity-75">Paint Optics</span>
+        <span class="font-mono text-[10px] opacity-75">{t('nav.mixerBadge')}</span>
       </a>
 
       <a
-        href="/color-wheel"
+        href={translatePath('/color-wheel')}
         class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/color-wheel')
+          isWheelActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <div class="flex items-center gap-2.5">
           <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
-          <span class="font-semibold">Color Wheel Picker</span>
+          <span class="font-semibold">{t('nav.wheel')}</span>
         </div>
-        <span class="font-mono text-[10px] opacity-75">Itten Bauhaus</span>
+        <span class="font-mono text-[10px] opacity-75">{t('nav.wheelBadge')}</span>
       </a>
 
       <a
-        href="/"
+        href={translatePath('/')}
         class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
-          currentPath === '/'
+          isHomeActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
         <div class="flex items-center gap-2.5">
           <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#0070f3] to-[#ff0080]"></span>
-          <span class="font-semibold">Home & Overview</span>
+          <span class="font-semibold">{t('nav.home')}</span>
         </div>
         <span class="font-mono text-[10px] opacity-75">PigmentLab</span>
       </a>
@@ -169,66 +222,85 @@ const { currentPath = '' } = Astro.props;
       <div class="my-1 border-t border-[#ebebeb] dark:border-[#222222]"></div>
 
       <a
-        href="/about"
+        href={translatePath('/about')}
         class={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/about')
+          isAboutActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
-        <span class="font-medium">About Us</span>
-        <span class="font-mono text-[10px] opacity-75">Story & Science</span>
+        <span class="font-medium">{t('nav.about')}</span>
       </a>
 
       <a
-        href="/contact"
+        href={translatePath('/contact')}
         class={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
-          currentPath.startsWith('/contact')
+          isContactActive
             ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
             : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
         }`}
       >
-        <span class="font-medium">Contact Us</span>
-        <span class="font-mono text-[10px] opacity-75">Support & Feedback</span>
+        <span class="font-medium">{t('nav.contact')}</span>
       </a>
 
-      <div class="flex items-center justify-between px-3 pt-1 text-[11px] text-[#8f8f8f] dark:text-[#737373]">
-        <a href="/privacy" class="hover:underline">Privacy Policy</a>
+      <!-- Mobile Language Switcher List -->
+      <div class="mt-2 rounded-xl border border-[#ebebeb] bg-[#fafafa] p-2 dark:border-[#222222] dark:bg-[#121212]">
+        <div class="mb-1.5 px-2 text-[10px] font-mono uppercase tracking-wider text-[#8f8f8f] dark:text-[#737373]">
+          {t('nav.switchLang')}
+        </div>
+        <div class="grid grid-cols-3 gap-1">
+          {Object.entries(languages).map(([code, label]) => {
+            const targetUrl = translatePath(currentPath, code as SupportedLanguage);
+            const isActive = code === lang;
+            return (
+              <a
+                href={targetUrl}
+                class={`flex flex-col items-center justify-center rounded-lg py-1.5 text-center text-xs transition-colors ${
+                  isActive
+                    ? 'bg-[#171717] font-semibold text-white dark:bg-white dark:text-[#171717]'
+                    : 'bg-white text-[#4d4d4d] hover:bg-[#ebebeb] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#262626]'
+                }`}
+                hreflang={code}
+              >
+                <span class="font-mono text-[10px] uppercase font-bold">{code}</span>
+                <span class="text-[9px] opacity-80">{label}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between px-3 pt-2 text-[11px] text-[#8f8f8f] dark:text-[#737373]">
+        <a href={translatePath('/privacy')} class="hover:underline">{t('nav.privacy')}</a>
         <span>·</span>
-        <a href="/terms" class="hover:underline">Terms & Conditions</a>
+        <a href={translatePath('/terms')} class="hover:underline">{t('nav.terms')}</a>
       </div>
     </div>
   </div>
 </header>
 
 <script>
-  // Simple multilingual toggle handler (stored in localStorage)
-  const langBtn = document.getElementById('toggle-lang-btn');
-  const currentLangLabel = document.getElementById('current-lang-label');
-  const languages = ['ES', 'EN', 'DE', 'PT'];
-  let currentIdx = 0;
+  // Language dropdown toggle handler
+  const langMenuBtn = document.getElementById('lang-menu-btn');
+  const langMenuDropdown = document.getElementById('lang-menu-dropdown');
 
-  const storedLang = localStorage.getItem('pl_lang') || localStorage.getItem('rcm_lang');
-  if (storedLang && languages.includes(storedLang)) {
-    currentIdx = languages.indexOf(storedLang);
-  }
-
-  function updateLangUI() {
-    if (currentLangLabel && langBtn) {
-      currentLangLabel.textContent = languages[currentIdx];
-      const nextIdx = (currentIdx + 1) % languages.length;
-      langBtn.textContent = languages[nextIdx];
+  langMenuBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isHidden = langMenuDropdown?.classList.contains('hidden');
+    if (isHidden) {
+      langMenuDropdown?.classList.remove('hidden');
+      langMenuBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      langMenuDropdown?.classList.add('hidden');
+      langMenuBtn.setAttribute('aria-expanded', 'false');
     }
-  }
+  });
 
-  updateLangUI();
-
-  langBtn?.addEventListener('click', () => {
-    currentIdx = (currentIdx + 1) % languages.length;
-    localStorage.setItem('pl_lang', languages[currentIdx]);
-    updateLangUI();
-    window.dispatchEvent(new CustomEvent('pl:langchange', { detail: { lang: languages[currentIdx] } }));
-    window.dispatchEvent(new CustomEvent('rcm:langchange', { detail: { lang: languages[currentIdx] } }));
+  document.addEventListener('click', (e) => {
+    if (!langMenuDropdown?.contains(e.target as Node) && !langMenuBtn?.contains(e.target as Node)) {
+      langMenuDropdown?.classList.add('hidden');
+      langMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
   });
 
   // Dark / Light Mode Toggle handler
@@ -253,7 +325,6 @@ const { currentPath = '' } = Astro.props;
     }
   }
 
-  // Initialize UI state immediately
   updateThemeUI();
 
   themeToggleBtn?.addEventListener('click', () => {
@@ -267,7 +338,6 @@ const { currentPath = '' } = Astro.props;
     }
     updateThemeUI();
     window.dispatchEvent(new CustomEvent('pl:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
-    window.dispatchEvent(new CustomEvent('rcm:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
   });
 
   // Mobile Navigation Drawer Toggle
@@ -296,12 +366,10 @@ const { currentPath = '' } = Astro.props;
 
   mobileMenuBtn?.addEventListener('click', () => toggleMobileMenu());
 
-  // Close mobile drawer when clicking a navigation link inside it
   mobileNavPanel?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => toggleMobileMenu(true));
   });
 
-  // Close when window resized to desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
       toggleMobileMenu(true);

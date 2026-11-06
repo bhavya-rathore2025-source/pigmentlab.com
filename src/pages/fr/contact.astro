@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  'name': 'Contact PigmentLab',
+  'url': 'https://pigmentlab.com/fr/contact',
+  'description': 'Contactez l\'équipe de PigmentLab. Envoyez vos suggestions de pigments, retours d\'expérience ou questions scientifiques.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'email': 'contact@pigmentlab.com'
+  }
+};
+---
+
+<Layout
+  title="Contactez-nous — PigmentLab"
+  description="Une question sur la physique des pigments, la théorie des couleurs ou envie de proposer un nouveau pigment d'artiste ? Contactez l'équipe PigmentLab."
+  keywords="contact pigmentlab, support pigmentlab, questions science des couleurs, mélanges de peintures"
+  currentPath="/fr/contact"
+  lang="fr"
+  schema={contactSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 text-center">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+        <span>À votre écoute</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
+        Contactez PigmentLab
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Envoyez-nous un email à <a href="mailto:contact@pigmentlab.com" class="text-[#0070f3] hover:underline font-mono">contact@pigmentlab.com</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+

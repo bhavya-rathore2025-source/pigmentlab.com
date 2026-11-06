@@ -1,0 +1,220 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MixerStudio from '../../components/MixerStudio.astro';
+
+const ptMixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'Como funciona o simulador de mistura de cores online?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Nosso simulador de mistura de cores online utiliza a física real de pigmentos subtrativos (óptica Kubelka-Munk). Em vez de fazer uma média digital que resulta em cinza opaco, ele simula a absorção de luz real: a mistura de Azul e Amarelo produz Verde vibrante, idêntico a tintas para parede ou artísticas.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Qual a mistura de cores para dar marrom?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'A mistura de cores para dar marrom pode ser feita de 3 maneiras: 1. Juntar as 3 cores primárias (Azul, Amarelo e Vermelho). 2. Misturar cores complementares: Vermelho + Verde ou Azul + Laranja. 3. Para tons terrosos quentes, misture Amarelo Ocre com uma pitada de Vermelho e Azul.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'O que mostra a tabela de mistura de cores de tintas para parede?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'A tabela de mistura de cores e resultados mostra exatamente as proporções em porcentagem de pigmentos para alcançar tons pastel, neutros ou vivos em tintas para parede (látex, acrílica ou esmalte).'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'O que acontece ao misturar todas as cores juntas?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Na física subtrativa de tintas, misturar todas as cores primárias absorve todas as ondas de luz visíveis, resultando em um marrom muito escuro ou quase preto, exatamente como ocorre em uma paleta física de pintura.'
+      }
+    }
+  ]
+};
+
+const ptMixSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Mistura de Cores Online — Tabela de Mistura de Cores',
+    'url': 'https://pigmentlab.com/pt/mix',
+    'description': 'Simulador de mistura de cores online com física de pigmentos reais. Veja a tabela de mistura de cores e resultados, aprenda como misturar cores para dar marrom e use a tabela de tintas para parede.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'BRL'
+    }
+  },
+  ptMixFaqSchema
+];
+---
+
+<Layout
+  title="Mistura de Cores Online — Tabela de Mistura de Cores & Simulador de Tintas"
+  description="Simulador de mistura de cores online com física de pigmentos reais. Veja a tabela de mistura de cores e resultados, aprenda a mistura de cores para dar marrom e consulte a tabela de mistura de cores de tintas para parede. Azul + Amarelo dá Verde vibrante!"
+  keywords="mistura de cores, tabela de mistura de cores, mistura de cores e resultados, mistura de cores para dar marrom, tabela de mistura de cores de tintas para parede, simulador mistura de cores, misturar tintas online, mistura de cores tintas"
+  currentPath="/pt/mix"
+  lang="pt"
+  schema={ptMixSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Física de Pigmentos Subtrativos &amp; Tabela de Resultados</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Mistura de Cores Online &amp; Simulador de Tintas
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Ferramentas digitais comuns apenas calculam médias de luz RVB que geram um cinza sujo. Nosso simulador de <strong class="text-[#171717] dark:text-white">mistura de cores</strong> calcula a física real de absorção e dispersão da luz: junte <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Azul</span> e <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Amarelo</span> para produzir um <span class="font-medium text-[#168a35] dark:text-[#47d169]">Verde</span> radiante como tinta real.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="pt" />
+
+  <!-- Educational Guide in Portuguese -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Física de Tintas &amp; Fórmulas</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          Tabela de mistura de cores e guia prático para pintar e criar
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Consulte fórmulas, receitas para dar marrom e a tabela de mistura de cores de tintas para parede.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Por que usar um simulador de mistura de cores com física real?
+          </h3>
+          <p>
+            Quem trabalha com tintas para parede, artesanato, pintura em tela ou tecido sabe que pigmentos se comportam pela absorção subtrativa de ondas de luz. A <strong>mistura de cores</strong> não pode ser calculada como se fossem pixels acesos em uma tela.
+          </p>
+          <p>
+            Nosso simulador com a equação de Kubelka-Munk permite dosar proporções de 1% a 100%, conferir a conformidade de contraste WCAG 2.1 e exportar as receitas prontas.
+          </p>
+        </section>
+
+        <!-- Tabela de mistura de cores e resultados -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Tabela de mistura de cores e resultados
+          </h3>
+          <p>
+            Confira a <strong>tabela de mistura de cores</strong> mais comum para artes e pintura residencial:
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Cor 1</th>
+                  <th class="p-4 sm:p-5">Cor 2</th>
+                  <th class="p-4 sm:p-5">Resultado Tinta Real (PigmentLab)</th>
+                  <th class="p-4 sm:p-5">Média Digital Comum (RGB)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Azul Phthalo (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Amarelo Cádmio (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">Verde Esmeralda Vivo (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Cinza esverdeado opaco (#808C43)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Vermelho Cádmio (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Amarelo Cádmio (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">Laranja Radiante (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Laranja lavado (#F37B13)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Azul Phthalo (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Vermelho Cádmio (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">Roxo / Violeta Profundo</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Magenta lavado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Mistura de cores para dar marrom -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            3. Mistura de cores para dar marrom
+          </h3>
+          <p>
+            O termo <strong>"mistura de cores para dar marrom"</strong> é uma das maiores dúvidas de quem pinta paredes ou telas. Aqui estão as fórmulas mais recomendadas:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Receita 1: Cores Primárias</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Misture Azul + Vermelho + Amarelo. Quanto mais amarelo, mais claro e amadeirado fica o marrom.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Receita 2: Complementares</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Laranja + Azul, ou Vermelho + Verde. Cria um marrom natural e aveludado sem manchar.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Receita 3: Tintas de Parede</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Use base branca e adicione corante líquido ocre e marrom aos poucos para controlar a tonalidade exata.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Perguntas Frequentes
+          </h3>
+          <div class="space-y-4">
+            {ptMixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+

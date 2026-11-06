@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MixerStudio from '../../components/MixerStudio.astro';
+
+const esMixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': '¿Cómo funciona la mezcla de colores online con física sustractiva?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'A diferencia de los editores convencionales que promedian la luz digital produciendo un gris sucio, nuestro simulador de mezcla de colores implementa la dispersión óptica de pigmentos reales (fórmula Kubelka-Munk): Azul y Amarillo se unen para generar un Verde esmeralda intenso.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '¿Cómo combinar colores para obtener marrón?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Para obtener marrón en la mezcla de colores hay 3 fórmulas: 1. Mezclar las 3 primarias (Rojo, Amarillo y Azul) en proporciones iguales. 2. Combinar colores complementarios: Rojo + Verde o Azul + Naranja. 3. Para tonos tierra cálidos, combina una base de Amarillo Ocre con una pizca de Rojo y Azul.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '¿Para qué sirve combinar colores online en PigmentLab?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Permite predecir con exactitud recetas de pinturas al óleo, acrílicas, tintes o pinturas para paredes antes de comprar los botes, ajustando controles deslizantes de 1% a 100% y generando código CSS color-mix() al instante.'
+      }
+    }
+  ]
+};
+
+const esMixSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Mezcla de Colores Online — Simulador para Combinar Colores',
+    'url': 'https://pigmentlab.com/es/mix',
+    'description': 'Simulador de mezcla de colores online con física óptica de pigmentos reales. Combina colores con controles deslizantes, obtén la tabla de mezclas y genera código CSS color-mix().',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
+  },
+  esMixFaqSchema
+];
+---
+
+<Layout
+  title="Mezcla de Colores Online — Simulador para Combinar Colores y Pintura"
+  description="Simulador de mezcla de colores online con física óptica de pigmentos reales. Combina colores con controles deslizantes, obtén la tabla de resultados de mezclas y genera código CSS color-mix(). ¡Azul + Amarillo produce Verde vivo!"
+  keywords="mezcla de colores, combinar colores, combinar colores online, mezcla de colores primarios, simulador de mezcla de pintura, tabla de mezcla de colores, combinación de colores"
+  currentPath="/es/mix"
+  lang="es"
+  schema={esMixSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Física Óptica Sustractiva &amp; Tabla de Mezclas</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Mezcla de Colores Online &amp; Simulador de Pintura
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Las herramientas habituales hacen una simple media RGB que termina en un gris parduzco. Nuestro simulador de <strong class="text-[#171717] dark:text-white">mezcla de colores</strong> modela la física real de absorción de partículas: junta <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Azul</span> y <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Amarillo</span> para conseguir un <span class="font-medium text-[#168a35] dark:text-[#47d169]">Verde</span> brillante igual que la pintura física.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="es" />
+
+  <!-- Educational Guide in Spanish -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Ciencia del Color &amp; Recetas</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          Tabla de mezcla de colores y guía práctica para combinar tonos
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Fórmulas exactas, cómo obtener marrón y consejos para combinar colores online con éxito.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. ¿Por qué utilizar un simulador de mezcla de colores con óptica real?
+          </h3>
+          <p>
+            Al mezclar pigmentos acrílicos, óleos o tintes para manualidades, cada partícula absorbe (resta) ciertas longitudes de onda de la luz visible. En consecuencia, la <strong>mezcla de colores</strong> física requiere un modelo sustractivo.
+          </p>
+          <p>
+            La herramienta de <strong>combinar colores online</strong> de PigmentLab calcula estos fenómenos con precisión matemática, permitiéndote diseñar tus propias fórmulas sin desperdiciar material.
+          </p>
+        </section>
+
+        <!-- Tabla de mezclas -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Tabla de mezcla de colores y fórmulas habituales
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Color 1</th>
+                  <th class="p-4 sm:p-5">Color 2</th>
+                  <th class="p-4 sm:p-5">Pintura Real (PigmentLab)</th>
+                  <th class="p-4 sm:p-5">Media Digital Simple (RGB)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Azul Ftalocianina (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Amarillo Cadmio (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">Verde Esmeralda Vivo (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Gris sucio (#808C43)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Rojo Cadmio (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Amarillo Cadmio (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">Naranja Radiante (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Naranja desvaído (#F37B13)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Azul Ftalocianina (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Rojo Cadmio (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">Violeta Profundo / Púrpura</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Magenta descolorido</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Preguntas Frecuentes
+          </h3>
+          <div class="space-y-4">
+            {esMixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+

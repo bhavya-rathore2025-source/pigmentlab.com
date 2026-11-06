@@ -1,0 +1,1277 @@
+---
+import { type SupportedLanguage, defaultLang } from '../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = defaultLang } = Astro.props;
+
+// Localized studio labels
+const studioI18n = {
+  de: {
+    modeItten: '🎨 Klassischer Itten (RYB Farbrad)',
+    modeRgb: '💻 Digitales Farbrad (RGB / Web)',
+    comp: 'Komplementär (Opuestos)',
+    ana: 'Analog',
+    tri: 'Triadisch (Dreiklang)',
+    tet: 'Tetradisch (Vierklang)',
+    split: 'Split-Komplementär',
+    mono: 'Monochromatisch',
+    canvasTitle: 'Interaktiver Farbkreis',
+    canvasDesc: 'Knoten ziehen zum Rotieren. Modus: Itten RYB (Rot gegenüber Grün).',
+    shuffle: 'Mischen',
+    reset: 'Zurücksetzen',
+    hue: 'Farbton (Hue)',
+    sat: 'Sättigung',
+    light: 'Helligkeit',
+    baseHex: 'Basis-HEX',
+    cvdTitle: 'Farbenblindheit-Simulation',
+    cvdDesc: 'Prüfen Sie, wie Menschen mit Sehschwächen Ihre Farbpalette wahrnehmen:',
+    cvdNormal: 'Normale Sicht',
+    cvdProtanopia: 'Protanopie (Rotblind)',
+    cvdDeuteranopia: 'Deuteranopie (Grünblind)',
+    cvdTritanopia: 'Tritanopie (Blaublind)',
+    cvdAchromatopsia: 'Achromatopsie (Monochrom)',
+    paletteTitle: 'Farbpalette',
+    paletteColors: 'Farben',
+    scaleTitle: '9-Stufen Tönungs- & Schattierungsskala',
+    scaleDesc: 'Klicken Sie auf eine Nuance, um den HEX-Code zu kopieren:',
+    wcagTitle: 'WCAG 2.1 Kontrast-Matrix',
+    wcagSubtitle: 'Kontrast zwischen Palettenfarben',
+    exportTitle: 'Entwickler & Designer Export',
+    exportSvg: 'SVG Palette',
+    tailwindTitle: 'Tailwind CSS Theme Token Konfiguration',
+    copyCode: 'Code kopieren',
+    cssVarsTitle: 'CSS Variablen (:root)',
+    copyCss: 'CSS kopieren',
+  },
+  en: {
+    modeItten: '🎨 Classical Itten (RYB Artist Wheel)',
+    modeRgb: '💻 Digital Screen Wheel (RGB / Web)',
+    comp: 'Complementary',
+    ana: 'Analogous',
+    tri: 'Triadic',
+    tet: 'Tetradic',
+    split: 'Split-Complementary',
+    mono: 'Monochromatic',
+    canvasTitle: 'Interactive Canvas',
+    canvasDesc: 'Drag the node to rotate palette colors. Mode: Itten RYB (Red opposite Green).',
+    shuffle: 'Shuffle',
+    reset: 'Reset',
+    hue: 'Hue Angle',
+    sat: 'Saturation',
+    light: 'Lightness',
+    baseHex: 'Direct Base Hex',
+    cvdTitle: 'Color Blindness Simulation',
+    cvdDesc: 'Test how people with color vision deficiency perceive your palette:',
+    cvdNormal: 'Normal Vision',
+    cvdProtanopia: 'Protanopia (Red-Blind)',
+    cvdDeuteranopia: 'Deuteranopia (Green-Blind)',
+    cvdTritanopia: 'Tritanopia (Blue-Blind)',
+    cvdAchromatopsia: 'Achromatopsia (Monochrome)',
+    paletteTitle: 'Color Palette',
+    paletteColors: 'Colors',
+    scaleTitle: '9-Step Tints & Shades Scale',
+    scaleDesc: 'Click any shade below to copy its HEX code directly into your clipboard:',
+    wcagTitle: 'Palette WCAG Contrast Matrix',
+    wcagSubtitle: 'Contrast between palette colors',
+    exportTitle: 'Developer & Designer Exports',
+    exportSvg: 'SVG Palette',
+    tailwindTitle: 'Tailwind CSS Theme Token Config',
+    copyCode: 'Copy Code',
+    cssVarsTitle: 'CSS Custom Properties (:root)',
+    copyCss: 'Copy CSS',
+  },
+  fr: {
+    modeItten: '🎨 Roue classique Itten (Artiste RYB)',
+    modeRgb: '💻 Roue numérique (RGB / Web)',
+    comp: 'Complémentaire',
+    ana: 'Analogue',
+    tri: 'Triadique',
+    tet: 'Tétradique',
+    split: 'Complémentaire partagée',
+    mono: 'Monochromatique',
+    canvasTitle: 'Cercle chromatique interactif',
+    canvasDesc: 'Faites glisser pour tourner la palette. Mode : Itten RYB (Rouge opposé au Vert).',
+    shuffle: 'Aléatoire',
+    reset: 'Réinitialiser',
+    hue: 'Teinte (Degré)',
+    sat: 'Saturation',
+    light: 'Luminosité',
+    baseHex: 'Code Hex de base',
+    cvdTitle: 'Simulation de daltonisme',
+    cvdDesc: 'Testez la perception de votre palette pour les personnes malvoyantes :',
+    cvdNormal: 'Vision normale',
+    cvdProtanopia: 'Protanopie (Sans rouge)',
+    cvdDeuteranopia: 'Deutéranopie (Sans vert)',
+    cvdTritanopia: 'Tritanopie (Sans bleu)',
+    cvdAchromatopsia: 'Achromatopsie (Monochrome)',
+    paletteTitle: 'Palette de couleurs',
+    paletteColors: 'Couleurs',
+    scaleTitle: 'Échelle de 9 nuances et teintes',
+    scaleDesc: 'Cliquez sur une nuance pour copier son code HEX :',
+    wcagTitle: 'Matrice de contraste WCAG 2.1',
+    wcagSubtitle: 'Contraste entre couleurs de la palette',
+    exportTitle: 'Export développeur & designer',
+    exportSvg: 'Palette SVG',
+    tailwindTitle: 'Configuration des tokens Tailwind CSS',
+    copyCode: 'Copier le code',
+    cssVarsTitle: 'Variables CSS (:root)',
+    copyCss: 'Copier le CSS',
+  },
+  pt: {
+    modeItten: '🎨 Círculo clássico Itten (RYB Artista)',
+    modeRgb: '💻 Roda de cores digital (RGB / Web)',
+    comp: 'Complementar',
+    ana: 'Análoga',
+    tri: 'Triádica',
+    tet: 'Tetrádica',
+    split: 'Falso-complementar',
+    mono: 'Monocromática',
+    canvasTitle: 'Círculo cromático interativo',
+    canvasDesc: 'Arraste o nó para girar a paleta. Modo: Itten RYB (Vermelho oposto ao Verde).',
+    shuffle: 'Aleatório',
+    reset: 'Restaurar',
+    hue: 'Matiz (Ângulo)',
+    sat: 'Saturação',
+    light: 'Luminosidade',
+    baseHex: 'HEX Base Direto',
+    cvdTitle: 'Simulação de daltonismo',
+    cvdDesc: 'Teste como pessoas com daltonismo percebem sua paleta:',
+    cvdNormal: 'Visão normal',
+    cvdProtanopia: 'Protanopia (Cegueira ao vermelho)',
+    cvdDeuteranopia: 'Deuteranopia (Cegueira ao verde)',
+    cvdTritanopia: 'Tritanopia (Cegueira ao azul)',
+    cvdAchromatopsia: 'Acromatopsia (Monocromático)',
+    paletteTitle: 'Paleta de cores',
+    paletteColors: 'Cores',
+    scaleTitle: 'Escala de 9 tons e sombras',
+    scaleDesc: 'Clique em um tom para copiar o código HEX:',
+    wcagTitle: 'Matriz de contraste WCAG 2.1',
+    wcagSubtitle: 'Contraste entre cores da paleta',
+    exportTitle: 'Exportação para desenvolvedores',
+    exportSvg: 'Paleta SVG',
+    tailwindTitle: 'Configuração Tailwind CSS',
+    copyCode: 'Copiar código',
+    cssVarsTitle: 'Variáveis CSS (:root)',
+    copyCss: 'Copiar CSS',
+  },
+  es: {
+    modeItten: '🎨 Círculo clásico de Itten (RYB Artista)',
+    modeRgb: '💻 Rueda digital (RGB / Web)',
+    comp: 'Complementario',
+    ana: 'Análogo',
+    tri: 'Triádico',
+    tet: 'Tetrádico',
+    split: 'Complementario dividido',
+    mono: 'Monocromático',
+    canvasTitle: 'Lienzo interactivo',
+    canvasDesc: 'Arrastra el nodo para girar la paleta. Modo: Itten RYB (Rojo opuesto a Verde).',
+    shuffle: 'Aleatorio',
+    reset: 'Restablecer',
+    hue: 'Matiz (Ángulo)',
+    sat: 'Saturación',
+    light: 'Luminosidad',
+    baseHex: 'HEX Base Directo',
+    cvdTitle: 'Simulación de daltonismo',
+    cvdDesc: 'Comprueba cómo perciben tu paleta las personas con daltonismo:',
+    cvdNormal: 'Visión normal',
+    cvdProtanopia: 'Protanopía (Ceguera al rojo)',
+    cvdDeuteranopia: 'Deuteranopía (Ceguera al verde)',
+    cvdTritanopia: 'Tritanopía (Ceguera al azul)',
+    cvdAchromatopsia: 'Acromatopsia (Monocromático)',
+    paletteTitle: 'Paleta de colores',
+    paletteColors: 'Colores',
+    scaleTitle: 'Escala de 9 matices y sombras',
+    scaleDesc: 'Haz clic en cualquier tono para copiar el código HEX:',
+    wcagTitle: 'Matriz de contraste WCAG 2.1',
+    wcagSubtitle: 'Contraste entre colores de la paleta',
+    exportTitle: 'Exportación para desarrolladores',
+    exportSvg: 'Paleta SVG',
+    tailwindTitle: 'Configuración de tokens Tailwind CSS',
+    copyCode: 'Copiar código',
+    cssVarsTitle: 'Variables CSS (:root)',
+    copyCss: 'Copiar CSS',
+  },
+  ru: {
+    modeItten: '🎨 Классический круг Иттена (RYB)',
+    modeRgb: '💻 Цифровой цветовой круг (RGB / Web)',
+    comp: 'Комплементарная',
+    ana: 'Аналоговая',
+    tri: 'Триада',
+    tet: 'Тетрада',
+    split: 'Раздельно-комплементарная',
+    mono: 'Монохромная',
+    canvasTitle: 'Интерактивный цветовой круг',
+    canvasDesc: 'Перетаскивайте маркер для вращения. Режим: Иттен RYB (Красный напротив Зеленого).',
+    shuffle: 'Случайно',
+    reset: 'Сброс',
+    hue: 'Цветовой тон',
+    sat: 'Насыщенность',
+    light: 'Яркость',
+    baseHex: 'HEX базового цвета',
+    cvdTitle: 'Симуляция дальтонизма',
+    cvdDesc: 'Проверьте восприятие вашей палитры людьми с нарушениями цветового зрения:',
+    cvdNormal: 'Нормальное зрение',
+    cvdProtanopia: 'Протанопия (Без красного)',
+    cvdDeuteranopia: 'Дейтеранопия (Без зеленого)',
+    cvdTritanopia: 'Тританопия (Без синего)',
+    cvdAchromatopsia: 'Ахроматопсия (Монохром)',
+    paletteTitle: 'Палитра цветов',
+    paletteColors: 'Цветов',
+    scaleTitle: '9-ступенчатая шкала оттенков',
+    scaleDesc: 'Нажмите на оттенок, чтобы скопировать его HEX код:',
+    wcagTitle: 'Матрица контрастности WCAG 2.1',
+    wcagSubtitle: 'Контраст между цветами палитры',
+    exportTitle: 'Экспорт для разработчиков',
+    exportSvg: 'SVG палитра',
+    tailwindTitle: 'Конфигурация токенов Tailwind CSS',
+    copyCode: 'Копировать код',
+    cssVarsTitle: 'CSS переменные (:root)',
+    copyCss: 'Копировать CSS',
+  },
+};
+
+const labels = studioI18n[lang] || studioI18n.de;
+---
+
+<!-- Mode Switcher Tabs (Itten vs Digital RGB) -->
+<div class="mt-6 flex justify-center">
+  <div class="inline-flex flex-wrap items-center justify-center gap-1 rounded-2xl sm:rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1.5 sm:p-1 shadow-2xs max-w-full">
+    <button
+      type="button"
+      id="wheel-mode-itten"
+      data-wheel="itten"
+      class="wheel-mode-btn active cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium transition-all bg-[#171717] dark:bg-white text-white dark:text-[#171717] shadow-xs"
+    >
+      {labels.modeItten}
+    </button>
+    <button
+      type="button"
+      id="wheel-mode-rgb"
+      data-wheel="rgb"
+      class="wheel-mode-btn cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
+    >
+      {labels.modeRgb}
+    </button>
+  </div>
+</div>
+
+<!-- Main Tool Canvas Section -->
+<section class="py-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Palette Scheme Filter Bar -->
+    <div class="mb-8 flex flex-wrap items-center justify-center gap-1.5">
+      <button
+        type="button"
+        data-scheme="complementary"
+        class="scheme-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] text-white shadow-xs"
+      >
+        {labels.comp}
+      </button>
+      <button
+        type="button"
+        data-scheme="analogous"
+        class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+      >
+        {labels.ana}
+      </button>
+      <button
+        type="button"
+        data-scheme="triadic"
+        class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+      >
+        {labels.tri}
+      </button>
+      <button
+        type="button"
+        data-scheme="tetradic"
+        class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+      >
+        {labels.tet}
+      </button>
+      <button
+        type="button"
+        data-scheme="split"
+        class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+      >
+        {labels.split}
+      </button>
+      <button
+        type="button"
+        data-scheme="monochromatic"
+        class="scheme-btn cursor-pointer rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] transition-all"
+      >
+        {labels.mono}
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+      
+      <!-- Left Column: Interactive Wheel Canvas (6 cols) -->
+      <div class="space-y-6 lg:col-span-6">
+        <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs dark:border-[#222222] dark:bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-[#ebebeb] dark:border-[#222222] pb-4">
+            <div>
+              <h2 class="text-base font-semibold text-[#171717] dark:text-white">{labels.canvasTitle}</h2>
+              <p id="wheel-desc-tag" class="text-xs text-[#8f8f8f] dark:text-[#a1a1aa]">
+                {labels.canvasDesc}
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button
+                id="random-hue-btn"
+                type="button"
+                class="inline-flex items-center gap-1.5 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717] dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] dark:hover:text-white cursor-pointer"
+                title={labels.shuffle}
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>{labels.shuffle}</span>
+              </button>
+              <button
+                id="reset-wheel-btn"
+                type="button"
+                class="inline-flex items-center rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717] dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] dark:hover:text-white cursor-pointer"
+                title={labels.reset}
+              >
+                {labels.reset}
+              </button>
+            </div>
+          </div>
+
+          <!-- Canvas Container -->
+          <div class="relative mx-auto mt-6 flex items-center justify-center">
+            <canvas
+              id="color-wheel-canvas"
+              width="360"
+              height="360"
+              class="touch-none cursor-crosshair rounded-full border border-[#ebebeb] shadow-xs select-none w-full max-w-[360px] aspect-square dark:border-[#222222]"
+            ></canvas>
+          </div>
+
+          <!-- Precision Controls (Sliders & Hex) -->
+          <div class="mt-6 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4 text-xs dark:border-[#222222] dark:bg-[#141414]">
+            <div class="flex items-center justify-between gap-4">
+              <span class="w-24 font-mono text-[#8f8f8f] dark:text-[#737373]">{labels.hue}</span>
+              <input
+                type="range"
+                id="hue-slider"
+                min="0"
+                max="359"
+                value="0"
+                class="h-1.5 flex-1 cursor-pointer accent-[#171717] dark:accent-white"
+              />
+              <span id="hue-value-label" class="w-12 text-right font-mono font-semibold text-[#171717] dark:text-white">0°</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-4">
+              <span class="w-24 font-mono text-[#8f8f8f] dark:text-[#737373]">{labels.sat}</span>
+              <input
+                type="range"
+                id="sat-slider"
+                min="20"
+                max="100"
+                value="100"
+                class="h-1.5 flex-1 cursor-pointer accent-[#171717] dark:accent-white"
+              />
+              <span id="sat-value-label" class="w-12 text-right font-mono font-semibold text-[#171717] dark:text-white">100%</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-4">
+              <span class="w-24 font-mono text-[#8f8f8f] dark:text-[#737373]">{labels.light}</span>
+              <input
+                type="range"
+                id="light-slider"
+                min="20"
+                max="80"
+                value="50"
+                class="h-1.5 flex-1 cursor-pointer accent-[#171717] dark:accent-white"
+              />
+              <span id="light-value-label" class="w-12 text-right font-mono font-semibold text-[#171717] dark:text-white">50%</span>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-[#ebebeb] dark:border-[#222222] pt-3">
+              <span class="font-mono text-[#8f8f8f] dark:text-[#737373]">{labels.baseHex}</span>
+              <div class="flex items-center gap-2">
+                <span id="base-color-dot" class="h-4 w-4 rounded-full border border-black/10 bg-[#FF0000]"></span>
+                <input
+                  type="text"
+                  id="base-hex-input"
+                  value="#FF0000"
+                  maxlength="7"
+                  class="w-24 rounded border border-[#ebebeb] bg-white px-2 py-0.5 font-mono text-xs uppercase font-medium text-[#171717] dark:border-[#333333] dark:bg-[#1a1a1a] dark:text-white"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Vision Deficiency Simulator -->
+        <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs dark:border-[#222222] dark:bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-[#ebebeb] dark:border-[#222222] pb-3">
+            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717] dark:text-white">
+              {labels.cvdTitle}
+            </h3>
+            <span class="text-[11px] text-[#8f8f8f]">8% of users</span>
+          </div>
+          <p class="mt-2 text-xs text-[#8f8f8f] dark:text-[#737373]">{labels.cvdDesc}</p>
+          <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+            <button type="button" data-cvd="normal" class="cvd-btn active rounded-md border border-[#ebebeb] bg-[#171717] px-2.5 py-1.5 text-xs font-medium text-white transition-colors cursor-pointer">
+              {labels.cvdNormal}
+            </button>
+            <button type="button" data-cvd="protanopia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] cursor-pointer">
+              {labels.cvdProtanopia}
+            </button>
+            <button type="button" data-cvd="deuteranopia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] cursor-pointer">
+              {labels.cvdDeuteranopia}
+            </button>
+            <button type="button" data-cvd="tritanopia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] cursor-pointer">
+              {labels.cvdTritanopia}
+            </button>
+            <button type="button" data-cvd="achromatopsia" class="cvd-btn rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] transition-colors dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] cursor-pointer">
+              {labels.cvdAchromatopsia}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Palette Swatches, 9-Shade Scales & WCAG (6 cols) -->
+      <div class="space-y-6 lg:col-span-6">
+        
+        <!-- Palette Swatches Card -->
+        <div class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs dark:border-[#222222] dark:bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-[#ebebeb] dark:border-[#222222] pb-4">
+            <h2 class="text-base font-semibold text-[#171717] dark:text-white">{labels.paletteTitle}</h2>
+            <span id="palette-count-tag" class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1aa]">
+              2 {labels.paletteColors}
+            </span>
+          </div>
+
+          <!-- Dynamic Swatches Row -->
+          <div id="palette-swatches-grid" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <!-- Swatches injected by JS -->
+          </div>
+
+          <!-- Dynamic 9-Step Shade & Tint Scale (Tailwind 50-900) -->
+          <div class="mt-6 border-t border-[#ebebeb] dark:border-[#222222] pt-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717] dark:text-white">
+                {labels.scaleTitle}
+              </span>
+              <span id="active-scale-label" class="font-mono text-xs text-[#8f8f8f]">
+                Base Color
+              </span>
+            </div>
+            <p class="mt-1 text-xs text-[#8f8f8f] dark:text-[#737373]">{labels.scaleDesc}</p>
+
+            <div id="shade-scale-strip" class="mt-3 flex overflow-x-auto rounded-lg border border-[#ebebeb] shadow-inner dark:border-[#262626]">
+              <!-- 50 to 900 swatches -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time WCAG 2.1 Contrast Matrix -->
+        <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs dark:border-[#222222] dark:bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-[#ebebeb] dark:border-[#222222] pb-3">
+            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717] dark:text-white">
+              {labels.wcagTitle}
+            </h3>
+            <span class="text-[11px] text-[#8f8f8f] dark:text-[#737373]">{labels.wcagSubtitle}</span>
+          </div>
+
+          <div id="wcag-contrast-matrix" class="mt-4 space-y-2 text-xs">
+            <!-- Matrix rows injected by JS -->
+          </div>
+        </div>
+
+        <!-- Multi-Format Developer Export -->
+        <div class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs dark:border-[#222222] dark:bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-[#ebebeb] dark:border-[#222222] pb-3">
+            <h3 class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717] dark:text-white">
+              {labels.exportTitle}
+            </h3>
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                id="download-svg-btn"
+                class="inline-flex items-center gap-1 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb] hover:text-[#171717] transition-colors dark:border-[#2e2e2e] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#282828] dark:hover:text-white cursor-pointer"
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>{labels.exportSvg}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Export Code Formats -->
+          <div class="mt-4 space-y-3">
+            <!-- Tailwind Config -->
+            <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-xs dark:border-[#222222] dark:bg-[#141414]">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[11px] text-[#8f8f8f] dark:text-[#737373]">{labels.tailwindTitle}</span>
+                <button type="button" id="copy-tailwind-btn" class="font-medium text-[#0070f3] hover:underline cursor-pointer">
+                  {labels.copyCode}
+                </button>
+              </div>
+              <pre id="tailwind-export-code" class="mt-1 font-mono text-[11px] text-[#171717] dark:text-[#ededed] overflow-x-auto whitespace-pre-wrap"></pre>
+            </div>
+
+            <!-- CSS Variables -->
+            <div class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-xs dark:border-[#222222] dark:bg-[#141414]">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[11px] text-[#8f8f8f] dark:text-[#737373]">{labels.cssVarsTitle}</span>
+                <button type="button" id="copy-css-vars-btn" class="font-medium text-[#0070f3] hover:underline cursor-pointer">
+                  {labels.copyCss}
+                </button>
+              </div>
+              <pre id="css-vars-export-code" class="mt-1 font-mono text-[11px] text-[#171717] dark:text-[#ededed] overflow-x-auto whitespace-pre-wrap"></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import {
+    ittenAngleToRgbHue,
+    rgbHueToIttenAngle,
+    hslToRgb,
+    rgbToHex,
+    rgbToHsl,
+    hexToRgb,
+    getWcagContrast,
+    getContrastRating,
+    simulateColorBlindness,
+    generatePaletteScale
+  } from '../utils/colorPhysics';
+
+  const STORAGE_KEY_WHEEL = 'pl_color_wheel_state_v1';
+
+  interface WheelState {
+    wheelMode: 'itten' | 'rgb';
+    schemeType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic';
+    currentHue: number;
+    currentSat: number;
+    currentLight: number;
+    currentCvd: 'normal' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia';
+    selectedSwatchHex?: string;
+  }
+
+  const DEFAULT_WHEEL_STATE: WheelState = {
+    wheelMode: 'itten',
+    schemeType: 'complementary',
+    currentHue: 0,
+    currentSat: 100,
+    currentLight: 50,
+    currentCvd: 'normal',
+    selectedSwatchHex: '',
+  };
+
+  function loadWheelState(): WheelState {
+    try {
+      const raw =
+        localStorage.getItem(STORAGE_KEY_WHEEL) ||
+        localStorage.getItem('rcm_color_wheel_state_v1');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed) {
+          const wheelMode = parsed.wheelMode === 'rgb' ? 'rgb' : 'itten';
+          const validSchemes = ['complementary', 'analogous', 'triadic', 'tetradic', 'split', 'monochromatic'];
+          const schemeType = validSchemes.includes(parsed.schemeType) ? parsed.schemeType : 'complementary';
+          const currentHue = typeof parsed.currentHue === 'number' && !isNaN(parsed.currentHue)
+            ? ((Math.round(parsed.currentHue) % 360) + 360) % 360
+            : 0;
+          const currentSat = typeof parsed.currentSat === 'number' && !isNaN(parsed.currentSat)
+            ? Math.max(20, Math.min(100, Math.round(parsed.currentSat)))
+            : 100;
+          const currentLight = typeof parsed.currentLight === 'number' && !isNaN(parsed.currentLight)
+            ? Math.max(20, Math.min(80, Math.round(parsed.currentLight)))
+            : 50;
+          const validCvds = ['normal', 'protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia'];
+          const currentCvd = validCvds.includes(parsed.currentCvd) ? parsed.currentCvd : 'normal';
+          const selectedSwatchHex = typeof parsed.selectedSwatchHex === 'string' ? parsed.selectedSwatchHex : '';
+
+          return {
+            wheelMode: wheelMode as 'itten' | 'rgb',
+            schemeType: schemeType as any,
+            currentHue,
+            currentSat,
+            currentLight,
+            currentCvd: currentCvd as any,
+            selectedSwatchHex,
+          };
+        }
+      }
+    } catch (e) {}
+    return { ...DEFAULT_WHEEL_STATE };
+  }
+
+  const state = loadWheelState();
+  let wheelMode = state.wheelMode;
+  let schemeType = state.schemeType;
+  let currentHue = state.currentHue;
+  let currentSat = state.currentSat;
+  let currentLight = state.currentLight;
+  let currentCvd = state.currentCvd;
+  let selectedSwatchHex = state.selectedSwatchHex || '';
+
+  function persistWheelState() {
+    try {
+      const payload: WheelState = {
+        wheelMode,
+        schemeType,
+        currentHue,
+        currentSat,
+        currentLight,
+        currentCvd,
+        selectedSwatchHex,
+      };
+      localStorage.setItem(STORAGE_KEY_WHEEL, JSON.stringify(payload));
+    } catch (e) {}
+  }
+
+  // Scheme angle offsets
+  const SCHEMES = {
+    complementary: [0, 180],
+    analogous: [-30, 0, 30],
+    triadic: [0, 120, 240],
+    tetradic: [0, 90, 180, 270],
+    split: [0, 150, 210],
+    monochromatic: [0],
+  };
+
+  const canvas = document.getElementById('color-wheel-canvas') as HTMLCanvasElement;
+  const ctx = canvas?.getContext('2d');
+  const hueSlider = document.getElementById('hue-slider') as HTMLInputElement;
+  const satSlider = document.getElementById('sat-slider') as HTMLInputElement;
+  const lightSlider = document.getElementById('light-slider') as HTMLInputElement;
+  const hueValueLabel = document.getElementById('hue-value-label');
+  const satValueLabel = document.getElementById('sat-value-label');
+  const lightValueLabel = document.getElementById('light-value-label');
+  const baseHexInput = document.getElementById('base-hex-input') as HTMLInputElement;
+  const baseColorDot = document.getElementById('base-color-dot');
+  const paletteSwatchesGrid = document.getElementById('palette-swatches-grid');
+  const paletteCountTag = document.getElementById('palette-count-tag');
+  const shadeScaleStrip = document.getElementById('shade-scale-strip');
+  const activeScaleLabel = document.getElementById('active-scale-label');
+  const wcagContrastMatrix = document.getElementById('wcag-contrast-matrix');
+  const tailwindExportCode = document.getElementById('tailwind-export-code');
+  const cssVarsExportCode = document.getElementById('css-vars-export-code');
+  const copyTailwindBtn = document.getElementById('copy-tailwind-btn');
+  const copyCssVarsBtn = document.getElementById('copy-css-vars-btn');
+  const downloadSvgBtn = document.getElementById('download-svg-btn');
+  const randomHueBtn = document.getElementById('random-hue-btn');
+  const resetWheelBtn = document.getElementById('reset-wheel-btn');
+  const wheelDescTag = document.getElementById('wheel-desc-tag');
+  const ittenModeBtn = document.getElementById('wheel-mode-itten');
+  const rgbModeBtn = document.getElementById('wheel-mode-rgb');
+
+  let isDraggingNode = false;
+
+  function calculatePalette() {
+    const offsets = SCHEMES[schemeType] || SCHEMES.complementary;
+    const colors: Array<{ hex: string; hsl: [number, number, number]; rgb: [number, number, number]; angle: number }> = [];
+
+    if (schemeType === 'monochromatic') {
+      const rgbBase = wheelMode === 'itten'
+        ? ittenAngleToRgbHue(currentHue)
+        : currentHue;
+      
+      const lightSteps = [
+        Math.max(15, currentLight - 30),
+        Math.max(25, currentLight - 15),
+        currentLight,
+        Math.min(85, currentLight + 15),
+        Math.min(95, currentLight + 30)
+      ];
+
+      lightSteps.forEach((l) => {
+        const rgb = hslToRgb(rgbBase, currentSat, l);
+        colors.push({
+          hex: rgbToHex(rgb[0], rgb[1], rgb[2]),
+          hsl: [rgbBase, currentSat, l],
+          rgb,
+          angle: currentHue
+        });
+      });
+    } else {
+      offsets.forEach((offset) => {
+        const wheelAngle = ((currentHue + offset) % 360 + 360) % 360;
+        const rgbHue = wheelMode === 'itten'
+          ? ittenAngleToRgbHue(wheelAngle)
+          : wheelAngle;
+
+        const rgb = hslToRgb(rgbHue, currentSat, currentLight);
+        colors.push({
+          hex: rgbToHex(rgb[0], rgb[1], rgb[2]),
+          hsl: [rgbHue, currentSat, currentLight],
+          rgb,
+          angle: wheelAngle
+        });
+      });
+    }
+
+    return colors;
+  }
+
+  function drawWheel() {
+    if (!canvas || !ctx) return;
+    const width = canvas.width;
+    const height = canvas.height;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = width / 2 - 14;
+    const innerRadius = radius * 0.45;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const segments = 360;
+    const step = (Math.PI * 2) / segments;
+
+    for (let i = 0; i < segments; i++) {
+      const angle = i;
+      const radStart = (angle - 90) * (Math.PI / 180);
+      const radEnd = radStart + step + 0.02;
+
+      const rgbHue = wheelMode === 'itten'
+        ? ittenAngleToRgbHue(angle)
+        : angle;
+
+      const rgb = hslToRgb(rgbHue, currentSat, currentLight);
+      let renderHex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+
+      if (currentCvd !== 'normal') {
+        const cvdHex = simulateColorBlindness(renderHex, currentCvd as any);
+        renderHex = cvdHex;
+      }
+
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, radStart, radEnd, false);
+      ctx.arc(centerX, centerY, innerRadius, radEnd, radStart, true);
+      ctx.closePath();
+      ctx.fillStyle = renderHex;
+      ctx.fill();
+    }
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, innerRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#ebebeb';
+    ctx.stroke();
+
+    const palette = calculatePalette();
+    const handleDistance = (radius + innerRadius) / 2;
+
+    palette.forEach((color, index) => {
+      const rad = (color.angle - 90) * (Math.PI / 180);
+      const nodeX = centerX + Math.cos(rad) * handleDistance;
+      const nodeY = centerY + Math.sin(rad) * handleDistance;
+
+      const isBaseNode = index === 0;
+
+      ctx.beginPath();
+      ctx.arc(nodeX, nodeY, isBaseNode ? 10 : 7, 0, Math.PI * 2);
+      ctx.fillStyle = color.hex;
+      ctx.fill();
+      ctx.lineWidth = isBaseNode ? 3 : 2;
+      ctx.strokeStyle = isBaseNode ? '#171717' : '#ffffff';
+      ctx.stroke();
+
+      if (isBaseNode) {
+        ctx.beginPath();
+        ctx.arc(nodeX, nodeY, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+      }
+    });
+
+    const baseRad = (currentHue - 90) * (Math.PI / 180);
+    const lineX = centerX + Math.cos(baseRad) * innerRadius;
+    const lineY = centerY + Math.sin(baseRad) * innerRadius;
+
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(lineX, lineY);
+    ctx.strokeStyle = '#171717';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    const baseColorRgb = wheelMode === 'itten'
+      ? ittenAngleToRgbHue(currentHue)
+      : currentHue;
+    const centerRgb = hslToRgb(baseColorRgb, currentSat, currentLight);
+    let centerHex = rgbToHex(centerRgb[0], centerRgb[1], centerRgb[2]);
+
+    if (currentCvd !== 'normal') {
+      centerHex = simulateColorBlindness(centerHex, currentCvd as any);
+    }
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 16, 0, Math.PI * 2);
+    ctx.fillStyle = centerHex;
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#ffffff';
+    ctx.stroke();
+  }
+
+  function renderPaletteUI() {
+    const palette = calculatePalette();
+
+    if (paletteCountTag) paletteCountTag.textContent = `${palette.length} Colors`;
+
+    if (paletteSwatchesGrid) {
+      paletteSwatchesGrid.innerHTML = '';
+
+      palette.forEach((item, index) => {
+        let displayHex = item.hex;
+        if (currentCvd !== 'normal') {
+          displayHex = simulateColorBlindness(item.hex, currentCvd as any);
+        }
+
+        const isBase = index === 0;
+        const swatch = document.createElement('div');
+        swatch.className = 'group relative flex flex-col justify-between rounded-xl border border-[#ebebeb] bg-[#fafafa] p-3 shadow-2xs transition-all hover:border-[#171717] dark:border-[#222222] dark:bg-[#141414] dark:hover:border-white';
+        swatch.innerHTML = `
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-[11px] font-semibold uppercase text-[#8f8f8f]">
+              ${isBase ? 'Base Color' : `Accent #${index}`}
+            </span>
+            <button
+              type="button"
+              data-copy-hex="${item.hex}"
+              class="copy-hex-btn cursor-pointer rounded bg-white px-2 py-0.5 font-mono text-[11px] font-medium text-[#171717] shadow-2xs hover:bg-[#171717] hover:text-white transition-colors dark:bg-[#222222] dark:text-white dark:hover:bg-white dark:hover:text-[#171717]"
+              title="Copy HEX"
+            >
+              ${displayHex}
+            </button>
+          </div>
+          <div class="h-16 w-full rounded-lg shadow-inner cursor-pointer" style="background-color: ${displayHex};" data-select-hex="${item.hex}"></div>
+          <div class="mt-2 flex items-center justify-between font-mono text-[10px] text-[#8f8f8f]">
+            <span>H: ${item.hsl[0]}° S: ${item.hsl[1]}% L: ${item.hsl[2]}%</span>
+            <span>Angle: ${item.angle}°</span>
+          </div>
+        `;
+        paletteSwatchesGrid.appendChild(swatch);
+      });
+
+      paletteSwatchesGrid.querySelectorAll('.copy-hex-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const hex = btn.getAttribute('data-copy-hex') || '';
+          navigator.clipboard.writeText(hex);
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = original), 1500);
+        });
+      });
+
+      paletteSwatchesGrid.querySelectorAll('[data-select-hex]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const hex = el.getAttribute('data-select-hex') || '';
+          selectedSwatchHex = hex;
+          persistWheelState();
+          renderShadeScale();
+        });
+      });
+    }
+
+    if (!selectedSwatchHex || !palette.some(p => p.hex === selectedSwatchHex)) {
+      selectedSwatchHex = palette[0]?.hex || '#FF0000';
+    }
+
+    renderShadeScale();
+    renderContrastMatrix(palette);
+    renderExportCode(palette);
+
+    const baseHex = palette[0]?.hex || '#FF0000';
+    if (baseHexInput) baseHexInput.value = baseHex.toUpperCase();
+    if (baseColorDot) baseColorDot.style.backgroundColor = baseHex;
+  }
+
+  function renderShadeScale() {
+    if (!shadeScaleStrip) return;
+    if (activeScaleLabel) activeScaleLabel.textContent = `Tints & Shades of ${selectedSwatchHex}`;
+
+    const scale = generatePaletteScale(selectedSwatchHex);
+    shadeScaleStrip.innerHTML = '';
+
+    const steps = [
+      { step: '50', hex: scale[50] },
+      { step: '100', hex: scale[100] },
+      { step: '200', hex: scale[200] },
+      { step: '300', hex: scale[300] },
+      { step: '400', hex: scale[400] },
+      { step: '500', hex: scale[500] },
+      { step: '600', hex: scale[600] },
+      { step: '700', hex: scale[700] },
+      { step: '800', hex: scale[800] },
+      { step: '900', hex: scale[900] },
+    ];
+
+    steps.forEach(({ step, hex }) => {
+      let displayHex = hex;
+      if (currentCvd !== 'normal') {
+        displayHex = simulateColorBlindness(hex, currentCvd as any);
+      }
+
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'group relative flex-1 min-w-[34px] h-12 flex flex-col justify-end items-center pb-1 text-[9px] font-mono cursor-pointer transition-transform hover:scale-105';
+      item.style.backgroundColor = displayHex;
+      item.title = `Tailwind ${step}: ${hex} (Click to copy)`;
+
+      const rgb = hexToRgb(hex);
+      const isDark = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000 < 128;
+      item.style.color = isDark ? '#ffffff' : '#171717';
+
+      item.innerHTML = `<span class="opacity-0 group-hover:opacity-100 font-bold transition-opacity">${step}</span>`;
+
+      item.addEventListener('click', () => {
+        navigator.clipboard.writeText(hex);
+        item.style.outline = '2px solid #171717';
+        setTimeout(() => (item.style.outline = 'none'), 800);
+      });
+
+      shadeScaleStrip.appendChild(item);
+    });
+  }
+
+  function renderContrastMatrix(palette: Array<{ hex: string }>) {
+    if (!wcagContrastMatrix) return;
+    wcagContrastMatrix.innerHTML = '';
+
+    for (let i = 0; i < palette.length; i++) {
+      for (let j = i + 1; j < palette.length; j++) {
+        const hex1 = palette[i].hex;
+        const hex2 = palette[j].hex;
+        const ratio = getWcagContrast(hex1, hex2);
+        const rating = getContrastRating(ratio);
+
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] p-2.5 dark:border-[#222222] dark:bg-[#141414]';
+        row.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="h-4 w-4 rounded-full border border-black/10" style="background-color: ${hex1}"></span>
+            <span class="font-mono text-[11px] font-semibold text-[#171717] dark:text-white">${hex1}</span>
+            <span class="text-[#8f8f8f]">vs</span>
+            <span class="h-4 w-4 rounded-full border border-black/10" style="background-color: ${hex2}"></span>
+            <span class="font-mono text-[11px] font-semibold text-[#171717] dark:text-white">${hex2}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-[#171717] dark:text-white">${ratio}:1</span>
+            <span class="rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
+              rating.aa ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
+            }">
+              AA ${rating.aa ? '✓' : '✗'}
+            </span>
+            <span class="rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
+              rating.aaa ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400'
+            }">
+              AAA ${rating.aaa ? '✓' : '✗'}
+            </span>
+          </div>
+        `;
+        wcagContrastMatrix.appendChild(row);
+      }
+    }
+  }
+
+  function renderExportCode(palette: Array<{ hex: string }>) {
+    if (!tailwindExportCode || !cssVarsExportCode) return;
+
+    const names = ['primary', 'secondary', 'accent', 'neutral', 'highlight'];
+    const lines = palette.map((color, i) => {
+      const name = names[i] || `color-${i + 1}`;
+      return `        '${name}': '${color.hex}',`;
+    }).join('\n');
+
+    tailwindExportCode.textContent = `// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n${lines}\n      }\n    }\n  }\n};`;
+
+    const cssVars = palette.map((color, i) => {
+      const name = names[i] || `color-${i + 1}`;
+      return `  --color-${name}: ${color.hex};`;
+    }).join('\n');
+
+    cssVarsExportCode.textContent = `:root {\n${cssVars}\n}`;
+  }
+
+  function updateWheelMode(mode: 'itten' | 'rgb') {
+    wheelMode = mode;
+    persistWheelState();
+
+    if (wheelMode === 'itten') {
+      ittenModeBtn?.classList.add('active', 'bg-[#171717]', 'text-white', 'dark:bg-white', 'dark:text-[#171717]');
+      ittenModeBtn?.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+      rgbModeBtn?.classList.remove('active', 'bg-[#171717]', 'text-white', 'dark:bg-white', 'dark:text-[#171717]');
+      rgbModeBtn?.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+    } else {
+      rgbModeBtn?.classList.add('active', 'bg-[#171717]', 'text-white', 'dark:bg-white', 'dark:text-[#171717]');
+      rgbModeBtn?.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+      ittenModeBtn?.classList.remove('active', 'bg-[#171717]', 'text-white', 'dark:bg-white', 'dark:text-[#171717]');
+      ittenModeBtn?.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+    }
+
+    drawWheel();
+    renderPaletteUI();
+  }
+
+  ittenModeBtn?.addEventListener('click', () => updateWheelMode('itten'));
+  rgbModeBtn?.addEventListener('click', () => updateWheelMode('rgb'));
+
+  document.querySelectorAll('.scheme-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.scheme-btn').forEach((b) => {
+        b.classList.remove('active', 'bg-[#171717]', 'text-white');
+        b.classList.add('bg-white', 'text-[#4d4d4d]', 'border', 'border-[#ebebeb]');
+      });
+      btn.classList.add('active', 'bg-[#171717]', 'text-white');
+      btn.classList.remove('bg-white', 'text-[#4d4d4d]', 'border', 'border-[#ebebeb]');
+
+      const scheme = btn.getAttribute('data-scheme');
+      if (scheme) {
+        schemeType = scheme as any;
+        persistWheelState();
+        drawWheel();
+        renderPaletteUI();
+      }
+    });
+  });
+
+  document.querySelectorAll('.cvd-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cvd-btn').forEach((b) => {
+        b.classList.remove('active', 'bg-[#171717]', 'text-white');
+        b.classList.add('bg-[#fafafa]', 'text-[#4d4d4d]');
+      });
+      btn.classList.add('active', 'bg-[#171717]', 'text-white');
+      btn.classList.remove('bg-[#fafafa]', 'text-[#4d4d4d]');
+
+      const cvd = btn.getAttribute('data-cvd');
+      if (cvd) {
+        currentCvd = cvd as any;
+        persistWheelState();
+        drawWheel();
+        renderPaletteUI();
+      }
+    });
+  });
+
+  hueSlider?.addEventListener('input', (e) => {
+    currentHue = parseInt((e.target as HTMLInputElement).value, 10);
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  satSlider?.addEventListener('input', (e) => {
+    currentSat = parseInt((e.target as HTMLInputElement).value, 10);
+    if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  lightSlider?.addEventListener('input', (e) => {
+    currentLight = parseInt((e.target as HTMLInputElement).value, 10);
+    if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  baseHexInput?.addEventListener('change', (e) => {
+    const val = (e.target as HTMLInputElement).value.trim();
+    if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+      const rgb = hexToRgb(val);
+      const hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+      
+      const wheelAngle = wheelMode === 'itten'
+        ? rgbHueToIttenAngle(hsl[0])
+        : hsl[0];
+
+      currentHue = wheelAngle;
+      currentSat = hsl[1];
+      currentLight = hsl[2];
+
+      if (hueSlider) hueSlider.value = currentHue.toString();
+      if (satSlider) satSlider.value = currentSat.toString();
+      if (lightSlider) lightSlider.value = currentLight.toString();
+      if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+      if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
+      if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
+
+      persistWheelState();
+      drawWheel();
+      renderPaletteUI();
+    }
+  });
+
+  randomHueBtn?.addEventListener('click', () => {
+    currentHue = Math.floor(Math.random() * 360);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  resetWheelBtn?.addEventListener('click', () => {
+    currentHue = 0;
+    currentSat = 100;
+    currentLight = 50;
+    wheelMode = 'itten';
+    schemeType = 'complementary';
+    currentCvd = 'normal';
+
+    if (hueSlider) hueSlider.value = '0';
+    if (satSlider) satSlider.value = '100';
+    if (lightSlider) lightSlider.value = '50';
+    if (hueValueLabel) hueValueLabel.textContent = '0°';
+    if (satValueLabel) satValueLabel.textContent = '100%';
+    if (lightValueLabel) lightValueLabel.textContent = '50%';
+
+    updateWheelMode('itten');
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  function getCanvasAngle(e: MouseEvent | TouchEvent): number {
+    if (!canvas) return 0;
+    const rect = canvas.getBoundingClientRect();
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
+
+    const x = clientX - rect.left - rect.width / 2;
+    const y = clientY - rect.top - rect.height / 2;
+
+    let deg = Math.atan2(y, x) * (180 / Math.PI) + 90;
+    if (deg < 0) deg += 360;
+    return Math.round(deg) % 360;
+  }
+
+  canvas?.addEventListener('mousedown', (e) => {
+    isDraggingNode = true;
+    currentHue = getCanvasAngle(e);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDraggingNode) return;
+    currentHue = getCanvasAngle(e);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDraggingNode) {
+      isDraggingNode = false;
+      persistWheelState();
+    }
+  });
+
+  canvas?.addEventListener('touchstart', (e) => {
+    isDraggingNode = true;
+    currentHue = getCanvasAngle(e);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDraggingNode) return;
+    currentHue = getCanvasAngle(e);
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    persistWheelState();
+    drawWheel();
+    renderPaletteUI();
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    if (isDraggingNode) {
+      isDraggingNode = false;
+      persistWheelState();
+    }
+  });
+
+  copyTailwindBtn?.addEventListener('click', () => {
+    if (tailwindExportCode?.textContent) {
+      navigator.clipboard.writeText(tailwindExportCode.textContent);
+      const original = copyTailwindBtn.textContent;
+      copyTailwindBtn.textContent = 'Copied!';
+      setTimeout(() => (copyTailwindBtn.textContent = original), 1500);
+    }
+  });
+
+  copyCssVarsBtn?.addEventListener('click', () => {
+    if (cssVarsExportCode?.textContent) {
+      navigator.clipboard.writeText(cssVarsExportCode.textContent);
+      const original = copyCssVarsBtn.textContent;
+      copyCssVarsBtn.textContent = 'Copied!';
+      setTimeout(() => (copyCssVarsBtn.textContent = original), 1500);
+    }
+  });
+
+  downloadSvgBtn?.addEventListener('click', () => {
+    const palette = calculatePalette();
+    const svgWidth = palette.length * 100;
+    const svgHeight = 120;
+
+    const rects = palette.map((color, i) => `
+      <rect x="${i * 100}" y="0" width="100" height="90" fill="${color.hex}" />
+      <text x="${i * 100 + 50}" y="108" font-family="monospace" font-size="11" text-anchor="middle" fill="#171717">${color.hex}</text>
+    `).join('');
+
+    const svgContent = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}">
+        <rect width="100%" height="100%" fill="#fafafa"/>
+        ${rects}
+      </svg>
+    `.trim();
+
+    const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `pigmentlab-palette-${schemeType}.svg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  if (hueSlider) hueSlider.value = currentHue.toString();
+  if (satSlider) satSlider.value = currentSat.toString();
+  if (lightSlider) lightSlider.value = currentLight.toString();
+  if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+  if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
+  if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
+
+  updateWheelMode(wheelMode);
+  drawWheel();
+  renderPaletteUI();
+</script>
+

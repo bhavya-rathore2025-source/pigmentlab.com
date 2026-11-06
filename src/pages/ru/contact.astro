@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  'name': 'Контакты PigmentLab',
+  'url': 'https://pigmentlab.com/ru/contact',
+  'description': 'Свяжитесь с командой PigmentLab. Вопросы, отзывы и предложения новых пигментов.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'email': 'contact@pigmentlab.com'
+  }
+};
+---
+
+<Layout
+  title="Контакты — PigmentLab"
+  description="Есть вопросы о физике пигментов, круге Иттена или хотите предложить новый цвет? Напишите нам."
+  keywords="контакты pigmentlab, поддержка pigmentlab, отзывы о цвете"
+  currentPath="/ru/contact"
+  lang="ru"
+  schema={contactSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 text-center">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+        <span>Мы на связи</span>
+      </div>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
+        Связаться с PigmentLab
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Напишите нам на <a href="mailto:contact@pigmentlab.com" class="text-[#0070f3] hover:underline font-mono">contact@pigmentlab.com</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+

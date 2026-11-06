@@ -1,1712 +1,219 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ColorCodesOutput from "../components/ColorCodesOutput.astro";
+import Layout from '../layouts/Layout.astro';
+import MixerStudio from '../components/MixerStudio.astro';
 
-const mixFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
+const germanMixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
     {
-      "@type": "Question",
-      name: "How to mix these colors online?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "To mix colors online in PigmentLab, select your preferred blend mode (Real Paint for physical pigment physics or Modern Web for OKLCH gradients), add your colors by entering custom HEX codes or selecting artist oil pigments, and drag the proportion sliders from 1% to 100%. The mixed result, CSS color-mix() code, and WCAG contrast scores update in real time.",
-      },
+      '@type': 'Question',
+      'name': 'Wie funktioniert dieser Farben mischen Simulator online?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Unser Farben mischen Simulator nutzt echte subtraktive Pigmentoptik (Kubelka-Munk-Theorie). Anders als typische Bildbearbeitungsprogramme, die RGB-Werte einfach mitteln, simuliert PigmentLab die physikalische Absorption von Lichtteilchen. Deshalb ergibt Blau und Gelb in unserem Tool ein leuchtendes Grün wie bei echten Acryl- oder Ölfarben.'
+      }
     },
     {
-      "@type": "Question",
-      name: "How can I mix all colors together?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "In PigmentLab's Real Paint mode (subtractive mixing), blending all primary colors together (Blue, Yellow, and Red) causes the pigments to absorb visible light wavelengths, resulting in a rich dark brown or near-black just like physical paint. In contrast, mixing all colors in Digital Screen mode (additive RGB light) combines wavelengths toward pure white.",
-      },
+      '@type': 'Question',
+      'name': 'Wie kann man Farben mischen, um Braun zu erhalten (farben mischen braun)?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Um Braun zu mischen, gibt es drei bewährte Rezepte: 1. Alle drei Grundfarben (Rot, Gelb und Blau) zu gleichen Teilen mischen. 2. Komplementärfarben kombinieren: Rot und Grün oder Blau und Orange mischen. 3. Für ein warmes Erdbraun: Viel Gelb mit etwas Rot und einem winzigen Hauch Blau oder Schwarz anmischen.'
+      }
     },
     {
-      "@type": "Question",
-      name: "How does this online color mixer simulate real paint blending?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our online color mixer implements realistic subtractive pigment optics. Unlike standard digital tools that linearly average RGB light channels, our physical pigment model simulates how particles absorb and scatter specific light wavelengths, producing vibrant Green when mixing Blue and Yellow.",
-      },
+      '@type': 'Question',
+      'name': 'Was zeigt die Farben mischen Tabelle?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Die Mischtabelle zeigt die genauen physikalischen Ergebnisse beim Zusammenführen von Primär- und Sekundärfarben. Sie dient Malern, Lackierern und Gestaltern als praktische Orientierung für Farbverhältnisse von 1% bis 100%.'
+      }
     },
-  ],
+    {
+      '@type': 'Question',
+      'name': 'Was passiert beim Mischen aller Farben?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Beim subtraktiven Mischen (Pigmente und Lacke) absorbieren die Farbpartikel immer mehr Wellenlängen des Lichts — die Mischung wird dunkler und mündet in einem tiefen Dunkelbraun bis Schwarz. Bei additiver Bildschirmmischung (RGB) entsteht stattdessen reines Weiß.'
+      }
+    }
+  ]
 };
 
-const pageSchema = [
+const germanMixSchema = [
   {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "PigmentLab Color Mixer Online & Hex Color Mixer",
-    url: "https://pigmentlab.com/mix",
-    description:
-      "Free online color mixer and hex color mixer with realistic pigment physics. Blend colors with authentic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.",
-    applicationCategory: "DesignApplication",
-    operatingSystem: "All",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Farben Mischen Simulator — Mischtabelle & Farbmischung Rechner',
+    'url': 'https://pigmentlab.com/mix',
+    'description': 'Kostenloser Farben mischen Simulator online mit echter physikalischer Pigmentoptik. Farben mischen Tabelle, Mischtabelle für Acryl- und Ölfarben, Anleitung wie man Braun mischt und CSS color-mix() Rechner.',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'EUR'
+    }
   },
-  mixFaqSchema,
+  germanMixFaqSchema
 ];
 ---
 
 <Layout
-  title="Color Mixer Online - Hex Color Mixer & Pigment Blending Generator"
-  description="Free color mixer online and hex color mixer with realistic physical pigment physics. Blend colors with proportion sliders, generate CSS color-mix(), and test WCAG contrast. The premier online color mixer."
-  keywords="color mixer, color mixer online, online color mixer, color mixer generator, hex color mixer, paint mixer, kubelka munk, real color mixing, css color mix"
+  title="Farben Mischen Online Simulator — Mischtabelle & Farbmischung Rechner"
+  description="Kostenloser Farben mischen Simulator mit echter subtraktiver Pigmentphysik. Farben mischen Tabelle, Mischtabelle für Acryl-, Öl- und Wandfarben, Anleitung wie man Braun mischt und CSS color-mix() Rechner."
+  keywords="farben mischen, farben mischen tabelle, farben mischen simulator, farben mischen braun, mischtabelle farben mischen tabelle, farbmischung, farben mischen online, acrylfarben mischen, ölfarben mischen"
   currentPath="/mix"
-  schema={pageSchema}
+  lang="de"
+  schema={germanMixSchema}
 >
   <!-- Hero Section -->
-  <section
-    class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14"
-  >
-    <!-- Subtle Geist Mesh Gradient Bloom in background -->
-    <div
-      class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20"
-    >
-      <div
-        class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"
-      >
-      </div>
-      <div
-        class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"
-      >
-      </div>
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <div
-          class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs"
-        >
-          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"
-          ></span>
-          <span>Subtractive Pigment Physics & CSS color-mix()</span>
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Subtraktive Pigmentphysik &amp; Mischtabelle</span>
         </div>
 
-        <h1
-          class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl"
-        >
-          Real Color Mixer Online & Hex Color Mixer
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Farben Mischen Online Simulator &amp; Farbrechner
         </h1>
 
-        <p
-          class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base"
-        >
-          Standard screen tools average RGB channels into dirty brownish-grey.
-          Our <strong>online color mixer</strong> and <strong
-            >color mixer generator</strong
-          > simulates true pigment absorption and light scattering — blend <span
-            class="font-medium text-[#002185] dark:text-[#4d79ff]">Blue</span
-          > and <span class="font-medium text-[#cda000] dark:text-[#ffd233]"
-            >Yellow</span
-          > to get vibrant <span
-            class="font-medium text-[#168a35] dark:text-[#47d169]">Green</span
-          > like real physical paint.
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Herkömmliche Bildschirmtools mitteln RGB-Kanäle mathematisch zu schmutzigem Graubraun. Unser <strong class="text-[#171717] dark:text-white">Farben mischen Simulator</strong> berechnet echte Partikelabsorption und Lichtstreuung: Mischen Sie <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Blau</span> und <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Gelb</span> zu leuchtendem <span class="font-medium text-[#168a35] dark:text-[#47d169]">Grün</span> wie bei echter Künstlerfarbe.
         </p>
-
-        <!-- Mode Switcher Tabs (Geist Pill style) -->
-        <div
-          class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-2xl sm:rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1.5 sm:p-1 shadow-2xs max-w-full"
-        >
-          <button
-            type="button"
-            data-mode="paint"
-            class="mode-btn active cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium transition-all bg-[#171717] dark:bg-white text-white dark:text-[#171717] shadow-xs"
-          >
-            🎨 Real Paint (RYB)
-          </button>
-          <button
-            type="button"
-            data-mode="oklch"
-            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
-          >
-            💻 Modern Web (OKLCH)
-          </button>
-          <button
-            type="button"
-            data-mode="rgb"
-            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
-          >
-            🖥️ Digital Screen (RGB)
-          </button>
-          <button
-            type="button"
-            data-mode="cmyk"
-            class="mode-btn cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa] hover:text-[#171717] dark:hover:text-white transition-all"
-          >
-            🖨️ Print & Inks (CMYK)
-          </button>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Tool Workspace -->
-  <section class="py-10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-        <!-- Left Column: Mixer Controls & Live Results (7 cols) -->
-        <div class="space-y-6 lg:col-span-7">
-          <!-- Main Result Swatch Card -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs"
-          >
-            <div
-              class="flex items-center justify-between border-b border-[#ebebeb] pb-3"
-            >
-              <span
-                class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f]"
-              >
-                Mixed Color Result
-              </span>
-              <span
-                id="blend-mode-tag"
-                class="rounded bg-[#f2f2f2] px-2 py-0.5 font-mono text-[11px] text-[#4d4d4d]"
-              >
-                Real Paint (RYB)
-              </span>
-            </div>
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="de" />
 
-            <!-- Big Color Swatch Box -->
-            <div
-              class="relative mt-4 flex h-36 w-full items-center justify-center rounded-xl border border-black/10 p-4 transition-colors shadow-inner"
-              id="result-swatch-box"
-            >
-              <div
-                class="rounded-lg bg-black/40 backdrop-blur-md px-3.5 py-1.5 text-center text-white shadow-sm"
-              >
-                <div
-                  id="result-hex-display"
-                  class="font-mono text-xl font-bold tracking-wider"
-                >
-                  #3D933E
-                </div>
-                <div
-                  id="result-rgb-display"
-                  class="text-[11px] font-mono text-white/80"
-                >
-                  rgb(61, 147, 62)
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mixing Palette Card -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 sm:p-6 shadow-2xs"
-          >
-            <div
-              class="flex items-center justify-between border-b border-[#ebebeb] pb-4"
-            >
-              <div>
-                <h2 class="text-base font-semibold text-[#171717]">
-                  Mixing Palette
-                </h2>
-                <p class="text-xs text-[#8f8f8f]">
-                  Adjust proportions and colors to create your custom blend.
-                </p>
-              </div>
-              <div class="flex items-center gap-2">
-                <button
-                  id="random-mix-btn"
-                  type="button"
-                  class="inline-flex items-center gap-1.5 rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
-                  title="Load a preset recipe"
-                >
-                  <svg
-                    class="h-3.5 w-3.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    ></path>
-                  </svg>
-                  <span>Preset</span>
-                </button>
-                <button
-                  id="reset-mix-btn"
-                  type="button"
-                  class="inline-flex items-center rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
-                  title="Reset to 50/50 Blue & Yellow"
-                >
-                  Reset
-                </button>
-              </div>
-            </div>
-
-            <!-- Color Slots Container -->
-            <div id="color-slots" class="mt-4 space-y-4">
-              <!-- Dynamically rendered slots -->
-            </div>
-
-            <!-- Add Color & Formula Action Bar -->
-            <div
-              class="mt-6 flex flex-col items-start justify-between gap-3 border-t border-[#ebebeb] pt-4 sm:flex-row sm:items-center"
-            >
-              <button
-                id="add-color-btn"
-                type="button"
-                class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] bg-white px-3.5 py-1.5 text-xs font-medium text-[#171717] shadow-2xs transition-colors hover:bg-[#f2f2f2]"
-              >
-                <svg
-                  class="h-3.5 w-3.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Add Color (Max 6)</span>
-              </button>
-
-              <div id="parts-formula" class="font-mono text-xs text-[#8f8f8f]">
-                Formula: <span class="text-[#171717] font-semibold"
-                  >1:1 Paint Mix</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Live Design Mockup Preview Studio -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs"
-          >
-            <h3
-              class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]"
-            >
-              Live UI Component Preview
-            </h3>
-            <p class="mt-1 text-xs text-[#8f8f8f]">
-              See how this mixed color performs in realistic design components:
-            </p>
-
-            <div
-              class="mt-4 space-y-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-4"
-            >
-              <!-- Component 1: Action Button -->
-              <div class="flex items-center justify-between">
-                <span class="text-xs text-[#8f8f8f]">CTA Button</span>
-                <button
-                  type="button"
-                  id="preview-btn"
-                  class="rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors"
-                  style="background-color: #3D933E;"
-                >
-                  Confirm Action
-                </button>
-              </div>
-
-              <!-- Component 2: Outline Tag -->
-              <div
-                class="flex items-center justify-between border-t border-[#ebebeb] pt-3"
-              >
-                <span class="text-xs text-[#8f8f8f]">Status Tag</span>
-                <span
-                  id="preview-tag"
-                  class="inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-medium"
-                  style="background-color: rgba(61, 147, 62, 0.12); color: #3D933E; border: 1px solid #3D933E;"
-                >
-                  <span
-                    class="h-1.5 w-1.5 rounded-full"
-                    style="background-color: #3D933E;"></span>
-                  Verified Mix
-                </span>
-              </div>
-
-              <!-- Component 3: Card Accent -->
-              <div
-                id="preview-card"
-                class="rounded-lg bg-white p-3 text-xs shadow-2xs border-l-4"
-                style="border-left-color: #3D933E;"
-              >
-                <div class="font-semibold text-[#171717]">
-                  Card Headline Accent
-                </div>
-                <div class="text-[#8f8f8f] mt-0.5">
-                  Component preview dynamically renders the pigment mixture.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Color Codes, Presets & Accessibility (5 cols) -->
-        <div class="space-y-6 lg:col-span-5">
-          <!-- Color Codes & CSS Output Component (Export Studio) -->
-          <ColorCodesOutput />
-
-          <!-- Physical Paint Tubes Swatches -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs"
-          >
-            <div
-              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#ebebeb] pb-3"
-            >
-              <div>
-                <h3
-                  class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]"
-                >
-                  Artist Pigment Quick Presets
-                </h3>
-                <p class="mt-0.5 text-xs text-[#8f8f8f]">
-                  Click any tube to load into the active slot:
-                </p>
-              </div>
-              <button
-                type="button"
-                id="reset-presets-btn"
-                class="text-[11px] font-mono text-[#8f8f8f] hover:text-[#171717] dark:hover:text-white cursor-pointer self-start sm:self-auto transition-colors"
-                title="Reset presets to default traditional palette"
-              >
-                Reset Defaults
-              </button>
-            </div>
-
-            <!-- Add custom preset input bar -->
-            <form id="add-preset-form" class="mt-3 flex items-center gap-2">
-              <div class="relative flex-1">
-                <input
-                  type="text"
-                  id="new-preset-hex"
-                  placeholder="Paste HEX (e.g. #3b82f6 or 3b82f6)..."
-                  maxlength="9"
-                  autocomplete="off"
-                  class="w-full rounded-lg border border-[#ebebeb] bg-[#fafafa] dark:bg-[#0a0a0a] px-3 py-1.5 font-mono text-xs text-[#171717] uppercase placeholder:normal-case placeholder:text-[#8f8f8f] focus:outline-none focus:border-[#171717] dark:focus:border-white transition-colors"
-                />
-                <span
-                  id="hex-preview-dot"
-                  class="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full border border-black/15 shadow-2xs hidden"
-                ></span>
-              </div>
-              <button
-                type="submit"
-                id="submit-preset-btn"
-                class="inline-flex items-center gap-1.5 rounded-lg border border-[#ebebeb] bg-[#fafafa] hover:bg-[#ebebeb] dark:hover:bg-[#1f1f1f] px-3 py-1.5 text-xs font-medium text-[#171717] dark:text-[#ededed] transition-colors cursor-pointer shrink-0"
-              >
-                <svg
-                  class="h-3.5 w-3.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Add Preset</span>
-              </button>
-            </form>
-
-            <div
-              id="preset-tubes-grid"
-              class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2"
-            >
-              <!-- Rendered dynamically -->
-            </div>
-          </div>
-
-          <!-- Real-Time WCAG 2.1 Contrast Matrix -->
-          <div
-            class="rounded-xl border border-[#ebebeb] bg-white p-5 shadow-2xs"
-          >
-            <div
-              class="flex items-center justify-between border-b border-[#ebebeb] pb-3"
-            >
-              <h3
-                class="font-mono text-xs font-semibold uppercase tracking-wider text-[#171717]"
-              >
-                WCAG 2.1 Accessibility
-              </h3>
-              <span class="text-[11px] text-[#8f8f8f]">Legibility scoring</span>
-            </div>
-
-            <div class="mt-4 grid grid-cols-2 gap-3">
-              <!-- On White -->
-              <div
-                class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center"
-              >
-                <div class="text-[11px] text-[#8f8f8f]">Against White Text</div>
-                <div
-                  id="wcag-white-ratio"
-                  class="mt-1 font-mono text-lg font-bold text-[#171717]"
-                >
-                  4.32:1
-                </div>
-                <div class="mt-2 flex items-center justify-center gap-1">
-                  <span
-                    id="badge-white-aa"
-                    class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800"
-                    >AA Large</span
-                  >
-                  <span
-                    id="badge-white-aaa"
-                    class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-red-100 text-red-800"
-                    >AAA Fail</span
-                  >
-                </div>
-              </div>
-
-              <!-- On Black -->
-              <div
-                class="rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 text-center"
-              >
-                <div class="text-[11px] text-[#8f8f8f]">Against Black Text</div>
-                <div
-                  id="wcag-black-ratio"
-                  class="mt-1 font-mono text-lg font-bold text-[#171717]"
-                >
-                  4.86:1
-                </div>
-                <div class="mt-2 flex items-center justify-center gap-1">
-                  <span
-                    id="badge-black-aa"
-                    class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800"
-                    >AA Pass</span
-                  >
-                  <span
-                    id="badge-black-aaa"
-                    class="rounded px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800"
-                    >AAA Large</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comprehensive Educational Guide & SEO Section -->
-  <article
-    class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24"
-  >
+  <!-- Educational Guide & Mixing Table in German -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
       <div class="text-center mb-14">
-        <span
-          class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]"
-          >Pigment Science & Code Generation</span
-        >
-        <h2
-          class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl"
-        >
-          The Complete Guide to Online Color Mixing & Hex Color Generators
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Pigment-Optik &amp; Farbformeln</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          Der umfassende Leitfaden: Farben mischen, Mischtabelle und Farbrezepte
         </h2>
         <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Discover authentic subtractive pigment blending, mix custom hex codes,
-          and export production-ready CSS color-mix() code.
+          Authentische subtraktive Farbmischung verstehen, Farbmischungen für Braun berechnen und CSS color-mix() Code generieren.
         </p>
       </div>
 
-      <!-- Main Prose Body -->
-      <div
-        class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]"
-      >
-        <!-- Section 1: Color Mixer & Online Color Mixer -->
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
         <section class="space-y-4">
-          <h3
-            class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white"
-          >
-            1. Why Use an Online Color Mixer with Real Pigment Physics?
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Warum ein Farben mischen Simulator mit echter Pigmentphysik?
           </h3>
           <p>
-            An <strong>online color mixer</strong> is an essential tool for painters,
-            crafters, graphic designers, and front-end developers who need to forecast
-            how two or more colors combine. However, almost all standard digital graphics
-            editors and web color tools suffer from a serious limitation: they mix
-            colors using linear RGB channel averaging. When you attempt to blend pure
-            blue and bright yellow in an RGB tool, the mathematical average lands
-            on a dull, lifeless, muddy brownish-grey (#808040).
+            Wer mit Acrylfarben, Ölfarben, Aquarell oder Wandfarben arbeitet, weiß: Farbpartikel verhalten sich anders als Pixel auf dem Monitor. Das digitale Mischen auf dem Bildschirm ist additiv (Licht wird addiert). Beim physischen <strong>Farben mischen</strong> subtrahieren Pigmente jedoch Lichtwellen. 
           </p>
           <p>
-            Our <strong>color mixer online</strong> solves this problem by simulating
-            physical pigment behavior through subtractive color physics. By accounting
-            for the physical absorption and scattering of light waves, our <strong
-              >color mixer</strong
-            > ensures that blending blue and yellow yields radiant, authentic Green
-            (#3D933E)—exactly like mixing oil or acrylic paints on a wooden palette.
+            Unser <strong>Farben mischen Simulator</strong> schließt diese Lücke. Durch Modellierung der optischen Absorptionskoeffizienten nach Kubelka-Munk erhalten Sie realistische Mischresultate, genaue Mischungsverhältnisse in Prozent und anwendungsbereiten Farbcode.
           </p>
         </section>
 
-        <!-- Section 2: How to Use the Color Mixer Generator -->
+        <!-- Farben Mischen Tabelle -->
         <section class="space-y-4">
-          <h3
-            class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white"
-          >
-            2. How to Use This Color Mixer Generator: Step-by-Step
-          </h3>
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div
-              class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5"
-            >
-              <span
-                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold"
-                >1</span
-              >
-              <h4
-                class="mt-3 text-sm font-semibold text-[#111827] dark:text-white"
-              >
-                Choose Your Blending Mode
-              </h4>
-              <p
-                class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Select <strong>Real Paint (RYB)</strong> for authentic physical paint
-                absorption, <strong>Modern Web (OKLCH)</strong> for uniform digital
-                gradients, <strong>RGB</strong> for linear screens, or <strong
-                  >CMYK</strong
-                > for print ink layering.
-              </p>
-            </div>
-            <div
-              class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5"
-            >
-              <span
-                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold"
-                >2</span
-              >
-              <h4
-                class="mt-3 text-sm font-semibold text-[#111827] dark:text-white"
-              >
-                Add Colors or Traditional Pigments
-              </h4>
-              <p
-                class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Mix up to 6 colors at once. Enter custom hex codes directly or
-                choose from classic artist tubes like Ultramarine Blue, Cadmium
-                Yellow, Crimson Red, and Titanium White.
-              </p>
-            </div>
-            <div
-              class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5"
-            >
-              <span
-                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold"
-                >3</span
-              >
-              <h4
-                class="mt-3 text-sm font-semibold text-[#111827] dark:text-white"
-              >
-                Adjust Mixing Proportions
-              </h4>
-              <p
-                class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Drag the fluid percentage weight sliders from 1% to 100% to
-                simulate exact recipe proportions (e.g., 70% Titanium White +
-                20% Yellow Ochre + 10% Crimson Red).
-              </p>
-            </div>
-            <div
-              class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5"
-            >
-              <span
-                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#171717] dark:bg-white text-white dark:text-[#171717] text-xs font-mono font-bold"
-                >4</span
-              >
-              <h4
-                class="mt-3 text-sm font-semibold text-[#111827] dark:text-white"
-              >
-                Inspect Accessibility & Export Code
-              </h4>
-              <p
-                class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Review live WCAG 2.1 contrast ratios (AA/AAA pass/fail), check
-                component UI previews, and copy native CSS <code
-                  >color-mix()</code
-                > code or HEX values with one click.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section 3: Additive vs Subtractive Physics & Kubelka Munk -->
-        <section class="space-y-4">
-          <h3
-            class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white"
-          >
-            3. The Science of Subtractive Mixing: Kubelka-Munk vs Additive RGB
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Farben mischen Tabelle: Klassische Farbrezepte im Überblick
           </h3>
           <p>
-            Understanding why an <strong>online color mixer</strong> needs physical
-            science requires distinguishing between how monitors display light and
-            how pigments reflect light:
+            Nutzen Sie diese <strong>Farben mischen Tabelle</strong> (Mischtabelle) als Richtwert für Ihre künstlerischen Projekte und Wandfarben:
           </p>
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div
-              class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5"
-            >
-              <div
-                class="font-mono text-xs font-semibold text-[#0070f3] uppercase"
-              >
-                Additive RGB (Digital Displays)
-              </div>
-              <p
-                class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Computer monitors emit light. Blending red, green, and blue
-                light adds wavelengths together toward white. Mixing
-                complementary screen colors produces grey because opposite
-                wavelengths cancel each other out in the eye's photoreceptors.
-              </p>
-            </div>
-            <div
-              class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5"
-            >
-              <div
-                class="font-mono text-xs font-semibold text-[#168a35] dark:text-[#47d169] uppercase"
-              >
-                Subtractive Pigments (Real Paint)
-              </div>
-              <p
-                class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Physical pigments absorb (subtract) light. Blue paint absorbs
-                red and yellow light; yellow paint absorbs blue and violet
-                light. The only light reflected by both pigments is <strong
-                  >vibrant green</strong
-                >.
-              </p>
-            </div>
-          </div>
-          <p>
-            Our <strong>color mixer generator</strong> computes this reaction using
-            the Kubelka-Munk equation:
-          </p>
-          <div
-            class="rounded-lg border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-4 font-mono text-xs text-[#111827] dark:text-[#ededed] text-center"
-          >
-            K / S = (1 - R)² / (2R)
-          </div>
-          <p class="text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
-            Where <em>K</em> is the absorption coefficient, <em>S</em> is the scattering
-            coefficient, and <em>R</em> is the spectral reflectance at each visible
-            wavelength.
-          </p>
-        </section>
-
-        <!-- Section 4: Precision Hex Color Mixer -->
-        <section class="space-y-4">
-          <h3
-            class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white"
-          >
-            4. Precision Hex Color Mixer for Frontend Developers & Designers
-          </h3>
-          <p>
-            For digital designers and web developers, this tool serves as a
-            high-precision <strong>hex color mixer</strong>. Instead of guessing
-            how brand colors blend in modern CSS, you can enter any two or more
-            hex codes and immediately generate modern CSS declarations:
-          </p>
-          <div
-            class="rounded-lg border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-4 font-mono text-xs text-[#111827] dark:text-[#ededed]"
-          >
-            background-color: color-mix(in oklch, #0070F3 50%, #FF0080 50%);
-          </div>
-          <p>
-            By mixing in the perceptually uniform <strong>OKLCH</strong> color space,
-            the <strong>hex color mixer</strong> prevents the "grey dead zone" that
-            occurs when blending in standard sRGB, ensuring rich, vibrant UI gradients
-            without clipping. Furthermore, our live contrast score guarantees that
-            text placed on the mixed color will satisfy WCAG 2.1 AA and AAA legal
-            accessibility requirements.
-          </p>
-        </section>
-
-        <!-- Section 5: Real-World Pigment Recipes Table -->
-        <section class="space-y-4">
-          <h3
-            class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white"
-          >
-            5. Classic Artist Pigment Mixing Recipes & Cheat-Sheet
-          </h3>
-          <div
-            class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs"
-          >
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
             <table class="w-full text-left text-xs sm:text-sm">
-              <thead
-                class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]"
-              >
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
                 <tr>
-                  <th class="p-4 sm:p-5">Desired Color</th>
-                  <th class="p-4 sm:p-5">Recipe Ingredients</th>
-                  <th class="p-4 sm:p-5">Mixing Proportions</th>
-                  <th class="p-4 sm:p-5">Resulting Hex</th>
+                  <th class="p-4 sm:p-5">Farbe 1</th>
+                  <th class="p-4 sm:p-5">Farbe 2</th>
+                  <th class="p-4 sm:p-5">Ergebnis mit PigmentLab (Echte Farbe)</th>
+                  <th class="p-4 sm:p-5">Typisches Bildschirm-RGB</th>
                 </tr>
               </thead>
-              <tbody
-                class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]"
-              >
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
                 <tr>
-                  <td
-                    class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white"
-                    >Vibrant Green</td
-                  >
-                  <td class="p-4 sm:p-5">Ultramarine Blue + Cadmium Yellow</td>
-                  <td class="p-4 sm:p-5">50% Blue + 50% Yellow</td>
-                  <td
-                    class="p-4 sm:p-5 font-mono text-emerald-600 dark:text-emerald-400 font-semibold"
-                    >#3D933E</td
-                  >
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Phthaloblau (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Kadmiumgelb (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">Leuchtendes Smaragdgrün (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Trübes Graubraun (#808C43)</td>
                 </tr>
                 <tr>
-                  <td
-                    class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white"
-                    >Rich Earth Brown</td
-                  >
-                  <td class="p-4 sm:p-5"
-                    >Crimson Red + Cadmium Yellow + Ultramarine Blue</td
-                  >
-                  <td class="p-4 sm:p-5">40% Red + 40% Yellow + 20% Blue</td>
-                  <td
-                    class="p-4 sm:p-5 font-mono text-amber-800 dark:text-amber-500 font-semibold"
-                    >#5C3317</td
-                  >
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Kadmiumrot (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Kadmiumgelb (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">Kräftiges Orange (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Entsättigtes Orange (#F37B13)</td>
                 </tr>
                 <tr>
-                  <td
-                    class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white"
-                    >Warm Flesh Tone</td
-                  >
-                  <td class="p-4 sm:p-5"
-                    >Titanium White + Yellow Ochre + Crimson Red</td
-                  >
-                  <td class="p-4 sm:p-5">70% White + 20% Ochre + 10% Red</td>
-                  <td
-                    class="p-4 sm:p-5 font-mono text-orange-600 dark:text-orange-400 font-semibold"
-                    >#E8C4A2</td
-                  >
-                </tr>
-                <tr>
-                  <td
-                    class="p-4 sm:p-5 font-medium text-[#111827] dark:text-white"
-                    >Deep Velvet Purple</td
-                  >
-                  <td class="p-4 sm:p-5"
-                    >Ultramarine Blue + Quinacridone Magenta</td
-                  >
-                  <td class="p-4 sm:p-5">55% Blue + 45% Magenta</td>
-                  <td
-                    class="p-4 sm:p-5 font-mono text-purple-600 dark:text-purple-400 font-semibold"
-                    >#4C1D6E</td
-                  >
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Phthaloblau (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Kadmiumrot (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">Tiefes Violett / Purpur</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Flaches Magenta</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <!-- Section 6: FAQ Section -->
-        <section
-          class="space-y-6 pt-6 border-t border-[#e5e7eb] dark:border-[#262626]"
-        >
-          <h3
-            class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white"
-          >
-            6. Frequently Asked Questions About Online Color Mixing
+        <!-- Farben Mischen Braun -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            3. Farben mischen Braun: Die besten Mischverhältnisse
           </h3>
+          <p>
+            Die Suchanfrage <strong>"farben mischen braun"</strong> gehört zu den häufigsten Fragen in der Malkunst. Da Braun keine Grundfarbe ist, wird es immer aus mehreren Komponenten gemischt:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Methode A: 3 Grundfarben</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Mischen Sie Rot + Gelb + Blau zu gleichen Teilen. Mehr Gelb ergibt Ockerbraun, mehr Rot ergibt Kastanienbraun.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Methode B: Komplementär</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Rot + Grün oder Blau + Orange. Dies ergibt sofort ein natürliches, sattes Erdbraun ohne Schmutzstich.
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#141414] p-4">
+              <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">Methode C: Aufhellen &amp; Abdunkeln</span>
+              <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                Verwenden Sie Titanweiß für Beigetöne und Ultramarinblau (statt reinem Schwarz) für edles Schokoladenbraun.
+              </p>
+            </div>
+          </div>
+        </section>
 
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Häufig gestellte Fragen zum Farben Mischen
+          </h3>
           <div class="space-y-4">
-            <details
-              class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs"
-            >
-              <summary
-                class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white"
-              >
-                <span>How to mix these colors online?</span>
-                <span
-                  class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]"
-                  >▼</span
-                >
-              </summary>
-              <p
-                class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                To mix colors online in PigmentLab, select your preferred blend
-                mode (<strong>Real Paint</strong> for authentic pigment physics or
-                <strong>Modern Web</strong> for OKLCH gradients), add colors by entering
-                custom HEX codes or selecting artist oil pigments, and drag the proportion
-                sliders from 1% to 100%. The blended color, CSS <code
-                  class="font-mono text-xs">color-mix()</code
-                > code, and WCAG contrast scores update in real time.
-              </p>
-            </details>
-
-            <details
-              class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs"
-            >
-              <summary
-                class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white"
-              >
-                <span>How can I mix all colors together?</span>
-                <span
-                  class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]"
-                  >▼</span
-                >
-              </summary>
-              <p
-                class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                In PigmentLab's <strong>Real Paint</strong> mode (subtractive mixing),
-                blending all primary colors together (Blue, Yellow, and Red) causes
-                the pigments to absorb visible light wavelengths, resulting in a rich
-                dark brown or near-black—just like physical paint. In contrast, mixing
-                all colors in <strong>Digital Screen</strong> mode (additive RGB light)
-                combines wavelengths toward pure white.
-              </p>
-            </details>
-
-            <details
-              class="group rounded-xl border border-[#e5e7eb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#121212] p-5 transition-all open:bg-white dark:open:bg-[#171717] shadow-2xs"
-            >
-              <summary
-                class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white"
-              >
-                <span
-                  >How does this online color mixer simulate real paint
-                  blending?</span
-                >
-                <span
-                  class="ml-4 text-xs transition-transform group-open:rotate-180 text-[#8f8f8f]"
-                  >▼</span
-                >
-              </summary>
-              <p
-                class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
-              >
-                Our <strong>online color mixer</strong> implements realistic subtractive
-                pigment optics. Unlike standard digital tools that linearly average
-                RGB light channels, our physical pigment model simulates how particles
-                absorb and scatter specific light wavelengths, producing vibrant Green
-                when mixing Blue and Yellow.
-              </p>
-            </details>
+            {germanMixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
           </div>
         </section>
       </div>
     </div>
   </article>
 </Layout>
-
-<script>
-  import {
-    mixPigmentsKubelkaMunk,
-    mixOklch,
-    mixRgb,
-    mixCmyk,
-    hexToRgb,
-    rgbToHex,
-    rgbToHsl,
-    rgbToCmyk,
-    rgbToOklch,
-    getWcagContrast,
-    getContrastRating,
-    type ColorWeight,
-  } from "../utils/colorPhysics";
-
-  // Helper
-  function normalizeHex(input: string): string | null {
-    let val = input.trim();
-    if (val.startsWith("#")) val = val.substring(1);
-    if (/^[0-9A-Fa-f]{3}$/.test(val)) {
-      val = val
-        .split("")
-        .map((c) => c + c)
-        .join("");
-    }
-    if (/^[0-9A-Fa-f]{6}$/.test(val)) {
-      return "#" + val.toUpperCase();
-    }
-    return null;
-  }
-
-  // State persistence interfaces & keys
-  const STORAGE_KEY_PRESETS = "pl_pigment_presets_v1";
-  const STORAGE_KEY_MIXER = "pl_color_mixer_state_v1";
-
-  interface MixerState {
-    currentMode: "paint" | "oklch" | "rgb" | "cmyk";
-    colors: ColorWeight[];
-    activeSlotIndex: number;
-  }
-
-  const DEFAULT_MIXER_STATE: MixerState = {
-    currentMode: "paint",
-    colors: [
-      { hex: "#002185", weight: 50 }, // Ultramarine Blue
-      { hex: "#FCD200", weight: 50 }, // Cadmium Yellow
-    ],
-    activeSlotIndex: 0,
-  };
-
-  function loadMixerState(): MixerState {
-    try {
-      const raw =
-        localStorage.getItem(STORAGE_KEY_MIXER) ||
-        localStorage.getItem("rcm_color_mixer_state_v1");
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed && Array.isArray(parsed.colors) && parsed.colors.length >= 2) {
-          const validColors: ColorWeight[] = parsed.colors
-            .slice(0, 6)
-            .map((c: any) => {
-              const hex = normalizeHex(c?.hex || "") || "#002185";
-              const weight =
-                typeof c?.weight === "number" && !isNaN(c.weight)
-                  ? Math.max(1, Math.min(100, Math.round(c.weight)))
-                  : 50;
-              return { hex, weight };
-            });
-
-          if (validColors.length >= 2) {
-            const validModes = ["paint", "oklch", "rgb", "cmyk"];
-            const mode = validModes.includes(parsed.currentMode)
-              ? parsed.currentMode
-              : "paint";
-            const slotIdx =
-              typeof parsed.activeSlotIndex === "number" &&
-              parsed.activeSlotIndex >= 0 &&
-              parsed.activeSlotIndex < validColors.length
-                ? parsed.activeSlotIndex
-                : 0;
-
-            return {
-              currentMode: mode as "paint" | "oklch" | "rgb" | "cmyk",
-              colors: validColors,
-              activeSlotIndex: slotIdx,
-            };
-          }
-        }
-      }
-    } catch (e) {
-      // ignore
-    }
-    return JSON.parse(JSON.stringify(DEFAULT_MIXER_STATE));
-  }
-
-  function saveMixerState() {
-    try {
-      const state: MixerState = {
-        currentMode,
-        colors,
-        activeSlotIndex,
-      };
-      localStorage.setItem(STORAGE_KEY_MIXER, JSON.stringify(state));
-    } catch (e) {
-      // ignore
-    }
-  }
-
-  // Active state loaded from localStorage
-  const initialMixerState = loadMixerState();
-  let currentMode: "paint" | "oklch" | "rgb" | "cmyk" = initialMixerState.currentMode;
-  let colors: ColorWeight[] = initialMixerState.colors;
-  let activeSlotIndex = initialMixerState.activeSlotIndex;
-
-  // Artist Pigment Quick Presets state
-  interface PigmentPreset {
-    name: string;
-    hex: string;
-  }
-
-  const DEFAULT_PIGMENT_PRESETS: PigmentPreset[] = [
-    { name: "Ultramarine", hex: "#002185" },
-    { name: "Cadmium Yellow", hex: "#FCD200" },
-    { name: "Crimson Red", hex: "#C41E3A" },
-    { name: "Titanium White", hex: "#FFFFFF" },
-    { name: "Mars Black", hex: "#111111" },
-    { name: "Phthalo Green", hex: "#123524" },
-    { name: "Burnt Umber", hex: "#8A3324" },
-    { name: "Yellow Ochre", hex: "#E08031" },
-  ];
-
-  function loadPigmentPresets(): PigmentPreset[] {
-    try {
-      const raw =
-        localStorage.getItem(STORAGE_KEY_PRESETS) ||
-        localStorage.getItem("rcm_pigment_presets_v1");
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
-      }
-    } catch (e) {
-      // ignore
-    }
-    return JSON.parse(JSON.stringify(DEFAULT_PIGMENT_PRESETS));
-  }
-
-  function savePigmentPresets(presets: PigmentPreset[]) {
-    try {
-      localStorage.setItem(STORAGE_KEY_PRESETS, JSON.stringify(presets));
-    } catch (e) {
-      // ignore
-    }
-  }
-
-  let pigmentPresets: PigmentPreset[] = loadPigmentPresets();
-
-  // DOM elements
-  const slotsContainer = document.getElementById("color-slots");
-  const addColorBtn = document.getElementById("add-color-btn");
-  const resetBtn = document.getElementById("reset-mix-btn");
-  const randomBtn = document.getElementById("random-mix-btn");
-  const partsFormulaEl = document.getElementById("parts-formula");
-  const modeBtns = document.querySelectorAll(".mode-btn");
-
-  // Outputs
-  const swatchBox = document.getElementById("result-swatch-box");
-  const hexDisplay = document.getElementById("result-hex-display");
-  const rgbDisplay = document.getElementById("result-rgb-display");
-  const codeHex = document.getElementById("code-hex");
-  const codeHsl = document.getElementById("code-hsl");
-  const codeCmyk = document.getElementById("code-cmyk");
-  const codeOklch = document.getElementById("code-oklch");
-  const blendModeTag = document.getElementById("blend-mode-tag");
-  const cssSnippetCode = document.getElementById("css-snippet-code");
-  const copyCssBtn = document.getElementById("copy-css-snippet");
-
-  // WCAG outputs
-  const wcagWhiteRatio = document.getElementById("wcag-white-ratio");
-  const wcagBlackRatio = document.getElementById("wcag-black-ratio");
-  const badgeWhiteAa = document.getElementById("badge-white-aa");
-  const badgeWhiteAaa = document.getElementById("badge-white-aaa");
-  const badgeBlackAa = document.getElementById("badge-black-aa");
-  const badgeBlackAaa = document.getElementById("badge-black-aaa");
-
-  // UI Previews
-  const previewBtn = document.getElementById("preview-btn");
-  const previewTag = document.getElementById("preview-tag");
-  const previewCard = document.getElementById("preview-card");
-
-  // Presets
-  const MIX_PRESETS = [
-    [
-      { hex: "#002185", weight: 50 },
-      { hex: "#FCD200", weight: 50 },
-    ], // Vibrant Green
-    [
-      { hex: "#C41E3A", weight: 45 },
-      { hex: "#FCD200", weight: 40 },
-      { hex: "#002185", weight: 15 },
-    ], // Rich Brown
-    [
-      { hex: "#C41E3A", weight: 50 },
-      { hex: "#002185", weight: 50 },
-    ], // Deep Royal Purple
-    [
-      { hex: "#FFFFFF", weight: 70 },
-      { hex: "#E08031", weight: 20 },
-      { hex: "#C41E3A", weight: 10 },
-    ], // Skin Tone
-    [
-      { hex: "#123524", weight: 40 },
-      { hex: "#002185", weight: 30 },
-      { hex: "#FFFFFF", weight: 30 },
-    ], // Muted Teal
-  ];
-
-  function setActiveSlot(idx: number) {
-    if (idx < 0 || idx >= colors.length) return;
-    activeSlotIndex = idx;
-    saveMixerState();
-    updateActiveSlotUI();
-  }
-
-  function updateActiveSlotUI() {
-    if (activeSlotIndex >= colors.length) activeSlotIndex = colors.length - 1;
-    if (activeSlotIndex < 0) activeSlotIndex = 0;
-
-    const cards = document.querySelectorAll(".slot-card");
-    cards.forEach((card, idx) => {
-      const isActive = idx === activeSlotIndex;
-      if (isActive) {
-        card.classList.add("active-slot");
-        card.classList.remove("hover:border-[#8f8f8f]/40");
-      } else {
-        card.classList.remove("active-slot");
-        card.classList.add("hover:border-[#8f8f8f]/40");
-      }
-    });
-
-    // Highlight matching tube preset if any
-    const currentHex = colors[activeSlotIndex]?.hex?.toUpperCase();
-    document.querySelectorAll(".tube-preset").forEach((btn) => {
-      const btnHex = (btn as HTMLElement).dataset.hex?.toUpperCase();
-      if (btnHex === currentHex) {
-        btn.classList.add(
-          "border-[#171717]",
-          "dark:border-white",
-          "bg-[#fafafa]",
-          "ring-1",
-          "ring-[#171717]",
-          "dark:ring-white",
-        );
-      } else {
-        btn.classList.remove(
-          "border-[#171717]",
-          "dark:border-white",
-          "bg-[#fafafa]",
-          "ring-1",
-          "ring-[#171717]",
-          "dark:ring-white",
-        );
-      }
-    });
-  }
-
-  function renderSlots() {
-    if (!slotsContainer) return;
-    slotsContainer.innerHTML = "";
-
-    if (activeSlotIndex >= colors.length) activeSlotIndex = colors.length - 1;
-    if (activeSlotIndex < 0) activeSlotIndex = 0;
-
-    colors.forEach((col, idx) => {
-      const isActive = idx === activeSlotIndex;
-      const slotEl = document.createElement("div");
-      slotEl.dataset.slotIndex = `${idx}`;
-      slotEl.className = `slot-card flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] p-3 transition-all cursor-pointer ${
-        isActive ? "active-slot" : "hover:border-[#8f8f8f]/40"
-      }`;
-
-      slotEl.innerHTML = `
-        <div class="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
-          <div class="flex items-center gap-2.5">
-            <input
-              type="color"
-              value="${col.hex}"
-              data-index="${idx}"
-              class="color-picker-input h-8 w-8 cursor-pointer rounded-md border border-[#ebebeb] p-0 bg-transparent shrink-0"
-              title="Pick color"
-            />
-            <input
-              type="text"
-              value="${col.hex.toUpperCase()}"
-              data-index="${idx}"
-              maxlength="7"
-              class="hex-text-input w-24 rounded border border-[#ebebeb] bg-white px-2 py-0.5 font-mono text-xs uppercase font-medium text-[#171717] focus:outline-none"
-            />
-          </div>
-
-          <!-- Mobile remove button (row top-right on mobile) -->
-          <div class="sm:hidden">
-            ${
-              colors.length > 2
-                ? `<button
-                    type="button"
-                    data-remove="${idx}"
-                    class="remove-slot-btn rounded p-1.5 text-[#8f8f8f] hover:bg-[#ebebeb] hover:text-[#ee0000] transition-colors cursor-pointer"
-                    title="Remove color slot"
-                  >
-                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>`
-                : `<span class="w-6 inline-block"></span>`
-            }
-          </div>
-        </div>
-
-        <div class="flex flex-1 items-center gap-3 w-full">
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value="${col.weight}"
-            data-index="${idx}"
-            class="weight-slider h-1.5 flex-1 cursor-pointer accent-[#171717]"
-          />
-          <span class="weight-label font-mono text-xs font-semibold text-[#171717] w-12 text-right shrink-0">
-            ${col.weight}%
-          </span>
-        </div>
-
-        <!-- Desktop remove button (inline on sm+) -->
-        <div class="hidden sm:block">
-          ${
-            colors.length > 2
-              ? `<button
-                  type="button"
-                  data-remove="${idx}"
-                  class="remove-slot-btn rounded p-1 text-[#8f8f8f] hover:bg-[#ebebeb] hover:text-[#ee0000] transition-colors cursor-pointer"
-                  title="Remove color slot"
-                >
-                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>`
-              : `<span class="w-6 inline-block"></span>`
-          }
-        </div>
-      `;
-
-      slotsContainer.appendChild(slotEl);
-    });
-
-    attachSlotListeners();
-    updateActiveSlotUI();
-    updateMix();
-  }
-
-  function attachSlotListeners() {
-    // Slot card clicks
-    document.querySelectorAll(".slot-card").forEach((card) => {
-      card.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement;
-        if (target.closest(".remove-slot-btn")) return;
-        const idx = parseInt(
-          (card as HTMLElement).dataset.slotIndex || "0",
-          10,
-        );
-        if (activeSlotIndex !== idx) {
-          setActiveSlot(idx);
-        }
-      });
-    });
-
-    // Inputs focus setting active slot
-    document
-      .querySelectorAll(".color-picker-input, .hex-text-input, .weight-slider")
-      .forEach((input) => {
-        input.addEventListener("focus", (e) => {
-          const target = e.target as HTMLElement;
-          const idx = parseInt(target.dataset.index || "0", 10);
-          if (activeSlotIndex !== idx) {
-            setActiveSlot(idx);
-          }
-        });
-      });
-
-    // Color pickers
-    document.querySelectorAll(".color-picker-input").forEach((input) => {
-      input.addEventListener("input", (e) => {
-        const target = e.target as HTMLInputElement;
-        const idx = parseInt(target.dataset.index || "0", 10);
-        colors[idx].hex = target.value;
-        const textInput = target
-          .closest(".slot-card")
-          ?.querySelector(".hex-text-input") as HTMLInputElement;
-        if (textInput) textInput.value = target.value.toUpperCase();
-        if (activeSlotIndex !== idx) {
-          setActiveSlot(idx);
-        } else {
-          updateActiveSlotUI();
-        }
-        saveMixerState();
-        updateMix();
-      });
-    });
-
-    // Hex text inputs
-    document.querySelectorAll(".hex-text-input").forEach((input) => {
-      input.addEventListener("change", (e) => {
-        const target = e.target as HTMLInputElement;
-        let val = target.value.trim();
-        if (!val.startsWith("#")) val = "#" + val;
-        const idx = parseInt(target.dataset.index || "0", 10);
-        if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
-          colors[idx].hex = val;
-          const pickerInput = target
-            .closest(".slot-card")
-            ?.querySelector(".color-picker-input") as HTMLInputElement;
-          if (pickerInput) pickerInput.value = val;
-          if (activeSlotIndex !== idx) {
-            setActiveSlot(idx);
-          } else {
-            updateActiveSlotUI();
-          }
-          saveMixerState();
-          updateMix();
-        } else {
-          target.value = colors[idx].hex.toUpperCase();
-        }
-      });
-    });
-
-    // Sliders
-    document.querySelectorAll(".weight-slider").forEach((slider) => {
-      slider.addEventListener("input", (e) => {
-        const target = e.target as HTMLInputElement;
-        const idx = parseInt(target.dataset.index || "0", 10);
-        const val = parseInt(target.value, 10);
-        colors[idx].weight = val;
-        const label = target.parentElement?.querySelector(".weight-label");
-        if (label) label.textContent = `${val}%`;
-        if (activeSlotIndex !== idx) setActiveSlot(idx);
-        saveMixerState();
-        updateMix();
-      });
-    });
-
-    // Remove buttons
-    document.querySelectorAll(".remove-slot-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const target = (e.currentTarget as HTMLElement).dataset.remove;
-        if (target !== undefined) {
-          const idx = parseInt(target, 10);
-          colors.splice(idx, 1);
-          if (activeSlotIndex >= colors.length) {
-            activeSlotIndex = colors.length - 1;
-          } else if (activeSlotIndex === idx) {
-            activeSlotIndex = Math.min(idx, colors.length - 1);
-          } else if (activeSlotIndex > idx) {
-            activeSlotIndex--;
-          }
-          saveMixerState();
-          renderSlots();
-        }
-      });
-    });
-  }
-
-  function updateMix() {
-    let mixedHex = "#FFFFFF";
-
-    if (currentMode === "paint") {
-      mixedHex = mixPigmentsKubelkaMunk(colors);
-      if (blendModeTag) blendModeTag.textContent = "Real Paint (RYB)";
-    } else if (currentMode === "oklch") {
-      mixedHex = mixOklch(colors);
-      if (blendModeTag) blendModeTag.textContent = "Perceptual (OKLCH)";
-    } else if (currentMode === "rgb") {
-      mixedHex = mixRgb(colors);
-      if (blendModeTag) blendModeTag.textContent = "Screen (Linear RGB)";
-    } else if (currentMode === "cmyk") {
-      mixedHex = mixCmyk(colors);
-      if (blendModeTag) blendModeTag.textContent = "Subtractive (CMYK)";
-    }
-
-    // Update Swatch Box
-    if (swatchBox) swatchBox.style.backgroundColor = mixedHex;
-    if (hexDisplay) hexDisplay.textContent = mixedHex;
-
-    const rgb = hexToRgb(mixedHex);
-    if (rgbDisplay)
-      rgbDisplay.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-
-    // Update Codes
-    if (codeHex) codeHex.textContent = mixedHex;
-    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
-    if (codeHsl) codeHsl.textContent = `${hsl.h}°, ${hsl.s}%, ${hsl.l}%`;
-    const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
-    if (codeCmyk)
-      codeCmyk.textContent = `${cmyk.c}, ${cmyk.m}, ${cmyk.y}, ${cmyk.k}`;
-    const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
-    if (codeOklch)
-      codeOklch.textContent = `${oklch.l}, ${oklch.c}, ${oklch.h}°`;
-
-    // Modern CSS Code Generator
-    if (cssSnippetCode) {
-      if (currentMode === "oklch" && colors.length === 2) {
-        cssSnippetCode.textContent = `/* Modern CSS color-mix() */\nbackground-color: color-mix(in oklch, ${colors[0].hex} ${colors[0].weight}%, ${colors[1].hex} ${colors[1].weight}%);`;
-      } else {
-        cssSnippetCode.textContent = `/* Real Color Mix Result */\nbackground-color: ${mixedHex};\n--color-mixed: ${mixedHex};`;
-      }
-    }
-
-    // Formula indicator
-    if (partsFormulaEl) {
-      const parts = colors.map((c, i) => `${c.weight} pts`).join(" : ");
-      partsFormulaEl.innerHTML = `Formula: <span class="text-[#171717] font-semibold">${parts}</span>`;
-    }
-
-    // WCAG Accessibility calculation
-    const contrastWhite = getWcagContrast(mixedHex, "#FFFFFF");
-    const contrastBlack = getWcagContrast(mixedHex, "#171717");
-    const scoreWhite = getContrastRating(contrastWhite);
-    const scoreBlack = getContrastRating(contrastBlack);
-
-    if (wcagWhiteRatio) wcagWhiteRatio.textContent = scoreWhite.ratioText;
-    if (wcagBlackRatio) wcagBlackRatio.textContent = scoreBlack.ratioText;
-
-    updateBadge(badgeWhiteAa, scoreWhite.aaNormal, "AA Pass", "AA Fail");
-    updateBadge(badgeWhiteAaa, scoreWhite.aaaNormal, "AAA Pass", "AAA Fail");
-    updateBadge(badgeBlackAa, scoreBlack.aaNormal, "AA Pass", "AA Fail");
-    updateBadge(badgeBlackAaa, scoreBlack.aaaNormal, "AAA Pass", "AAA Fail");
-
-    // Live UI Component Previews
-    if (previewBtn) {
-      previewBtn.style.backgroundColor = mixedHex;
-      // choose text color based on best contrast
-      previewBtn.style.color =
-        contrastWhite >= contrastBlack ? "#FFFFFF" : "#171717";
-    }
-
-    if (previewTag) {
-      previewTag.style.backgroundColor = `${mixedHex}1F`; // ~12% opacity
-      previewTag.style.borderColor = mixedHex;
-      previewTag.style.color = mixedHex;
-    }
-
-    if (previewCard) {
-      previewCard.style.borderLeftColor = mixedHex;
-    }
-  }
-
-  function updateBadge(
-    el: HTMLElement | null,
-    pass: boolean,
-    passText: string,
-    failText: string,
-  ) {
-    if (!el) return;
-    el.textContent = pass ? passText : failText;
-    el.className = `rounded px-1.5 py-0.5 text-[10px] font-semibold ${
-      pass ? "bg-emerald-100 text-emerald-800" : "bg-red-100 text-red-800"
-    }`;
-  }
-
-  // Artist Pigment Quick Presets rendering & management
-  const presetGrid = document.getElementById("preset-tubes-grid");
-  const addPresetForm = document.getElementById(
-    "add-preset-form",
-  ) as HTMLFormElement | null;
-  const newPresetInput = document.getElementById(
-    "new-preset-hex",
-  ) as HTMLInputElement | null;
-  const hexPreviewDot = document.getElementById("hex-preview-dot");
-  const resetPresetsBtn = document.getElementById("reset-presets-btn");
-
-  function renderPresets() {
-    if (!presetGrid) return;
-
-    if (pigmentPresets.length === 0) {
-      presetGrid.innerHTML = `
-        <div class="col-span-2 sm:col-span-4 lg:col-span-2 py-4 text-center">
-          <p class="text-xs text-[#8f8f8f]">No presets saved. Paste a hex above to add one, or click Reset Defaults.</p>
-        </div>
-      `;
-      return;
-    }
-
-    const currentHex = colors[activeSlotIndex]?.hex?.toUpperCase();
-
-    presetGrid.innerHTML = pigmentPresets
-      .map((preset, idx) => {
-        const isMatching = preset.hex.toUpperCase() === currentHex;
-        return `
-        <div class="relative group">
-          <button
-            type="button"
-            data-hex="${preset.hex}"
-            class="tube-preset w-full flex items-center gap-2 rounded-lg border border-[#ebebeb] p-2 pr-7 text-left hover:bg-[#fafafa] active:scale-[0.98] transition-all cursor-pointer ${
-              isMatching
-                ? "border-[#171717] dark:border-white ring-1 ring-[#171717] dark:ring-white bg-[#fafafa]"
-                : ""
-            }"
-            title="Load ${preset.name} (${preset.hex}) into active slot"
-          >
-            <span class="h-5 w-5 rounded-md border border-black/10 shrink-0" style="background-color: ${preset.hex};"></span>
-            <span class="text-xs truncate font-medium text-[#171717]">${preset.name}</span>
-          </button>
-          <button
-            type="button"
-            data-delete-preset="${idx}"
-            class="delete-preset-btn absolute right-1.5 top-1/2 -translate-y-1/2 rounded p-1 text-[#8f8f8f] hover:text-[#ee0000] hover:bg-black/5 dark:hover:bg-white/10 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity cursor-pointer"
-            title="Delete preset ${preset.name}"
-          >
-            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      `;
-      })
-      .join("");
-
-    attachPresetListeners();
-  }
-
-  function attachPresetListeners() {
-    // Tube preset click -> load into active slot
-    presetGrid?.querySelectorAll(".tube-preset").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const hex = (e.currentTarget as HTMLElement).dataset.hex;
-        if (hex) {
-          if (activeSlotIndex < 0 || activeSlotIndex >= colors.length) {
-            activeSlotIndex = 0;
-          }
-          colors[activeSlotIndex].hex = hex;
-          saveMixerState();
-          renderSlots();
-          renderPresets();
-        }
-      });
-    });
-
-    // Delete preset
-    presetGrid?.querySelectorAll(".delete-preset-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const idxStr = (e.currentTarget as HTMLElement).dataset.deletePreset;
-        if (idxStr !== undefined) {
-          const idx = parseInt(idxStr, 10);
-          pigmentPresets.splice(idx, 1);
-          savePigmentPresets(pigmentPresets);
-          renderPresets();
-        }
-      });
-    });
-  }
-
-  // Live color preview dot when typing / pasting hex
-  newPresetInput?.addEventListener("input", () => {
-    const normalized = normalizeHex(newPresetInput.value);
-    if (normalized && hexPreviewDot) {
-      hexPreviewDot.style.backgroundColor = normalized;
-      hexPreviewDot.classList.remove("hidden");
-    } else if (hexPreviewDot) {
-      hexPreviewDot.classList.add("hidden");
-    }
-  });
-
-  // Handle Add Preset submit
-  addPresetForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!newPresetInput) return;
-    const hex = normalizeHex(newPresetInput.value);
-    if (!hex) {
-      newPresetInput.focus();
-      newPresetInput.classList.add("border-[#ee0000]");
-      setTimeout(
-        () => newPresetInput.classList.remove("border-[#ee0000]"),
-        1500,
-      );
-      return;
-    }
-
-    pigmentPresets.push({ name: hex, hex });
-    savePigmentPresets(pigmentPresets);
-
-    // Apply to active slot immediately
-    if (activeSlotIndex < 0 || activeSlotIndex >= colors.length) {
-      activeSlotIndex = 0;
-    }
-    colors[activeSlotIndex].hex = hex;
-    saveMixerState();
-
-    newPresetInput.value = "";
-    if (hexPreviewDot) hexPreviewDot.classList.add("hidden");
-
-    renderSlots();
-    renderPresets();
-  });
-
-  // Reset defaults
-  resetPresetsBtn?.addEventListener("click", () => {
-    pigmentPresets = JSON.parse(JSON.stringify(DEFAULT_PIGMENT_PRESETS));
-    savePigmentPresets(pigmentPresets);
-    renderPresets();
-  });
-
-  function updateModeButtonsUI() {
-    modeBtns.forEach((btn) => {
-      const mode = btn.getAttribute("data-mode");
-      if (mode === currentMode) {
-        btn.classList.add("bg-[#171717]", "dark:bg-white", "text-white", "dark:text-[#171717]", "shadow-xs");
-        btn.classList.remove("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
-      } else {
-        btn.classList.remove("bg-[#171717]", "dark:bg-white", "text-white", "dark:text-[#171717]", "shadow-xs");
-        btn.classList.add("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
-      }
-    });
-  }
-
-  // Mode button switcher
-  modeBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const target = e.currentTarget as HTMLElement;
-      currentMode = (target.dataset.mode || "paint") as any;
-      updateModeButtonsUI();
-      saveMixerState();
-      updateMix();
-    });
-  });
-
-  // Add Color Button
-  addColorBtn?.addEventListener("click", () => {
-    if (colors.length < 6) {
-      colors.push({ hex: "#C41E3A", weight: 50 });
-      activeSlotIndex = colors.length - 1;
-      saveMixerState();
-      renderSlots();
-    }
-  });
-
-  // Reset Button
-  resetBtn?.addEventListener("click", () => {
-    colors = JSON.parse(JSON.stringify(DEFAULT_MIXER_STATE.colors));
-    currentMode = DEFAULT_MIXER_STATE.currentMode;
-    activeSlotIndex = DEFAULT_MIXER_STATE.activeSlotIndex;
-    updateModeButtonsUI();
-    saveMixerState();
-    renderSlots();
-  });
-
-  // Random Preset Button
-  let presetIdx = 0;
-  randomBtn?.addEventListener("click", () => {
-    presetIdx = (presetIdx + 1) % MIX_PRESETS.length;
-    colors = JSON.parse(JSON.stringify(MIX_PRESETS[presetIdx]));
-    activeSlotIndex = 0;
-    saveMixerState();
-    renderSlots();
-  });
-
-  // Copy buttons
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const targetId = (e.currentTarget as HTMLElement).dataset.target;
-      if (targetId) {
-        const el = document.getElementById(targetId);
-        if (el && el.textContent) {
-          navigator.clipboard.writeText(el.textContent);
-          const original = btn.innerHTML;
-          btn.innerHTML = `<span class="text-[10px] text-emerald-600 font-mono">Copied!</span>`;
-          setTimeout(() => {
-            btn.innerHTML = original;
-          }, 1500);
-        }
-      }
-    });
-  });
-
-  // Copy CSS Snippet
-  copyCssBtn?.addEventListener("click", () => {
-    if (cssSnippetCode?.textContent) {
-      navigator.clipboard.writeText(cssSnippetCode.textContent);
-      const original = copyCssBtn.textContent;
-      copyCssBtn.textContent = "Copied!";
-      setTimeout(() => {
-        copyCssBtn.textContent = original;
-      }, 1500);
-    }
-  });
-
-  // Initial render
-  updateModeButtonsUI();
-  renderSlots();
-  renderPresets();
-</script>

@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': 'PigmentLab',
+  'url': 'https://pigmentlab.com/fr',
+  'description': 'Plateforme d\'optique physique des pigments et de théorie des couleurs de Johannes Itten. Mélangez la peinture avec réalisme physique et explorez la roue chromatique.',
+  'publisher': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'logo': 'https://pigmentlab.com/favicon.svg'
+  }
+};
+---
+
+<Layout
+  title="PigmentLab — Science des Couleurs Soustractives & Roue Chromatique Bauhaus"
+  description="Explorez la suite d'outils de couleur PigmentLab. Découvrez l'absorption physique réelle de la lumière, la roue chromatique de Johannes Itten (Bauhaus RYB) et l'analyse d'accessibilité WCAG en temps réel."
+  keywords="pigmentlab, roue chromatique, mélange de couleur, tableau des mélanges de couleurs, roue couleur complémentaire, cercle chromatique, optique des pigments"
+  currentPath="/fr"
+  lang="fr"
+  schema={websiteSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-35 dark:opacity-25">
+      <div class="absolute -top-[25%] left-[15%] h-[420px] w-[600px] rounded-full bg-gradient-to-tr from-[#007cf0]/35 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[10%] h-[380px] w-[500px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/35 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Science Optique Soustractive &amp; Théorie Bauhaus</span>
+        </div>
+
+        <h1 class="mt-5 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]">
+          La science des couleurs avec de vrais pigments physiques
+        </h1>
+
+        <p class="mt-4 text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Les outils numériques habituels calculent une moyenne linéaire RVB qui transforme les mélanges en gris terne. <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> modélise l'absorption des particules réelles et la théorie classique des couleurs du Bauhaus.
+        </p>
+
+        <!-- Cartes d'accès aux outils -->
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 text-left">
+          <a
+            href="/fr/mix"
+            class="group relative flex flex-col justify-between rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#111111] p-6 transition-all duration-200 hover:border-[#171717] dark:hover:border-white hover:shadow-lg dark:hover:shadow-2xl/40"
+          >
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#4d4d4d] dark:text-[#a1a1aa]">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  Optique Peinture Soustractive
+                </span>
+                <span class="text-xs font-mono text-[#8f8f8f] group-hover:translate-x-0.5 transition-transform">→</span>
+              </div>
+              <h2 class="mt-4 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
+                Mélange de Couleurs en Ligne
+              </h2>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Ajustez les pourcentages avec une diffusion de lumière authentique. Bleu + Jaune donne un Vert émeraude éclatant, avec code CSS <code class="font-mono text-xs">color-mix()</code> instantané.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center gap-2 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
+              <span class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline">Ouvrir le simulateur</span>
+              <span class="text-xs text-[#8f8f8f]">· 4 modes de mélange</span>
+            </div>
+          </a>
+
+          <a
+            href="/fr/color-wheel"
+            class="group relative flex flex-col justify-between rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#111111] p-6 transition-all duration-200 hover:border-[#171717] dark:hover:border-white hover:shadow-lg dark:hover:shadow-2xl/40"
+          >
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#4d4d4d] dark:text-[#a1a1aa]">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Modèle Bauhaus RYB
+                </span>
+                <span class="text-xs font-mono text-[#8f8f8f] group-hover:translate-x-0.5 transition-transform">→</span>
+              </div>
+              <h2 class="mt-4 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
+                Roue Chromatique en Ligne
+              </h2>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                Explorez le cercle chromatique à 12 teintes de Johannes Itten où le Rouge s'oppose au Vert et le Bleu à l'Orange. Échelle à 9 nuances et validation du contraste WCAG 2.1.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center gap-2 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
+              <span class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline">Lancer la roue chromatique</span>
+              <span class="text-xs text-[#8f8f8f]">· 6 harmonies</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+

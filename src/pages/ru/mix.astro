@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MixerStudio from '../../components/MixerStudio.astro';
+
+const ruMixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'Как смешать цвета онлайн с эффектом реальных красок?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Чтобы смешать цвета онлайн в PigmentLab, выберите режим «Краски (RYB)», укажите нужные цвета или выберите художественные пигменты и настройте пропорции от 1% до 100%. Наш алгоритм симулирует субтрактивное поглощение света: Синий и Желтый дают яркий Зеленый, как на настоящей палитре.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Как смешивать цвета, чтобы получить коричневый?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Получить коричневый цвет можно тремя путями: 1. Смешать все три основных цвета: Красный, Желтый и Синий. 2. Смешать комплементарные цвета: Красный с Зеленым или Синий с Оранжевым. 3. Для теплых охристых оттенков добавьте к желтому немного красного и каплю синего.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Что происходит при смешивании всех цветов?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'В субтрактивной физике пигментов каждая частица поглощает определенную часть светового спектра. Поэтому смешивание всех основных красок дает глубокий темно-коричневый или черный цвет, в отличие от экранов RGB, где получается белый.'
+      }
+    }
+  ]
+};
+
+const ruMixSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'PigmentLab Смешать Цвета Онлайн — Симулятор Смешивания Красок',
+    'url': 'https://pigmentlab.com/ru/mix',
+    'description': 'Реалистичный симулятор: смешать цвета онлайн с физикой субтрактивных пигментов. Узнайте, как смешивать краски для получения коричневого, зеленого и других оттенков, генератор CSS color-mix().',
+    'applicationCategory': 'DesignApplication',
+    'operatingSystem': 'All',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    }
+  },
+  ruMixFaqSchema
+];
+---
+
+<Layout
+  title="Смешать Цвета Онлайн — Симулятор Смешивания Красок & Пигментов"
+  description="Реалистичный онлайн симулятор: смешать цвета онлайн с физикой субтрактивных пигментов. Узнайте, как смешивать краски для получения коричневого, зеленого и других оттенков, генератор CSS color-mix()."
+  keywords="смешать цвета онлайн, смешивание цветов, смешивание красок, смешивание цветов таблица, смешать краски онлайн, симулятор смешивания цветов, палитра цветов"
+  currentPath="/ru/mix"
+  lang="ru"
+  schema={ruMixSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>Физика Пигментов &amp; Таблица Смешивания</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          Смешать Цвета Онлайн &amp; Симулятор Красок
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Обычные программы линейно усредняют RGB каналы, превращая смесь в грязно-серый оттенок. В симуляторе PigmentLab вы можете <strong class="text-[#171717] dark:text-white">смешать цвета онлайн</strong> с учетом истинного поглощения света: <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Синий</span> и <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Желтый</span> дают чистый <span class="font-medium text-[#168a35] dark:text-[#47d169]">Зеленый</span>, как настоящие масляные или акриловые краски.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="ru" />
+
+  <!-- Educational Guide in Russian -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">Оптика Пигментов &amp; Рецепты</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          Таблица смешивания цветов и руководство по подбору оттенков
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Как правильно смешивать краски, рецепты получения коричневого и экспорт готового кода CSS color-mix().
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. Почему физика смешивания красок отличается от экранного RGB?
+          </h3>
+          <p>
+            На мониторах свет излучается (аддитивная модель). В физической живописи, окрашивании тканей и ремонте пигменты поглощают свет (субтрактивная модель).
+          </p>
+          <p>
+            PigmentLab использует расчеты рассеяния света Кубелки-Мунка, поэтому каждый цвет рассчитывается физически достоверно.
+          </p>
+        </section>
+
+        <!-- Таблица смешивания -->
+        <section class="space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. Таблица смешивания красок
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">Цвет 1</th>
+                  <th class="p-4 sm:p-5">Цвет 2</th>
+                  <th class="p-4 sm:p-5">Результат PigmentLab (Реальные краски)</th>
+                  <th class="p-4 sm:p-5">Обычный экранный расчет (RGB)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Синий фталоцианин (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Кадмий желтый (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">Яркий изумрудный зеленый (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Грязный серо-бурый (#808C43)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Кадмий красный (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">Кадмий желтый (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">Чистый оранжевый (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Блеклый оранжевый (#F37B13)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">Синий фталоцианин (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">Кадмий красный (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">Глубокий фиолетовый</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">Блеклый маджента</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            Часто задаваемые вопросы
+          </h3>
+          <div class="space-y-4">
+            {ruMixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+

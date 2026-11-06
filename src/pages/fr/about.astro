@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  'name': 'À propos de PigmentLab',
+  'url': 'https://pigmentlab.com/fr/about',
+  'description': 'Découvrez l\'histoire et les fondements scientifiques de PigmentLab : optique soustractive de Kubelka-Munk et théorie des couleurs du Bauhaus de Johannes Itten.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com',
+    'logo': 'https://pigmentlab.com/favicon.svg'
+  }
+};
+---
+
+<Layout
+  title="À propos de PigmentLab — Physique des Couleurs & Roue Bauhaus"
+  description="Découvrez l'histoire, la physique optique et la philosophie derrière PigmentLab. La rencontre entre le cercle chromatique de Johannes Itten et l'absorption spectrale de Kubelka-Munk."
+  keywords="à propos de pigmentlab, science des couleurs, physique des pigments, kubelka munk, johannes itten, roue chromatique, mélange soustractif"
+  currentPath="/fr/about"
+  lang="fr"
+  schema={aboutSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+        <span>Notre Mission &amp; Fondements Scientifiques</span>
+      </div>
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl">
+        Le réalisme de la peinture pour le monde numérique
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Pendant des décennies, les écrans ont forcé les créateurs à utiliser la lumière additive RVB, transformant les mélanges en gris terne. PigmentLab restaure l'absorption soustractive physique et l'harmonie du Bauhaus sur le Web.
+      </p>
+    </div>
+  </section>
+</Layout>
+

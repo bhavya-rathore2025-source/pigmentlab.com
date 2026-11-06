@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const termsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  'name': 'Términos y Condiciones — PigmentLab',
+  'url': 'https://pigmentlab.com/es/terms',
+  'description': 'Términos y condiciones de uso de PigmentLab: Gratuito para uso personal y comercial, plena propiedad de los colores generados.',
+  'publisher': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlab.com'
+  }
+};
+---
+
+<Layout
+  title="Términos y Condiciones — PigmentLab"
+  description="Revisa los términos y condiciones de PigmentLab. Uso gratuito comercial y creativo con total propiedad sobre tus paletas de colores."
+  keywords="terminos y condiciones pigmentlab, licencia comercial libre, derechos paletas de colores"
+  currentPath="/es/terms"
+  lang="es"
+  schema={termsSchema}
+>
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 text-center">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
+        Términos y Condiciones
+      </h1>
+      <p class="mt-4 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+        Todos los códigos de color, paletas, esquemas y código CSS generados en PigmentLab son propiedad exclusiva del usuario y pueden emplearse libremente.
+      </p>
+    </div>
+  </section>
+</Layout>
+

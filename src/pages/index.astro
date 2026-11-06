@@ -6,7 +6,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   'name': 'PigmentLab',
   'url': 'https://pigmentlab.com',
-  'description': 'Online color science and pigment physics platform. Experience authentic subtractive pigment absorption and Johannes Itten Bauhaus color palettes for digital creators.',
+  'description': 'Online-Farblabor mit echter subtraktiver Pigmentabsorption und Johannes Itten Bauhaus Farbkreis. Farbmischer Simulator & interaktiver Farbrad Generator für Designer und Künstler.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
@@ -17,10 +17,11 @@ const websiteSchema = {
 ---
 
 <Layout
-  title="PigmentLab — Subtractive Color Physics & Bauhaus Color Theory"
-  description="Explore PigmentLab's physics-based color suite. Discover authentic physical light absorption, Johannes Itten Bauhaus color palettes, and real-time accessibility contrast analysis."
-  keywords="pigmentlab, pigment lab, pigment physics, kubelka munk, itten color theory, subtractive color science, artist color platform, pigment absorption"
+  title="PigmentLab — Subtraktive Farbphysik & Johannes Itten Bauhaus Farbtheorie"
+  description="Entdecken Sie PigmentLab: Das physikbasierte Farblabor. Echte subtraktive Lichtabsorption, Johannes Itten Farbkreis (Bauhaus RYB), Farben mischen Simulator und WCAG-Barrierefreiheit in Echtzeit."
+  keywords="pigmentlab, farbkreis, farben mischen, farbrad, farbkreis nach itten, farbkreis itten, farbpaletten generator, farben mischen simulator, pigmentphysik"
   currentPath="/"
+  lang="de"
   schema={websiteSchema}
 >
   <!-- Hero Section -->
@@ -36,15 +37,15 @@ const websiteSchema = {
         <!-- Status Pill -->
         <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
           <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
-          <span>Optical Subtractive Science & Classical Theory</span>
+          <span>Optische subtraktive Farbphysik &amp; Bauhaus Farblehre</span>
         </div>
 
         <h1 class="mt-5 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-          Color Science Built on Real Physical Pigments
+          Farbwissenschaft mit echten physikalischen Pigmenten
         </h1>
 
         <p class="mt-4 text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Standard digital screen tools linearly average RGB light channels, turning mixtures into dull brownish-grey. <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> models physical particle absorption and classical Bauhaus color theory—delivering vibrant, authentic color palettes for artists, UI designers, and educators.
+          Digitale Bildschirmwerkzeuge mitteln RGB-Lichtkanäle linear, wodurch Mischungen zu trübem Graubraun verblassen. <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> simuliert physikalische Lichtabsorption und die klassische Bauhaus-Farblehre nach Johannes Itten — für lebendige, authentische Farbpaletten.
         </p>
 
         <!-- Primary Dual-Tool Action Cards -->
@@ -58,20 +59,20 @@ const websiteSchema = {
               <div class="flex items-center justify-between">
                 <span class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#4d4d4d] dark:text-[#a1a1aa]">
                   <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
-                  Subtractive Paint Optics
+                  Subtraktive Farboptik
                 </span>
                 <span class="text-xs font-mono text-[#8f8f8f] group-hover:translate-x-0.5 transition-transform">→</span>
               </div>
               <h2 class="mt-4 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
-                Pigment Blending Studio
+                Farben Mischen Simulator
               </h2>
               <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Blend custom proportion sliders with authentic subtractive light scattering. Experience Blue + Yellow yielding vibrant emerald Green, with real-time CSS <code class="font-mono text-xs">color-mix()</code> code generation.
+                Mischen Sie Farben mit echten Schiebereglern und physikalischer Lichtabsorption. Erleben Sie, wie Blau + Gelb ein leuchtendes Grün ergibt — mit Live-Mischtabelle und CSS <code class="font-mono text-xs">color-mix()</code> Code.
               </p>
             </div>
             <div class="mt-6 flex items-center gap-2 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
-              <span class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline">Launch Blending Studio</span>
-              <span class="text-xs text-[#8f8f8f]">· 4 blend modes</span>
+              <span class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline">Farbmischer öffnen</span>
+              <span class="text-xs text-[#8f8f8f]">· 4 Mischmodi</span>
             </div>
           </a>
 
@@ -84,295 +85,24 @@ const websiteSchema = {
               <div class="flex items-center justify-between">
                 <span class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#4d4d4d] dark:text-[#a1a1aa]">
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  Bauhaus RYB Model
+                  Itten Bauhaus Farbrad
                 </span>
                 <span class="text-xs font-mono text-[#8f8f8f] group-hover:translate-x-0.5 transition-transform">→</span>
               </div>
               <h2 class="mt-4 text-xl font-semibold tracking-tight text-[#171717] dark:text-white">
-                Bauhaus Artist Wheel Studio
+                Farbkreis & Farbrad Online
               </h2>
               <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-                Explore Johannes Itten's classical 12-hue artist color circle where Red opposes Green and Blue opposes Orange. Features 9-step shade scales, WCAG 2.1 matrix scores, and color blindness simulations.
+                Entdecken Sie den Farbkreis nach Johannes Itten mit 12 Farbtönen, bei dem Rot gegenüber von Grün liegt. Inklusive Farbpaletten-Generator, 9-Stufen-Schattierungsskala und WCAG 2.1 Kontrastprüfung.
               </p>
             </div>
             <div class="mt-6 flex items-center gap-2 pt-4 border-t border-[#ebebeb] dark:border-[#222222]">
-              <span class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline">Open Artist Wheel Studio</span>
-              <span class="text-xs text-[#8f8f8f]">· 6 palette modes</span>
+              <span class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline">Farbkreis starten</span>
+              <span class="text-xs text-[#8f8f8f]">· 6 Harmonien</span>
             </div>
           </a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Side-by-Side Reality Check: Digital RGB vs Pigment Physics -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#0e0e0e] py-14 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
-          The Problem with Standard Digital Color Tools
-        </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Digital design suites calculate colors using additive screen optics (RGB). When you combine physical pigments like paint, ink, or dyes, light behaves completely differently.
-        </p>
-      </div>
-
-      <!-- Comparison Showcase Cards -->
-      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <!-- Broken RGB math -->
-        <div class="rounded-2xl border border-red-200 dark:border-red-900/40 bg-white dark:bg-[#121212] p-6 shadow-2xs">
-          <div class="flex items-center justify-between">
-            <span class="rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
-              ❌ Standard Digital Screen Math (Linear RGB)
-            </span>
-            <span class="font-mono text-xs text-[#8f8f8f]">50% + 50%</span>
-          </div>
-
-          <div class="mt-6 grid grid-cols-3 items-center gap-3">
-            <div class="flex flex-col items-center">
-              <div class="h-16 w-full rounded-xl shadow-xs" style="background-color: #002185;"></div>
-              <span class="mt-2 text-xs font-medium text-[#171717] dark:text-white">Blue</span>
-              <span class="font-mono text-[10px] text-[#8f8f8f]">#002185</span>
-            </div>
-            <div class="text-center font-mono text-sm font-semibold text-[#8f8f8f]">+</div>
-            <div class="flex flex-col items-center">
-              <div class="h-16 w-full rounded-xl shadow-xs" style="background-color: #FCD200;"></div>
-              <span class="mt-2 text-xs font-medium text-[#171717] dark:text-white">Yellow</span>
-              <span class="font-mono text-[10px] text-[#8f8f8f]">#FCD200</span>
-            </div>
-          </div>
-
-          <div class="mt-6 rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#181818] p-4 text-center">
-            <span class="text-xs text-[#8f8f8f] uppercase font-mono tracking-wider">Resulting Screen Output</span>
-            <div class="mt-2 h-14 w-full rounded-lg shadow-inner flex items-center justify-center font-mono text-xs font-semibold text-white" style="background-color: #7E7A43;">
-              #7E7A43
-            </div>
-            <p class="mt-3 text-xs text-red-600 dark:text-red-400 font-medium">
-              Produces a dirty, muddy brownish-grey. Fails physical painting intuition.
-            </p>
-          </div>
-        </div>
-
-        <!-- PigmentLab Subtractive Optics -->
-        <div class="rounded-2xl border border-emerald-200 dark:border-emerald-900/40 bg-white dark:bg-[#121212] p-6 shadow-2xs">
-          <div class="flex items-center justify-between">
-            <span class="rounded-full bg-emerald-100 dark:bg-emerald-950/60 px-3 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-              ✅ PigmentLab Optics (Subtractive Paint)
-            </span>
-            <span class="font-mono text-xs text-[#8f8f8f]">50% + 50%</span>
-          </div>
-
-          <div class="mt-6 grid grid-cols-3 items-center gap-3">
-            <div class="flex flex-col items-center">
-              <div class="h-16 w-full rounded-xl shadow-xs" style="background-color: #002185;"></div>
-              <span class="mt-2 text-xs font-medium text-[#171717] dark:text-white">Blue</span>
-              <span class="font-mono text-[10px] text-[#8f8f8f]">#002185</span>
-            </div>
-            <div class="text-center font-mono text-sm font-semibold text-[#8f8f8f]">+</div>
-            <div class="flex flex-col items-center">
-              <div class="h-16 w-full rounded-xl shadow-xs" style="background-color: #FCD200;"></div>
-              <span class="mt-2 text-xs font-medium text-[#171717] dark:text-white">Yellow</span>
-              <span class="font-mono text-[10px] text-[#8f8f8f]">#FCD200</span>
-            </div>
-          </div>
-
-          <div class="mt-6 rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#f9fafb] dark:bg-[#181818] p-4 text-center">
-            <span class="text-xs text-[#8f8f8f] uppercase font-mono tracking-wider">Resulting Physical Output</span>
-            <div class="mt-2 h-14 w-full rounded-lg shadow-inner flex items-center justify-center font-mono text-xs font-semibold text-white" style="background-color: #168A35;">
-              #168A35
-            </div>
-            <p class="mt-3 text-emerald-600 dark:text-emerald-400 font-medium text-xs">
-              Produces vibrant emerald Green. Matches real physical oil and watercolor paint.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 Core Pillars / USPs -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
-          Four Scientific Innovations Under the Hood
-        </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Engineered for digital artists, web designers, UI engineers, and art educators who demand physical realism.
-        </p>
-      </div>
-
-      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- Pillar 1 -->
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 shadow-2xs">
-          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0070f3]/10 text-[#0070f3] dark:bg-[#0070f3]/20">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
-          </div>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">
-            Subtractive Pigment Optics
-          </h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Calculates individual absorption (<code class="font-mono text-xs">K</code>) and scattering (<code class="font-mono text-xs">S</code>) coefficients across wavelengths, accurately predicting subtractive paint layers.
-          </p>
-        </div>
-
-        <!-- Pillar 2 -->
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 shadow-2xs">
-          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#7928ca]/10 text-[#7928ca] dark:bg-[#7928ca]/20">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-          </div>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">
-            Johannes Itten Bauhaus RYB
-          </h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Employs the classical 12-hue Bauhaus artist wheel taught worldwide. Place Red directly opposite Green for genuine simultaneous contrast color combinations.
-          </p>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 shadow-2xs">
-          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">
-            Real-Time WCAG 2.1 Audits
-          </h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Every swatch generated is scored for AA and AAA compliance with live button and badge previews. Ensure legal compliance before writing a single line of CSS.
-          </p>
-        </div>
-
-        <!-- Pillar 4 -->
-        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 shadow-2xs">
-          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#ff0080]/10 text-[#ff0080] dark:bg-[#ff0080]/20">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-          </div>
-          <h3 class="mt-4 text-base font-semibold text-[#171717] dark:text-white">
-            Modern CSS & OKLCH Export
-          </h3>
-          <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Export native Baseline CSS syntax like <code class="font-mono text-xs">color-mix(in oklch, ...)</code>, CSS custom properties, and Tailwind tokens in 1-click.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Hub Showcase / Jump To Tools -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#0e0e0e] py-14 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
-          Choose Your Studio
-        </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Select the tool that matches your creative workflow. Both studios are completely free with zero sign-up required.
-        </p>
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
-        <!-- Studio 1 Card -->
-        <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#121212] p-6 sm:p-8 flex flex-col justify-between shadow-2xs">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="h-3 w-3 rounded-full bg-gradient-to-r from-blue-600 via-amber-400 to-emerald-500"></span>
-              <span class="font-mono text-xs font-semibold text-[#171717] dark:text-white uppercase tracking-wider">Pigment Physics</span>
-            </div>
-            <h3 class="mt-3 text-xl sm:text-2xl font-semibold text-[#171717] dark:text-white">
-              Pigment Blending Studio
-            </h3>
-            <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-              Designed for physical paint simulation, pigment formula calculations, and modern perceptual CSS color spaces. Blend up to 6 custom colors simultaneously with fine-tuned weight percentages.
-            </p>
-
-            <ul class="mt-5 space-y-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> 4 Blending Modes: Real Paint (RYB), Modern Web (OKLCH), Screen (RGB), Print (CMYK)
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> Artist Oil Tube Presets (Ultramarine, Cadmium, Crimson, Titanium)
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> Live CSS <code class="font-mono">color-mix()</code> code generator
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> Real-time WCAG 2.1 AA/AAA contrast ratios
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
-            <a
-              href="/mix"
-              class="inline-flex w-full items-center justify-center rounded-xl bg-[#171717] dark:bg-white px-5 py-3 text-sm font-semibold text-white dark:text-[#171717] transition-all hover:opacity-90 active:scale-[0.99] shadow-xs"
-            >
-              Open Pigment Blending Studio →
-            </a>
-          </div>
-        </div>
-
-        <!-- Studio 2 Card -->
-        <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#121212] p-6 sm:p-8 flex flex-col justify-between shadow-2xs">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="h-3 w-3 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
-              <span class="font-mono text-xs font-semibold text-[#171717] dark:text-white uppercase tracking-wider">Bauhaus Theory</span>
-            </div>
-            <h3 class="mt-3 text-xl sm:text-2xl font-semibold text-[#171717] dark:text-white">
-              Bauhaus Artist Wheel Studio
-            </h3>
-            <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-              Designed for visual artists, interior decorators, and digital product designers. Switch effortlessly between the classical Johannes Itten 12-hue RYB circle and standard digital RGB angles.
-            </p>
-
-            <ul class="mt-5 space-y-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> 1-Click Itten RYB vs. Digital RGB angle toggle
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> 6 Palette Presets: Complementary, Triadic, Analogous, Tetradic, Split
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> 9-Step Shade, Tint, and Tone matrix generator
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-emerald-500">✓</span> Color blindness perception simulator (Protanopia, Deuteranopia, Tritanopia)
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
-            <a
-              href="/color-wheel"
-              class="inline-flex w-full items-center justify-center rounded-xl bg-[#171717] dark:bg-white px-5 py-3 text-sm font-semibold text-white dark:text-[#171717] transition-all hover:opacity-90 active:scale-[0.99] shadow-xs"
-            >
-              Open Bauhaus Artist Wheel Studio →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Open Science & Free Promise Banner -->
-  <section class="bg-white dark:bg-[#0a0a0a] py-12">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-4 py-1.5 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
-        <span class="text-emerald-500 font-bold">100% Free</span>
-        <span>·</span>
-        <span>Zero Paywalls or Login Requirements</span>
-        <span>·</span>
-        <span>Built with Open-Source MIT Science</span>
-      </div>
-    </div>
-  </section>
 </Layout>
-
