@@ -923,13 +923,104 @@ const pageSchema = [
     type ColorWeight,
   } from "../utils/colorPhysics";
 
-  // State
-  let currentMode: "paint" | "oklch" | "rgb" | "cmyk" = "paint";
-  let colors: ColorWeight[] = [
-    { hex: "#002185", weight: 50 }, // Ultramarine Blue
-    { hex: "#FCD200", weight: 50 }, // Cadmium Yellow
-  ];
-  let activeSlotIndex = 0;
+  // Helper
+  function normalizeHex(input: string): string | null {
+    let val = input.trim();
+    if (val.startsWith("#")) val = val.substring(1);
+    if (/^[0-9A-Fa-f]{3}$/.test(val)) {
+      val = val
+        .split("")
+        .map((c) => c + c)
+        .join("");
+    }
+    if (/^[0-9A-Fa-f]{6}$/.test(val)) {
+      return "#" + val.toUpperCase();
+    }
+    return null;
+  }
+
+  // State persistence interfaces & keys
+  const STORAGE_KEY_PRESETS = "pl_pigment_presets_v1";
+  const STORAGE_KEY_MIXER = "pl_color_mixer_state_v1";
+
+  interface MixerState {
+    currentMode: "paint" | "oklch" | "rgb" | "cmyk";
+    colors: ColorWeight[];
+    activeSlotIndex: number;
+  }
+
+  const DEFAULT_MIXER_STATE: MixerState = {
+    currentMode: "paint",
+    colors: [
+      { hex: "#002185", weight: 50 }, // Ultramarine Blue
+      { hex: "#FCD200", weight: 50 }, // Cadmium Yellow
+    ],
+    activeSlotIndex: 0,
+  };
+
+  function loadMixerState(): MixerState {
+    try {
+      const raw =
+        localStorage.getItem(STORAGE_KEY_MIXER) ||
+        localStorage.getItem("rcm_color_mixer_state_v1");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && Array.isArray(parsed.colors) && parsed.colors.length >= 2) {
+          const validColors: ColorWeight[] = parsed.colors
+            .slice(0, 6)
+            .map((c: any) => {
+              const hex = normalizeHex(c?.hex || "") || "#002185";
+              const weight =
+                typeof c?.weight === "number" && !isNaN(c.weight)
+                  ? Math.max(1, Math.min(100, Math.round(c.weight)))
+                  : 50;
+              return { hex, weight };
+            });
+
+          if (validColors.length >= 2) {
+            const validModes = ["paint", "oklch", "rgb", "cmyk"];
+            const mode = validModes.includes(parsed.currentMode)
+              ? parsed.currentMode
+              : "paint";
+            const slotIdx =
+              typeof parsed.activeSlotIndex === "number" &&
+              parsed.activeSlotIndex >= 0 &&
+              parsed.activeSlotIndex < validColors.length
+                ? parsed.activeSlotIndex
+                : 0;
+
+            return {
+              currentMode: mode as "paint" | "oklch" | "rgb" | "cmyk",
+              colors: validColors,
+              activeSlotIndex: slotIdx,
+            };
+          }
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+    return JSON.parse(JSON.stringify(DEFAULT_MIXER_STATE));
+  }
+
+  function saveMixerState() {
+    try {
+      const state: MixerState = {
+        currentMode,
+        colors,
+        activeSlotIndex,
+      };
+      localStorage.setItem(STORAGE_KEY_MIXER, JSON.stringify(state));
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  // Active state loaded from localStorage
+  const initialMixerState = loadMixerState();
+  let currentMode: "paint" | "oklch" | "rgb" | "cmyk" = initialMixerState.currentMode;
+  let colors: ColorWeight[] = initialMixerState.colors;
+  let activeSlotIndex = initialMixerState.activeSlotIndex;
 
   // Artist Pigment Quick Presets state
   interface PigmentPreset {
@@ -947,8 +1038,6 @@ const pageSchema = [
     { name: "Burnt Umber", hex: "#8A3324" },
     { name: "Yellow Ochre", hex: "#E08031" },
   ];
-
-  const STORAGE_KEY_PRESETS = "pl_pigment_presets_v1";
 
   function loadPigmentPresets(): PigmentPreset[] {
     try {
@@ -976,21 +1065,6 @@ const pageSchema = [
   }
 
   let pigmentPresets: PigmentPreset[] = loadPigmentPresets();
-
-  function normalizeHex(input: string): string | null {
-    let val = input.trim();
-    if (val.startsWith("#")) val = val.substring(1);
-    if (/^[0-9A-Fa-f]{3}$/.test(val)) {
-      val = val
-        .split("")
-        .map((c) => c + c)
-        .join("");
-    }
-    if (/^[0-9A-Fa-f]{6}$/.test(val)) {
-      return "#" + val.toUpperCase();
-    }
-    return null;
-  }
 
   // DOM elements
   const slotsContainer = document.getElementById("color-slots");
@@ -1055,6 +1129,7 @@ const pageSchema = [
   function setActiveSlot(idx: number) {
     if (idx < 0 || idx >= colors.length) return;
     activeSlotIndex = idx;
+    saveMixerState();
     updateActiveSlotUI();
   }
 
@@ -1238,6 +1313,7 @@ const pageSchema = [
         } else {
           updateActiveSlotUI();
         }
+        saveMixerState();
         updateMix();
       });
     });
@@ -1260,6 +1336,7 @@ const pageSchema = [
           } else {
             updateActiveSlotUI();
           }
+          saveMixerState();
           updateMix();
         } else {
           target.value = colors[idx].hex.toUpperCase();
@@ -1277,6 +1354,7 @@ const pageSchema = [
         const label = target.parentElement?.querySelector(".weight-label");
         if (label) label.textContent = `${val}%`;
         if (activeSlotIndex !== idx) setActiveSlot(idx);
+        saveMixerState();
         updateMix();
       });
     });
@@ -1296,6 +1374,7 @@ const pageSchema = [
           } else if (activeSlotIndex > idx) {
             activeSlotIndex--;
           }
+          saveMixerState();
           renderSlots();
         }
       });
@@ -1470,6 +1549,7 @@ const pageSchema = [
             activeSlotIndex = 0;
           }
           colors[activeSlotIndex].hex = hex;
+          saveMixerState();
           renderSlots();
           renderPresets();
         }
@@ -1525,6 +1605,7 @@ const pageSchema = [
       activeSlotIndex = 0;
     }
     colors[activeSlotIndex].hex = hex;
+    saveMixerState();
 
     newPresetInput.value = "";
     if (hexPreviewDot) hexPreviewDot.classList.add("hidden");
@@ -1540,18 +1621,26 @@ const pageSchema = [
     renderPresets();
   });
 
+  function updateModeButtonsUI() {
+    modeBtns.forEach((btn) => {
+      const mode = btn.getAttribute("data-mode");
+      if (mode === currentMode) {
+        btn.classList.add("bg-[#171717]", "dark:bg-white", "text-white", "dark:text-[#171717]", "shadow-xs");
+        btn.classList.remove("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
+      } else {
+        btn.classList.remove("bg-[#171717]", "dark:bg-white", "text-white", "dark:text-[#171717]", "shadow-xs");
+        btn.classList.add("text-[#4d4d4d]", "dark:text-[#a1a1aa]");
+      }
+    });
+  }
+
   // Mode button switcher
   modeBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const target = e.currentTarget as HTMLElement;
-      modeBtns.forEach((b) => {
-        b.classList.remove("bg-[#171717]", "text-white", "shadow-xs");
-        b.classList.add("text-[#4d4d4d]");
-      });
-      target.classList.add("bg-[#171717]", "text-white", "shadow-xs");
-      target.classList.remove("text-[#4d4d4d]");
-
       currentMode = (target.dataset.mode || "paint") as any;
+      updateModeButtonsUI();
+      saveMixerState();
       updateMix();
     });
   });
@@ -1561,17 +1650,18 @@ const pageSchema = [
     if (colors.length < 6) {
       colors.push({ hex: "#C41E3A", weight: 50 });
       activeSlotIndex = colors.length - 1;
+      saveMixerState();
       renderSlots();
     }
   });
 
   // Reset Button
   resetBtn?.addEventListener("click", () => {
-    colors = [
-      { hex: "#002185", weight: 50 },
-      { hex: "#FCD200", weight: 50 },
-    ];
-    activeSlotIndex = 0;
+    colors = JSON.parse(JSON.stringify(DEFAULT_MIXER_STATE.colors));
+    currentMode = DEFAULT_MIXER_STATE.currentMode;
+    activeSlotIndex = DEFAULT_MIXER_STATE.activeSlotIndex;
+    updateModeButtonsUI();
+    saveMixerState();
     renderSlots();
   });
 
@@ -1581,6 +1671,7 @@ const pageSchema = [
     presetIdx = (presetIdx + 1) % MIX_PRESETS.length;
     colors = JSON.parse(JSON.stringify(MIX_PRESETS[presetIdx]));
     activeSlotIndex = 0;
+    saveMixerState();
     renderSlots();
   });
 
@@ -1615,6 +1706,7 @@ const pageSchema = [
   });
 
   // Initial render
+  updateModeButtonsUI();
   renderSlots();
   renderPresets();
 </script>

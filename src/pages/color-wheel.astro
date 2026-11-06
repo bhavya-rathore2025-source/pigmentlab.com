@@ -194,6 +194,14 @@ const pageSchema = [
                   </svg>
                   <span>Shuffle</span>
                 </button>
+                <button
+                  id="reset-wheel-btn"
+                  type="button"
+                  class="inline-flex items-center rounded-md border border-[#ebebeb] bg-[#fafafa] px-2.5 py-1 text-xs font-medium text-[#4d4d4d] transition-colors hover:bg-[#ebebeb] hover:text-[#171717]"
+                  title="Reset color wheel to default"
+                >
+                  Reset
+                </button>
               </div>
             </div>
 
@@ -631,14 +639,96 @@ const pageSchema = [
     generatePaletteScale
   } from '../utils/colorPhysics';
 
-  // State
-  let wheelMode: 'itten' | 'rgb' = 'itten';
-  let schemeType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic' = 'complementary';
-  let currentHue = 0; // 0 to 359 (in Itten angle if wheelMode='itten', or in RGB hue if wheelMode='rgb')
-  let currentSat = 100;
-  let currentLight = 50;
-  let currentCvd: 'normal' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia' = 'normal';
-  let selectedSwatchHex = '';
+  // State persistence interfaces & keys
+  const STORAGE_KEY_WHEEL = 'pl_color_wheel_state_v1';
+
+  interface WheelState {
+    wheelMode: 'itten' | 'rgb';
+    schemeType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic';
+    currentHue: number;
+    currentSat: number;
+    currentLight: number;
+    currentCvd: 'normal' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia';
+    selectedSwatchHex?: string;
+  }
+
+  const DEFAULT_WHEEL_STATE: WheelState = {
+    wheelMode: 'itten',
+    schemeType: 'complementary',
+    currentHue: 0,
+    currentSat: 100,
+    currentLight: 50,
+    currentCvd: 'normal',
+    selectedSwatchHex: '',
+  };
+
+  function loadWheelState(): WheelState {
+    try {
+      const raw =
+        localStorage.getItem(STORAGE_KEY_WHEEL) ||
+        localStorage.getItem('rcm_color_wheel_state_v1');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed) {
+          const wheelMode = parsed.wheelMode === 'rgb' ? 'rgb' : 'itten';
+          const validSchemes = ['complementary', 'analogous', 'triadic', 'tetradic', 'split', 'monochromatic'];
+          const schemeType = validSchemes.includes(parsed.schemeType) ? parsed.schemeType : 'complementary';
+          const currentHue = typeof parsed.currentHue === 'number' && !isNaN(parsed.currentHue)
+            ? ((Math.round(parsed.currentHue) % 360) + 360) % 360
+            : 0;
+          const currentSat = typeof parsed.currentSat === 'number' && !isNaN(parsed.currentSat)
+            ? Math.max(20, Math.min(100, Math.round(parsed.currentSat)))
+            : 100;
+          const currentLight = typeof parsed.currentLight === 'number' && !isNaN(parsed.currentLight)
+            ? Math.max(20, Math.min(80, Math.round(parsed.currentLight)))
+            : 50;
+          const validCvds = ['normal', 'protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia'];
+          const currentCvd = validCvds.includes(parsed.currentCvd) ? parsed.currentCvd : 'normal';
+          const selectedSwatchHex = typeof parsed.selectedSwatchHex === 'string' ? parsed.selectedSwatchHex : '';
+
+          return {
+            wheelMode: wheelMode as 'itten' | 'rgb',
+            schemeType: schemeType as any,
+            currentHue,
+            currentSat,
+            currentLight,
+            currentCvd: currentCvd as any,
+            selectedSwatchHex,
+          };
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+    return { ...DEFAULT_WHEEL_STATE };
+  }
+
+  function saveWheelState() {
+    try {
+      const state: WheelState = {
+        wheelMode,
+        schemeType,
+        currentHue,
+        currentSat,
+        currentLight,
+        currentCvd,
+        selectedSwatchHex,
+      };
+      localStorage.setItem(STORAGE_KEY_WHEEL, JSON.stringify(state));
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  // Active state loaded from localStorage
+  const initialWheelState = loadWheelState();
+  let wheelMode: 'itten' | 'rgb' = initialWheelState.wheelMode;
+  let schemeType: 'complementary' | 'analogous' | 'triadic' | 'tetradic' | 'split' | 'monochromatic' = initialWheelState.schemeType;
+  let currentHue = initialWheelState.currentHue; // 0 to 359 (in Itten angle if wheelMode='itten', or in RGB hue if wheelMode='rgb')
+  let currentSat = initialWheelState.currentSat;
+  let currentLight = initialWheelState.currentLight;
+  let currentCvd: 'normal' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia' = initialWheelState.currentCvd;
+  let selectedSwatchHex = initialWheelState.selectedSwatchHex || '';
 
   // DOM
   const canvas = document.getElementById('color-wheel-canvas') as HTMLCanvasElement;
@@ -653,6 +743,7 @@ const pageSchema = [
   const baseColorDot = document.getElementById('base-color-dot');
   const wheelDescTag = document.getElementById('wheel-desc-tag');
   const randomHueBtn = document.getElementById('random-hue-btn');
+  const resetWheelBtn = document.getElementById('reset-wheel-btn');
 
   // Palette & Scales DOM
   const swatchesGrid = document.getElementById('palette-swatches-grid');
@@ -859,6 +950,7 @@ const pageSchema = [
         card.addEventListener('click', (e) => {
           if ((e.target as HTMLElement).closest('.copy-hex-pill')) return;
           selectedSwatchHex = item.hex;
+          saveWheelState();
           updateShadeScale();
           updatePaletteUI();
         });
@@ -992,6 +1084,7 @@ const pageSchema = [
     if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
 
     updateBaseHexFromState();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   }
@@ -1024,6 +1117,7 @@ const pageSchema = [
     currentHue = parseInt(hueSlider.value, 10);
     if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
     updateBaseHexFromState();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   });
@@ -1032,6 +1126,7 @@ const pageSchema = [
     currentSat = parseInt(satSlider.value, 10);
     if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
     updateBaseHexFromState();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   });
@@ -1040,6 +1135,7 @@ const pageSchema = [
     currentLight = parseInt(lightSlider.value, 10);
     if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
     updateBaseHexFromState();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   });
@@ -1050,6 +1146,61 @@ const pageSchema = [
     const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
     if (baseHexInput) baseHexInput.value = hex;
     if (baseColorDot) baseColorDot.style.backgroundColor = hex;
+  }
+
+  function updateWheelModeUI() {
+    if (wheelMode === 'itten') {
+      wheelModeIttenBtn?.classList.add('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-[#171717]', 'shadow-xs');
+      wheelModeIttenBtn?.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+      wheelModeRgbBtn?.classList.remove('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-[#171717]', 'shadow-xs');
+      wheelModeRgbBtn?.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+      if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate palette colors. Mode: Itten RYB (Red opposite Green).';
+    } else {
+      wheelModeRgbBtn?.classList.add('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-[#171717]', 'shadow-xs');
+      wheelModeRgbBtn?.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+      wheelModeIttenBtn?.classList.remove('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-[#171717]', 'shadow-xs');
+      wheelModeIttenBtn?.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1aa]');
+      if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate palette colors. Mode: Digital RGB (Red opposite Cyan).';
+    }
+  }
+
+  function updateSchemeButtonsUI() {
+    schemeBtns.forEach((btn) => {
+      const scheme = btn.getAttribute('data-scheme');
+      if (scheme === schemeType) {
+        btn.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+        btn.classList.remove('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
+      } else {
+        btn.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+        btn.classList.add('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
+      }
+    });
+  }
+
+  function updateCvdButtonsUI() {
+    cvdBtns.forEach((btn) => {
+      const cvd = btn.getAttribute('data-cvd');
+      if (cvd === currentCvd) {
+        btn.classList.add('bg-[#171717]', 'text-white');
+        btn.classList.remove('bg-[#fafafa]', 'text-[#4d4d4d]');
+      } else {
+        btn.classList.remove('bg-[#171717]', 'text-white');
+        btn.classList.add('bg-[#fafafa]', 'text-[#4d4d4d]');
+      }
+    });
+  }
+
+  function syncControlsWithState() {
+    if (hueSlider) hueSlider.value = currentHue.toString();
+    if (satSlider) satSlider.value = currentSat.toString();
+    if (lightSlider) lightSlider.value = currentLight.toString();
+    if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
+    if (satValueLabel) satValueLabel.textContent = `${currentSat}%`;
+    if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
+    updateWheelModeUI();
+    updateSchemeButtonsUI();
+    updateCvdButtonsUI();
+    updateBaseHexFromState();
   }
 
   // Direct Hex Input
@@ -1071,6 +1222,7 @@ const pageSchema = [
       if (lightValueLabel) lightValueLabel.textContent = `${currentLight}%`;
       if (baseColorDot) baseColorDot.style.backgroundColor = val;
 
+      saveWheelState();
       renderWheel();
       updatePaletteUI();
     }
@@ -1079,22 +1231,16 @@ const pageSchema = [
   // Wheel Mode Switcher
   wheelModeIttenBtn?.addEventListener('click', () => {
     wheelMode = 'itten';
-    wheelModeIttenBtn.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
-    wheelModeIttenBtn.classList.remove('text-[#4d4d4d]');
-    wheelModeRgbBtn?.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
-    wheelModeRgbBtn?.classList.add('text-[#4d4d4d]');
-    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate palette colors. Mode: Itten RYB (Red opposite Green).';
+    updateWheelModeUI();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   });
 
   wheelModeRgbBtn?.addEventListener('click', () => {
     wheelMode = 'rgb';
-    wheelModeRgbBtn.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
-    wheelModeRgbBtn.classList.remove('text-[#4d4d4d]');
-    wheelModeIttenBtn?.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
-    wheelModeIttenBtn?.classList.add('text-[#4d4d4d]');
-    if (wheelDescTag) wheelDescTag.textContent = 'Drag the node to rotate palette colors. Mode: Digital RGB (Red opposite Cyan).';
+    updateWheelModeUI();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   });
@@ -1103,14 +1249,9 @@ const pageSchema = [
   schemeBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget as HTMLElement;
-      schemeBtns.forEach((b) => {
-        b.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
-        b.classList.add('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
-      });
-      target.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
-      target.classList.remove('border', 'border-[#ebebeb]', 'bg-white', 'text-[#4d4d4d]');
-
       schemeType = (target.dataset.scheme || 'complementary') as any;
+      updateSchemeButtonsUI();
+      saveWheelState();
       renderWheel();
       updatePaletteUI();
     });
@@ -1120,14 +1261,9 @@ const pageSchema = [
   cvdBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget as HTMLElement;
-      cvdBtns.forEach((b) => {
-        b.classList.remove('bg-[#171717]', 'text-white');
-        b.classList.add('bg-[#fafafa]', 'text-[#4d4d4d]');
-      });
-      target.classList.add('bg-[#171717]', 'text-white');
-      target.classList.remove('bg-[#fafafa]', 'text-[#4d4d4d]');
-
       currentCvd = (target.dataset.cvd || 'normal') as any;
+      updateCvdButtonsUI();
+      saveWheelState();
       renderWheel();
       updatePaletteUI();
     });
@@ -1139,6 +1275,23 @@ const pageSchema = [
     if (hueSlider) hueSlider.value = currentHue.toString();
     if (hueValueLabel) hueValueLabel.textContent = `${currentHue}°`;
     updateBaseHexFromState();
+    saveWheelState();
+    renderWheel();
+    updatePaletteUI();
+  });
+
+  // Reset Button
+  resetWheelBtn?.addEventListener('click', () => {
+    wheelMode = DEFAULT_WHEEL_STATE.wheelMode;
+    schemeType = DEFAULT_WHEEL_STATE.schemeType;
+    currentHue = DEFAULT_WHEEL_STATE.currentHue;
+    currentSat = DEFAULT_WHEEL_STATE.currentSat;
+    currentLight = DEFAULT_WHEEL_STATE.currentLight;
+    currentCvd = DEFAULT_WHEEL_STATE.currentCvd;
+    selectedSwatchHex = DEFAULT_WHEEL_STATE.selectedSwatchHex;
+
+    syncControlsWithState();
+    saveWheelState();
     renderWheel();
     updatePaletteUI();
   });
@@ -1203,7 +1356,7 @@ const pageSchema = [
   });
 
   // Initial Boot
-  updateBaseHexFromState();
+  syncControlsWithState();
   renderWheel();
   updatePaletteUI();
 </script>

@@ -302,13 +302,13 @@ const contactSchema = {
         <!-- Q4 -->
         <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
           <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
-            <span>Where are my saved custom presets stored?</span>
+            <span>Where are my saved custom presets and workspace changes stored?</span>
             <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </summary>
           <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Your custom presets are saved locally on your device inside your browser's <code class="font-mono text-xs">localStorage</code> under the key <code class="font-mono text-xs">pl_pigment_presets_v1</code>. They remain private to your machine and are never uploaded to any remote server.
+            Your custom presets and active work sessions (in the Color Mixer and Color Wheel) are saved locally on your device inside your browser's <code class="font-mono text-xs">localStorage</code> (<code class="font-mono text-xs">pl_pigment_presets_v1</code>, <code class="font-mono text-xs">pl_color_mixer_state_v1</code>, and <code class="font-mono text-xs">pl_color_wheel_state_v1</code>). They remain private to your machine, prevent accidental data loss on refresh, and are never uploaded to any remote server.
           </p>
         </details>
       </div>

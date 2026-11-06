@@ -141,6 +141,14 @@ const schemaList = schema
           if (legacyPresets && !localStorage.getItem("pl_pigment_presets_v1")) {
             localStorage.setItem("pl_pigment_presets_v1", legacyPresets);
           }
+          const legacyMixer = localStorage.getItem("rcm_color_mixer_state_v1");
+          if (legacyMixer && !localStorage.getItem("pl_color_mixer_state_v1")) {
+            localStorage.setItem("pl_color_mixer_state_v1", legacyMixer);
+          }
+          const legacyWheel = localStorage.getItem("rcm_color_wheel_state_v1");
+          if (legacyWheel && !localStorage.getItem("pl_color_wheel_state_v1")) {
+            localStorage.setItem("pl_color_wheel_state_v1", legacyWheel);
+          }
 
           const stored = localStorage.getItem("pl_theme") || legacyTheme;
           if (stored === "light") {
