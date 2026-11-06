@@ -1,7 +1,7 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 
 interface Props {
   title?: string;
@@ -16,36 +16,43 @@ interface Props {
 }
 
 const {
-  title = 'PigmentLab — Real Pigment Physics Color Tools for Artists & Designers',
-  description = 'Free online color tools powered by realistic physical pigment optics and Johannes Itten Bauhaus color theory. Mix paint pigments, generate color palettes, and test WCAG contrast.',
-  keywords = 'pigmentlab, pigment lab, pigment color tools, real color tools, physical paint mixer, itten color tools, color physics, subtractive color tool',
-  currentPath = '',
-  lang = 'en',
+  title = "PigmentLab — Real Pigment Physics Color Tools for Artists & Designers",
+  description = "Free online color tools powered by realistic physical pigment optics and Johannes Itten Bauhaus color theory. Mix paint pigments, generate color palettes, and test WCAG contrast.",
+  keywords = "pigmentlab, pigment lab, pigment color tools, real color tools, physical paint mixer, itten color tools, color physics, subtractive color tool",
+  currentPath = "",
+  lang = "en",
   canonicalUrl,
-  ogImage = '/og-image.png',
-  ogType = 'website',
+  ogImage = "/og-image.png",
+  ogType = "website",
   schema,
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://pigmentlab.com';
-const resolvedCanonical = canonicalUrl || `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
-const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const siteUrl = Astro.site
+  ? Astro.site.toString().replace(/\/$/, "")
+  : "https://pigmentlab.com";
+const resolvedCanonical =
+  canonicalUrl || `${siteUrl}${currentPath === "/" ? "" : currentPath}`;
+const resolvedOgImage = ogImage.startsWith("http")
+  ? ogImage
+  : `${siteUrl}${ogImage}`;
 
 const defaultSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  'name': 'PigmentLab',
-  'url': siteUrl,
-  'description': description,
-  'potentialAction': {
-    '@type': 'SearchAction',
-    'target': `${siteUrl}/mix?color={search_term_string}`,
-    'query-input': 'required name=search_term_string'
-  }
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "PigmentLab",
+  url: siteUrl,
+  description: description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/mix?color={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const schemaList = schema
-  ? (Array.isArray(schema) ? schema : [schema])
+  ? Array.isArray(schema)
+    ? schema
+    : [schema]
   : [defaultSchema];
 ---
 
@@ -54,15 +61,31 @@ const schemaList = schema
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon-96x96.png?v=2"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <link rel="shortcut icon" href="/favicon.ico?v=2" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png?v=2"
+    />
+    <meta name="apple-mobile-web-app-title" content="Pigment Lab" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={resolvedCanonical} />
 
     <!-- Robots Meta -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
     <!-- Primary SEO Meta Tags -->
     <title>{title}</title>
@@ -95,36 +118,38 @@ const schemaList = schema
     <meta name="twitter:image:alt" content={title} />
 
     <!-- JSON-LD Structured Data for Google Rich Snippets -->
-    {schemaList.map((item) => (
-      <script type="application/ld+json" set:html={JSON.stringify(item)} />
-    ))}
+    {
+      schemaList.map((item) => (
+        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
 
     <!-- Dark Mode Init (defaults to dark, respects localStorage if explicitly set to light) -->
     <script is:inline>
       (function () {
         try {
           // Migration from rcm_ to pl_
-          const legacyTheme = localStorage.getItem('rcm_theme');
-          if (legacyTheme && !localStorage.getItem('pl_theme')) {
-            localStorage.setItem('pl_theme', legacyTheme);
+          const legacyTheme = localStorage.getItem("rcm_theme");
+          if (legacyTheme && !localStorage.getItem("pl_theme")) {
+            localStorage.setItem("pl_theme", legacyTheme);
           }
-          const legacyLang = localStorage.getItem('rcm_lang');
-          if (legacyLang && !localStorage.getItem('pl_lang')) {
-            localStorage.setItem('pl_lang', legacyLang);
+          const legacyLang = localStorage.getItem("rcm_lang");
+          if (legacyLang && !localStorage.getItem("pl_lang")) {
+            localStorage.setItem("pl_lang", legacyLang);
           }
-          const legacyPresets = localStorage.getItem('rcm_pigment_presets_v1');
-          if (legacyPresets && !localStorage.getItem('pl_pigment_presets_v1')) {
-            localStorage.setItem('pl_pigment_presets_v1', legacyPresets);
+          const legacyPresets = localStorage.getItem("rcm_pigment_presets_v1");
+          if (legacyPresets && !localStorage.getItem("pl_pigment_presets_v1")) {
+            localStorage.setItem("pl_pigment_presets_v1", legacyPresets);
           }
 
-          const stored = localStorage.getItem('pl_theme') || legacyTheme;
-          if (stored === 'light') {
-            document.documentElement.classList.remove('dark');
+          const stored = localStorage.getItem("pl_theme") || legacyTheme;
+          if (stored === "light") {
+            document.documentElement.classList.remove("dark");
           } else {
-            document.documentElement.classList.add('dark');
+            document.documentElement.classList.add("dark");
           }
         } catch (e) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         }
       })();
     </script>
@@ -137,7 +162,9 @@ const schemaList = schema
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#fafafa] text-[#171717] selection:bg-[#171717] selection:text-white dark:bg-[#000000] dark:text-[#ededed] dark:selection:bg-white dark:selection:text-black antialiased overflow-x-hidden w-full">
+  <body
+    class="min-h-screen flex flex-col bg-[#fafafa] text-[#171717] selection:bg-[#171717] selection:text-white dark:bg-[#000000] dark:text-[#ededed] dark:selection:bg-white dark:selection:text-black antialiased overflow-x-hidden w-full"
+  >
     <Navbar currentPath={currentPath} />
     <main class="flex-1 w-full overflow-x-hidden">
       <slot />
