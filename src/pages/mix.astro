@@ -111,7 +111,7 @@ const pageSchema = [
 
         <!-- Mode Switcher Tabs (Geist Pill style) -->
         <div
-          class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1 shadow-2xs"
+          class="mt-6 inline-flex flex-wrap items-center justify-center gap-1 rounded-2xl sm:rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1.5 sm:p-1 shadow-2xs max-w-full"
         >
           <button
             type="button"
@@ -1116,15 +1116,15 @@ const pageSchema = [
       }`;
 
       slotEl.innerHTML = `
-        <div class="flex items-center gap-3">
-          <input
-            type="color"
-            value="${col.hex}"
-            data-index="${idx}"
-            class="color-picker-input h-8 w-8 cursor-pointer rounded-md border border-[#ebebeb] p-0 bg-transparent"
-            title="Pick color"
-          />
-          <div class="flex flex-col">
+        <div class="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
+          <div class="flex items-center gap-2.5">
+            <input
+              type="color"
+              value="${col.hex}"
+              data-index="${idx}"
+              class="color-picker-input h-8 w-8 cursor-pointer rounded-md border border-[#ebebeb] p-0 bg-transparent shrink-0"
+              title="Pick color"
+            />
             <input
               type="text"
               value="${col.hex.toUpperCase()}"
@@ -1133,9 +1133,27 @@ const pageSchema = [
               class="hex-text-input w-24 rounded border border-[#ebebeb] bg-white px-2 py-0.5 font-mono text-xs uppercase font-medium text-[#171717] focus:outline-none"
             />
           </div>
+
+          <!-- Mobile remove button (row top-right on mobile) -->
+          <div class="sm:hidden">
+            ${
+              colors.length > 2
+                ? `<button
+                    type="button"
+                    data-remove="${idx}"
+                    class="remove-slot-btn rounded p-1.5 text-[#8f8f8f] hover:bg-[#ebebeb] hover:text-[#ee0000] transition-colors cursor-pointer"
+                    title="Remove color slot"
+                  >
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>`
+                : `<span class="w-6 inline-block"></span>`
+            }
+          </div>
         </div>
 
-        <div class="flex flex-1 items-center gap-3">
+        <div class="flex flex-1 items-center gap-3 w-full">
           <input
             type="range"
             min="1"
@@ -1144,12 +1162,13 @@ const pageSchema = [
             data-index="${idx}"
             class="weight-slider h-1.5 flex-1 cursor-pointer accent-[#171717]"
           />
-          <span class="weight-label font-mono text-xs font-semibold text-[#171717] w-12 text-right">
+          <span class="weight-label font-mono text-xs font-semibold text-[#171717] w-12 text-right shrink-0">
             ${col.weight}%
           </span>
         </div>
 
-        <div>
+        <!-- Desktop remove button (inline on sm+) -->
+        <div class="hidden sm:block">
           ${
             colors.length > 2
               ? `<button

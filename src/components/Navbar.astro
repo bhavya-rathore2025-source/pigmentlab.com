@@ -9,7 +9,7 @@ const { currentPath = '' } = Astro.props;
 <header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-[#fafafa]/90 backdrop-blur-md dark:border-[#262626] dark:bg-[#000000]/85">
   <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
     <!-- Brand / Logo -->
-    <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-80">
+    <a href="/" class="group flex items-center gap-2.5 transition-opacity hover:opacity-80 shrink-0">
       <div class="relative flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-[#0070f3] via-[#7928ca] to-[#ff0080] p-[1.5px] shadow-xs">
         <div class="flex h-full w-full items-center justify-center rounded-[6px] bg-[#171717] preserve-dark">
           <span class="text-xs font-semibold text-white preserve-text">PL</span>
@@ -21,8 +21,8 @@ const { currentPath = '' } = Astro.props;
       </div>
     </a>
 
-    <!-- Nav Links (Geist Pill / Square style) -->
-    <nav class="flex items-center gap-1 sm:gap-2">
+    <!-- Nav Links (Desktop md+) -->
+    <nav class="hidden md:flex items-center gap-1 sm:gap-2">
       <a
         href="/mix"
         class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
@@ -48,14 +48,14 @@ const { currentPath = '' } = Astro.props;
       </a>
     </nav>
 
-    <!-- Language Selector Pill & Actions -->
-    <div class="flex items-center gap-2">
+    <!-- Language Selector Pill, Dark Mode & Mobile Menu Button -->
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       <div class="relative inline-flex items-center rounded-full border border-[#ebebeb] bg-white px-2 py-1 text-[11px] font-medium text-[#4d4d4d] shadow-2xs dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1a1]">
-        <svg class="mr-1.5 h-3.5 w-3.5 text-[#8f8f8f] dark:text-[#737373]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="mr-1 sm:mr-1.5 h-3.5 w-3.5 text-[#8f8f8f] dark:text-[#737373]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
         </svg>
         <span id="current-lang-label" class="font-semibold text-[#171717] dark:text-[#ededed]">ES</span>
-        <span class="mx-1 text-[#ebebeb] dark:text-[#333333]">|</span>
+        <span class="mx-0.5 sm:mx-1 text-[#ebebeb] dark:text-[#333333]">|</span>
         <button id="toggle-lang-btn" type="button" class="cursor-pointer text-[#8f8f8f] hover:text-[#171717] dark:text-[#737373] dark:hover:text-[#ededed]" title="Switch language (Spanish / English / Deutsch / Português)">
           EN
         </button>
@@ -78,6 +78,75 @@ const { currentPath = '' } = Astro.props;
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
       </button>
+
+      <!-- Mobile Navigation Hamburger Button -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="inline-flex md:hidden h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-[#ebebeb] bg-white text-[#4d4d4d] shadow-2xs transition-colors hover:bg-[#f2f2f2] hover:text-[#171717] dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <svg id="hamburger-icon" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer / Dropdown Panel -->
+  <div
+    id="mobile-nav-panel"
+    class="hidden border-t border-[#ebebeb] bg-white/95 px-4 py-3 backdrop-blur-md md:hidden dark:border-[#262626] dark:bg-[#0a0a0a]/95"
+  >
+    <div class="flex flex-col gap-2">
+      <a
+        href="/mix"
+        class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/mix')
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
+          <span class="font-semibold">Color Mixer Online</span>
+        </div>
+        <span class="font-mono text-[10px] opacity-75">Paint Optics</span>
+      </a>
+
+      <a
+        href="/color-wheel"
+        class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
+          currentPath.startsWith('/color-wheel')
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
+          <span class="font-semibold">Color Wheel Picker</span>
+        </div>
+        <span class="font-mono text-[10px] opacity-75">Itten Bauhaus</span>
+      </a>
+
+      <a
+        href="/"
+        class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
+          currentPath === '/'
+            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
+            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
+        }`}
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#0070f3] to-[#ff0080]"></span>
+          <span class="font-semibold">Home & Overview</span>
+        </div>
+        <span class="font-mono text-[10px] opacity-75">PigmentLab</span>
+      </a>
     </div>
   </div>
 </header>
@@ -149,5 +218,43 @@ const { currentPath = '' } = Astro.props;
     updateThemeUI();
     window.dispatchEvent(new CustomEvent('pl:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
     window.dispatchEvent(new CustomEvent('rcm:themechange', { detail: { theme: isDark ? 'light' : 'dark' } }));
+  });
+
+  // Mobile Navigation Drawer Toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNavPanel = document.getElementById('mobile-nav-panel');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  function toggleMobileMenu(forceClose = false) {
+    if (!mobileNavPanel || !mobileMenuBtn) return;
+    const isCurrentlyOpen = !mobileNavPanel.classList.contains('hidden');
+    const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      mobileNavPanel.classList.remove('hidden');
+      hamburgerIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileNavPanel.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  mobileMenuBtn?.addEventListener('click', () => toggleMobileMenu());
+
+  // Close mobile drawer when clicking a navigation link inside it
+  mobileNavPanel?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => toggleMobileMenu(true));
+  });
+
+  // Close when window resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      toggleMobileMenu(true);
+    }
   });
 </script>
