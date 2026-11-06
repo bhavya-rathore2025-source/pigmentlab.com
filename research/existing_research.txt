@@ -1,20 +1,21 @@
 ================================================================================
 COLOR TOOLS NICHE: COMPETITOR AUDIT, STRATEGY & MVP BLUEPRINT
-Target Competitor: Gradients.app (/mix & /wheel),https://gradients.app/en/mix,https://gradients.app/en/color-wheel
+Target Brand: PigmentLab (pigmentlab.com) [Formerly realcolormixer.com]
+Target Competitor: Gradients.app (/mix & /wheel), https://gradients.app/en/mix, https://gradients.app/en/color-wheel
 ================================================================================
 
 3. COMPETITOR AUDIT: COLOR WHEEL (Gradients.app /wheel)
 --------------------------------------------------------------------------------
 Features of Gradients.app Color Wheel:
 - Interactive circular color picker.
-- Supports standard color harmony presets:
+- Supports standard color palette presets:
   * Complementary (opposite colors)
   * Analogous (adjacent colors)
   * Triadic (equilateral triangle, 3 colors)
   * Tetradic / Square (4 colors)
   * Split-Complementary
   * Monochromatic
-- Displays HEX codes for generated harmony points.
+- Displays HEX codes for generated palette points.
 
 CRITICAL WEAKNESSES & USER PAIN POINTS:
 [X] Weakness 1: Digital RGB Wheel vs. Traditional Artistic RYB Wheel
@@ -23,7 +24,7 @@ CRITICAL WEAKNESSES & USER PAIN POINTS:
     In traditional art & design theory (Goethe / Itten RYB wheel):
     Red is opposite Green, Blue is opposite Orange, Yellow is opposite Purple.
     Art students, painters, interior decorators, and fashion creators get
-    frustrated because the color harmonies on digital wheels do not match
+    frustrated because the color palettes on digital wheels do not match
     physical reality or classic design textbooks.
     -> OUR ADVANTAGE: A 1-click toggle: "Digital (RGB/Web)" vs. "Klassischer Farbkreis nach Itten (RYB)".
        This directly targets and dominates the German search cluster for "farbkreis nach itten"
@@ -38,10 +39,10 @@ CRITICAL WEAKNESSES & USER PAIN POINTS:
        for all generated combinations.
 
 [X] Weakness 3: No Shade, Tint & Tone Matrix
-    Gradients.app only gives 1 pure saturated hex per harmony node.
+    Gradients.app only gives 1 pure saturated hex per palette node.
     Real designers need the tints (mixed with white), shades (mixed with black),
     and tones (mixed with grey) to build a realistic UI or painting.
-    -> OUR ADVANTAGE: Click any harmony color to expand its 9-shade scale (100 to 900).
+    -> OUR ADVANTAGE: Click any palette color to expand its 9-shade scale (100 to 900).
 
 [X] Weakness 4: No Color-Blindness Simulation
     8% of men and 0.5% of women have color vision deficiency (Protanopia, Deuteranopia, Tritanopia).
@@ -87,13 +88,13 @@ CRITICAL WEAKNESSES & USER PAIN POINTS:
 
 
 --------------------------------------------------------------------------------
-5. MVP ACTION PLAN & ARCHITECTURE (Target Domain: realcolormixer.com)
+5. MVP ACTION PLAN & ARCHITECTURE (Target Domain: pigmentlab.com)
 --------------------------------------------------------------------------------
-TOOL 1: The Core Color Mixer (3-Mode Architecture)
+TOOL 1: The Core Color Mixer (Route: /mix)
 - Mode Switcher:
   * Mode 1: [ 🎨 Real Paint & Pigments (RYB) ] - DEFAULT
-    - Uses true subtractive pigment physics (Kubelka-Munk / Mixbox / RYB).
-    - Blue + Yellow = Vibrant Green (#2E8B57 / #00AA44).
+    - Uses true subtractive pigment physics (Kubelka-Munk / Spectral.js / RYB).
+    - Blue + Yellow = Vibrant Green (#2E8B57 / #168A35).
     - Red + Green = Rich Earthy Brown (#5C3317).
     - Red + Yellow + Blue = Deep Brown / Black.
     - Targets: Painters, crafters, DIY wall painters, teachers, art students.
@@ -106,33 +107,56 @@ TOOL 1: The Core Color Mixer (3-Mode Architecture)
     - Targets: Programmers, game developers, shader coders.
   * Mode 4: [ 🖨️ Print & Inks (CMYK) ]
     - Subtractive ink layering for physical print & packaging designers.
-- Inputs: 2 to 5 color inputs with percentage proportion sliders (0-100%).
+- Inputs: 2 to 6 color inputs with percentage proportion sliders (0-100%).
+- Quick Presets: Artist oil tubes (Ultramarine Blue, Cadmium Yellow, Crimson Red, Titanium White).
 - Live Previews: Resulting color swatch + interactive UI mockup (button, card, badge, light/dark text).
 - Real-Time Accessibility: WCAG 2.1 Contrast Ratio score (AA / AAA Pass/Fail for white & black text).
 - Exports: 1-click copy for HEX, RGB, HSL, CSS color-mix(), Tailwind config object.
+- SEO: Dedicated WebApplication + FAQPage JSON-LD schema for Google Rich Results.
 
-TOOL 2: The "Designer + Artist" Harmony Color Wheel
+TOOL 2: The Johannes Itten Artist Color Wheel (Route: /color-wheel)
 - Visual Canvas: Interactive circular wheel with drag handles.
 - Mode Switcher:
   * Mode A: [ 🎨 Klassischer Itten Farbkreis (RYB) ] - Bauhaus 12-hue artist wheel
     (Red opposite Green, Blue opposite Orange, Yellow opposite Purple).
   * Mode B: [ 💻 Digital Screen Wheel (RGB / Web) ] - Standard screen hue wheel.
-- Harmonies: Complementary, Monochromatic, Analogous, Triadic, Tetradic, Split-Complementary.
+- Palette Presets: Complementary, Monochromatic, Analogous, Triadic, Tetradic, Split-Complementary.
 - Features: Real-time WCAG contrast score between palette nodes + 9-step tint/shade generator (100 to 900).
-- Exports: 1-click CSS Variables (:root { --color-1: ... }), Tailwind, and PNG/SVG download.
+- CVD Simulator: Protanopia, Deuteranopia, Tritanopia, Monochromacy.
+- Exports: 1-click CSS Variables (:root { --color-1: ... }), Tailwind, and SVG palette download.
+- SEO: Dedicated WebApplication + FAQPage JSON-LD schema for Google Rich Results.
+
+PORTAL: Brand Homepage (Route: /)
+- Purpose: Pure brand portal explaining the physics, benefits, and advantages of PigmentLab.
+- Zero Keyword Cannibalization: Does not target "color wheel" or "color mixer" head terms in title/H1.
+- Features: Side-by-side RGB vs Kubelka-Munk comparison, USP grid, dual CTA cards to /mix and /color-wheel.
+- SEO: WebSite + Organization schema.
 
 
 --------------------------------------------------------------------------------
 6. TARGET KEYWORDS (STRICTLY FROM USER AHREFS SCREENSHOTS)
 --------------------------------------------------------------------------------
-PORTUGUESE (/pt/ - Brazil) [From Screenshot]:
-- "mistura de cores" (Volume: >10,000 | KD: Easy)
+PORTUGUESE (/pt/ - Brazil) [From Screenshots]:
+- "círculo cromático" / "circulo cromatico" (Volume: >10,000 | KD: Easy) [The #1 PT wheel term!]
+- "circulo cromatico cores" (Volume: >1,000 | KD: Easy)
+- "roda de cores" (Volume: >1,000 | KD: Easy) [Direct 'color wheel' query]
+- "roda de cores adobe" (Volume: >100 | KD: Easy)
+- "roda de cores complementares" (Volume: >100 | KD: Easy)
+- "roda de cores ryb" (Volume: <100 | KD: N/A)
+- "roda de cores terciária" (Volume: <100 | KD: N/A)
+- "mistura de cores" (Volume: >10,000 | KD: Easy) [The #1 PT mixer term!]
 - "tabela de mistura de cores" (Volume: >1,000 | KD: Easy)
 - "mistura de cores e resultados" (Volume: >1,000 | KD: Easy)
 - "mistura de cores para dar marrom" (Volume: >1,000 | KD: Easy)
 - "tabela de mistura de cores de tintas para parede" (Volume: >1,000 | KD: Easy)
+* INTENT ANALYSIS: "Círculo cromático" has mixed intent in Brazil (fashion/look styling + home decor + art + digital tool). "Roda de cores" is more purely tool-focused.
 
 FRENCH (/fr/ - France) [From Screenshots]:
+- "roue chromatique" (Volume: >10,000 | KD: Easy) [The #1 French wheel term! 100% pure tool intent]
+- "roue chromatique des couleurs" (Volume: >100 | KD: Easy)
+- "roue chromatique couleur" (Volume: >100 | KD: Easy)
+- "roue chromatique adobe" (Volume: >100 | KD: Medium)
+- "roue chromatique couleur complémentaire" (Volume: >100 | KD: Easy)
 - "tableau des mélanges de couleurs" (Volume: >1,000 | KD: Easy)
 - "tableau des mélanges de couleurs primaires" (Volume: >100 | KD: N/A)
 - "tableau des mélanges de couleurs pdf" (Volume: >100 | KD: Easy)
@@ -143,6 +167,7 @@ FRENCH (/fr/ - France) [From Screenshots]:
 - "mélange de couleur primaire" (Volume: >100 | KD: Easy)
 - "mélange de couleur teinture vêtement" (Volume: <100 | KD: Easy)
 - "melange de couleur pour obtenir du marron" (Volume: <100 | KD: Easy)
+* INTENT ANALYSIS: "Roue chromatique" is 100% tool intent (Adobe, Canva, cercle-chromatique.fr). Pure gold mine.
 
 SPANISH (/es/ - Latin America & Spain) [From Screenshots]:
 - "combinación de colores" (Volume: 10,000 in Peru / >1,000 in ES | KD: Easy)
@@ -174,7 +199,6 @@ GERMAN (/de/ - Germany, Austria, Switzerland) [From Screenshots]:
 - "farbrad komplementärfarben" (Volume: 80 / <100 Ahrefs | KD: Easy | Position: 1)
 - "farbrad adobe" (Volume: <100 | KD: Medium)
 
-
 ENGLISH (/ - USA) [From Screenshots]:
 - "color wheel" (Volume: >100,000 | KD: Hard)
 - "color wheel picker" (Volume: >10,000 | KD: Hard)
@@ -195,13 +219,12 @@ RUSSIAN (/ru/ - Russia) [From Screenshots]:
 - "смешать цвета онлайн" (Volume: 1,600 | Position: 2) [Color mixer online]
 - "палитра цветов сочетание" (Volume: >100 | KD: Easy) [Color palette combinations]
 - "палитра цветов с кодами" (Volume: >100 | KD: Medium) [Color palette with hex codes]
-- "татуаж губ палитра цветов" (Volume: >100 | KD: Easy)
+- "татуаж губ палиtra цветов" (Volume: >100 | KD: Easy)
 - "краска эстель палитра цветов по номерам" (Volume: >100 | KD: Easy)
 
 
-
 --------------------------------------------------------------------------------
-7. NEW UNLOCKED FEATURE: ,TO BE ADDED LATER AFTER FURTHER DISCUSSION AND RESEARCH "DOWNLOAD PRINTABLE COLOR MIXING CHART (PDF)"
+7. NEW UNLOCKED FEATURE: "DOWNLOAD PRINTABLE COLOR MIXING CHART (PDF)"
 --------------------------------------------------------------------------------
 Insight from French & Portuguese searches:
 Users repeatedly search for "tabela de mistura de cores" and "tableau des mélanges de couleurs pdf".
@@ -210,6 +233,7 @@ Feature to add below the tool:
   and Secondary Colors blend.
 - A 1-click "Download PDF / Printable Cheat Sheet" button.
 - This creates instant backlinks from teachers, art schools, and painting blogs!
+
 
 --------------------------------------------------------------------------------
 8. BEST JAVASCRIPT LIBRARIES FOR RYB & PAINT BLENDING (100% FREE / MIT LICENSE)
@@ -233,8 +257,68 @@ Feature to add below the tool:
      * Translates classical Itten pigment angles to digital RGB swatches seamlessly.
    - ryb (GitHub: bahamas10/ryb)
      * License: MIT.
-     * Interactive RYB color wheel generator with divisions, rings, and harmonies.
+     * Interactive RYB color wheel generator with divisions, rings, and palettes.
+
+
+--------------------------------------------------------------------------------
+9. COMPETITOR DEEP DIVE: GRADIENTS.APP FRENCH TRAFFIC AUDIT (/fr/color-wheel)
+--------------------------------------------------------------------------------
+From Ahrefs Traffic Checker (France / 100% FR Traffic):
+- "roue chromatique photoshop" -> Position: 2 | Volume: 20
+- "roue chromatique en ligne gratuit" -> Position: 10 | Volume: 150
+- "roue couleur complémentaire" -> Position: 10 | Volume: 200
+- "cercle chromatique en ligne" -> Position: 6 | Volume: 70
+- "roue chromatique en ligne" -> Position: 7 | Volume: 50
+
+WHY GRADIENTS.APP FAILS TO RANK FOR "roue chromatique" (>10,000/mo, KD: Easy):
+1. Thin translated UI shell: Gradients.app only translates button labels and tooltips.
+   There is zero editorial or educational French content explaining color theory.
+2. No topical depth: No French H1, no French FAQPage schema, no guide text.
+3. Outranked by small niche sites: cercle-chromatique.fr ranks #1 with a tiny exact-match
+   domain because it has real French content, beating Gradients.app easily.
+4. Takeaway for PigmentLab: Providing real French-language guides, French FAQ schemas,
+   and proper metadata on /color-wheel will easily capture this 10k/mo Easy traffic.
+
+
+--------------------------------------------------------------------------------
+10. MACRO ANALYSIS: COLOR WHEEL VS COLOR MIXER (EASY INTERNATIONAL MARKETS)
+--------------------------------------------------------------------------------
+| Market           | 🎡 Wheel Volume (Easy KD) | 🎨 Mixer Volume (Easy KD) | Winner       |
+|:-----------------|--------------------------:|--------------------------:|:-------------|
+| German (DE)      | 14,500+                   | 2,500                     | WHEEL (6x)   |
+| Portuguese (BR)  | 12,000+                   | 14,000+                   | TIE          |
+| French (FR)      | 10,000+                   | 2,500                     | WHEEL (4x)   |
+| Spanish (ES/LATAM| 2,900                     | 2,600                     | TIE          |
+| Russian (RU)     | 1,900                     | 1,600                     | TIE          |
+| TOTAL            | ~41,000+/mo               | ~23,000+/mo               | WHEEL (~2x)  |
+
+STRATEGIC CONCLUSION:
+- Color Wheel is roughly DOUBLE the search volume of Color Mixer in easy international markets.
+- In German (farbkreis 10k) and French (roue chromatique 10k), Wheel is the dominant search.
+- Both tools must be treated as co-equal flagships on the site.
+
+
+--------------------------------------------------------------------------------
+11. DOMAIN PIVOT & KEYWORD CANNIBALIZATION FIX (PIGMENTLAB.COM)
+--------------------------------------------------------------------------------
+PROBLEM IDENTIFIED:
+- The domain "realcolormixer.com" pigeonholed the entire site as a mixer only.
+- Google search algorithm checks query-domain fit: a user searching "color wheel" is far
+  less likely to click realcolormixer.com, hurting CTR and rankings.
+- Putting the Color Mixer on the homepage (/) created keyword cannibalization between
+  the wheel and the mixer.
+
+SOLUTION EXECUTED:
+1. Rebranded to PigmentLab (pigmentlab.com).
+   - "Pigment" conveys real paint/subtractive physics (Kubelka-Munk & Itten RYB).
+   - "Lab" establishes an umbrella brand (like Coolors or Paletton) for multiple tools.
+2. New 3-Page Route Architecture:
+   - Route / (Homepage): Brand portal showcasing physics, benefits, and advantages.
+     Zero "color wheel" or "color mixer" head keywords in title/H1 (No cannibalization).
+   - Route /mix: Dedicated Color Mixer tool (owns 100% of mixer keywords).
+   - Route /color-wheel: Dedicated Color Wheel tool (owns 100% of wheel keywords).
+3. Removed "Harmony" Jargon:
+   - "Harmony" was internal designer jargon with 0 search volume in Ahrefs data.
+   - Replaced across all titles, H1s, and copy with real search queries:
+     "Color Wheel Picker", "Color Palette Generator", "Complementary Color Wheel".
 ================================================================================
-
-
-
