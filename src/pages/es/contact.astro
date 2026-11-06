@@ -17,26 +17,350 @@ const contactSchema = {
 ---
 
 <Layout
-  title="Contacto — PigmentLab"
-  description="¿Preguntas sobre la física de pigmentos, la rueda de color de Itten o sugerencias de nuevos pigmentos? Escríbenos."
-  keywords="contacto pigmentlab, soporte pigmentlab, dudas mezcla de colores, sugerencias pigmentos"
+  title="Contacto & Feedback — PigmentLab"
+  description="¿Tienes preguntas sobre la física de pigmentos Kubelka-Munk, la teoría del color de Johannes Itten o sugerencias de pigmentos? Ponte en contacto con nosotros."
+  keywords="contacto pigmentlab, soporte pigmentlab, dudas mezcla de colores, sugerencias pigmentos, ciencia del color feedback"
   currentPath="/es/contact"
   lang="es"
   schema={contactSchema}
 >
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 text-center">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+  <!-- Header -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-        <span>A tu disposición</span>
+        <span>Nos encantaría saber de ti</span>
       </div>
+
       <h1 class="mt-4 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
-        Contacta con PigmentLab
+        Ponte en Contacto con PigmentLab
       </h1>
-      <p class="mx-auto mt-4 max-w-2xl text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-        Envíanos un correo a <a href="mailto:contact@pigmentlab.com" class="text-[#0070f3] hover:underline font-mono">contact@pigmentlab.com</a>.
+
+      <p class="mx-auto mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        ¿Tienes alguna duda sobre la física óptica de pigmentos, quieres sugerir una nueva pintura artística o compartir comentarios? Te respondemos con gusto.
       </p>
     </div>
   </section>
-</Layout>
 
+  <!-- Main Grid: Form + Direct Contact Details -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-14 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Form Column (7 cols) -->
+        <div class="lg:col-span-7 rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 sm:p-8 shadow-xs">
+          <div id="contact-form-container">
+            <h2 class="text-xl font-semibold text-[#171717] dark:text-white">
+              Envíanos un Mensaje
+            </h2>
+            <p class="mt-1 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+              Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+            </p>
+
+            <form id="contact-form" class="mt-6 space-y-4">
+              <!-- Name -->
+              <div>
+                <label for="contact-name" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+                  Tu Nombre <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  required
+                  placeholder="ej. Leonardo o Elena"
+                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
+                />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="contact-email" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+                  Correo Electrónico <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  required
+                  placeholder="nombre@ejemplo.com"
+                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
+                />
+              </div>
+
+              <!-- Inquiry Type -->
+              <div>
+                <label for="contact-subject" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+                  Tema / Tipo de Consulta
+                </label>
+                <select
+                  id="contact-subject"
+                  name="subject"
+                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
+                >
+                  <option value="General Inquiry">Consulta / Pregunta General</option>
+                  <option value="Pigment Suggestion">Sugerir un Nuevo Pigmento / Pintura Artística</option>
+                  <option value="Physics Feedback">Ciencia del Color y Física Kubelka-Munk</option>
+                  <option value="Bug Report">Informe de Error / Problema Técnico</option>
+                  <option value="Collaboration">Colaboración de Diseño / Alianzas</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="contact-message" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+                  Mensaje <span class="text-red-500">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows="4"
+                  required
+                  placeholder="Cuéntanos en qué podemos ayudarte o qué propuesta tienes..."
+                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <div id="form-error-alert" class="hidden rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 p-3 text-xs text-red-600 dark:text-red-400">
+                Por favor, completa todos los campos obligatorios con un correo válido.
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                id="contact-submit-btn"
+                class="w-full inline-flex h-11 items-center justify-center rounded-xl bg-[#171717] px-6 text-sm font-medium text-white shadow-xs transition-colors hover:bg-black dark:bg-white dark:text-[#171717] dark:hover:bg-[#ededed] cursor-pointer"
+              >
+                Enviar Mensaje →
+              </button>
+            </form>
+          </div>
+
+          <!-- Success State (Shown after submit) -->
+          <div id="contact-success-state" class="hidden text-center py-8">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-[#171717] dark:text-white">¡Mensaje Recibido!</h3>
+            <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed max-w-md mx-auto">
+              Gracias por escribir a PigmentLab. Hemos recibido tu mensaje y lo revisaremos con atención. Normalmente respondemos en un plazo de 24 a 48 horas.
+            </p>
+            <button
+              id="reset-form-btn"
+              type="button"
+              class="mt-6 inline-flex h-9 items-center justify-center rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-5 text-xs font-medium text-[#171717] dark:text-white hover:bg-[#ebebeb] dark:hover:bg-[#222222] transition-colors cursor-pointer"
+            >
+              Enviar Otro Mensaje
+            </button>
+          </div>
+        </div>
+
+        <!-- Details Column (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Direct Emails Card -->
+          <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 shadow-xs">
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">
+              Comunicación Directa
+            </h3>
+            <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+              ¿Prefieres escribirnos directamente por correo electrónico? Usa la dirección adecuada:
+            </p>
+
+            <ul class="mt-4 space-y-3.5 text-xs sm:text-sm">
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-base">💬</span>
+                <div>
+                  <strong class="text-[#171717] dark:text-white block font-medium">Consultas Generales y Soporte</strong>
+                  <a href="mailto:contact@pigmentlab.com" class="text-[#0070f3] hover:underline font-mono text-xs">
+                    contact@pigmentlab.com
+                  </a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-base">🔬</span>
+                <div>
+                  <strong class="text-[#171717] dark:text-white block font-medium">Física y Sugerencias de Pigmentos</strong>
+                  <a href="mailto:physics@pigmentlab.com" class="text-[#0070f3] hover:underline font-mono text-xs">
+                    physics@pigmentlab.com
+                  </a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-base">🔒</span>
+                <div>
+                  <strong class="text-[#171717] dark:text-white block font-medium">Privacidad y Asuntos Legales</strong>
+                  <a href="mailto:privacy@pigmentlab.com" class="text-[#0070f3] hover:underline font-mono text-xs">
+                    privacy@pigmentlab.com
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Response Expectation Card -->
+          <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 shadow-xs">
+            <h3 class="text-sm font-semibold text-[#171717] dark:text-white flex items-center gap-2">
+              <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Tiempo de Respuesta
+            </h3>
+            <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+              Habitualmente revisamos y respondemos las consultas en un plazo de <strong class="text-[#171717] dark:text-white">24 a 48 horas</strong> durante días laborables.
+            </p>
+          </div>
+
+          <!-- Useful Links -->
+          <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 shadow-xs">
+            <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#737373]">
+              Recursos Útiles
+            </h3>
+            <ul class="mt-3 space-y-2 text-xs">
+              <li>
+                <a href="/es/about" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>Aprende sobre la física de PigmentLab</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/es/mix" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>Estudio de Mezcla Sustractiva de Color</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/es/color-wheel" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>Rueda de Color de Johannes Itten</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/es/privacy" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>Política de Privacidad y LocalStorage</span>
+                  <span>→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
+          Preguntas Frecuentes (FAQ)
+        </h2>
+        <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+          Respuestas rápidas sobre la física del color, licencias de uso y herramientas de PigmentLab.
+        </p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <!-- Q1 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>¿Puedo usar colores y código CSS de PigmentLab en productos comerciales?</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            ¡Sí, al 100%! Todas las recetas de mezclas, códigos hexadecimales, variables OKLCH y fragmentos CSS generados en PigmentLab son completamente libres para su uso en proyectos personales, de código abierto o comerciales sin regalías ni atribución obligatoria.
+          </p>
+        </details>
+
+        <!-- Q2 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>¿En qué se diferencia el Mezclador Sustractivo de los selectores RGB estándar?</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Los selectores digitales habituales suman de forma lineal la luz RGB en pantalla, haciendo que mezclar azul y amarillo resulte en un gris apagado. PigmentLab simula la absorción y dispersión física de partículas reales (teoría Kubelka-Munk), produciendo el verde esmeralda auténtico de las pinturas físicas.
+          </p>
+        </details>
+
+        <!-- Q3 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>¿Puedo sugerir un pigmento de pintura física específico para añadirlo al mezclador?</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            ¡Por supuesto! Ampliamos constantemente nuestra base de datos espectral. Si hay un pigmento artístico particular (como Magenta de Quinacridona, Tierra de Sombra Tostada o Amarillo de Nápoles) que te gustaría ver modelado, selecciona "Sugerir un Nuevo Pigmento" en el formulario.
+          </p>
+        </details>
+
+        <!-- Q4 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>¿Dónde se guardan mis paletas personalizadas y sesiones de trabajo?</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Tus ajustes personalizados y sesiones de trabajo activas se almacenan localmente en tu dispositivo a través del <code class="font-mono text-xs">localStorage</code> de tu navegador (<code class="font-mono text-xs">pl_pigment_presets_v1</code>, <code class="font-mono text-xs">pl_color_mixer_state_v1</code> y <code class="font-mono text-xs">pl_color_wheel_state_v1</code>). Permanecen totalmente privados en tu equipo y nunca se transfieren a servidores externos.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side Form Handling Script -->
+  <script is:inline>
+    (function () {
+      const form = document.getElementById('contact-form');
+      const formContainer = document.getElementById('contact-form-container');
+      const successState = document.getElementById('contact-success-state');
+      const errorAlert = document.getElementById('form-error-alert');
+      const resetBtn = document.getElementById('reset-form-btn');
+      const submitBtn = document.getElementById('contact-submit-btn');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorAlert?.classList.add('hidden');
+
+        const name = document.getElementById('contact-name')?.value.trim();
+        const email = document.getElementById('contact-email')?.value.trim();
+        const message = document.getElementById('contact-message')?.value.trim();
+
+        if (!name || !email || !message) {
+          errorAlert?.classList.remove('hidden');
+          return;
+        }
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando mensaje...';
+        }
+
+        setTimeout(() => {
+          formContainer?.classList.add('hidden');
+          successState?.classList.remove('hidden');
+          form.reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar Mensaje →';
+          }
+        }, 600);
+      });
+
+      resetBtn?.addEventListener('click', function () {
+        successState?.classList.add('hidden');
+        formContainer?.classList.remove('hidden');
+      });
+    })();
+  </script>
+</Layout>
