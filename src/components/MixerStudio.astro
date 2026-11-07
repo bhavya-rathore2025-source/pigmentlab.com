@@ -791,30 +791,41 @@ const labels = studioI18n[lang] || studioI18n.de;
     presetGrid.innerHTML = "";
 
     artistPresets.forEach((tube, index) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className =
-        "group relative flex items-center gap-2 rounded-lg border border-[#ebebeb] bg-[#fafafa] dark:border-[#262626] dark:bg-[#141414] p-2 text-left transition-all hover:border-[#171717] dark:hover:border-white hover:bg-white dark:hover:bg-[#1f1f1f] shadow-2xs cursor-pointer";
-      button.title = `${tube.name} (${tube.hex}) - Click to assign to active slot`;
+      const item = document.createElement("div");
+      item.role = "button";
+      item.tabIndex = 0;
+      item.className =
+        "group relative flex items-center justify-between gap-2 rounded-lg border border-[#ebebeb] bg-[#fafafa] dark:border-[#262626] dark:bg-[#141414] p-2 text-left transition-all hover:border-[#171717] dark:hover:border-white hover:bg-white dark:hover:bg-[#1f1f1f] shadow-2xs cursor-pointer select-none";
+      item.title = `${tube.name} (${tube.hex}) - Click to assign to active slot`;
+      item.setAttribute("aria-label", `${tube.name} (${tube.hex})`);
 
-      button.innerHTML = `
-        <span class="h-5 w-5 shrink-0 rounded-full border border-black/10 shadow-2xs" style="background-color: ${tube.hex};"></span>
-        <div class="min-w-0 flex-1">
-          <div class="truncate text-xs font-medium text-[#171717] dark:text-[#ededed]">${tube.name}</div>
-          <div class="font-mono text-[10px] text-[#8f8f8f] dark:text-[#737373]">${tube.hex}</div>
+      item.innerHTML = `
+        <div class="flex items-center gap-2 min-w-0 flex-1">
+          <span class="h-5 w-5 shrink-0 rounded-full border border-black/10 shadow-2xs" style="background-color: ${tube.hex};"></span>
+          <div class="min-w-0 flex-1">
+            <div class="truncate text-xs font-medium text-[#171717] dark:text-[#ededed]">${tube.name}</div>
+            <div class="font-mono text-[10px] text-[#8f8f8f] dark:text-[#737373]">${tube.hex}</div>
+          </div>
         </div>
-        ${
-          index >= DEFAULT_PRESETS.length
-            ? `<span data-delete-idx="${index}" class="text-[10px] text-red-500 hover:text-red-700 px-1 opacity-0 group-hover:opacity-100 transition-opacity" title="Delete custom preset">×</span>`
-            : ""
-        }
+        <button
+          type="button"
+          data-delete-idx="${index}"
+          class="shrink-0 rounded p-1 text-[#8f8f8f] hover:text-red-500 hover:bg-red-50 dark:text-[#737373] dark:hover:text-red-400 dark:hover:bg-red-950/40 transition-colors cursor-pointer"
+          title="Remove preset"
+          aria-label="Remove preset"
+        >
+          <svg class="h-3.5 w-3.5 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       `;
 
-      button.addEventListener("click", (e) => {
+      item.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
-        if (target && target.hasAttribute("data-delete-idx")) {
+        const deleteBtn = target.closest("[data-delete-idx]") as HTMLElement | null;
+        if (deleteBtn) {
           e.stopPropagation();
-          const delIdx = parseInt(target.getAttribute("data-delete-idx") || "-1", 10);
+          const delIdx = parseInt(deleteBtn.getAttribute("data-delete-idx") || "-1", 10);
           if (delIdx >= 0) {
             artistPresets.splice(delIdx, 1);
             savePresets(artistPresets);
@@ -831,7 +842,21 @@ const labels = studioI18n[lang] || studioI18n.de;
         }
       });
 
-      presetGrid.appendChild(button);
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          const target = e.target as HTMLElement;
+          if (target.closest("[data-delete-idx]")) return;
+          e.preventDefault();
+          if (colors[activeSlotIndex]) {
+            colors[activeSlotIndex].hex = tube.hex;
+            persistCurrentState();
+            renderSlots();
+            updateMix();
+          }
+        }
+      });
+
+      presetGrid.appendChild(item);
     });
   }
 
