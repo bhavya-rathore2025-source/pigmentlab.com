@@ -97,10 +97,17 @@ RUSSIAN (/ru/ - Russia, CIS)
 --------------------------------------------------------------------------------
 🎡 COLOR WHEEL CLUSTER (Total: ~1,900/mo | Overall KD: Easy)
 - "цветовой круг онлайн" (wheel online)     | Volume: 1,900   | KD: Easy   | Intent: Online Color Wheel
+- "как называется палитра цветов"           | Volume: <100    | KD: Easy   | Intent: PAA / Terminology (Схема/Гамма/Круг)
+- "сколько цветов содержит палитра"         | Volume: <100    | KD: Easy   | Intent: PAA / Palette Size (12 круга Иттена vs 3-5 цветов)
 
 🎨 COLOR MIXER CLUSTER (Total: ~1,600/mo | Overall KD: Easy)
 - "смешать цвета онлайн" (mix online)       | Volume: 1,600   | KD: Easy   | Intent: Online Color Mixer
+- "палитра цветов как смешивать"            | Volume: <100    | KD: Easy   | Intent: Paint / Pigment Mixing from Palette
+
 * GENERAL PALETTE: "палитра цветов" (color palette) has >10,000 / 12,000 volume.
+* FILTERED OUT (Irrelevant CS/Informatics Homework Queries):
+  - "сколько байтов занимает палитра из 256 rgb цветов" (CS exam question)
+  - "сколько цветов содержит палитра если" (CS exam question)
 
 --------------------------------------------------------------------------------
 ENGLISH (/en/ - USA, UK, Global) [HEAD TERMS: High KD / Titan Competitors]
