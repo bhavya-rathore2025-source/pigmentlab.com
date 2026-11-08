@@ -1,0 +1,562 @@
+================================================================================
+PIGMENTLAB: MULTILINGUAL KEYWORD REFERENCE & FAQ FILTER LOG
+================================================================================
+
+================================================================================
+PRIMARY KEYWORD DATABASE BY LANGUAGE & TOOL
+================================================================================
+
+1. GERMAN (/de/ - Germany, Austria, Switzerland) [Top Priority: High RPM, Easy KD]
+--------------------------------------------------------------------------------
+- COLOR WHEEL (Farbkreis):
+  * "farbkreis" (>10,000/mo | KD: Easy) - Primary head term for tool & theory
+  * "farbrad" (2,200/mo | KD: Easy) - Direct wheel tool intent
+  * "farbkreis nach itten" / "farbkreis itten" (>2,000/mo combined | KD: Easy) - Bauhaus RYB wheel
+  * "farbpaletten-generator" (500/mo | KD: Easy) - Palette builder
+  * "komplementär farben" (350/mo | KD: Easy) - Complementary colors
+  * "farbkreis komplementärfarben" (>100/mo | KD: Easy) - Complementary wheel
+  * "farbrad online" (90/mo | KD: Easy) - Online wheel tool
+- COLOR MIXER (Farben Mischen):
+  * "farben mischen" (>1,000/mo | KD: Easy) - Primary pigment/paint mixing intent
+  * "farben mischen tabelle" (>1,000/mo | KD: Easy) - Mixing chart/matrix
+  * "farben mischen simulator" (>100/mo | KD: Easy) - Interactive digital simulator
+  * "farben mischen braun" (>100/mo | KD: Easy) - Recipe intent ("how to mix brown")
+  * "mischtabelle farben mischen tabelle" (>100/mo | KD: Easy) - Mixing table PDF
+
+2. FRENCH (/fr/ - France, Belgium, Switzerland, Canada) [Fastest Head-Term Win]
+--------------------------------------------------------------------------------
+- COLOR WHEEL (Roue Chromatique):
+  * "roue chromatique" (>10,000/mo | KD: Easy) - Dominant head term / Adobe rival
+  * "roue couleur complémentaire" (200/mo | KD: Easy) - Complementary wheel
+  * "roue chromatique en ligne gratuit" (150/mo | KD: Easy) - Free online wheel
+  * "roue chromatique des couleurs" (>100/mo | KD: Easy) - Wheel of colors
+  * "roue chromatique couleur complémentaire" (>100/mo | KD: Easy) - Complementary pairs
+  * "cercle chromatique en ligne" (70/mo | KD: Easy) - Online circle tool
+  * "roue chromatique en ligne" (50/mo | KD: Easy) - Online wheel tool
+- COLOR MIXER (Mélange de Couleurs):
+  * "tableau des mélanges de couleurs" (>1,000/mo | KD: Easy) - High-volume mixing table
+  * "melange de couleur" / "mélange de couleur" (>1,100/mo | KD: Easy) - Main mixing query
+  * "tableau des mélanges de couleurs primaires" (>100/mo | KD: N/A) - Primary mixing table
+  * "mélange de couleur primaire" (>100/mo | KD: Easy) - Primary color mixing
+  * "tableau des mélanges de couleurs jaune/bleu" (>100/mo) - Specific pigment combinations
+  * "melange de couleur pour obtenir du marron" (<100/mo | KD: Easy) - How to mix brown
+
+3. PORTUGUESE (/pt/ - Brazil, Portugal) [Highest Mixer Volume Globally]
+--------------------------------------------------------------------------------
+- COLOR WHEEL (Círculo Cromático / Roda de Cores):
+  * "círculo cromático" / "circulo cromatico" (>10,000/mo | KD: Easy) - Head term (design + styling)
+  * "circulo cromatico cores" (>1,000/mo | KD: Easy) - Wheel colors
+  * "roda de cores" (>1,000/mo | KD: Easy) - Pure software tool intent
+  * "roda de cores complementares" (>100/mo | KD: Easy) - Complementary wheel
+  * "roda de cores ryb" (<100/mo | KD: N/A) - RYB artist wheel
+- COLOR MIXER (Mistura de Cores):
+  * "mistura de cores" (>10,000/mo | KD: Easy) - #1 mixer query globally (exceeds wheel in BR)
+  * "tabela de mistura de cores" (>1,000/mo | KD: Easy) - Mixing table / chart
+  * "mistura de cores e resultados" (>1,000/mo | KD: Easy) - Formulas & results
+  * "mistura de cores para dar marrom" (>1,000/mo | KD: Easy) - How to mix brown
+  * "tabela de mistura de cores de tintas para parede" (>1,000/mo | KD: Easy) - Paint chart
+
+4. SPANISH (/es/ - Spain, Mexico, Colombia, Peru, Argentina) [High LATAM Palette Volume]
+--------------------------------------------------------------------------------
+- COLOR WHEEL (Rueda de Color / Círculo Cromático):
+  * "rueda de color" (2,400/mo | KD: Easy) - Primary head term
+  * "rueda color" (500/mo | KD: Easy) - Secondary tool query
+  * "circulo cromatico online" (40/mo | KD: Easy) - Online wheel tool
+  * "rueda de colores rgb" (20/mo | KD: Easy) - RGB digital wheel
+- COLOR MIXER (Mezcla de Colores):
+  * "mezcla de colores" (2,000/mo | KD: Easy) - Main pigment/paint mixing query
+  * "combinar colores" (600/mo | KD: Easy) - Combining/matching colors
+  * "combinar colores online" (40/mo | KD: Easy) - Online matcher
+  * Note: "combinación de colores" has >11,000/mo general palette volume across LATAM/Spain.
+
+5. RUSSIAN (/ru/ - Russia, CIS) [Online Simulator Focus]
+--------------------------------------------------------------------------------
+- COLOR WHEEL (Цветовой круг):
+  * "цветовой круг онлайн" (1,900/mo | KD: Easy) - Primary online color wheel tool
+  * "как называется палитра цветов" (<100/mo | KD: Easy) - PAA terminology
+  * "сколько цветов содержит палитра" (<100/mo | KD: Easy) - Itten 12-color circle
+  * Filtered out: Computer science school exam queries about byte storage in 256 colors
+- COLOR MIXER (Смешать цвета):
+  * "смешать цвета онлайн" (1,600/mo | KD: Easy) - Primary online color mixer tool
+  * "палитра цветов как смешивать" (<100/mo | KD: Easy) - Mixing paints from a palette
+
+6. ENGLISH (/en/ - USA, UK, Global) [Titan Competitors / Medium-Hard KD]
+--------------------------------------------------------------------------------
+- COLOR WHEEL:
+  * "color wheel" (>100,000/mo | KD: Hard) - Head query (Adobe, Canva)
+  * "color wheel picker" (>10,000/mo | KD: Hard) - High-converting interactive tool query
+  * "adobe color wheel" (>10,000/mo | KD: Hard) - Alternative/replacement query
+  * "color wheel chart" (>1,000/mo | KD: Hard) - Educational & harmony guide
+  * "complementary color wheel" (>1,000/mo | KD: Hard) - Complementary wheel query
+- COLOR MIXER:
+  * "color mixer" (>1,000/mo | KD: Hard) - Head mixing term
+  * "color mixer online" / "online color mixer" (>200/mo | KD: Medium/Hard) - Online tool
+  * "hex color mixer" (>100/mo | KD: Medium) - Developer / digital web mixer
+  * "color mixer generator" (>100/mo | KD: Hard) - Mixing generator
+
+================================================================================
+EVALUATION & REPLACEMENT GUIDELINES
+================================================================================
+1. RELEVANT (KEEP / ADD):
+   - Addresses subtractive paint/pigment physics, color ratios, color wheel harmonies,
+     Itten RYB vs RGB, WCAG contrast, or color recipes (e.g. brown, skin tones, neutrals).
+   - High search intent matching primary keywords for that language/tool.
+2. IRRELEVANT (DROP / DO NOT ADD):
+   - Computer science memory/byte calculations (e.g., bits per pixel in 256 colors).
+   - Off-topic commercial/industrial applications we don't support (e.g. fabric dye brands).
+   - Redundant or generic questions lacking search intent.
+3. REPLACEMENT PROTOCOL:
+   - When a relevant FAQ is approved to replace an existing page FAQ, we drop ONLY the
+     irrelevant or weakest existing FAQ on that page, keeping strong ones intact.
+   - Both the incoming FAQ and the replaced FAQ will be documented in original language
+     AND English translation.
+
+================================================================================
+FAQ LOG & REPLACEMENT ENTRIES
+================================================================================
+(Entries will be recorded below as you send them)
+
+
+--------------------------------------------------------------------------------
+BATCH 1: GERMAN (/de/) QUERIES ANALYSIS
+Submitted: 2026-11-08
+Source: Ahrefs Keyword Generator (Farbkreis & Farben Mischen)
+--------------------------------------------------------------------------------
+
+=== TOOL 1: COLOR WHEEL (Farbkreis) ===
+
+[SUBMITTED QUERY 1.1]
+- Query Variants:
+  * "farbkombinationen welche farben passen zusammen farbkreis" (<100 | N/A)
+  * "farbkreis welche farben passen zusammen" (<100 | Easy)
+  * "welche farben passen zusammen farbkreis" (<100 | Easy)
+  * "farbkreis welche farben harmonieren" (<100 | N/A)
+- English Translation of Query:
+  "Color combinations which colors go well together color wheel / which colors harmonize on color wheel"
+- Relevance Verdict: RELEVANT (HIGH INTENT - Core feature of PigmentLab Wheel)
+- Reason:
+  One of the top recurring design questions. Users using the wheel want exact rules for color harmony (complementary, analogous, triadic).
+- Proposed German FAQ:
+  * Frage: "Welche Farben passen zusammen im Farbkreis? (Farbkombinationen & Harmonien)"
+  * Antwort: "Im Farbkreis harmonieren Farben nach bewährten geometrischen Gestaltungsregeln: 1. Komplementärfarben (liegen sich direkt gegenüber, z. B. Blau und Orange) erzeugen maximale Leuchtkraft und Kontrast. 2. Analoge Farben (nebeneinanderliegende Farbtöne, z. B. Gelb, Gelb-Orange und Orange) schaffen harmonische, ruhige Verläufe. 3. Triadische Harmonien (drei gleich weit entfernte Farben im 120-Grad-Dreieck, z. B. Rot, Gelb und Blau) bieten ausgewogene Farbpaletten."
+- English Translation of Proposed FAQ:
+  * Question: "Which colors go well together on the color wheel? (Color combinations & harmonies)"
+  * Answer: "Colors harmonize on the color wheel according to established geometric design rules: 1. Complementary colors (directly opposite each other, e.g. Blue and Orange) create maximum visual vibrancy and contrast. 2. Analogous colors (adjacent hues, e.g. Yellow, Yellow-Orange, and Orange) provide cohesive, calm transitions. 3. Triadic harmonies (three equidistant colors forming a 120-degree triangle, e.g. Red, Yellow, and Blue) deliver balanced, lively palettes."
+- Candidate for Replacement on `/color-wheel`:
+  * Existing FAQ targeted: FAQ 5 ("Kann ich mit dem Farbpaletten-Generator Barrierefreiheit (WCAG) prüfen?")
+  * English of existing FAQ: "Can I check accessibility (WCAG) with the color palette generator?"
+  * Rationale for replacement: WCAG is already explained in the UI features, whereas "Welche Farben passen zusammen" directly targets German search queries for color harmonies.
+
+[SUBMITTED QUERY 1.2]
+- Query: "wer hat den farbkreis erfunden" (<100 | N/A)
+- English Translation of Query: "who invented the color wheel"
+- Relevance Verdict: RELEVANT (Informational / Authority)
+- Reason: Valid art-history question (Newton 1666, Goethe 1810, Johannes Itten Bauhaus 1921). Can be reserved or included as secondary educational content.
+
+[SUBMITTED QUERY 1.3]
+- Queries:
+  * "was ist ein farbkreis" / "was ist der farbkreis" (<100 | Easy)
+  * "wie sieht der farbkreis aus" / "wie sieht ein farbkreis aus" (<100 | N/A)
+  * "welche farben liegen sich im farbkreis gegenüber" (<100 | N/A)
+- English Translation of Queries:
+  "what is a color wheel / what does a color wheel look like / which colors are opposite each other in the color wheel"
+- Relevance Verdict: ALREADY COVERED / REDUNDANT
+- Reason:
+  Already comprehensively answered on `/color-wheel` in FAQ 1 ("Was ist ein Farbkreis nach Itten und wie unterscheidet er sich von RGB?") and FAQ 2 ("Wie finde ich Komplementärfarben im Farbkreis?"). No action needed.
+
+
+=== TOOL 2: COLOR MIXER (Farben Mischen) ===
+
+[SUBMITTED QUERY 2.1]
+- Query Variants:
+  * "welche farben mischen für braun" (>100 | Easy)
+  * "welche farben muss man mischen um braun zu bekommen" (>100 | Easy)
+  * "braun mischen welche farben" (>100 | Easy)
+  * "aus welchen farben kann man braun mischen" (<100 | Easy)
+  * "braun mischen aus welchen farben" (<100)
+- English Translation of Query:
+  "Which colors to mix for brown / what colors must you mix to get brown"
+- Relevance Verdict: ALREADY COVERED (EXCELLENT)
+- Reason:
+  Already answered on `/mix` in FAQ 2 ("Wie kann man Farben mischen, um Braun zu erhalten (farben mischen braun)?") with 3 exact recipes. Keep as is!
+
+[SUBMITTED QUERY 2.2]
+- Query Variants:
+  * "welche farben mischen für blau" (>100 | Easy)
+  * "welche farben muss man mischen um blau zu bekommen" (>100 | Easy)
+  * "blau mischen welche farben" (<100 | N/A)
+  * "welche farben mischen für rot" (<100 | Easy)
+  * "welche farben muss man mischen um rot zu bekommen" (<100)
+- English Translation of Query:
+  "Which colors to mix for blue / what colors must you mix to get blue / which colors to mix for red"
+- Relevance Verdict: RELEVANT (HIGH INTENT - Crucial Color Science Query)
+- Reason:
+  Extremely popular beginner question. Explains the difference between subtractive pigment painting (primary RYB pigments cannot be mixed) and modern CMYK printing.
+- Proposed German FAQ:
+  * Frage: "Kann man Blau oder Rot aus anderen Farben mischen? (Primärfarben mischen)"
+  * Antwort: "In der klassischen Malerei und subtraktiven Farblehre (RYB) sind Blau und Rot unteilbare Grundfarben (Primärfarben) — sie können aus keinen anderen Farbpigmenten gemischt werden. Im modernen Druckverfahren (CMYK) hingegen kann Rot aus Magenta und Gelb sowie Blau aus Cyan und Magenta gemischt werden. In PigmentLab können Sie beide Systeme physikalisch simulieren."
+- English Translation of Proposed FAQ:
+  * Question: "Can you mix blue or red from other colors? (Mixing primary colors)"
+  * Answer: "In traditional painting and subtractive color theory (RYB), Blue and Red are indivisible primary colors—they cannot be created by mixing any other paint pigments. In modern printing (CMYK), however, Red can be mixed from Magenta and Yellow, and Blue from Cyan and Magenta. In PigmentLab, you can physically simulate both systems."
+- Candidate for Replacement on `/mix`:
+  * Existing FAQ targeted: FAQ 3 ("Was zeigt die Farben mischen Tabelle?")
+  * English of existing FAQ: "What does the color mixing table show?"
+  * Rationale for replacement: Existing FAQ 3 is generic filler about what a table shows, whereas "Kann man Blau oder Rot mischen?" directly answers a high-volume search query.
+
+[SUBMITTED QUERY 2.3]
+- Query Variants:
+  * "welche farben mischen für lila" (>100 | Easy)
+  * "lila mischen welche farben" (<100)
+- English Translation of Query:
+  "Which colors to mix for purple / purple mix which colors"
+- Relevance Verdict: RELEVANT (High Search Demand)
+- Reason:
+  Rot + Blau produces purple. Answers the common paint mixing mistake where using an orange-red produces dull muddy brown instead of vibrant violet.
+- Proposed German FAQ:
+  * Frage: "Welche Farben muss man mischen für ein leuchtendes Lila oder Violett?"
+  * Antwort: "Lila entsteht durch die Mischung von Rot und Blau. Für ein leuchtendes, klares Violett empfiehlt es sich, ein kühles Rot (wie Magenta oder Karmin) mit Ultramarinblau oder Cyan zu mischen. Ein warmes Rot mit Gelbanteil (wie Zinnober) führt sonst zu einem trüben Braungrau."
+- English Translation of Proposed FAQ:
+  * Question: "Which colors must you mix for vibrant purple or violet?"
+  * Answer: "Purple is made by mixing Red and Blue. For a vibrant, clean violet, it is best to mix a cool red (such as Magenta or Carmine) with Ultramarine Blue or Cyan. A warm red with yellow undertones (like Vermilion) will instead produce a muddy brownish-gray."
+
+[SUBMITTED QUERY 2.4]
+- Query: "farben mischen was kommt raus" (>100 | Easy)
+- English Translation: "mixing colors what comes out"
+- Relevance Verdict: ALREADY COVERED
+- Reason:
+  Directly covered by FAQ 1 (Simulator operation) and FAQ 4 ("Was passiert beim Mischen aller Farben?").
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BATCH 2: FRENCH (/fr/) QUERIES ANALYSIS
+Submitted: 2026-11-08
+Source: Ahrefs Keyword Generator (Roue Chromatique & Mélange de Couleur)
+--------------------------------------------------------------------------------
+
+=== TOOL 1: COLOR WHEEL (Roue Chromatique) ===
+
+[SUBMITTED QUERY FR 1.1]
+- Query Variants:
+  * "comment utiliser une roue chromatique" (<100 | N/A)
+  * "comment utiliser la roue chromatique" (<100 | N/A)
+  * "comment se servir de la roue chromatique" (<100 | N/A)
+  * "comment fonctionne la roue chromatique" (<100 | N/A)
+  * "roue chromatique comment ça marche" (<100 | N/A)
+- English Translation of Query:
+  "How to use a color wheel / how does the color wheel work / how to use the color wheel"
+- Relevance Verdict: RELEVANT (HIGH INTENT - #1 How-to Wheel Query in French)
+- Reason:
+  Fundamental practical guide for users looking to create color palettes, harmonies, and design schemes.
+- Proposed French FAQ:
+  * Question: "Comment utiliser une roue chromatique pour créer une palette harmonieuse ?"
+  * Réponse: "Pour utiliser la roue chromatique, choisissez d'abord une couleur principale sur le cercle, puis sélectionnez une règle d'harmonie : les complémentaires (opposées à 180° pour un contraste fort), les analogues (teintes voisines pour une ambiance calme) ou les triadiques (triangle équilatéral à 120° pour une palette vivante). Dans PigmentLab, les codes HEX, les nuances d'ombre et les ratios WCAG s'affichent instantanément."
+- English Translation of Proposed FAQ:
+  * Question: "How to use a color wheel to create a harmonious palette?"
+  * Answer: "To use the color wheel, first pick a primary color on the circle, then choose a harmony rule: complementary (opposite at 180° for high contrast), analogous (adjacent hues for a calm feel), or triadic (120° equilateral triangle for a balanced, vibrant palette). In PigmentLab, HEX codes, tints & shades, and WCAG contrast scores display instantly."
+- Candidate for Replacement on `/fr/color-wheel`:
+  * Existing FAQ targeted: FAQ 4 ("Peut-on tester l'accessibilité WCAG et le daltonisme ?")
+  * English of existing FAQ: "Can you test WCAG accessibility and color blindness?"
+  * Rationale for replacement: While WCAG is a great feature, "Comment utiliser une roue chromatique" directly captures the high-volume practical search intent of French users.
+
+[SUBMITTED QUERY FR 1.2]
+- Query: "comment nettoyer roue chromatique" (<100 | N/A)
+- English Translation of Query: "how to clean color wheel"
+- Relevance Verdict: IRRELEVANT (DROP - Hardware/Projector query)
+- Reason:
+  This search query refers to the physical mechanical color wheel inside DLP video projectors and television sets (cleaning dust/fan bearings). It has zero relevance to digital design software or color theory.
+
+[SUBMITTED QUERY FR 1.3]
+- Query: "combien de couleurs sur une roue chromatique" (<100 | N/A)
+- English Translation of Query: "how many colors on a color wheel"
+- Relevance Verdict: RELEVANT (Informational / Secondary)
+- Reason:
+  Answers the 12-color structure (3 primary, 3 secondary, 6 tertiary) of the Itten artist wheel.
+
+[SUBMITTED QUERY FR 1.4]
+- Queries: "ou trouver une roue chromatique" / "comment faire une roue chromatique"
+- English Translation: "where to find a color wheel / how to make a color wheel"
+- Relevance Verdict: ALREADY COVERED / REDUNDANT
+- Reason: PigmentLab is the free online tool satisfying this query directly.
+
+
+=== TOOL 2: COLOR MIXER (Mélange de Couleur) ===
+
+[SUBMITTED QUERY FR 2.1]
+- Query Variants:
+  * "quel mélange de couleur pour faire du marron" (<100 | N/A)
+  * "quelle melange de couleur pour faire du marron" (<100 | Easy)
+  * "quel melange de couleur donne le marron" (<100 | N/A)
+  * "quel mélange de couleur pour obtenir du marron" (<100 | N/A)
+  * "couleur marron melange de quoi" (<100 | N/A)
+  * "marron melange de quelle couleur" (<100 | N/A)
+  * "quel mélange de couleur fait du marron" (<100 | N/A)
+- English Translation of Query:
+  "What color mix makes brown / how to mix brown paint"
+- Relevance Verdict: ALREADY COVERED (EXCELLENT)
+- Reason:
+  Already answered on `/fr/mix` in FAQ 2 ("Quel est le mélange de couleur pour obtenir du marron ?") with three distinct mixing formulas. Keep as is!
+
+[SUBMITTED QUERY FR 2.2]
+- Query Variants:
+  * "quelle melange de couleur pour faire du bleu" (<100 | Easy)
+  * "quel mélange de couleur pour faire du bleu" (<100)
+  * "quel melange de couleur donne le rouge" (<100 | N/A)
+  * "quelle melange de couleur pour faire du rouge" (<100 | Easy)
+  * "quelle mélange de couleur pour faire du jaune" (<100)
+- English Translation of Query:
+  "What color mix makes blue / what color mix gives red / what color mix makes yellow"
+- Relevance Verdict: RELEVANT (HIGH INTENT - Fundamental Color Science)
+- Reason:
+  One of the most frequent misconceptions in art education. Users need to know that in paint/pigment physics (RYB), primary colors cannot be mixed, while in print (CMYK), Magenta + Yellow gives Red, and Cyan + Magenta gives Blue.
+- Proposed French FAQ:
+  * Question: "Peut-on obtenir du rouge ou du bleu par mélange de couleurs ? (Couleurs primaires)"
+  * Réponse: "En peinture classique et optique soustractive (RYB), le Rouge, le Bleu et le Jaune sont des couleurs primaires pures : elles ne peuvent pas être obtenues en mélangeant d'autres pigments. En revanche, dans l'imprimerie moderne (CMYK), le Rouge est produit en mélangeant le Magenta et le Jaune, tandis que le Bleu est obtenu par l'union du Cyan et du Magenta. PigmentLab vous permet de tester ces deux principes physiquement."
+- English Translation of Proposed FAQ:
+  * Question: "Can you obtain red or blue by mixing colors? (Primary colors)"
+  * Answer: "In traditional painting and subtractive optics (RYB), Red, Blue, and Yellow are pure primary colors: they cannot be created by mixing other pigments. However, in modern printing (CMYK), Red is produced by blending Magenta and Yellow, while Blue is created by mixing Cyan and Magenta. PigmentLab lets you simulate both systems physically."
+- Candidate for Replacement on `/fr/mix`:
+  * Existing FAQ targeted: FAQ 4 ("Ce simulateur convient-il pour le mélange de couleur teinture vêtement et peinture murale ?")
+  * English of existing FAQ: "Is this simulator suitable for fabric dye and wall paint color mixing?"
+  * Rationale for replacement: FAQ 4 is very niche (fabric dye), whereas primary color mixing ("quel mélange donne le bleu/rouge") has strong search volume and educational authority.
+
+[SUBMITTED QUERY FR 2.3]
+- Query Variants:
+  * "violet quel melange de couleur" (<100 | N/A)
+  * "quel melange de couleur donne orange" (<100)
+  * "quelle melange de couleur pour faire du orange" (<100)
+- English Translation of Query:
+  "Purple what color mix / what color mix gives orange"
+- Relevance Verdict: ALREADY COVERED / INTEGRATED
+- Reason:
+  Already explained in existing FAQ 3 ("Que contient le tableau des mélanges de couleurs primaires ?"), which lists Bleu + Jaune = Vert, Rouge + Jaune = Orange, and Bleu + Rouge = Violet.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BATCH 3: PORTUGUESE (/pt/) QUERIES ANALYSIS
+Submitted: 2026-11-08
+Source: Ahrefs Keyword Generator (Círculo Cromático & Mistura de Cores)
+--------------------------------------------------------------------------------
+
+=== TOOL 1: COLOR WHEEL (Círculo Cromático) ===
+
+[SUBMITTED QUERY PT 1.1]
+- Query Variants:
+  * "o que é um círculo cromático" (>100 | Easy)
+  * "o que é círculo cromático" (>100 | Easy)
+  * "o que é o círculo cromático" (<100 | N/A)
+  * "o que é circulo cromatico" (<100 | Easy)
+  * "para que serve o círculo cromático" (<100 | Easy)
+  * "como funciona o círculo cromático" (<100 | N/A)
+- English Translation of Query:
+  "what is a color wheel / what is the color wheel used for / how does the color wheel work"
+- Relevance Verdict: ALREADY COVERED (EXCELLENT)
+- Reason:
+  Already covered in `/pt/color-wheel` in FAQ 1 ("O que é o círculo cromático e como usar na combinação de cores?"). Keep as is!
+
+[SUBMITTED QUERY PT 1.2]
+- Query Variants:
+  * "circulo cromatico cores que combinam" (<100 | N/A)
+  * "como usar o circulo cromatico" (<100 | Easy)
+  * "círculo cromático como usar" (<100 | Easy)
+  * "como usar circulo cromatico" (<100)
+- English Translation of Query:
+  "color wheel colors that match / how to use the color wheel to match colors"
+- Relevance Verdict: RELEVANT (HIGH INTENT - Major query in Brazil for Design & Styling)
+- Reason:
+  In Brazilian Portuguese, "cores que combinam" (matching colors) is the #1 application intent for the color wheel across personal styling, interior decoration, and graphic design.
+- Proposed Portuguese FAQ:
+  * Pergunta: "Círculo cromático: quais cores combinam entre si? (Harmonias de cores)"
+  * Resposta: "Para saber quais cores combinam no círculo cromático, aplicam-se regras geométricas consagradas: 1. Cores Complementares (opostas a 180°, como Azul e Laranja) para contraste marcante e botões de destaque. 2. Cores Análogas (lado a lado no círculo, como Verde, Azul-Verde e Azul) para combinações elegantes e harmônicas. 3. Tríades (formam um triângulo de 120°, como Amarelo, Vermelho e Azul) para paletas ricas e dinâmicas. 4. Monocromáticas (tons claros e escuros de uma mesma cor)."
+- English Translation of Proposed FAQ:
+  * Question: "Color wheel: which colors match each other? (Color harmonies)"
+  * Answer: "To know which colors match on the color wheel, standard geometric rules are used: 1. Complementary colors (180° opposite, such as Blue and Orange) for striking contrast and focal points. 2. Analogous colors (side by side on the wheel, such as Green, Blue-Green, and Blue) for elegant, cohesive blends. 3. Triads (forming a 120° triangle, such as Yellow, Red, and Blue) for vibrant, balanced palettes. 4. Monochromatic (tints and shades of the same base hue)."
+- Candidate for Replacement on `/pt/color-wheel`:
+  * Existing FAQ targeted: FAQ 3 ("Como funciona a roda de cores complementares?")
+  * English of existing FAQ: "How does the complementary color wheel work?"
+  * Rationale for replacement: Existing FAQ 3 is too narrow (it only mentions complementary colors). Replacing it with "Círculo cromático: quais cores combinam entre si?" directly captures the high-demand `cores que combinam` query while still explaining complementary colors as rule #1.
+
+[SUBMITTED QUERY PT 1.3]
+- Query Variants:
+  * "circulo cromatico como fazer" / "como fazer um círculo cromático" (<100 | N/A)
+- English Translation of Query: "how to make a color wheel"
+- Relevance Verdict: LOW / REDUNDANT
+- Reason: Refers to drawing or painting a manual wheel on paper. PigmentLab is an online interactive generator where users don't need to draw one.
+
+
+=== TOOL 2: COLOR MIXER (Mistura de Cores) ===
+
+[SUBMITTED QUERY PT 2.1]
+- Query Variants:
+  * "marrom é a mistura de quais cores" (>100 | N/A)
+  * "qual a mistura de cores que dá marrom" (>100 | Easy)
+  * "mistura de cores que da marrom" (>100 | Easy)
+  * "qual mistura de cores dá marrom" (>100 | Easy)
+  * "marrom é mistura de quais cores" (>100 | Easy)
+  * "qual mistura de cores da marrom" (<100)
+  * "que mistura de cores da marrom" (<100)
+  * "que mistura de cores dá marrom" (<100)
+  * "mistura de cores que dá marrom" (<100)
+- English Translation of Query:
+  "Brown is the mixture of which colors / which color mixture gives brown"
+- Relevance Verdict: ALREADY COVERED (TOP QUALITY - DO NOT TOUCH)
+- Reason:
+  This entire batch of mixer queries represents the exact intent of our existing FAQ 2 on `/pt/mix` ("Qual a mistura de cores para dar marrom?"). Our page already details: 1. The 3 primary colors (Azul, Amarelo e Vermelho), 2. Complementary colors (Vermelho + Verde ou Azul + Laranja), and 3. Earthy tones (Amarelo Ocre + Vermelho + Azul). The existing content is a 100% perfect match for this query cluster.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BATCH 4: SPANISH (/es/) QUERIES ANALYSIS
+Submitted: 2026-11-08
+Source: Ahrefs Keyword Generator (Rueda de Color & Mezcla de Colores)
+--------------------------------------------------------------------------------
+
+=== TOOL 1: COLOR WHEEL (Rueda de Color) ===
+
+[SUBMITTED QUERY ES 1.1]
+- Query Variants:
+  * "como poner la rueda de color en photoshop cs6" (<100 | N/A)
+  * "como ver la rueda de color en photoshop" (<100 | N/A)
+  * "como poner la rueda de color en photoshop" (<100 | N/A)
+- English Translation of Query:
+  "how to put color wheel in photoshop cs6 / how to see color wheel in photoshop"
+- Relevance Verdict: IRRELEVANT (DROP - Adobe Photoshop desktop software specific)
+- Reason:
+  These queries seek technical steps to enable Adobe Photoshop's internal HUD color picker or install third-party plugins (Coolorus). PigmentLab is a browser-based design suite and does not provide Adobe Photoshop software configuration support.
+
+[SUBMITTED QUERY ES 1.2]
+- Query: "donde comprar una rueda de color" (<100 | N/A)
+- English Translation of Query: "where to buy a color wheel"
+- Relevance Verdict: LOW / COMMERCIAL
+- Reason: Refers to purchasing physical cardboard/plastic pocket color wheels in stationery or art supply stores. PigmentLab is a free digital alternative.
+
+[SUBMITTED QUERY ES 1.3]
+- Query: "que es la rueda de color" (<100 | N/A)
+- English Translation of Query: "what is the color wheel"
+- Relevance Verdict: ALREADY COVERED
+- Reason: Already answered in `es/color-wheel.astro` FAQ 1 ("¿Qué es una rueda de color o círculo cromático online?").
+
+
+=== TOOL 2: COLOR MIXER (Mezcla de Colores) ===
+
+[SUBMITTED QUERY ES 2.1]
+- Query Variants:
+  * "la mezcla de todos los colores que color da" (<100 | N/A)
+  * "cual es la mezcla de todos los colores" (<100 | Easy)
+  * "mezcla de todos los colores que color da" (<100 | Easy)
+  * "que color da la mezcla de todos los colores" (<100 | N/A)
+- English Translation of Query:
+  "what color does the mixture of all colors give / what is the mixture of all colors"
+- Relevance Verdict: RELEVANT (HIGH INTENT - Missing in Current Spanish Mixer Page)
+- Reason:
+  This query appeared 4 times in the user's data. Currently, `/es/mix` only has 3 FAQs and completely lacks this answer. It clearly highlights PigmentLab's physical pigment absorption engine.
+- Proposed Spanish FAQ:
+  * Pregunta: "¿Qué color da la mezcla de todos los colores?"
+  * Respuesta: "En la pintura física y la mezcla sustractiva de pigmentos, mezclar todos los colores primarios absorbe la totalidad de las ondas de luz, produciendo un marrón muy oscuro o negro profundo. Por el contrario, en pantallas digitales (mezcla aditiva RGB de luz), la combinación de todos los colores genera blanco puro."
+- English Translation of Proposed FAQ:
+  * Question: "What color does mixing all colors give?"
+  * Answer: "In physical paint and subtractive pigment mixing, blending all primary colors absorbs all wavelengths of light, producing a dark brown or deep black. Conversely, on digital screens (additive RGB light mixing), combining all colors generates pure white."
+- Candidate for Replacement on `/es/mix`:
+  * Existing FAQ targeted: FAQ 3 ("¿Para qué sirve combinar colores online en PigmentLab?")
+  * English of existing FAQ: "What is the purpose of combining colors online in PigmentLab?"
+  * Rationale for replacement: Existing FAQ 3 is generic marketing filler. Replacing it with "¿Qué color da la mezcla de todos los colores?" directly targets high-volume user search queries and highlights the subtractive pigment physics.
+
+[SUBMITTED QUERY ES 2.2]
+- Query Variants:
+  * "que mezcla de colores da rojo" (<100)
+  * "que mezcla de colores da amarillo" (<100)
+  * "que mezcla de colores da verde" (<100)
+- English Translation of Query:
+  "what color mix gives red / yellow / green"
+- Relevance Verdict: RELEVANT (Foundational Art Theory)
+- Reason:
+  Reinforces primary vs secondary color rules. In paint, Red and Yellow cannot be mixed, while Green is made by mixing Blue and Yellow.
+- Proposed Spanish FAQ:
+  * Pregunta: "¿Se puede mezclar pintura para obtener rojo o amarillo? (Colores primarios)"
+  * Respuesta: "En la pintura tradicional (sistema RYB de artistas), el Rojo y el Amarillo son colores primarios puros y no se pueden crear mezclando otros pigmentos. En impresión digital (CMYK), el Rojo se obtiene mezclando Magenta y Amarillo. Por su parte, el Verde sí se obtiene fácilmente combinando Azul y Amarillo."
+- English Translation of Proposed FAQ:
+  * Question: "Can you mix paint to get red or yellow? (Primary colors)"
+  * Answer: "In traditional painting (artist RYB system), Red and Yellow are pure primary colors and cannot be created by mixing other pigments. In digital printing (CMYK), Red is obtained by mixing Magenta and Yellow. Green, on the other hand, is easily created by combining Blue and Yellow."
+
+[SUBMITTED QUERY ES 2.3]
+- Query Variants:
+  * "que mezcla de colores da marron" (<100 | N/A)
+  * "con que mezcla de colores se hace el marron" (<100 | N/A)
+  * "con qué mezcla de colores se hace el marrón" (<100 | N/A)
+- English Translation of Query:
+  "what color mix gives brown / with what color mix is brown made"
+- Relevance Verdict: ALREADY COVERED (EXCELLENT)
+- Reason:
+  Already answered on `/es/mix` in FAQ 2 ("¿Cómo combinar colores para obtener marrón?") with 3 detailed mixing recipes. Keep as is!
+--------------------------------------------------------------------------------
+
+================================================================================
+IMPLEMENTATION LOG (EXECUTED ON SITE)
+================================================================================
+Date: 2026-11-08
+Status: Successfully Built & Deployed into Production Source Code
+
+1. GERMAN (/color-wheel & /mix):
+--------------------------------------------------------------------------------
+- Page: src/pages/color-wheel.astro
+  * DROPPED FAQ (Weakest):
+    Original: "Kann ich mit dem Farbpaletten-Generator Barrierefreiheit (WCAG) prüfen?"
+    English: "Can I check accessibility (WCAG) with the color palette generator?"
+  * IMPLEMENTED NEW FAQ:
+    Original: "Welche Farben passen zusammen im Farbkreis? (Farbkombinationen & Harmonien)"
+    English: "Which colors go well together on the color wheel? (Color combinations & harmonies)"
+
+- Page: src/pages/mix.astro
+  * DROPPED FAQ (Weakest):
+    Original: "Was zeigt die Farben mischen Tabelle?"
+    English: "What does the color mixing table show?"
+  * IMPLEMENTED NEW FAQ:
+    Original: "Kann man Blau oder Rot aus anderen Farben mischen? (Primärfarben mischen)"
+    English: "Can you mix blue or red from other colors? (Mixing primary colors)"
+
+2. FRENCH (/fr/color-wheel & /fr/mix):
+--------------------------------------------------------------------------------
+- Page: src/pages/fr/color-wheel.astro
+  * DROPPED FAQ (Weakest):
+    Original: "Peut-on tester l'accessibilité WCAG et le daltonisme ?"
+    English: "Can you test WCAG accessibility and color blindness?"
+  * IMPLEMENTED NEW FAQ:
+    Original: "Comment utiliser une roue chromatique pour créer une palette harmonieuse ?"
+    English: "How to use a color wheel to create a harmonious palette?"
+
+- Page: src/pages/fr/mix.astro
+  * DROPPED FAQ (Weakest):
+    Original: "Ce simulateur convient-il pour le mélange de couleur teinture vêtement et peinture murale ?"
+    English: "Is this simulator suitable for fabric dye and wall paint color mixing?"
+  * IMPLEMENTED NEW FAQ:
+    Original: "Peut-on obtenir du rouge ou du bleu par mélange de couleurs ? (Couleurs primaires)"
+    English: "Can you obtain red or blue by mixing colors? (Primary colors)"
+
+3. PORTUGUESE (/pt/color-wheel & /pt/mix):
+--------------------------------------------------------------------------------
+- Page: src/pages/pt/color-wheel.astro
+  * DROPPED FAQ (Narrow):
+    Original: "Como funciona a roda de cores complementares?"
+    English: "How does the complementary color wheel work?"
+  * IMPLEMENTED NEW FAQ:
+    Original: "Círculo cromático: quais cores combinam entre si? (Harmonias de cores)"
+    English: "Color wheel: which colors match each other? (Color harmonies)"
+
+- Page: src/pages/pt/mix.astro
+  * KEPT ALL EXISTING FAQs (No replacement needed):
+    Existing FAQ 2 ("Qual a mistura de cores para dar marrom?") already 100% matches all incoming queries.
+
+4. SPANISH (/es/color-wheel & /es/mix):
+--------------------------------------------------------------------------------
+- Page: src/pages/es/color-wheel.astro
+  * KEPT ALL EXISTING FAQs (Photoshop CS6 desktop queries dropped as irrelevant).
+
+- Page: src/pages/es/mix.astro
+  * DROPPED FAQ (Generic Marketing):
+    Original: "¿Para qué sirve combinar colores online en PigmentLab?"
+    English: "What is the purpose of combining colors online in PigmentLab?"
+  * IMPLEMENTED NEW FAQ 1:
+    Original: "¿Qué color da la mezcla de todos los colores?"
+    English: "What color does mixing all colors give?"
+  * IMPLEMENTED NEW FAQ 2:
+    Original: "¿Se puede mezclar pintura para obtener rojo o amarillo? (Colores primarios)"
+    English: "Can you mix paint to get red or yellow? (Primary colors)"
+================================================================================
