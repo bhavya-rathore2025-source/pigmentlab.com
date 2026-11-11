@@ -1,6 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ColorWheelStudio from '../../components/ColorWheelStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildWheelPageSchemas } from '../../utils/seoSchema';
+import { wheelJumpLinks } from '../../i18n/toolGuides';
 
 const ruFaqSchema = {
   '@context': 'https://schema.org',
@@ -65,23 +70,16 @@ const ruFaqSchema = {
   ]
 };
 
-const ruWheelSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    'name': 'PigmentLab Цветовой Круг Онлайн & Палитра Цветов — Круг Иттена',
-    'url': 'https://pigmentlab.com/ru/color-wheel',
-    'description': 'Интерактивный цветовой круг онлайн по теории Иоганнеса Иттена (RYB) и RGB. Подбор дополнительных цветов, генератор гармоничных палитр цветов и проверка контрастности WCAG.',
-    'applicationCategory': 'DesignApplication',
-    'operatingSystem': 'All',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'USD'
-    }
-  },
-  ruFaqSchema
-];
+const ruWheelSchema = buildWheelPageSchemas({
+  lang: 'ru',
+  url: 'https://pigmentlaboratory.com/ru/color-wheel',
+  appName: 'PigmentLab Цветовой Круг Онлайн & Палитра Цветов — Круг Иттена',
+  appDescription: 'Интерактивный цветовой круг онлайн по теории Иоганнеса Иттена (RYB) и RGB. Подбор дополнительных цветов, генератор гармоничных палитр цветов и проверка контрастности WCAG.',
+  articleHeadline: 'Цветовой круг Иоганнеса Иттена (RYB) и цифровой круг RGB — руководство',
+  articleDescription: 'Сравнение 12-частного художественного круга Иттена и цифровой модели RGB, правила цветовых гармоний, шкалы оттенков и контрастность WCAG 2.1.',
+  currency: 'USD',
+  faqSchema: ruFaqSchema,
+});
 ---
 
 <Layout
@@ -113,6 +111,7 @@ const ruWheelSchema = [
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
           Большинство экранных палитр используют лишь цифровые углы RGB. PigmentLab позволяет переключиться в 1 клик на классический <strong class="text-[#171717] dark:text-white">цветовой круг Иоганнеса Иттена (RYB)</strong>, где <span class="text-[#c41e3a] font-semibold">Красный</span> расположен напротив <span class="text-[#14b82a] font-semibold">Зеленого</span>.
         </p>
+        <JumpNav items={wheelJumpLinks.ru} ariaLabel="Навигация по разделам" />
       </div>
     </div>
   </section>
@@ -146,7 +145,7 @@ const ruWheelSchema = [
           </p>
         </section>
 
-        <section class="space-y-4">
+        <section id="itten-vs-rgb" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             2. Цветовой круг Иттена vs. RGB
           </h3>
@@ -184,8 +183,10 @@ const ruWheelSchema = [
           </div>
         </section>
 
+        <ModularToolSections tool="wheel" lang="ru" includeHarmonyGuide={true} />
+
         <!-- FAQs -->
-        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             Часто задаваемые вопросы
           </h3>
@@ -206,5 +207,7 @@ const ruWheelSchema = [
       </div>
     </div>
   </article>
+
+  <ExploreColorTools lang="ru" currentPage="wheel" />
 </Layout>
 

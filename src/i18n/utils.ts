@@ -60,7 +60,7 @@ export function useTranslatedPath(lang: SupportedLanguage) {
 /**
  * Generates alternate hreflang tags for all supported languages and x-default.
  */
-export function getHreflangLinks(currentPath: string, siteUrl: string = 'https://pigmentlab.com') {
+export function getHreflangLinks(currentPath: string, siteUrl: string = 'https://pigmentlaboratory.com') {
   const clean = getCleanPathname(currentPath);
   const normalizedClean = clean === '/' ? '' : clean;
 
@@ -100,5 +100,11 @@ const OG_LOCALES: Record<SupportedLanguage, string> = {
 
 export function getOgLocale(lang: SupportedLanguage): string {
   return OG_LOCALES[lang] || 'de_DE';
+}
+
+export function getAlternateOgLocales(lang: SupportedLanguage): string[] {
+  return (Object.keys(OG_LOCALES) as SupportedLanguage[])
+    .filter((code) => code !== lang)
+    .map((code) => OG_LOCALES[code]);
 }
 

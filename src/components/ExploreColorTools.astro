@@ -1,0 +1,286 @@
+---
+import { useTranslatedPath, type SupportedLanguage, defaultLang } from '../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+  currentPage: 'mix' | 'wheel' | 'about' | 'home';
+}
+
+const { lang = defaultLang, currentPage } = Astro.props;
+const translatePath = useTranslatedPath(lang);
+
+interface ToolCardCopy {
+  badge: string;
+  title: string;
+  description: string;
+  cta: string;
+  dotClass: string;
+}
+
+interface ExploreCopy {
+  eyebrow: string;
+  heading: string;
+  subheading: string;
+  mix: ToolCardCopy;
+  wheel: ToolCardCopy;
+  about: ToolCardCopy;
+  home: ToolCardCopy;
+}
+
+const copyByLang: Record<SupportedLanguage, ExploreCopy> = {
+  de: {
+    eyebrow: 'PigmentLab Themencluster & Werkzeuge',
+    heading: 'Weitere physikalische Farbwerkzeuge & Grundlagen entdecken',
+    subheading: 'Verbinden Sie subtraktive Pigmentmischung, Johannes Ittens Bauhaus-Farbkreis und die physikalischen Grundlagen.',
+    mix: {
+      badge: 'Kubelka-Munk Simulator',
+      title: 'Farben Mischen Simulator & Mischtabelle',
+      description: 'Mischen Sie reale Pigmente (Blau + Gelb = Grün), vergleichen Sie OKLCH sowie CMYK und generieren Sie CSS color-mix() Code.',
+      cta: 'Zum Farben-Mischen-Simulator →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'Itten Bauhaus RYB',
+      title: 'Farbkreis nach Itten & Farbpaletten-Generator',
+      description: 'Berechnen Sie Komplementärfarben, 9-Stufen-Schattierungen, WCAG 2.1 Kontraste und Farbenblindheit-Simulationen.',
+      cta: 'Zum Farbkreis nach Itten →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: 'Optische Wissenschaft',
+      title: 'Kubelka-Munk Pigmentphysik & Bauhaus-Theorie',
+      description: 'Erfahren Sie, warum digitales RGB-Mitteln versagt und wie PigmentLab reale Lichtabsorption sowie Ittens 12-teiligen Kreis modelliert.',
+      cta: 'Wissenschaftliche Grundlagen lesen →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'PigmentLab Übersicht',
+      title: 'Alle Farbwerkzeuge im Überblick',
+      description: 'Zurück zur Hauptübersicht der subtraktiven Farbphysik-Plattform PigmentLab.',
+      cta: 'Zur PigmentLab Startseite →',
+      dotClass: 'bg-purple-500',
+    },
+  },
+  en: {
+    eyebrow: 'PigmentLab Color Science Silo',
+    heading: 'Explore Companion Color Tools & Optical Theory',
+    subheading: 'Connect physical Kubelka-Munk pigment mixing with Johannes Itten Bauhaus color harmonies and accessibility testing.',
+    mix: {
+      badge: 'Kubelka-Munk Simulator',
+      title: 'Subtractive Paint Mixer & Hex Color Mixing Table',
+      description: 'Blend real oil & acrylic pigments (Blue + Yellow = Green), test OKLCH or CMYK modes, and export CSS color-mix() snippets.',
+      cta: 'Open Subtractive Color Mixer →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'Itten Bauhaus RYB',
+      title: 'Johannes Itten Color Wheel & Complementary Palette Generator',
+      description: 'Switch between artist RYB and RGB wheels, generate 9-step shade scales, simulate color blindness, and export Tailwind CSS v4 tokens.',
+      cta: 'Open Bauhaus Color Wheel →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: 'Optical Physics & E-E-A-T',
+      title: 'How Kubelka-Munk Pigment Optics & Bauhaus Theory Work',
+      description: 'Compare linear RGB light averaging against physical particle absorption and inspect our primary academic references.',
+      cta: 'Read Scientific Foundation →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'Platform Hub',
+      title: 'PigmentLab Color Science Suite Overview',
+      description: 'Return to the main overview of our subtractive paint physics and color harmony studios.',
+      cta: 'View PigmentLab Home →',
+      dotClass: 'bg-purple-500',
+    },
+  },
+  fr: {
+    eyebrow: 'Écosystème PigmentLab',
+    heading: 'Explorer nos outils chromatiques et bases scientifiques',
+    subheading: 'Associez le mélange soustractif des pigments au cercle chromatique Bauhaus de Johannes Itten.',
+    mix: {
+      badge: 'Simulateur Kubelka-Munk',
+      title: 'Simulateur de Mélange de Couleur & Tableau des Mélanges',
+      description: 'Mélangez des pigments réels (Bleu + Jaune = Vert), comparez OKLCH ou CMYK et générez du code CSS color-mix().',
+      cta: 'Ouvrir le simulateur de mélange →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'Itten Bauhaus RYB',
+      title: 'Roue Chromatique en Ligne & Couleurs Complémentaires',
+      description: 'Basculez entre la roue artiste Itten RYB et RGB, générez des nuances 50-900 et testez le contraste WCAG 2.1.',
+      cta: 'Ouvrir la roue chromatique →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: 'Science Optique',
+      title: 'Physique Kubelka-Munk & Théorie du Bauhaus',
+      description: 'Découvrez pourquoi la moyenne RVB produit du gris et comment PigmentLab modélise l’absorption lumineuse réelle.',
+      cta: 'Découvrir les bases scientifiques →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'Présentation',
+      title: 'Vue d’ensemble de la suite PigmentLab',
+      description: 'Revenir à l’accueil principal de la plateforme de physique des pigments.',
+      cta: 'Retour à l’accueil PigmentLab →',
+      dotClass: 'bg-purple-500',
+    },
+  },
+  pt: {
+    eyebrow: 'Ecossistema PigmentLab',
+    heading: 'Explore outras ferramentas cromáticas e fundamentos científicos',
+    subheading: 'Combine a mistura subtrativa real de pigmentos com o círculo cromático Bauhaus de Johannes Itten.',
+    mix: {
+      badge: 'Simulador Kubelka-Munk',
+      title: 'Simulador de Mistura de Cores & Tabela de Tintas',
+      description: 'Misture pigmentos reais (Azul + Amarelo = Verde), teste modos OKLCH ou CMYK e gere código CSS color-mix().',
+      cta: 'Abrir simulador de mistura de cores →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'Itten Bauhaus RYB',
+      title: 'Círculo Cromático de Itten & Gerador de Paletas',
+      description: 'Alterne entre a roda artística RYB e RGB, crie escalas de 9 tons, simule daltonismo e exporte tokens Tailwind CSS v4.',
+      cta: 'Abrir círculo cromático online →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: 'Física Óptica',
+      title: 'Física Kubelka-Munk & Teoria das Cores Bauhaus',
+      description: 'Entenda por que a média linear RGB falha e veja as referências científicas que sustentam o PigmentLab.',
+      cta: 'Ler fundamentos científicos →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'Visão Geral',
+      title: 'Visão geral da suíte PigmentLab',
+      description: 'Voltar para a página inicial da plataforma de física de pigmentos.',
+      cta: 'Ir para o início PigmentLab →',
+      dotClass: 'bg-purple-500',
+    },
+  },
+  es: {
+    eyebrow: 'Ecosistema PigmentLab',
+    heading: 'Explora otras herramientas de color y fundamentos ópticos',
+    subheading: 'Conecta la mezcla sustractiva real de pigmentos con el círculo cromático Bauhaus de Johannes Itten.',
+    mix: {
+      badge: 'Simulador Kubelka-Munk',
+      title: 'Simulador de Mezcla de Colores & Tabla de Pintura',
+      description: 'Combina pigmentos reales (Azul + Amarillo = Verde), prueba modos OKLCH o CMYK y exporta código CSS color-mix().',
+      cta: 'Abrir mezclador de colores →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'Itten Bauhaus RYB',
+      title: 'Rueda de Color de Itten & Generador de Paletas',
+      description: 'Cambia entre rueda artística RYB y RGB digital, genera escalas de 9 tonos, simula daltonismo y verifica WCAG 2.1.',
+      cta: 'Abrir rueda de color online →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: 'Física Óptica',
+      title: 'Óptica Sustractiva Kubelka-Munk y Teoría Bauhaus',
+      description: 'Descubre por qué el promedio RGB apaga los colores y consulta nuestras referencias científicas primarias.',
+      cta: 'Ver fundamento científico →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'Vista General',
+      title: 'Resumen general de PigmentLab',
+      description: 'Volver a la portada de herramientas de física de pigmentos y armonías cromáticas.',
+      cta: 'Ir al inicio de PigmentLab →',
+      dotClass: 'bg-purple-500',
+    },
+  },
+  ru: {
+    eyebrow: 'Инструменты и теория PigmentLab',
+    heading: 'Другие инструменты цвета и научная база',
+    subheading: 'Объедините субтрактивное смешивание пигментов, цветовой круг Иттена и проверку доступности WCAG.',
+    mix: {
+      badge: 'Симулятор Кубелки-Мунка',
+      title: 'Симулятор смешивания цветов и таблица красок',
+      description: 'Смешивайте реальные пигменты (Синий + Желтый = Зеленый), тестируйте режимы OKLCH и CMYK и экспортируйте CSS color-mix().',
+      cta: 'Открыть симулятор смешивания →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'Иттен Баухаус RYB',
+      title: 'Цветовой круг Иттена и генератор палитр',
+      description: 'Переключайтесь между кругом Иттена RYB и RGB, стройте 9-ступенчатые шкалы оттенков и проверяйте контраст WCAG 2.1.',
+      cta: 'Открыть цветовой круг →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: 'Оптика и теория',
+      title: 'Физика пигментов Кубелки-Мунка и школа Баухаус',
+      description: 'Узнайте, почему линейное усреднение RGB дает серую грязь, и изучите научные источники PigmentLab.',
+      cta: 'Изучить научную основу →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'Обзор платформы',
+      title: 'Главная страница платформы PigmentLab',
+      description: 'Вернуться на обзорную страницу всех инструментов физики цвета.',
+      cta: 'На главную PigmentLab →',
+      dotClass: 'bg-purple-500',
+    },
+  },
+};
+
+const t = copyByLang[lang] || copyByLang.en;
+
+const targets: Array<{ key: 'mix' | 'wheel' | 'about' | 'home'; path: string; card: ToolCardCopy }> = [
+  { key: 'mix', path: '/mix', card: t.mix },
+  { key: 'wheel', path: '/color-wheel', card: t.wheel },
+  { key: 'about', path: '/about', card: t.about },
+  { key: 'home', path: '/', card: t.home },
+].filter((item) => item.key !== currentPage);
+---
+
+<section
+  id="explore-tools"
+  class="scroll-mt-20 border-t border-[#ebebeb] bg-[#fafafa] py-14 dark:border-[#222222] dark:bg-[#000000]"
+>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">
+        {t.eyebrow}
+      </span>
+      <h2 class="mt-2 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl">
+        {t.heading}
+      </h2>
+      <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+        {t.subheading}
+      </p>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+      {
+        targets.map((item) => (
+          <a
+            href={translatePath(item.path)}
+            class="group flex flex-col justify-between rounded-2xl border border-[#ebebeb] bg-white p-5 shadow-2xs transition-all duration-200 hover:border-[#171717] hover:shadow-md dark:border-[#262626] dark:bg-[#0d0d0d] dark:hover:border-white"
+          >
+            <div>
+              <span class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] bg-[#fafafa] px-2.5 py-0.5 font-mono text-[11px] font-medium text-[#4d4d4d] dark:border-[#2e2e2e] dark:bg-[#141414] dark:text-[#a1a1aa]">
+                <span class={`h-1.5 w-1.5 rounded-full ${item.card.dotClass}`} />
+                <span>{item.card.badge}</span>
+              </span>
+              <h3 class="mt-3 text-base font-semibold tracking-tight text-[#171717] dark:text-white">
+                {item.card.title}
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+                {item.card.description}
+              </p>
+            </div>
+            <div class="mt-4 border-t border-[#ebebeb] pt-3 text-xs font-semibold text-[#171717] group-hover:underline dark:border-[#222222] dark:text-white">
+              {item.card.cta}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+

@@ -1,17 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   'name': 'PigmentLab',
-  'url': 'https://pigmentlab.com/ru',
+  'url': 'https://pigmentlaboratory.com/ru',
   'description': 'Онлайн платформа науки о цвете: реалистичное субтрактивное поглощение света пигментами и цветовой круг Иоганнеса Иттена.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
+    'url': 'https://pigmentlaboratory.com',
+    'logo': 'https://pigmentlaboratory.com/favicon.svg'
   }
 };
 ---
@@ -99,5 +100,7 @@ const websiteSchema = {
       </div>
     </div>
   </section>
+
+  <ExploreColorTools lang="ru" currentPage="home" />
 </Layout>
 

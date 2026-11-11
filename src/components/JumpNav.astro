@@ -1,0 +1,30 @@
+---
+interface JumpItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  items: JumpItem[];
+  ariaLabel?: string;
+}
+
+const { items, ariaLabel = 'Section navigation' } = Astro.props;
+---
+
+<nav
+  aria-label={ariaLabel}
+  class="mt-6 flex flex-wrap items-center justify-center gap-2"
+>
+  {
+    items.map((item) => (
+      <a
+        href={item.href}
+        class="inline-flex items-center rounded-full border border-[#ebebeb] bg-[#fafafa] px-3 py-1 text-xs font-medium text-[#4d4d4d] shadow-2xs transition-colors hover:border-[#171717] hover:bg-white hover:text-[#171717] dark:border-[#262626] dark:bg-[#141414] dark:text-[#a1a1aa] dark:hover:border-white dark:hover:bg-[#1c1c1c] dark:hover:text-white"
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>
+

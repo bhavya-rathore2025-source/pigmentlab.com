@@ -1,0 +1,149 @@
+---
+import type { SupportedLanguage } from '../i18n/ui';
+import { defaultLang, useTranslatedPath } from '../i18n/utils';
+import { mixModularGuide, wheelModularGuide, extraMixBrownSections, extraWheelHarmonySections } from '../i18n/toolGuides';
+import ScientificReferences from './ScientificReferences.astro';
+
+interface Props {
+  tool: 'mix' | 'wheel';
+  lang?: SupportedLanguage;
+  includeBrownGuide?: boolean;
+  includeHarmonyGuide?: boolean;
+}
+
+const {
+  tool,
+  lang = defaultLang,
+  includeBrownGuide = false,
+  includeHarmonyGuide = false,
+} = Astro.props;
+const translatePath = useTranslatedPath(lang);
+const copy = tool === 'mix' ? mixModularGuide[lang] || mixModularGuide.en : wheelModularGuide[lang] || wheelModularGuide.en;
+const brownGuide = includeBrownGuide ? extraMixBrownSections[lang] : undefined;
+const harmonyGuide = includeHarmonyGuide ? extraWheelHarmonySections[lang] : undefined;
+---
+
+{
+  brownGuide && (
+    <section id="mix-brown" class="scroll-mt-20 space-y-4">
+      <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+        {brownGuide.heading}
+      </h3>
+      <p>{brownGuide.intro}</p>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {brownGuide.cards.map((card) => (
+          <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 dark:border-[#222222] dark:bg-[#141414]">
+            <span class="font-mono text-xs font-bold text-[#171717] dark:text-white">
+              {card.title}
+            </span>
+            <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+              {card.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+{
+  harmonyGuide && (
+    <section id="harmonies" class="scroll-mt-20 space-y-4">
+      <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+        {harmonyGuide.heading}
+      </h3>
+      <p>{harmonyGuide.body}</p>
+    </section>
+  )
+}
+
+<!-- Contextual Companion Tool Callout -->
+<div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 sm:p-5 dark:border-[#262626] dark:bg-[#141414]">
+  <p class="text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+    {copy.inlineLinkPrompt}{' '}
+    <a
+      href={translatePath(copy.inlineLinkPath)}
+      class="font-semibold text-[#0070f3] hover:underline dark:text-[#3291ff]"
+    >
+      {copy.inlineLinkText}
+    </a>
+  </p>
+</div>
+
+<!-- Step-by-Step How-To (Featured Snippet Optimized Ordered List) -->
+<section id="how-to" class="scroll-mt-20 space-y-4">
+  <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+    {copy.howToTitle}
+  </h3>
+  <p class="text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+    {copy.howToIntro}
+  </p>
+  <ol class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    {
+      copy.steps.map((step, index) => (
+        <li class="flex gap-3 rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 dark:border-[#222222] dark:bg-[#141414]">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#171717] font-mono text-xs font-semibold text-white dark:bg-white dark:text-[#171717]">
+            {index + 1}
+          </span>
+          <div>
+            <h4 class="text-sm font-semibold text-[#171717] dark:text-white">
+              {step.title}
+            </h4>
+            <p class="mt-1 text-xs leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+              {step.description}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<!-- Persona Targeting Grid -->
+<section id="who-uses" class="scroll-mt-20 space-y-4">
+  <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+    {copy.whoUsesTitle}
+  </h3>
+  <p class="text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+    {copy.whoUsesIntro}
+  </p>
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    {
+      copy.personas.map((persona) => (
+        <div class="rounded-xl border border-[#ebebeb] bg-[#fafafa] p-4 dark:border-[#222222] dark:bg-[#141414]">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0070f3] dark:text-[#3291ff]">
+            {persona.badge}
+          </span>
+          <h4 class="mt-1 text-sm font-semibold text-[#171717] dark:text-white">
+            {persona.title}
+          </h4>
+          <p class="mt-1.5 text-xs leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+            {persona.description}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- Key Benefits Checklist -->
+<section id="benefits" class="scroll-mt-20 space-y-4">
+  <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+    {copy.benefitsTitle}
+  </h3>
+  <ul class="space-y-2 text-sm sm:text-base text-[#374151] dark:text-[#d1d5db]">
+    {
+      copy.benefits.map((benefit) => (
+        <li class="flex items-start gap-2.5">
+          <span class="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-bold text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400">
+            ✓
+          </span>
+          <span>{benefit}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<!-- Authoritative Scientific References & Standards -->
+<ScientificReferences lang={lang} topic={tool} sectionId="sources" />

@@ -1,0 +1,211 @@
+---
+import type { SupportedLanguage } from '../i18n/ui';
+import { defaultLang } from '../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+  topic: 'mix' | 'wheel' | 'all';
+  sectionId?: string;
+}
+
+const { lang = defaultLang, topic, sectionId = 'sources' } = Astro.props;
+
+const labelsByLang: Record<
+  SupportedLanguage,
+  {
+    eyebrow: string;
+    heading: string;
+    kubelkaTitle: string;
+    kubelkaDesc: string;
+    kubelkaWiki: string;
+    ittenTitle: string;
+    ittenDesc: string;
+    ittenBio: string;
+    cssTitle: string;
+    cssDesc: string;
+    wcagTitle: string;
+    wcagDesc: string;
+  }
+> = {
+  de: {
+    eyebrow: 'Wissenschaftliche Quellen & Standards',
+    heading: 'Referenzen & Normen',
+    kubelkaTitle: 'Kubelka & Munk (1931): Ein Beitrag zur Optik der Farbanstriche',
+    kubelkaDesc: 'Physikalische Grundlage der Zweistrahl-Absorptions- und Streuungstheorie für Pigmente (Cornell University Übersetzung).',
+    kubelkaWiki: 'Kubelka-Munk-Theorie (Überblick)',
+    ittenTitle: 'Getty Research Institute: Bauhaus Farbtheorie & Johannes Itten',
+    ittenDesc: 'Pädagogik und Systematik des 12-teiligen Farbkreises sowie der sieben Farbkontraste nach Johannes Itten.',
+    ittenBio: 'Johannes Itten & Kunst der Farbe (Referenz)',
+    cssTitle: 'W3C CSS Color Module Level 4',
+    cssDesc: 'Offizielle Spezifikation für den wahrnehmungsbezogenen OKLCH-Farbraum und die CSS-Funktion color-mix().',
+    wcagTitle: 'W3C Web Content Accessibility Guidelines (WCAG) 2.1',
+    wcagDesc: 'Internationale Kontrastanforderungen (AA 4,5:1 & AAA 7:1) für barrierefreie Farbkombinationen.',
+  },
+  en: {
+    eyebrow: 'Scientific Citations & Web Standards',
+    heading: 'Academic References & Specifications',
+    kubelkaTitle: 'Kubelka & Munk (1931): On the Optics of Paint Coatings',
+    kubelkaDesc: 'Primary two-flux absorption and scattering physics model for subtractive pigment mixing (Cornell University Program of Computer Graphics).',
+    kubelkaWiki: 'Kubelka–Munk Theory Overview',
+    ittenTitle: 'Getty Research Institute: Bauhaus Color Theory & Pedagogy',
+    ittenDesc: 'Historical and theoretical archive of Johannes Itten’s Bauhaus color circle and seven color contrasts.',
+    ittenBio: 'Johannes Itten & The Art of Color Reference',
+    cssTitle: 'W3C CSS Color Module Level 4',
+    cssDesc: 'Official specification governing perceptual OKLCH color space and native CSS color-mix() interpolation.',
+    wcagTitle: 'W3C Web Content Accessibility Guidelines (WCAG) 2.1',
+    wcagDesc: 'Official contrast ratio thresholds (AA 4.5:1 & AAA 7:1) for accessible UI typography and components.',
+  },
+  fr: {
+    eyebrow: 'Sources scientifiques & Standards',
+    heading: 'Références académiques et spécifications',
+    kubelkaTitle: 'Kubelka & Munk (1931) : Optique des revêtements pigmentaires',
+    kubelkaDesc: 'Modèle physique fondateur d’absorption et de diffusion de la lumière dans les pigments (traduction Université Cornell).',
+    kubelkaWiki: 'Théorie de Kubelka-Munk (Synthèse)',
+    ittenTitle: 'Getty Research Institute : Théorie de la couleur au Bauhaus',
+    ittenDesc: 'Archives sur l’enseignement de Johannes Itten, son cercle chromatique à 12 teintes et ses contrastes.',
+    ittenBio: 'Johannes Itten & L’Art de la couleur (Référence)',
+    cssTitle: 'W3C CSS Color Module Level 4',
+    cssDesc: 'Spécification officielle régissant l’espace perceptuel OKLCH et la fonction CSS color-mix().',
+    wcagTitle: 'W3C Web Content Accessibility Guidelines (WCAG) 2.1',
+    wcagDesc: 'Critères officiels de contraste (AA 4,5:1 & AAA 7:1) pour l’accessibilité numérique.',
+  },
+  pt: {
+    eyebrow: 'Referências Científicas & Normas',
+    heading: 'Fontes Acadêmicas e Especificações',
+    kubelkaTitle: 'Kubelka & Munk (1931): Óptica de Revestimentos e Tintas',
+    kubelkaDesc: 'Modelo físico original de absorção e espalhamento de luz em pigmentos (tradução Universidade Cornell).',
+    kubelkaWiki: 'Teoria de Kubelka-Munk (Visão Geral)',
+    ittenTitle: 'Getty Research Institute: Teoria das Cores na Bauhaus',
+    ittenDesc: 'Acervo histórico sobre a pedagogia de Johannes Itten, seu círculo cromático de 12 cores e contrastes.',
+    ittenBio: 'Referência a Johannes Itten e A Arte da Cor',
+    cssTitle: 'W3C CSS Color Module Level 4',
+    cssDesc: 'Especificação oficial que define o espaço perceptual OKLCH e a função nativa CSS color-mix().',
+    wcagTitle: 'W3C Web Content Accessibility Guidelines (WCAG) 2.1',
+    wcagDesc: 'Diretrizes oficiais de taxa de contraste (AA 4,5:1 e AAA 7:1) para acessibilidade em interfaces.',
+  },
+  es: {
+    eyebrow: 'Referencias Científicas y Estándares',
+    heading: 'Fuentes Académicas y Especificaciones',
+    kubelkaTitle: 'Kubelka & Munk (1931): Óptica de Recubrimientos de Pintura',
+    kubelkaDesc: 'Modelo físico fundacional de absorción y dispersión lumínica en pigmentos (traducción Universidad Cornell).',
+    kubelkaWiki: 'Teoría de Kubelka-Munk (Resumen)',
+    ittenTitle: 'Getty Research Institute: Teoría del Color Bauhaus',
+    ittenDesc: 'Archivo sobre la enseñanza cromática de Johannes Itten, su círculo de 12 tonos y siete contrastes.',
+    ittenBio: 'Referencia sobre Johannes Itten y El Arte del Color',
+    cssTitle: 'W3C CSS Color Module Level 4',
+    cssDesc: 'Especificación oficial que define el espacio perceptual OKLCH y la función CSS color-mix().',
+    wcagTitle: 'W3C Web Content Accessibility Guidelines (WCAG) 2.1',
+    wcagDesc: 'Criterios oficiales de contraste mínimo (AA 4,5:1 y AAA 7:1) para diseño accesible.',
+  },
+  ru: {
+    eyebrow: 'Научные источники и стандарты',
+    heading: 'Академические ссылки и спецификации',
+    kubelkaTitle: 'Kubelka & Munk (1931): Оптика красочных покрытий',
+    kubelkaDesc: 'Базовая физическая модель поглощения и рассеяния света пигментами (перевод Корнеллского университета).',
+    kubelkaWiki: 'Обзор теории Кубелки-Мунка',
+    ittenTitle: 'Getty Research Institute: Теория цвета школы Баухаус',
+    ittenDesc: 'Архивные материалы о системе цветового круга Иоганнеса Иттена и семи цветовых контрастах.',
+    ittenBio: 'Справка об Иоганнесе Иттене и «Искусстве цвета»',
+    cssTitle: 'W3C CSS Color Module Level 4',
+    cssDesc: 'Официальная спецификация перцептивного пространства OKLCH и функции CSS color-mix().',
+    wcagTitle: 'W3C Web Content Accessibility Guidelines (WCAG) 2.1',
+    wcagDesc: 'Международные пороги контрастности (AA 4.5:1 и AAA 7:1) для доступного дизайна.',
+  },
+};
+
+const t = labelsByLang[lang] || labelsByLang.en;
+
+interface CitationEntry {
+  url: string;
+  title: string;
+  description: string;
+  domain: string;
+}
+
+const citations: CitationEntry[] = [];
+
+if (topic === 'mix' || topic === 'all') {
+  citations.push(
+    {
+      url: 'https://www.graphics.cornell.edu/~westin/pubs/kubelka.pdf',
+      title: t.kubelkaTitle,
+      description: t.kubelkaDesc,
+      domain: 'graphics.cornell.edu',
+    },
+    {
+      url: 'https://en.wikipedia.org/wiki/Kubelka%E2%80%93Munk_theory',
+      title: t.kubelkaWiki,
+      description: 'K/S reflectance ratio & subtractive colorant formulation.',
+      domain: 'en.wikipedia.org',
+    }
+  );
+}
+
+if (topic === 'wheel' || topic === 'all') {
+  citations.push(
+    {
+      url: 'https://www.getty.edu/research/exhibitions_events/exhibitions/bauhaus/new_artist/form_color/color/',
+      title: t.ittenTitle,
+      description: t.ittenDesc,
+      domain: 'getty.edu',
+    },
+    {
+      url: 'https://en.wikipedia.org/wiki/Johannes_Itten',
+      title: t.ittenBio,
+      description: '12-part Farbkreis (RYB) & Kunst der Farbe (1961).',
+      domain: 'en.wikipedia.org',
+    }
+  );
+}
+
+citations.push(
+  {
+    url: 'https://www.w3.org/TR/css-color-4/',
+    title: t.cssTitle,
+    description: t.cssDesc,
+    domain: 'w3.org',
+  },
+  {
+    url: 'https://www.w3.org/TR/WCAG21/',
+    title: t.wcagTitle,
+    description: t.wcagDesc,
+    domain: 'w3.org',
+  }
+);
+---
+
+<section
+  id={sectionId}
+  class="scroll-mt-20 rounded-2xl border border-[#ebebeb] bg-[#fafafa] p-5 sm:p-6 dark:border-[#222222] dark:bg-[#111111]"
+>
+  <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">
+    {t.eyebrow}
+  </span>
+  <h3 class="mt-1.5 text-lg font-semibold tracking-tight text-[#111827] sm:text-xl dark:text-white">
+    {t.heading}
+  </h3>
+
+  <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+    {
+      citations.map((item) => (
+        <li class="rounded-xl border border-[#ebebeb] bg-white p-4 transition-colors hover:border-[#171717]/40 dark:border-[#262626] dark:bg-[#161616] dark:hover:border-white/40">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-sm font-semibold text-[#0070f3] hover:underline dark:text-[#3291ff]"
+          >
+            {item.title} ↗
+          </a>
+          <p class="mt-1 text-xs leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+            {item.description}
+          </p>
+          <span class="mt-2 inline-block font-mono text-[10px] text-[#8f8f8f] dark:text-[#737373]">
+            {item.domain}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+

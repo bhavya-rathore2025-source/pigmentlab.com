@@ -1,19 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import AboutBodySection from '../../components/AboutBodySection.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildAboutPageSchemas } from '../../utils/seoSchema';
+import { aboutJumpLinks } from '../../i18n/toolGuides';
 
-const aboutSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  'name': 'Sobre PigmentLab',
-  'url': 'https://pigmentlab.com/es/about',
-  'description': 'Conoce la historia y los principios científicos de PigmentLab: física de pigmentos sustractivos de Kubelka-Munk y teoría del color de Johannes Itten.',
-  'mainEntity': {
-    '@type': 'Organization',
-    'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
-  }
-};
+const aboutSchema = buildAboutPageSchemas({
+  lang: 'es',
+  url: 'https://pigmentlaboratory.com/es/about',
+  pageName: 'Sobre PigmentLab',
+  pageDescription: 'Conoce la historia y los principios científicos de PigmentLab: física de pigmentos sustractivos de Kubelka-Munk y teoría del color de Johannes Itten.',
+  orgDescription: 'Herramientas de color físicas basadas en absorción espectral Kubelka-Munk y el círculo cromático RYB Bauhaus de Johannes Itten.',
+  articleHeadline: 'Por qué falla el promedio RGB: física sustractiva Kubelka-Munk y teoría del color Bauhaus',
+  articleDescription: 'Comparativa entre luz aditiva RGB y absorción física de pigmentos, junto a las fuentes académicas de Kubelka-Munk, Itten y estándares W3C.',
+});
 ---
 
 <Layout
@@ -24,7 +25,7 @@ const aboutSchema = {
   lang="es"
   schema={aboutSchema}
 >
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
+  <section id="mission" class="scroll-mt-20 border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
         <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
@@ -36,7 +37,12 @@ const aboutSchema = {
       <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
         Durante décadas, las pantallas forzaron a los creadores a trabajar con luz aditiva RGB, degradando las mezclas a tonos grises. PigmentLab devuelve a la web la absorción física de la luz y la armonía clásica del Bauhaus.
       </p>
+      <JumpNav items={aboutJumpLinks.es} ariaLabel="Navegación de secciones" />
     </div>
   </section>
+
+  <AboutBodySection lang="es" />
+
+  <ExploreColorTools lang="es" currentPage="about" />
 </Layout>
 

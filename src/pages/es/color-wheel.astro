@@ -1,6 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ColorWheelStudio from '../../components/ColorWheelStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildWheelPageSchemas } from '../../utils/seoSchema';
+import { wheelJumpLinks } from '../../i18n/toolGuides';
 
 const esFaqSchema = {
   '@context': 'https://schema.org',
@@ -41,23 +46,16 @@ const esFaqSchema = {
   ]
 };
 
-const esWheelSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    'name': 'PigmentLab Rueda de Color Online & Círculo Cromático — Combinación de Colores',
-    'url': 'https://pigmentlab.com/es/color-wheel',
-    'description': 'Rueda de color interactiva y círculo cromático online. Alterna entre la rueda clásica de Itten (RYB) y RGB digital. Genera combinación de colores complementarios y prueba el contraste WCAG.',
-    'applicationCategory': 'DesignApplication',
-    'operatingSystem': 'All',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'USD'
-    }
-  },
-  esFaqSchema
-];
+const esWheelSchema = buildWheelPageSchemas({
+  lang: 'es',
+  url: 'https://pigmentlaboratory.com/es/color-wheel',
+  appName: 'PigmentLab Rueda de Color Online & Círculo Cromático — Combinación de Colores',
+  appDescription: 'Rueda de color interactiva y círculo cromático online. Alterna entre la rueda clásica de Itten (RYB) y RGB digital. Genera combinación de colores complementarios y prueba el contraste WCAG.',
+  articleHeadline: 'Círculo Cromático de Johannes Itten (RYB) vs. Rueda RGB — Guía',
+  articleDescription: 'Diferencias entre la rueda artística Bauhaus RYB de Itten y el espectro digital RGB, armonías complementarias y contraste WCAG 2.1.',
+  currency: 'USD',
+  faqSchema: esFaqSchema,
+});
 ---
 
 <Layout
@@ -89,6 +87,7 @@ const esWheelSchema = [
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
           Los selectores digitales habituales solo operan con coordenadas RGB de pantalla. PigmentLab ofrece un botón directo para cambiar al tradicional <strong class="text-[#171717] dark:text-white">círculo cromático de Johannes Itten (RYB)</strong>, donde el <span class="text-[#c41e3a] font-semibold">Rojo</span> se opone al <span class="text-[#14b82a] font-semibold">Verde</span> para lograr una combinación de colores visualmente natural.
         </p>
+        <JumpNav items={wheelJumpLinks.es} ariaLabel="Navegación de secciones" />
       </div>
     </div>
   </section>
@@ -122,7 +121,7 @@ const esWheelSchema = [
           </p>
         </section>
 
-        <section class="space-y-4">
+        <section id="itten-vs-rgb" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             2. Rueda de colores de Itten (RYB) vs. Rueda de colores RGB
           </h3>
@@ -160,8 +159,10 @@ const esWheelSchema = [
           </div>
         </section>
 
+        <ModularToolSections tool="wheel" lang="es" includeHarmonyGuide={true} />
+
         <!-- FAQs -->
-        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             Preguntas Frecuentes
           </h3>
@@ -182,5 +183,7 @@ const esWheelSchema = [
       </div>
     </div>
   </article>
+
+  <ExploreColorTools lang="es" currentPage="wheel" />
 </Layout>
 

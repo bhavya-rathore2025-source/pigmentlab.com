@@ -1,20 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import JumpNav from '../components/JumpNav.astro';
+import AboutBodySection from '../components/AboutBodySection.astro';
+import ExploreColorTools from '../components/ExploreColorTools.astro';
+import { buildAboutPageSchemas } from '../utils/seoSchema';
+import { aboutJumpLinks } from '../i18n/toolGuides';
 
-const aboutSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  'name': 'Über PigmentLab',
-  'url': 'https://pigmentlab.com/about',
-  'description': 'Erfahren Sie mehr über PigmentLab: Die Entstehungsgeschichte, subtraktive Kubelka-Munk Pigmentabsorption und das Bauhaus-Erbe von Johannes Itten.',
-  'mainEntity': {
-    '@type': 'Organization',
-    'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg',
-    'description': 'Realistische physikalische Farbwerkzeuge basierend auf subtraktiver Pigmentabsorption und Johannes Ittens Bauhaus RYB-Farbtheorie.'
-  }
-};
+const aboutSchema = buildAboutPageSchemas({
+  lang: 'de',
+  url: 'https://pigmentlaboratory.com/about',
+  pageName: 'Über PigmentLab',
+  pageDescription: 'Erfahren Sie mehr über PigmentLab: Die Entstehungsgeschichte, subtraktive Kubelka-Munk Pigmentabsorption und das Bauhaus-Erbe von Johannes Itten.',
+  orgDescription: 'Realistische physikalische Farbwerkzeuge basierend auf subtraktiver Pigmentabsorption und Johannes Ittens Bauhaus RYB-Farbtheorie.',
+  articleHeadline: 'Warum digitales RGB versagt: Subtraktive Kubelka-Munk Pigmentphysik & Johannes Ittens Farblehre',
+  articleDescription: 'Vergleich zwischen additivem RGB-Licht und physikalischer Pigmentabsorption sowie wissenschaftliche Primärquellen zu Kubelka-Munk, Itten und W3C-Farbstandards.',
+});
 ---
 
 <Layout
@@ -26,7 +26,7 @@ const aboutSchema = {
   schema={aboutSchema}
 >
   <!-- Hero Section -->
-  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 overflow-hidden">
+  <section id="mission" class="scroll-mt-20 relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 overflow-hidden">
     <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
       <div class="absolute -top-[30%] left-[20%] h-[400px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/30 via-[#7928ca]/25 to-[#ff0080]/25 blur-3xl"></div>
       <div class="absolute -top-[20%] right-[15%] h-[360px] w-[460px] rounded-full bg-gradient-to-br from-[#00dfd8]/25 via-[#f9cb28]/30 to-[#ff4d4d]/25 blur-3xl"></div>
@@ -46,47 +46,13 @@ const aboutSchema = {
         <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
           Seit Jahrzehnten zwingen Computerbildschirme Kreative zur Arbeit mit <strong class="text-[#171717] dark:text-white font-medium">additivem RGB-Licht</strong>, wodurch gemischte Farben schmutzig und grau werden. <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> bringt authentische physikalische Lichtabsorption und die klassische Bauhaus-Harmonie von Johannes Itten ins Web.
         </p>
+
+        <JumpNav items={aboutJumpLinks.de} ariaLabel="Schnellnavigation" />
       </div>
     </div>
   </section>
 
-  <!-- Problem vs Solution -->
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-14 sm:py-20">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
-          Das Problem mit herkömmlichen Farbtools
-        </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
-          Warum wirken digitale Farbwähler im Vergleich zu echten Öl-, Gouache- und Acrylfarben so künstlich?
-        </p>
-      </div>
+  <AboutBodySection lang="de" />
 
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="rounded-2xl border border-red-200 dark:border-red-950/40 bg-white dark:bg-[#0c0c0c] p-6 sm:p-8 shadow-xs">
-          <div class="inline-flex items-center gap-2 rounded-full bg-red-50 dark:bg-red-950/30 px-3 py-1 text-xs font-mono font-medium text-red-600 dark:text-red-400">
-            <span>✕ Lineares RGB-Mitteln</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold text-[#171717] dark:text-white">
-            Monitore emittieren Photonen (Licht)
-          </h3>
-          <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Standard-Monitore strahlen Licht aus. Wer Blau (0, 0, 255) und Gelb (255, 255, 0) in Standardsoftware mischt, erhält mathematisch grauen Schlamm (#808080).
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-emerald-200 dark:border-emerald-950/40 bg-white dark:bg-[#0c0c0c] p-6 sm:p-8 shadow-xs">
-          <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-3 py-1 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400">
-            <span>✓ PigmentLab Subtraktive Physik</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold text-[#171717] dark:text-white">
-            Kubelka-Munk Spektralabsorption
-          </h3>
-          <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            Echte Farbpigmente absorbieren (verschlucken) Lichtteilchen. PigmentLab simuliert diesen Vorgang exakt: Blau und Gelb ergeben strahlendes Grün!
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ExploreColorTools lang="de" currentPage="about" />
 </Layout>

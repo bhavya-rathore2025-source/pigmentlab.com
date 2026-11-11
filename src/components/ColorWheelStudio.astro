@@ -243,7 +243,7 @@ const labels = studioI18n[lang] || studioI18n.en;
 ---
 
 <!-- Mode Switcher Tabs (Itten vs Digital RGB) -->
-<div class="mt-6 flex justify-center">
+<div id="wheel-studio" class="scroll-mt-20 mt-6 flex justify-center">
   <div class="inline-flex flex-wrap items-center justify-center gap-1 rounded-2xl sm:rounded-full border border-[#ebebeb] dark:border-[#333333] bg-[#fafafa] dark:bg-[#141414] p-1.5 sm:p-1 shadow-2xs max-w-full">
     <button
       type="button"
@@ -457,9 +457,28 @@ const labels = studioI18n[lang] || studioI18n.en;
             </span>
           </div>
 
-          <!-- Dynamic Swatches Row -->
+          <!-- Dynamic Swatches Row (SSR default placeholders prevent CLS) -->
           <div id="palette-swatches-grid" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <!-- Swatches injected by JS -->
+            <div class="flex items-center justify-between rounded-xl border border-[#171717] bg-[#fafafa] p-3 dark:border-white dark:bg-[#141414]">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 shrink-0 rounded-lg border border-black/10 bg-[#FF0000] dark:border-white/10"></span>
+                <div>
+                  <div class="text-xs font-medium text-[#171717] dark:text-white">Base</div>
+                  <div class="font-mono text-xs text-[#8f8f8f] dark:text-[#a1a1aa]">#FF0000</div>
+                </div>
+              </div>
+              <span class="rounded-full border border-[#ebebeb] bg-white px-2.5 py-1 font-mono text-[11px] text-[#4d4d4d] dark:border-[#2e2e2e] dark:bg-[#1c1c1c] dark:text-[#a1a1aa]">Copy</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl border border-[#ebebeb] bg-[#fafafa] p-3 dark:border-[#222222] dark:bg-[#141414]">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 shrink-0 rounded-lg border border-black/10 bg-[#00AA44] dark:border-white/10"></span>
+                <div>
+                  <div class="text-xs font-medium text-[#171717] dark:text-white">Opposite</div>
+                  <div class="font-mono text-xs text-[#8f8f8f] dark:text-[#a1a1aa]">#00AA44</div>
+                </div>
+              </div>
+              <span class="rounded-full border border-[#ebebeb] bg-white px-2.5 py-1 font-mono text-[11px] text-[#4d4d4d] dark:border-[#2e2e2e] dark:bg-[#1c1c1c] dark:text-[#a1a1aa]">Copy</span>
+            </div>
           </div>
 
           <!-- Dynamic 9-Step Shade & Tint Scale (Tailwind 50-900) -->
@@ -474,8 +493,8 @@ const labels = studioI18n[lang] || studioI18n.en;
             </div>
             <p class="mt-1 text-xs text-[#8f8f8f] dark:text-[#737373]">{labels.scaleDesc}</p>
 
-            <div id="shade-scale-strip" class="mt-3 flex overflow-x-auto rounded-lg border border-[#ebebeb] shadow-inner dark:border-[#262626]">
-              <!-- 50 to 900 swatches -->
+            <div id="shade-scale-strip" class="mt-3 flex min-h-[48px] overflow-x-auto rounded-lg border border-[#ebebeb] shadow-inner dark:border-[#262626]">
+              {Array.from({ length: 10 }).map(() => <div class="h-12 flex-1 bg-[#f2f2f2] dark:bg-[#1a1a1a]"></div>)}
             </div>
           </div>
         </div>
@@ -490,7 +509,15 @@ const labels = studioI18n[lang] || studioI18n.en;
           </div>
 
           <div id="wcag-contrast-matrix" class="mt-4 space-y-2 text-xs">
-            <!-- Matrix rows injected by JS -->
+            <div class="flex min-h-[42px] items-center justify-between rounded-lg border border-[#ebebeb] bg-[#fafafa] p-2.5 dark:border-[#222222] dark:bg-[#141414]">
+              <div class="flex items-center gap-2">
+                <span class="h-4 w-4 rounded-full bg-[#FF0000]"></span>
+                <span class="text-[#8f8f8f] dark:text-[#737373]">vs</span>
+                <span class="h-4 w-4 rounded-full bg-[#00AA44]"></span>
+                <span class="font-medium text-[#171717] dark:text-white">Base & Opposite</span>
+              </div>
+              <span class="font-mono text-[#8f8f8f]">—</span>
+            </div>
           </div>
         </div>
 

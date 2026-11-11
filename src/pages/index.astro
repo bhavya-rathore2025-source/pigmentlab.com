@@ -1,17 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ExploreColorTools from '../components/ExploreColorTools.astro';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   'name': 'PigmentLab',
-  'url': 'https://pigmentlab.com',
+  'url': 'https://pigmentlaboratory.com',
   'description': 'Online-Farblabor mit echter subtraktiver Pigmentabsorption und Johannes Itten Bauhaus Farbkreis. Farbmischer Simulator & interaktiver Farbrad Generator für Designer und Künstler.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
+    'url': 'https://pigmentlaboratory.com',
+    'logo': 'https://pigmentlaboratory.com/favicon.svg'
   }
 };
 ---
@@ -105,4 +106,6 @@ const websiteSchema = {
       </div>
     </div>
   </section>
+
+  <ExploreColorTools lang="de" currentPage="home" />
 </Layout>

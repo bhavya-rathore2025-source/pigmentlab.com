@@ -1,17 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   'name': 'PigmentLab',
-  'url': 'https://pigmentlab.com/en',
+  'url': 'https://pigmentlaboratory.com/en',
   'description': 'Online color science and pigment physics platform. Experience authentic subtractive pigment absorption and Johannes Itten Bauhaus color palettes for digital creators.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
+    'url': 'https://pigmentlaboratory.com',
+    'logo': 'https://pigmentlaboratory.com/favicon.svg'
   }
 };
 ---
@@ -101,5 +102,7 @@ const websiteSchema = {
       </div>
     </div>
   </section>
+
+  <ExploreColorTools lang="en" currentPage="home" />
 </Layout>
 

@@ -1,19 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import AboutBodySection from '../../components/AboutBodySection.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildAboutPageSchemas } from '../../utils/seoSchema';
+import { aboutJumpLinks } from '../../i18n/toolGuides';
 
-const aboutSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  'name': 'Sobre a PigmentLab',
-  'url': 'https://pigmentlab.com/pt/about',
-  'description': 'Conheça a história e os princípios científicos da PigmentLab: física de pigmentos subtrativos Kubelka-Munk e o círculo cromático Bauhaus de Johannes Itten.',
-  'mainEntity': {
-    '@type': 'Organization',
-    'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
-  }
-};
+const aboutSchema = buildAboutPageSchemas({
+  lang: 'pt',
+  url: 'https://pigmentlaboratory.com/pt/about',
+  pageName: 'Sobre a PigmentLab',
+  pageDescription: 'Conheça a história e os princípios científicos da PigmentLab: física de pigmentos subtrativos Kubelka-Munk e o círculo cromático Bauhaus de Johannes Itten.',
+  orgDescription: 'Ferramentas de cor baseadas na absorção física de pigmentos Kubelka-Munk e no círculo cromático RYB da Bauhaus por Johannes Itten.',
+  articleHeadline: 'Por que a mistura RGB falha: física subtrativa Kubelka-Munk e teoria Bauhaus',
+  articleDescription: 'Comparação entre luz aditiva RGB e absorção espectral de pigmentos reais com referências científicas de Kubelka-Munk, Itten e W3C.',
+});
 ---
 
 <Layout
@@ -24,7 +25,7 @@ const aboutSchema = {
   lang="pt"
   schema={aboutSchema}
 >
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
+  <section id="mission" class="scroll-mt-20 border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
         <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
@@ -36,7 +37,12 @@ const aboutSchema = {
       <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
         Por décadas, as telas forçaram os criadores a trabalhar com luz aditiva RVB, transformando tintas misturadas em cinza opaco. A PigmentLab resgata a absorção de luz real e a harmonia das cores Bauhaus na Web.
       </p>
+      <JumpNav items={aboutJumpLinks.pt} ariaLabel="Navegação da página" />
     </div>
   </section>
+
+  <AboutBodySection lang="pt" />
+
+  <ExploreColorTools lang="pt" currentPage="about" />
 </Layout>
 

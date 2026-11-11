@@ -6,9 +6,11 @@ import {
   getLangFromUrl,
   getHreflangLinks,
   getOgLocale,
+  getAlternateOgLocales,
   type SupportedLanguage,
   defaultLang,
 } from "../i18n/utils";
+import { buildBreadcrumbSchema } from "../utils/seoSchema";
 
 interface Props {
   title?: string;
@@ -41,7 +43,7 @@ const resolvedLang: SupportedLanguage = lang || detectedLang || defaultLang;
 
 const siteUrl = Astro.site
   ? Astro.site.toString().replace(/\/$/, "")
-  : "https://pigmentlab.com";
+  : "https://pigmentlaboratory.com";
 
 // If canonicalUrl not explicitly supplied, compute based on current URL path
 const activePathname = currentPath || Astro.url.pathname;
@@ -56,6 +58,7 @@ const resolvedOgImage = ogImage.startsWith("http")
   : `${siteUrl}${ogImage}`;
 
 const ogLocale = getOgLocale(resolvedLang);
+const alternateOgLocales = getAlternateOgLocales(resolvedLang);
 const hreflangLinks = getHreflangLinks(activePathname, siteUrl);
 
 const defaultSchema = {
@@ -64,6 +67,7 @@ const defaultSchema = {
   name: "PigmentLab",
   url: siteUrl,
   description: description,
+  inLanguage: resolvedLang,
   potentialAction: {
     "@type": "SearchAction",
     target: `${siteUrl}/mix?color={search_term_string}`,
@@ -71,11 +75,25 @@ const defaultSchema = {
   },
 };
 
-const schemaList = schema
+const baseSchemas = schema
   ? Array.isArray(schema)
     ? schema
     : [schema]
   : [defaultSchema];
+
+const hasBreadcrumb = baseSchemas.some((item) => item?.["@type"] === "BreadcrumbList");
+const schemaList =
+  !noindex && !hasBreadcrumb
+    ? [
+        ...baseSchemas,
+        buildBreadcrumbSchema({
+          activePathname,
+          lang: resolvedLang,
+          siteUrl,
+          resolvedCanonical,
+        }),
+      ]
+    : baseSchemas;
 ---
 
 <!doctype html>
@@ -127,7 +145,7 @@ const schemaList = schema
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="author" content="pigmentlab.com" />
+    <meta name="author" content="pigmentlaboratory.com" />
     <meta name="theme-color" content="#171717" />
 
     <!-- Open Graph / Facebook -->
@@ -143,6 +161,11 @@ const schemaList = schema
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content={ogLocale} />
+    {
+      alternateOgLocales.map((alt) => (
+        <meta property="og:locale:alternate" content={alt} />
+      ))
+    }
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -180,6 +203,8 @@ const schemaList = schema
     </script>
 
     <!-- Google Fonts: Geist Sans & Geist Mono -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

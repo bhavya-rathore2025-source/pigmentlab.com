@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pigmentlab.com/sitemap.xml
+Sitemap: https://pigmentlaboratory.com/sitemap.xml
 

@@ -1,6 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import MixerStudio from '../../components/MixerStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildMixPageSchemas } from '../../utils/seoSchema';
+import { mixJumpLinks } from '../../i18n/toolGuides';
 
 const esMixFaqSchema = {
   '@context': 'https://schema.org',
@@ -41,23 +46,16 @@ const esMixFaqSchema = {
   ]
 };
 
-const esMixSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    'name': 'PigmentLab Mezcla de Colores Online — Simulador para Combinar Colores',
-    'url': 'https://pigmentlab.com/es/mix',
-    'description': 'Simulador de mezcla de colores online con física óptica de pigmentos reales. Combina colores con controles deslizantes, obtén la tabla de mezclas y genera código CSS color-mix().',
-    'applicationCategory': 'DesignApplication',
-    'operatingSystem': 'All',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'USD'
-    }
-  },
-  esMixFaqSchema
-];
+const esMixSchema = buildMixPageSchemas({
+  lang: 'es',
+  url: 'https://pigmentlaboratory.com/es/mix',
+  appName: 'PigmentLab Mezcla de Colores Online — Simulador para Combinar Colores',
+  appDescription: 'Simulador de mezcla de colores online con física óptica de pigmentos reales. Combina colores con controles deslizantes, obtén la tabla de mezclas y genera código CSS color-mix().',
+  articleHeadline: 'Guía de Mezcla Sustractiva de Pigmentos (Kubelka-Munk) y Tabla de Colores',
+  articleDescription: 'Cómo funciona la absorción espectral de pigmentos frente a RGB, tabla de combinaciones primarias, cómo obtener marrón y CSS color-mix().',
+  currency: 'USD',
+  faqSchema: esMixFaqSchema,
+});
 ---
 
 <Layout
@@ -89,6 +87,7 @@ const esMixSchema = [
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
           Las herramientas habituales hacen una simple media RGB que termina en un gris parduzco. Nuestro simulador de <strong class="text-[#171717] dark:text-white">mezcla de colores</strong> modela la física real de absorción de partículas: junta <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Azul</span> y <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Amarillo</span> para conseguir un <span class="font-medium text-[#168a35] dark:text-[#47d169]">Verde</span> brillante igual que la pintura física.
         </p>
+        <JumpNav items={mixJumpLinks.es} ariaLabel="Navegación de secciones" />
       </div>
     </div>
   </section>
@@ -123,7 +122,7 @@ const esMixSchema = [
         </section>
 
         <!-- Tabla de mezclas -->
-        <section class="space-y-4">
+        <section id="mixing-table" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             2. Tabla de mezcla de colores y fórmulas habituales
           </h3>
@@ -161,8 +160,10 @@ const esMixSchema = [
           </div>
         </section>
 
+        <ModularToolSections tool="mix" lang="es" includeBrownGuide={true} />
+
         <!-- FAQs -->
-        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             Preguntas Frecuentes
           </h3>
@@ -183,5 +184,7 @@ const esMixSchema = [
       </div>
     </div>
   </article>
+
+  <ExploreColorTools lang="es" currentPage="mix" />
 </Layout>
 

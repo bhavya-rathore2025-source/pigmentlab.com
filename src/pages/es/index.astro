@@ -1,17 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   'name': 'PigmentLab',
-  'url': 'https://pigmentlab.com/es',
+  'url': 'https://pigmentlaboratory.com/es',
   'description': 'Plataforma de ciencia del color con absorción física de pigmentos y teoría de Johannes Itten. Simulador de mezcla de colores y rueda de color para diseñadores y artistas.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
+    'url': 'https://pigmentlaboratory.com',
+    'logo': 'https://pigmentlaboratory.com/favicon.svg'
   }
 };
 ---
@@ -99,5 +100,7 @@ const websiteSchema = {
       </div>
     </div>
   </section>
+
+  <ExploreColorTools lang="es" currentPage="home" />
 </Layout>
 

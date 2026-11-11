@@ -1,19 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import AboutBodySection from '../../components/AboutBodySection.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildAboutPageSchemas } from '../../utils/seoSchema';
+import { aboutJumpLinks } from '../../i18n/toolGuides';
 
-const aboutSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  'name': 'О проекте PigmentLab',
-  'url': 'https://pigmentlab.com/ru/about',
-  'description': 'Узнайте о миссии и научных принципах PigmentLab: субтрактивная физика пигментов Кубелки-Мунка и цветовой круг Иоганнеса Иттена.',
-  'mainEntity': {
-    '@type': 'Organization',
-    'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
-  }
-};
+const aboutSchema = buildAboutPageSchemas({
+  lang: 'ru',
+  url: 'https://pigmentlaboratory.com/ru/about',
+  pageName: 'О проекте PigmentLab',
+  pageDescription: 'Узнайте о миссии и научных принципах PigmentLab: субтрактивная физика пигментов Кубелки-Мунка и цветовой круг Иоганнеса Иттена.',
+  orgDescription: 'Физически точные инструменты цвета на основе теории поглощения пигментов Кубелки-Мунка и цветового круга RYB Иоганнеса Иттена.',
+  articleHeadline: 'Почему не работает смешение RGB: физика пигментов Кубелки-Мунка и теория Баухаус',
+  articleDescription: 'Сравнение линейного усреднения RGB с физическим поглощением света пигментами, а также научные первоисточники Кубелки-Мунка, Иттена и W3C.',
+});
 ---
 
 <Layout
@@ -24,7 +25,7 @@ const aboutSchema = {
   lang="ru"
   schema={aboutSchema}
 >
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
+  <section id="mission" class="scroll-mt-20 border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 text-center">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
         <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
@@ -36,7 +37,12 @@ const aboutSchema = {
       <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
         Десятилетиями мониторы заставляли работать с аддитивным светом RGB, превращающим смешение красок в тусклую серость. PigmentLab возвращает веб-пространству подлинное субтрактивное поглощение света и гармонию Баухаус.
       </p>
+      <JumpNav items={aboutJumpLinks.ru} ariaLabel="Навигация по разделам" />
     </div>
   </section>
+
+  <AboutBodySection lang="ru" />
+
+  <ExploreColorTools lang="ru" currentPage="about" />
 </Layout>
 

@@ -1,6 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ColorWheelStudio from '../../components/ColorWheelStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildWheelPageSchemas } from '../../utils/seoSchema';
+import { wheelJumpLinks } from '../../i18n/toolGuides';
 
 const ptFaqSchema = {
   '@context': 'https://schema.org',
@@ -41,23 +46,16 @@ const ptFaqSchema = {
   ]
 };
 
-const ptWheelSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    'name': 'PigmentLab Círculo Cromático Online & Roda de Cores — Cores Complementares',
-    'url': 'https://pigmentlab.com/pt/color-wheel',
-    'description': 'Círculo cromático online interativo e roda de cores com modelo de Johannes Itten (RYB) e RGB. Gere cores complementares, análogas e teste o contraste WCAG.',
-    'applicationCategory': 'DesignApplication',
-    'operatingSystem': 'All',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'BRL'
-    }
-  },
-  ptFaqSchema
-];
+const ptWheelSchema = buildWheelPageSchemas({
+  lang: 'pt',
+  url: 'https://pigmentlaboratory.com/pt/color-wheel',
+  appName: 'PigmentLab Círculo Cromático Online & Roda de Cores — Cores Complementares',
+  appDescription: 'Círculo cromático online interativo e roda de cores com modelo de Johannes Itten (RYB) e RGB. Gere cores complementares, análogas e teste o contraste WCAG.',
+  articleHeadline: 'Círculo Cromático de Johannes Itten (RYB) vs. Roda RGB — Guia',
+  articleDescription: 'Como funciona o círculo cromático Bauhaus RYB de 12 matizes, harmonias complementares, escalas de tons e teste de contraste WCAG 2.1.',
+  currency: 'BRL',
+  faqSchema: ptFaqSchema,
+});
 ---
 
 <Layout
@@ -89,6 +87,7 @@ const ptWheelSchema = [
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
           A maioria dos aplicativos na web como a roda de cores Adobe usa apenas coordenadas RGB. A PigmentLab permite alternar com 1 clique para o autêntico <strong class="text-[#171717] dark:text-white">círculo cromático de Johannes Itten (RYB)</strong>, onde o <span class="text-[#c41e3a] font-semibold">Vermelho</span> opõe-se ao <span class="text-[#14b82a] font-semibold">Verde</span> — ideal para moda, consultoria de cores e arte.
         </p>
+        <JumpNav items={wheelJumpLinks.pt} ariaLabel="Navegação da página" />
       </div>
     </div>
   </section>
@@ -122,7 +121,7 @@ const ptWheelSchema = [
           </p>
         </section>
 
-        <section class="space-y-4">
+        <section id="itten-vs-rgb" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             2. Círculo cromático cores: Itten RYB vs. Tela RGB
           </h3>
@@ -160,7 +159,7 @@ const ptWheelSchema = [
           </div>
         </section>
 
-        <section class="space-y-4">
+        <section id="harmonies" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             3. Roda de cores complementares
           </h3>
@@ -169,8 +168,10 @@ const ptWheelSchema = [
           </p>
         </section>
 
+        <ModularToolSections tool="wheel" lang="pt" />
+
         <!-- FAQs -->
-        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             Perguntas Frequentes
           </h3>
@@ -191,5 +192,7 @@ const ptWheelSchema = [
       </div>
     </div>
   </article>
+
+  <ExploreColorTools lang="pt" currentPage="wheel" />
 </Layout>
 

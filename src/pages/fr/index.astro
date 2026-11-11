@@ -1,17 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   'name': 'PigmentLab',
-  'url': 'https://pigmentlab.com/fr',
+  'url': 'https://pigmentlaboratory.com/fr',
   'description': 'Plateforme d\'optique physique des pigments et de théorie des couleurs de Johannes Itten. Mélangez la peinture avec réalisme physique et explorez la roue chromatique.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
-    'url': 'https://pigmentlab.com',
-    'logo': 'https://pigmentlab.com/favicon.svg'
+    'url': 'https://pigmentlaboratory.com',
+    'logo': 'https://pigmentlaboratory.com/favicon.svg'
   }
 };
 ---
@@ -101,5 +102,7 @@ const websiteSchema = {
       </div>
     </div>
   </section>
+
+  <ExploreColorTools lang="fr" currentPage="home" />
 </Layout>
 

@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://docs.astro.build/en/guides/internationalization/
 export default defineConfig({
-  site: 'https://pigmentlab.com',
+  site: 'https://pigmentlaboratory.com',
   i18n: {
     defaultLocale: 'de',
     locales: ['de', 'en', 'fr', 'pt', 'es', 'ru'],

@@ -1,6 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import MixerStudio from '../../components/MixerStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { mixJumpLinks } from '../../i18n/toolGuides';
+import { buildMixPageSchemas } from '../../utils/seoSchema';
 
 const mixFaqSchema = {
   '@context': 'https://schema.org',
@@ -41,23 +46,16 @@ const mixFaqSchema = {
   ]
 };
 
-const pageSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    'name': 'PigmentLab Color Mixer Online & Hex Color Mixer',
-    'url': 'https://pigmentlab.com/en/mix',
-    'description': 'Free online color mixer and hex color mixer with realistic pigment physics. Blend colors with authentic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.',
-    'applicationCategory': 'DesignApplication',
-    'operatingSystem': 'All',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'USD'
-    }
-  },
-  mixFaqSchema
-];
+const pageSchema = buildMixPageSchemas({
+  lang: 'en',
+  url: 'https://pigmentlaboratory.com/en/mix',
+  appName: 'PigmentLab Color Mixer Online & Hex Color Mixer',
+  appDescription: 'Free online color mixer and hex color mixer with realistic pigment physics. Blend colors with authentic subtractive absorption so Blue + Yellow yields Green. Supports OKLCH, RGB, and CMYK.',
+  articleHeadline: 'The Complete Guide to Online Color Mixing & Hex Color Generators',
+  articleDescription: 'Discover authentic subtractive pigment blending using Kubelka-Munk theory, mix custom hex codes, and export production-ready CSS color-mix() code.',
+  currency: 'USD',
+  faqSchema: mixFaqSchema,
+});
 ---
 
 <Layout
@@ -89,6 +87,8 @@ const pageSchema = [
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
           Standard screen tools average RGB channels into dirty brownish-grey. Our <strong class="text-[#171717] dark:text-white">online color mixer</strong> and <strong class="text-[#171717] dark:text-white">color mixer generator</strong> simulates true pigment absorption and light scattering — blend <span class="font-medium text-[#002185] dark:text-[#4d79ff]">Blue</span> and <span class="font-medium text-[#cda000] dark:text-[#ffd233]">Yellow</span> to get vibrant <span class="font-medium text-[#168a35] dark:text-[#47d169]">Green</span> like real physical paint.
         </p>
+
+        <JumpNav items={mixJumpLinks.en} ariaLabel="Color mixer quick navigation" />
       </div>
     </div>
   </section>
@@ -110,7 +110,7 @@ const pageSchema = [
       </div>
 
       <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
-        <section class="space-y-4">
+        <section id="pigment-physics" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             1. Why Use an Online Color Mixer with Real Pigment Physics?
           </h3>
@@ -122,7 +122,7 @@ const pageSchema = [
           </p>
         </section>
 
-        <section class="space-y-4">
+        <section id="mixing-table" class="scroll-mt-20 space-y-4">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             2. Color Mixing Table & Common Recipes
           </h3>
@@ -160,8 +160,10 @@ const pageSchema = [
           </div>
         </section>
 
+        <ModularToolSections tool="mix" lang="en" includeBrownGuide={true} />
+
         <!-- FAQs -->
-        <section class="space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
           <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
             Frequently Asked Questions
           </h3>
@@ -182,5 +184,7 @@ const pageSchema = [
       </div>
     </div>
   </article>
+
+  <ExploreColorTools lang="en" currentPage="mix" />
 </Layout>
 
