@@ -1,83 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- ==================== HOME ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -85,159 +42,75 @@
   <!-- ==================== COLOR WHEEL ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/color-wheel</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/color-wheel"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en/color-wheel</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/color-wheel"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr/color-wheel</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/color-wheel"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt/color-wheel</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/color-wheel"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es/color-wheel</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/color-wheel"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru/color-wheel</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/color-wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/color-wheel"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- ==================== MIXER ==================== -->
+  <!-- ==================== MIX ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/mix</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/mix"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/mix"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/mix"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/mix"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/mix"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/mix"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/mix"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en/mix</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/mix"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/mix"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/mix"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/mix"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/mix"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/mix"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/mix"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr/mix</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/mix"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/mix"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/mix"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/mix"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/mix"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/mix"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/mix"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt/mix</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/mix"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/mix"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/mix"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/mix"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/mix"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/mix"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/mix"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es/mix</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/mix"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/mix"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/mix"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/mix"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/mix"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/mix"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/mix"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru/mix</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/mix"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/mix"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/mix"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/mix"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/mix"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/mix"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/mix"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -245,79 +118,37 @@
   <!-- ==================== ABOUT ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/about</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/about"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en/about</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/about"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr/about</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/about"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt/about</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/about"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es/about</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/about"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru/about</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/about"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/about"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -325,79 +156,37 @@
   <!-- ==================== CONTACT ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/contact"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/contact"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/contact"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/contact"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/contact"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/contact"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/contact"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/contact"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/contact"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/contact"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/contact"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/contact"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -405,79 +194,37 @@
   <!-- ==================== PRIVACY ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/privacy"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/privacy"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/privacy"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/privacy"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/privacy"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/privacy"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/privacy"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/privacy"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/privacy"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/privacy"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/privacy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/privacy"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/privacy"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/privacy"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/privacy"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -485,79 +232,37 @@
   <!-- ==================== TERMS ==================== -->
   <url>
     <loc>https://pigmentlaboratory.com/terms</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/terms"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/terms"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/terms"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/terms"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/en/terms</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/terms"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/terms"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/terms"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/terms"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/fr/terms</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/terms"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/terms"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/terms"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/terms"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/pt/terms</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/terms"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/terms"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/terms"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/terms"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/es/terms</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/terms"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/terms"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/terms"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/terms"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pigmentlaboratory.com/ru/terms</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://pigmentlaboratory.com/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pigmentlaboratory.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://pigmentlaboratory.com/fr/terms"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://pigmentlaboratory.com/pt/terms"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pigmentlaboratory.com/es/terms"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pigmentlaboratory.com/ru/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pigmentlaboratory.com/terms"/>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
