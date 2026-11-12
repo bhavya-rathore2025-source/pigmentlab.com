@@ -76,14 +76,22 @@ export function useTranslatedPath(lang: SupportedLanguage) {
   };
 }
 
+export interface HreflangLink {
+  hreflang: SupportedLanguage | 'x-default';
+  href: string;
+}
+
 /**
  * Generates alternate hreflang tags for all supported languages and x-default.
  */
-export function getHreflangLinks(currentPath: string, siteUrl: string = 'https://pigmentlaboratory.com') {
+export function getHreflangLinks(
+  currentPath: string,
+  siteUrl: string = 'https://pigmentlaboratory.com',
+): HreflangLink[] {
   const clean = getCleanPathname(currentPath);
   const normalizedClean = clean === '/' ? '' : clean;
 
-  const links = (Object.keys(languages) as SupportedLanguage[]).map((locale) => {
+  const links: HreflangLink[] = (Object.keys(languages) as SupportedLanguage[]).map((locale) => {
     let href: string;
     if (!showDefaultLang && locale === defaultLang) {
       href = `${siteUrl}${clean}`;

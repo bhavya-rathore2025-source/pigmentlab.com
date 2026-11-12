@@ -1,0 +1,486 @@
+---
+import type { SupportedLanguage } from '../i18n/ui';
+import { defaultLang } from '../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = defaultLang } = Astro.props;
+
+const FORMSPREE_FORM_ID = 'mbgojzyo';
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
+
+interface SubjectOption {
+  value: string;
+  label: string;
+}
+
+interface ContactFormCopy {
+  heading: string;
+  subheading: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  subjectLabel: string;
+  subjects: SubjectOption[];
+  messageLabel: string;
+  messagePlaceholder: string;
+  validationError: string;
+  networkError: string;
+  submitBtn: string;
+  sendingBtn: string;
+  successTitle: string;
+  successBody: string;
+  resetBtn: string;
+}
+
+const copyByLang: Record<SupportedLanguage, ContactFormCopy> = {
+  de: {
+    heading: 'Nachricht senden',
+    subheading: 'Füllen Sie das Formular aus. Wir melden uns schnellstmöglich bei Ihnen.',
+    nameLabel: 'Ihr Name',
+    namePlaceholder: 'z.B. Anna oder Johannes',
+    emailLabel: 'E-Mail-Adresse',
+    emailPlaceholder: 'name@example.de',
+    subjectLabel: 'Thema / Art der Anfrage',
+    subjects: [
+      { value: 'General Inquiry', label: 'Allgemeine Frage / Auskunft' },
+      { value: 'Pigment Suggestion', label: 'Neues Pigment / Künstlervoreinstellung vorschlagen' },
+      { value: 'Physics Feedback', label: 'Farbwissenschaft & Kubelka-Munk-Optik' },
+      { value: 'Bug Report', label: 'Fehlerbericht / Technisches Problem' },
+      { value: 'Collaboration', label: 'Design-Kooperation / Partnerschaft' },
+    ],
+    messageLabel: 'Ihre Nachricht',
+    messagePlaceholder: 'Ihre Frage, Anregung oder Vorschlag...',
+    validationError: 'Bitte füllen Sie alle Pflichtfelder mit einer gültigen E-Mail-Adresse aus.',
+    networkError: 'Die Nachricht konnte nicht gesendet werden. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder schreiben Sie direkt an contact@pigmentlaboratory.com.',
+    submitBtn: 'Nachricht absenden →',
+    sendingBtn: 'Nachricht wird gesendet...',
+    successTitle: 'Nachricht erhalten!',
+    successBody: 'Vielen Dank für Ihre Nachricht an PigmentLab. Wir werden Ihre Anfrage sorgfältig prüfen und antworten in der Regel innerhalb von 24 bis 48 Stunden.',
+    resetBtn: 'Weitere Nachricht senden',
+  },
+  en: {
+    heading: 'Send Us a Message',
+    subheading: 'Fill out the form below and we will get back to you as soon as possible.',
+    nameLabel: 'Your Name',
+    namePlaceholder: 'e.g. Leonardo or Elena',
+    emailLabel: 'Email Address',
+    emailPlaceholder: 'name@example.com',
+    subjectLabel: 'Topic / Inquiry Type',
+    subjects: [
+      { value: 'General Inquiry', label: 'General Question / Inquiry' },
+      { value: 'Pigment Suggestion', label: 'Suggest a New Pigment / Paint Preset' },
+      { value: 'Physics Feedback', label: 'Color Science & Kubelka-Munk Math' },
+      { value: 'Bug Report', label: 'Bug Report / Technical Issue' },
+      { value: 'Collaboration', label: 'Design Collaboration / Partnership' },
+    ],
+    messageLabel: 'Message',
+    messagePlaceholder: 'Tell us what you have in mind...',
+    validationError: 'Please fill in all required fields with a valid email.',
+    networkError: 'Could not send your message. Please check your connection and try again, or email contact@pigmentlaboratory.com directly.',
+    submitBtn: 'Send Message →',
+    sendingBtn: 'Sending message...',
+    successTitle: 'Message Received!',
+    successBody: 'Thank you for writing to PigmentLab. We have received your message and will review it carefully. We typically respond within 24–48 hours.',
+    resetBtn: 'Send Another Message',
+  },
+  es: {
+    heading: 'Envíanos un Mensaje',
+    subheading: 'Completa el formulario y nos pondremos en contacto contigo lo antes posible.',
+    nameLabel: 'Tu Nombre',
+    namePlaceholder: 'ej. Leonardo o Elena',
+    emailLabel: 'Correo Electrónico',
+    emailPlaceholder: 'nombre@ejemplo.com',
+    subjectLabel: 'Tema / Tipo de Consulta',
+    subjects: [
+      { value: 'General Inquiry', label: 'Consulta / Pregunta General' },
+      { value: 'Pigment Suggestion', label: 'Sugerir un Nuevo Pigmento / Pintura Artística' },
+      { value: 'Physics Feedback', label: 'Ciencia del Color y Física Kubelka-Munk' },
+      { value: 'Bug Report', label: 'Informe de Error / Problema Técnico' },
+      { value: 'Collaboration', label: 'Colaboración de Diseño / Alianzas' },
+    ],
+    messageLabel: 'Mensaje',
+    messagePlaceholder: 'Cuéntanos en qué podemos ayudarte o qué propuesta tienes...',
+    validationError: 'Por favor, completa todos los campos obligatorios con un correo válido.',
+    networkError: 'No se pudo enviar tu mensaje. Comprueba tu conexión e inténtalo de nuevo, o escríbenos directamente a contact@pigmentlaboratory.com.',
+    submitBtn: 'Enviar Mensaje →',
+    sendingBtn: 'Enviando mensaje...',
+    successTitle: '¡Mensaje Recibido!',
+    successBody: 'Gracias por escribir a PigmentLab. Hemos recibido tu mensaje y lo revisaremos con atención. Normalmente respondemos en un plazo de 24 a 48 horas.',
+    resetBtn: 'Enviar Otro Mensaje',
+  },
+  fr: {
+    heading: 'Envoyez-nous un Message',
+    subheading: 'Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.',
+    nameLabel: 'Votre Nom',
+    namePlaceholder: 'ex. Léonard ou Hélène',
+    emailLabel: 'Adresse e-mail',
+    emailPlaceholder: 'nom@exemple.com',
+    subjectLabel: 'Sujet / Type de Demande',
+    subjects: [
+      { value: 'General Inquiry', label: 'Question générale / Demande de renseignements' },
+      { value: 'Pigment Suggestion', label: "Suggérer un nouveau pigment / peinture d'artiste" },
+      { value: 'Physics Feedback', label: 'Science des couleurs & Mathématiques Kubelka-Munk' },
+      { value: 'Bug Report', label: 'Signaler un bug / Problème technique' },
+      { value: 'Collaboration', label: 'Collaboration de design / Partenariat' },
+    ],
+    messageLabel: 'Message',
+    messagePlaceholder: 'Expliquez-nous votre demande, suggestion ou idée...',
+    validationError: 'Veuillez remplir tous les champs obligatoires avec une adresse e-mail valide.',
+    networkError: 'Impossible d’envoyer votre message. Vérifiez votre connexion et réessayez, ou écrivez directement à contact@pigmentlaboratory.com.',
+    submitBtn: 'Envoyer le Message →',
+    sendingBtn: 'Envoi du message...',
+    successTitle: 'Message Reçu !',
+    successBody: "Merci d'avoir contacté PigmentLab. Nous avons bien reçu votre message et l'examinerons attentivement. Nous répondons habituellement sous 24 à 48 heures.",
+    resetBtn: 'Envoyer un Autre Message',
+  },
+  pt: {
+    heading: 'Envie-nos uma Mensagem',
+    subheading: 'Preencha o formulário abaixo e entraremos em contato o mais rápido possível.',
+    nameLabel: 'Seu Nome',
+    namePlaceholder: 'ex. Leonardo ou Clara',
+    emailLabel: 'Endereço de E-mail',
+    emailPlaceholder: 'nome@exemplo.com',
+    subjectLabel: 'Tópico / Tipo de Consulta',
+    subjects: [
+      { value: 'General Inquiry', label: 'Pergunta Geral / Dúvida' },
+      { value: 'Pigment Suggestion', label: 'Sugerir Novo Pigmento / Tinta de Artista' },
+      { value: 'Physics Feedback', label: 'Ciência das Cores & Modelo Kubelka-Munk' },
+      { value: 'Bug Report', label: 'Relatório de Bug / Problema Técnico' },
+      { value: 'Collaboration', label: 'Colaboração de Design / Parcerias' },
+    ],
+    messageLabel: 'Mensagem',
+    messagePlaceholder: 'Conte-nos como podemos ajudar ou qual é a sua proposta...',
+    validationError: 'Por favor, preencha todos os campos obrigatórios com um e-mail válido.',
+    networkError: 'Não foi possível enviar sua mensagem. Verifique sua conexão e tente novamente, ou escreva diretamente para contact@pigmentlaboratory.com.',
+    submitBtn: 'Enviar Mensagem →',
+    sendingBtn: 'Enviando mensagem...',
+    successTitle: 'Mensagem Recebida!',
+    successBody: 'Obrigado por escrever para o PigmentLab. Recebemos sua mensagem e entraremos em contato em breve. Normalmente respondemos em 24 a 48 horas úteis.',
+    resetBtn: 'Enviar Outra Mensagem',
+  },
+  ru: {
+    heading: 'Отправить сообщение',
+    subheading: 'Заполните форму ниже, и мы свяжемся с вами в кратчайшие сроки.',
+    nameLabel: 'Ваше имя',
+    namePlaceholder: 'например, Леонардо или Анна',
+    emailLabel: 'Электронная почта',
+    emailPlaceholder: 'name@example.com',
+    subjectLabel: 'Тема обращения',
+    subjects: [
+      { value: 'General Inquiry', label: 'Общий вопрос / Запрос информации' },
+      { value: 'Pigment Suggestion', label: 'Предложить новый художественный пигмент' },
+      { value: 'Physics Feedback', label: 'Теория цвета и физика Кубелки-Мунка' },
+      { value: 'Bug Report', label: 'Сообщение об ошибке / Техническая проблема' },
+      { value: 'Collaboration', label: 'Дизайн-коллаборация / Партнёрство' },
+    ],
+    messageLabel: 'Сообщение',
+    messagePlaceholder: 'Опишите ваш вопрос, пожелание или предложение...',
+    validationError: 'Пожалуйста, заполните все обязательные поля и укажите корректный email.',
+    networkError: 'Не удалось отправить сообщение. Проверьте подключение и попробуйте снова или напишите напрямую на contact@pigmentlaboratory.com.',
+    submitBtn: 'Отправить сообщение →',
+    sendingBtn: 'Отправка сообщения...',
+    successTitle: 'Сообщение получено!',
+    successBody: 'Спасибо за обращение в PigmentLab. Мы получили ваше сообщение и внимательно его рассмотрим. Обычно мы отвечаем в течение 24–48 часов в рабочие дни.',
+    resetBtn: 'Отправить ещё одно сообщение',
+  },
+};
+
+const t = copyByLang[lang] || copyByLang.en;
+---
+
+<div class="lg:col-span-7 rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 sm:p-8 shadow-xs">
+  <div id="contact-form-container">
+    <h2 class="text-xl font-semibold text-[#171717] dark:text-white">
+      {t.heading}
+    </h2>
+    <p class="mt-1 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+      {t.subheading}
+    </p>
+
+    <form
+      id="contact-form"
+      action={FORMSPREE_ENDPOINT}
+      method="POST"
+      class="mt-6 space-y-4"
+      data-form-id={FORMSPREE_FORM_ID}
+      data-lang={lang}
+      data-sending-text={t.sendingBtn}
+      data-validation-error={t.validationError}
+      data-network-error={t.networkError}
+    >
+      <!-- Honeypot anti-spam field (ignored by humans, catches automated bots) -->
+      <input
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        class="hidden"
+      />
+
+      <!-- Name -->
+      <div>
+        <label for="contact-name" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+          {t.nameLabel} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="contact-name"
+          name="name"
+          required
+          autocomplete="name"
+          data-fs-field
+          placeholder={t.namePlaceholder}
+          class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
+        />
+        <span data-fs-error="name" class="mt-1 text-xs text-red-600 dark:text-red-400"></span>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="contact-email" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+          {t.emailLabel} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          id="contact-email"
+          name="email"
+          required
+          autocomplete="email"
+          data-fs-field
+          placeholder={t.emailPlaceholder}
+          class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
+        />
+        <span data-fs-error="email" class="mt-1 text-xs text-red-600 dark:text-red-400"></span>
+      </div>
+
+      <!-- Inquiry Type -->
+      <div>
+        <label for="contact-subject" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+          {t.subjectLabel}
+        </label>
+        <select
+          id="contact-subject"
+          name="subject"
+          data-fs-field
+          class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
+        >
+          {t.subjects.map((opt) => (
+            <option value={opt.value}>{opt.label}</option>
+          ))}
+        </select>
+        <span data-fs-error="subject" class="mt-1 text-xs text-red-600 dark:text-red-400"></span>
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="contact-message" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
+          {t.messageLabel} <span class="text-red-500">*</span>
+        </label>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows="4"
+          required
+          data-fs-field
+          placeholder={t.messagePlaceholder}
+          class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors resize-none"
+        ></textarea>
+        <span data-fs-error="message" class="mt-1 text-xs text-red-600 dark:text-red-400"></span>
+      </div>
+
+      <!-- Form-level Error Alert -->
+      <div
+        id="form-error-alert"
+        data-fs-error
+        role="alert"
+        aria-live="polite"
+        class="rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 p-3 text-xs text-red-600 dark:text-red-400"
+      ></div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        id="contact-submit-btn"
+        data-fs-submit-btn
+        class="w-full inline-flex h-11 items-center justify-center rounded-xl bg-[#171717] px-6 text-sm font-medium text-white shadow-xs transition-colors hover:bg-black dark:bg-white dark:text-[#171717] dark:hover:bg-[#ededed] disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+      >
+        {t.submitBtn}
+      </button>
+    </form>
+  </div>
+
+  <!-- Success State (Shown after Formspree confirms submission) -->
+  <div id="contact-success-state" class="hidden text-center py-8" aria-live="polite">
+    <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">
+      <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <h3 class="mt-4 text-xl font-bold text-[#171717] dark:text-white">{t.successTitle}</h3>
+    <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed max-w-md mx-auto">
+      {t.successBody}
+    </p>
+    <button
+      id="reset-form-btn"
+      type="button"
+      class="mt-6 inline-flex h-9 items-center justify-center rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-5 text-xs font-medium text-[#171717] dark:text-white hover:bg-[#ebebeb] dark:hover:bg-[#222222] transition-colors cursor-pointer"
+    >
+      {t.resetBtn}
+    </button>
+  </div>
+</div>
+
+<style>
+  [data-fs-error]:not([data-fs-active]) {
+    display: none;
+  }
+
+  [data-fs-error][data-fs-active] {
+    display: block;
+  }
+
+  input[data-fs-field][aria-invalid="true"],
+  textarea[data-fs-field][aria-invalid="true"],
+  select[data-fs-field][aria-invalid="true"] {
+    border-color: #ef4444;
+  }
+
+  :global(html.dark) input[data-fs-field][aria-invalid="true"],
+  :global(html.dark) textarea[data-fs-field][aria-invalid="true"],
+  :global(html.dark) select[data-fs-field][aria-invalid="true"] {
+    border-color: #f87171;
+  }
+</style>
+
+<script>
+  import { initForm } from '@formspree/ajax';
+
+  function setupContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    if (!form || form.dataset.fsInitialized === 'true') return;
+    form.dataset.fsInitialized = 'true';
+
+    const formContainer = document.getElementById('contact-form-container');
+    const successState = document.getElementById('contact-success-state');
+    const errorAlert = document.getElementById('form-error-alert');
+    const resetBtn = document.getElementById('reset-form-btn');
+    const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
+
+    const formId = form.dataset.formId || 'mbgojzyo';
+    const lang = form.dataset.lang || 'de';
+    const sendingText = form.dataset.sendingText || 'Sending...';
+    const validationErrorText =
+      form.dataset.validationError || 'Please fill in all required fields with a valid email.';
+    const networkErrorText =
+      form.dataset.networkError || 'Could not send your message. Please try again.';
+
+    const setFormError = (message: string | null) => {
+      if (!errorAlert) return;
+      if (!message) {
+        errorAlert.removeAttribute('data-fs-active');
+        errorAlert.textContent = '';
+        return;
+      }
+      errorAlert.textContent = message;
+      errorAlert.setAttribute('data-fs-active', '');
+    };
+
+    const clearFieldError = (field: Element) => {
+      field.removeAttribute('aria-invalid');
+      const name = field.getAttribute('name');
+      if (!name) return;
+      const fieldErrorEl = form.querySelector(`[data-fs-error="${CSS.escape(name)}"]`);
+      if (fieldErrorEl) {
+        fieldErrorEl.removeAttribute('data-fs-active');
+        fieldErrorEl.removeAttribute('data-fs-server-content');
+        fieldErrorEl.textContent = '';
+      }
+    };
+
+    form.querySelectorAll('[data-fs-field]').forEach((field) => {
+      field.addEventListener('input', () => clearFieldError(field));
+      field.addEventListener('change', () => clearFieldError(field));
+    });
+
+    // Guard against whitespace-only submissions before @formspree/ajax handles the submit event
+    form.addEventListener('submit', (e) => {
+      const nameInput = document.getElementById('contact-name') as HTMLInputElement | null;
+      const emailInput = document.getElementById('contact-email') as HTMLInputElement | null;
+      const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+
+      const nameVal = nameInput?.value.trim() ?? '';
+      const emailVal = emailInput?.value.trim() ?? '';
+      const messageVal = messageInput?.value.trim() ?? '';
+
+      if (!nameVal || !emailVal || !messageVal) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        if (nameInput && !nameVal) nameInput.setAttribute('aria-invalid', 'true');
+        if (emailInput && !emailVal) emailInput.setAttribute('aria-invalid', 'true');
+        if (messageInput && !messageVal) messageInput.setAttribute('aria-invalid', 'true');
+
+        setFormError(validationErrorText);
+      }
+    });
+
+    initForm({
+      formElement: form,
+      formId,
+      useDefaultStyles: false,
+      data: {
+        language: lang,
+        page_url: () => window.location.href,
+        _subject: () => {
+          const subjectSelect = document.getElementById('contact-subject') as HTMLSelectElement | null;
+          const nameInput = document.getElementById('contact-name') as HTMLInputElement | null;
+          const topic = subjectSelect?.value?.trim();
+          const sender = nameInput?.value.trim();
+          if (topic && sender) return `[PigmentLab] ${topic} — ${sender}`;
+          if (topic) return `[PigmentLab] ${topic}`;
+          return '[PigmentLab] Contact Inquiry';
+        },
+      },
+      onSubmit: () => {
+        setFormError(null);
+        if (submitBtn) {
+          submitBtn.textContent = sendingText;
+        }
+      },
+      renderFormError: (_context, message) => {
+        if (!message) {
+          setFormError(null);
+          return;
+        }
+        const isGenericNetworkErr = /failed to fetch|networkerror|load failed|unexpected response/i.test(
+          message
+        );
+        setFormError(isGenericNetworkErr ? networkErrorText : message);
+      },
+      renderSuccess: () => {
+        // Handled by custom localized success card in onSuccess
+      },
+      onSuccess: ({ form: submittedForm }) => {
+        setFormError(null);
+        formContainer?.classList.add('hidden');
+        successState?.classList.remove('hidden');
+        submittedForm.reset();
+      },
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      setFormError(null);
+      form.querySelectorAll('[data-fs-field]').forEach((field) => clearFieldError(field));
+      successState?.classList.add('hidden');
+      formContainer?.classList.remove('hidden');
+    });
+  }
+
+  setupContactForm();
+</script>
+

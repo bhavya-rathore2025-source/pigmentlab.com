@@ -24,5 +24,12 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        // @formspree/ajax's package.json points "browser" to its UMD/global script;
+        // alias to the ESM bundle so Vite tree-shakes and imports initForm properly.
+        '@formspree/ajax': '@formspree/ajax/dist/index.mjs',
+      },
+    },
   },
 });

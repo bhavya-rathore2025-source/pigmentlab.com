@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ContactFormCard from '../../components/ContactFormCard.astro';
 
 const contactSchema = {
   '@context': 'https://schema.org',
@@ -48,114 +49,7 @@ const contactSchema = {
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
         <!-- Form Column (7 cols) -->
-        <div class="lg:col-span-7 rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 sm:p-8 shadow-xs">
-          <div id="contact-form-container">
-            <h2 class="text-xl font-semibold text-[#171717] dark:text-white">
-              Отправить сообщение
-            </h2>
-            <p class="mt-1 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
-              Заполните форму ниже, и мы свяжемся с вами в кратчайшие сроки.
-            </p>
-
-            <form id="contact-form" class="mt-6 space-y-4">
-              <!-- Name -->
-              <div>
-                <label for="contact-name" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
-                  Ваше имя <span class="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="contact-name"
-                  name="name"
-                  required
-                  placeholder="например, Леонардо или Анна"
-                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
-                />
-              </div>
-
-              <!-- Email -->
-              <div>
-                <label for="contact-email" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
-                  Электронная почта <span class="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  name="email"
-                  required
-                  placeholder="name@example.com"
-                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
-                />
-              </div>
-
-              <!-- Inquiry Type -->
-              <div>
-                <label for="contact-subject" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
-                  Тема обращения
-                </label>
-                <select
-                  id="contact-subject"
-                  name="subject"
-                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors"
-                >
-                  <option value="General Inquiry">Общий вопрос / Запрос информации</option>
-                  <option value="Pigment Suggestion">Предложить новый художественный пигмент</option>
-                  <option value="Physics Feedback">Теория цвета и физика Кубелки-Мунка</option>
-                  <option value="Bug Report">Сообщение об ошибке / Техническая проблема</option>
-                  <option value="Collaboration">Дизайн-коллаборация / Партнёрство</option>
-                </select>
-              </div>
-
-              <!-- Message -->
-              <div>
-                <label for="contact-message" class="block text-xs font-mono font-medium text-[#171717] dark:text-[#ededed] uppercase tracking-wider">
-                  Сообщение <span class="text-red-500">*</span>
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows="4"
-                  required
-                  placeholder="Опишите ваш вопрос, пожелание или предложение..."
-                  class="mt-1.5 w-full rounded-xl border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-3.5 py-2.5 text-sm text-[#171717] dark:text-white placeholder-[#8f8f8f] focus:border-[#171717] focus:outline-none dark:focus:border-white transition-colors resize-none"
-                ></textarea>
-              </div>
-
-              <div id="form-error-alert" class="hidden rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 p-3 text-xs text-red-600 dark:text-red-400">
-                Пожалуйста, заполните все обязательные поля и укажите корректный email.
-              </div>
-
-              <!-- Submit Button -->
-              <button
-                type="submit"
-                id="contact-submit-btn"
-                class="w-full inline-flex h-11 items-center justify-center rounded-xl bg-[#171717] px-6 text-sm font-medium text-white shadow-xs transition-colors hover:bg-black dark:bg-white dark:text-[#171717] dark:hover:bg-[#ededed] cursor-pointer"
-              >
-                Отправить сообщение →
-              </button>
-            </form>
-          </div>
-
-          <!-- Success State (Shown after submit) -->
-          <div id="contact-success-state" class="hidden text-center py-8">
-            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">
-              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 class="mt-4 text-xl font-bold text-[#171717] dark:text-white">Сообщение получено!</h3>
-            <p class="mt-2 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed max-w-md mx-auto">
-              Спасибо за обращение в PigmentLab. Мы получили ваше сообщение и внимательно его рассмотрим. Обычно мы отвечаем в течение 24–48 часов в рабочие дни.
-            </p>
-            <button
-              id="reset-form-btn"
-              type="button"
-              class="mt-6 inline-flex h-9 items-center justify-center rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#161616] px-5 text-xs font-medium text-[#171717] dark:text-white hover:bg-[#ebebeb] dark:hover:bg-[#222222] transition-colors cursor-pointer"
-            >
-              Отправить ещё одно сообщение
-            </button>
-          </div>
-        </div>
+        <ContactFormCard lang="ru" />
 
         <!-- Details Column (5 cols) -->
         <div class="lg:col-span-5 space-y-6">
@@ -316,51 +210,4 @@ const contactSchema = {
     </div>
   </section>
 
-  <!-- Client-side Form Handling Script -->
-  <script is:inline>
-    (function () {
-      const form = document.getElementById('contact-form');
-      const formContainer = document.getElementById('contact-form-container');
-      const successState = document.getElementById('contact-success-state');
-      const errorAlert = document.getElementById('form-error-alert');
-      const resetBtn = document.getElementById('reset-form-btn');
-      const submitBtn = document.getElementById('contact-submit-btn');
-
-      if (!form) return;
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        errorAlert?.classList.add('hidden');
-
-        const name = document.getElementById('contact-name')?.value.trim();
-        const email = document.getElementById('contact-email')?.value.trim();
-        const message = document.getElementById('contact-message')?.value.trim();
-
-        if (!name || !email || !message) {
-          errorAlert?.classList.remove('hidden');
-          return;
-        }
-
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Отправка сообщения...';
-        }
-
-        setTimeout(() => {
-          formContainer?.classList.add('hidden');
-          successState?.classList.remove('hidden');
-          form.reset();
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Отправить сообщение →';
-          }
-        }, 600);
-      });
-
-      resetBtn?.addEventListener('click', function () {
-        successState?.classList.add('hidden');
-        formContainer?.classList.remove('hidden');
-      });
-    })();
-  </script>
 </Layout>
