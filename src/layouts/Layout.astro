@@ -7,6 +7,7 @@ import {
   getHreflangLinks,
   getOgLocale,
   getAlternateOgLocales,
+  normalizePathname,
   type SupportedLanguage,
   defaultLang,
 } from "../i18n/utils";
@@ -45,13 +46,9 @@ const siteUrl = Astro.site
   ? Astro.site.toString().replace(/\/$/, "")
   : "https://pigmentlaboratory.com";
 
-// If canonicalUrl not explicitly supplied, compute based on current URL path
-const activePathname = currentPath || Astro.url.pathname;
-const normalizedPath = activePathname.endsWith("/") && activePathname.length > 1
-  ? activePathname.slice(0, -1)
-  : activePathname;
-const resolvedCanonical =
-  canonicalUrl || `${siteUrl}${normalizedPath === "/" ? "" : normalizedPath}`;
+// If canonicalUrl not explicitly supplied, compute based on normalized URL path
+const activePathname = normalizePathname(currentPath || Astro.url.pathname);
+const resolvedCanonical = canonicalUrl || `${siteUrl}${activePathname}`;
 
 const resolvedOgImage = ogImage.startsWith("http")
   ? ogImage
@@ -65,7 +62,7 @@ const defaultSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "PigmentLab",
-  url: siteUrl,
+  url: `${siteUrl}/`,
   description: description,
   inLanguage: resolvedLang,
   potentialAction: {
@@ -81,7 +78,9 @@ const baseSchemas = schema
     : [schema]
   : [defaultSchema];
 
-const hasBreadcrumb = baseSchemas.some((item) => item?.["@type"] === "BreadcrumbList");
+const hasBreadcrumb = baseSchemas.some(
+  (item) => item?.["@type"] === "BreadcrumbList",
+);
 const schemaList =
   !noindex && !hasBreadcrumb
     ? [

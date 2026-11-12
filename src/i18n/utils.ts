@@ -30,12 +30,31 @@ export function useTranslations(lang: SupportedLanguage) {
 }
 
 /**
+ * Normalizes a URL pathname to slashless canonical form (keeping '/' for root)
+ * and strips build-time '.html' or '/index.html' suffixes.
+ */
+export function normalizePathname(pathname: string): string {
+  if (!pathname || pathname === '/') return '/';
+  let normalized = pathname.split(/[?#]/)[0] || '/';
+  if (normalized.endsWith('/index.html')) {
+    normalized = normalized.slice(0, -'/index.html'.length) || '/';
+  } else if (normalized.endsWith('.html')) {
+    normalized = normalized.slice(0, -'.html'.length) || '/';
+  }
+  if (normalized.endsWith('/') && normalized.length > 1) {
+    normalized = normalized.slice(0, -1);
+  }
+  return normalized.startsWith('/') ? normalized : `/${normalized}`;
+}
+
+/**
  * Strips the language prefix from a pathname, returning the bare canonical path.
- * e.g. '/en/mix' -> '/mix', '/fr/' -> '/', '/color-wheel' -> '/color-wheel'
+ * e.g. '/en/mix' -> '/mix', '/fr/' -> '/', '/color-wheel.html' -> '/color-wheel'
  */
 export function getCleanPathname(pathname: string): string {
-  if (!pathname || pathname === '/') return '/';
-  const segments = pathname.split('/').filter(Boolean);
+  const normalized = normalizePathname(pathname);
+  if (normalized === '/') return '/';
+  const segments = normalized.split('/').filter(Boolean);
   if (segments.length > 0 && segments[0] in languages) {
     segments.shift();
   }

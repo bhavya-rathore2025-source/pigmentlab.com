@@ -5,6 +5,9 @@ dist/
 .astro/
 worker-configuration.d.ts
 
+# wrangler local dev state
+.wrangler/
+
 # dependencies
 node_modules/
 
