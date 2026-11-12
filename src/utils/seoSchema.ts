@@ -379,3 +379,228 @@ export function buildAboutPageSchemas(params: {
   ];
 }
 
+export const SUITE_FEATURE_LISTS: Record<SupportedLanguage, string[]> = {
+  de: [
+    'Subtraktive Kubelka-Munk Farb- und Pigmentoptik (RYB)',
+    'Johannes Itten 12-teiliger Bauhaus Künstler-Farbkreis',
+    'Moderne Web-Farbarchitektur mit W3C CSS color-mix() und OKLCH',
+    'Echtzeit-Validierung von WCAG 2.1 Kontrastverhältnissen (AA/AAA)',
+    'Simulation von 4 Formen der Farbenblindheit (CVD)',
+    'Export in HEX, RGB, HSL, CMYK, OKLCH und Tailwind CSS v4',
+  ],
+  en: [
+    'Kubelka-Munk subtractive pigment and paint optics (RYB)',
+    'Classical 12-hue Johannes Itten Bauhaus artist color wheel',
+    'Modern web color architecture with W3C CSS color-mix() and OKLCH',
+    'Real-time WCAG 2.1 AA/AAA contrast validation',
+    'Color Vision Deficiency (CVD) simulation for 4 impairment types',
+    'Production export for HEX, RGB, HSL, CMYK, OKLCH, and Tailwind CSS v4',
+  ],
+  fr: [
+    'Optique soustractive des pigments Kubelka-Munk (RYB)',
+    'Cercle chromatique classique à 12 teintes de Johannes Itten (Bauhaus)',
+    'Architecture couleur Web moderne avec W3C CSS color-mix() et OKLCH',
+    'Validation du contraste WCAG 2.1 AA/AAA en temps réel',
+    'Simulation de 4 types de daltonisme (CVD)',
+    'Export en HEX, RGB, HSL, CMYK, OKLCH et Tailwind CSS v4',
+  ],
+  pt: [
+    'Óptica subtrativa de pigmentos Kubelka-Munk (RYB)',
+    'Círculo cromático clássico de 12 matizes de Johannes Itten (Bauhaus)',
+    'Arquitetura moderna de cores Web com W3C CSS color-mix() e OKLCH',
+    'Validação de contraste WCAG 2.1 AA/AAA em tempo real',
+    'Simulação de 4 tipos de daltonismo (CVD)',
+    'Exportação em HEX, RGB, HSL, CMYK, OKLCH e Tailwind CSS v4',
+  ],
+  es: [
+    'Óptica sustractiva de pigmentos Kubelka-Munk (RYB)',
+    'Círculo cromático clásico de 12 tonos de Johannes Itten (Bauhaus)',
+    'Arquitectura moderna de color Web con W3C CSS color-mix() y OKLCH',
+    'Validación de contraste WCAG 2.1 AA/AAA en tiempo real',
+    'Simulación de 4 tipos de daltonismo (CVD)',
+    'Exportación a HEX, RGB, HSL, CMYK, OKLCH y Tailwind CSS v4',
+  ],
+  ru: [
+    'Субтрактивная оптика пигментов Кубелки-Мунка (RYB)',
+    'Классический 12-частный цветовой круг Иоганнеса Иттена (Баухаус)',
+    'Современная веб-архитектура цвета с W3C CSS color-mix() и OKLCH',
+    'Проверка коэффициентов контрастности WCAG 2.1 AA/AAA в реальном времени',
+    'Симуляция 4 типов нарушения цветового зрения (дальтонизм)',
+    'Экспорт в HEX, RGB, HSL, CMYK, OKLCH и Tailwind CSS v4',
+  ],
+};
+
+export function buildHomePageSchemas(params: {
+  lang: SupportedLanguage;
+  siteUrl: string;
+  homeUrl: string;
+  mixUrl: string;
+  wheelUrl: string;
+  title: string;
+  description: string;
+  currency?: string;
+}): Array<Record<string, any>> {
+  const { lang, siteUrl, homeUrl, mixUrl, wheelUrl, description, currency = 'EUR' } = params;
+
+  const itemListsCopy: Record<
+    SupportedLanguage,
+    {
+      listName: string;
+      listDesc: string;
+      mixName: string;
+      mixDesc: string;
+      wheelName: string;
+      wheelDesc: string;
+    }
+  > = {
+    de: {
+      listName: 'PigmentLab Interaktive Farbwerkzeuge & Farbwissenschaft Suite',
+      listDesc:
+        'Kostenlose physikalische Werkzeuge für Farbmischung nach Kubelka-Munk und Farbharmonien nach Johannes Itten.',
+      mixName: 'Farben Mischen Simulator (Pigment Mixer)',
+      mixDesc:
+        'Interaktiver Farbmischer mit echter physikalischer Pigmentoptik, bis zu 6 Farb-Slots und CSS color-mix() Export.',
+      wheelName: 'Farbkreis nach Johannes Itten (Bauhaus Farbrad)',
+      wheelDesc:
+        '12-teiliges Künstler-Farbrad mit Komplementärfarben, 6 Harmonie-Modi und WCAG 2.1 Kontrastprüfung.',
+    },
+    en: {
+      listName: 'PigmentLab Interactive Color Science & Theory Suite',
+      listDesc:
+        'Free physics-based tools for Kubelka-Munk pigment blending and Johannes Itten Bauhaus color harmonies.',
+      mixName: 'Subtractive Paint Mixer Studio',
+      mixDesc:
+        'Interactive color mixer with authentic subtractive pigment optics, up to 6 mixing slots, and CSS color-mix() export.',
+      wheelName: 'Johannes Itten Bauhaus Color Wheel Studio',
+      wheelDesc:
+        'Classical 12-hue artist color wheel with complementary palettes, 6 harmony modes, and WCAG 2.1 contrast matrix.',
+    },
+    fr: {
+      listName: 'Suite d\'Outils Chromatiques Interactifs PigmentLab',
+      listDesc:
+        'Outils physiques gratuits pour le mélange de pigments Kubelka-Munk et les harmonies de couleurs Bauhaus de Johannes Itten.',
+      mixName: 'Studio de Mélange de Pigments',
+      mixDesc:
+        'Mélangeur de couleurs interactif avec optique soustractive réelle, jusqu’à 6 nuances et export CSS color-mix().',
+      wheelName: 'Cercle Chromatique Johannes Itten (Bauhaus)',
+      wheelDesc:
+        'Roue artistique classique à 12 teintes avec palettes complémentaires, 6 modes d\'harmonie et validation WCAG 2.1.',
+    },
+    pt: {
+      listName: 'Suíte de Ferramentas Interativas de Cores PigmentLab',
+      listDesc:
+        'Ferramentas físicas gratuitas para mistura de pigmentos Kubelka-Munk e harmonias de cores Bauhaus de Johannes Itten.',
+      mixName: 'Estúdio de Mistura de Pigmentos',
+      mixDesc:
+        'Misturador de cores interativo com física subtrativa real, até 6 slots e exportação CSS color-mix().',
+      wheelName: 'Círculo Cromático Johannes Itten (Bauhaus)',
+      wheelDesc:
+        'Círculo artístico clássico de 12 matizes com paletas complementares, 6 modos de harmonia e matriz WCAG 2.1.',
+    },
+    es: {
+      listName: 'Suite de Herramientas Interactivas de Color PigmentLab',
+      listDesc:
+        'Herramientas físicas gratuitas para mezcla de pigmentos Kubelka-Munk y armonías de color Bauhaus de Johannes Itten.',
+      mixName: 'Estudio de Mezcla de Pigmentos',
+      mixDesc:
+        'Mezclador de color interactivo con óptica física sustractiva, hasta 6 ranuras y exportación CSS color-mix().',
+      wheelName: 'Círculo Cromático Johannes Itten (Bauhaus)',
+      wheelDesc:
+        'Círculo artístico clásico de 12 tonos con paletas complementarias, 6 modos de armonía y validación WCAG 2.1.',
+    },
+    ru: {
+      listName: 'Интерактивный комплекс инструментов колористики PigmentLab',
+      listDesc:
+        'Бесплатные физические инструменты для смешивания пигментов Кубелки-Мунка и цветовых гармоний Баухауса Иоганнеса Иттена.',
+      mixName: 'Студия смешивания пигментов',
+      mixDesc:
+        'Интерактивный симулятор смешивания красок с реальной субтрактивной физикой и генератором CSS color-mix().',
+      wheelName: 'Цветовой круг Иоганнеса Иттена (Баухаус)',
+      wheelDesc:
+        'Классический 12-частный круг с комплементарными палитрами, 6 схемами гармонии и проверкой WCAG 2.1.',
+    },
+  };
+
+  const c = itemListsCopy[lang] || itemListsCopy.en;
+
+  const webSiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'PigmentLab',
+    url: homeUrl,
+    description,
+    inLanguage: lang,
+    publisher: {
+      '@type': 'Organization',
+      name: 'PigmentLab',
+      url: siteUrl,
+      logo: `${siteUrl}/favicon.svg`,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${siteUrl}/mix?color={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'PigmentLab',
+    url: siteUrl,
+    logo: `${siteUrl}/favicon.svg`,
+    description,
+    knowsAbout: [
+      'Subtractive Color Mixing',
+      'Kubelka-Munk Theory',
+      'Johannes Itten Bauhaus Color Theory',
+      'OKLCH Perceptual Color Space',
+      'WCAG 2.1 Accessibility',
+    ],
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: c.listName,
+    description: c.listDesc,
+    numberOfItems: 2,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: c.mixName,
+        description: c.mixDesc,
+        url: mixUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: c.wheelName,
+        description: c.wheelDesc,
+        url: wheelUrl,
+      },
+    ],
+  };
+
+  const softwareAppSchema = {
+    '@context': 'https://schema.org',
+    '@type': ['WebApplication', 'SoftwareApplication'],
+    name: 'PigmentLab',
+    url: homeUrl,
+    description,
+    inLanguage: lang,
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any (Web Browser)',
+    browserRequirements: 'Requires JavaScript. Requires HTML5 Canvas.',
+    featureList: SUITE_FEATURE_LISTS[lang] || SUITE_FEATURE_LISTS.en,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: currency,
+    },
+  };
+
+  return [webSiteSchema, organizationSchema, itemListSchema, softwareAppSchema];
+}
+

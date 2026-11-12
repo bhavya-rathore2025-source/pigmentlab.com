@@ -8,6 +8,7 @@ import {
   getOgLocale,
   getAlternateOgLocales,
   normalizePathname,
+  getCleanPathname,
   type SupportedLanguage,
   defaultLang,
 } from "../i18n/utils";
@@ -78,11 +79,12 @@ const baseSchemas = schema
     : [schema]
   : [defaultSchema];
 
+const cleanPath = getCleanPathname(activePathname);
 const hasBreadcrumb = baseSchemas.some(
   (item) => item?.["@type"] === "BreadcrumbList",
 );
 const schemaList =
-  !noindex && !hasBreadcrumb
+  !noindex && !hasBreadcrumb && cleanPath !== "/"
     ? [
         ...baseSchemas,
         buildBreadcrumbSchema({

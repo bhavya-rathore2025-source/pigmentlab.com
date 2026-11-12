@@ -104,10 +104,10 @@ export function getHreflangLinks(
     };
   });
 
-  // x-default points to German primary language at root
+  // x-default points to English fallback for global visitors outside supported locale regions
   links.push({
     hreflang: 'x-default',
-    href: `${siteUrl}${clean}`,
+    href: `${siteUrl}/en${normalizedClean}`,
   });
 
   return links;

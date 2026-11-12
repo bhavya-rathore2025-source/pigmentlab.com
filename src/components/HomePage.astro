@@ -1,0 +1,356 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ExploreColorTools from './ExploreColorTools.astro';
+import { homepageData } from '../i18n/homepageData';
+import {
+  useTranslatedPath,
+  defaultLang,
+  type SupportedLanguage,
+} from '../i18n/utils';
+import { buildHomePageSchemas } from '../utils/seoSchema';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = defaultLang } = Astro.props;
+const resolvedLang: SupportedLanguage = lang;
+const data = homepageData[resolvedLang] || homepageData.de;
+const translatePath = useTranslatedPath(resolvedLang);
+
+const siteUrl = Astro.site
+  ? Astro.site.toString().replace(/\/$/, '')
+  : 'https://pigmentlaboratory.com';
+
+const homePath = translatePath('/');
+const homeUrl = `${siteUrl}${homePath === '/' ? '/' : homePath}`;
+const mixUrl = `${siteUrl}${translatePath('/mix')}`;
+const wheelUrl = `${siteUrl}${translatePath('/color-wheel')}`;
+
+const schemas = buildHomePageSchemas({
+  lang: resolvedLang,
+  siteUrl,
+  homeUrl,
+  mixUrl,
+  wheelUrl,
+  title: data.metaTitle,
+  description: data.metaDescription,
+  currency: resolvedLang === 'en' ? 'USD' : 'EUR',
+});
+---
+
+<Layout
+  title={data.metaTitle}
+  description={data.metaDescription}
+  keywords={data.metaKeywords}
+  currentPath={homePath}
+  lang={resolvedLang}
+  schema={schemas}
+>
+  <!-- Hero Section -->
+  <section
+    class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 overflow-hidden"
+  >
+    <!-- Geist Mesh Gradient Ambient Bloom -->
+    <div
+      class="pointer-events-none absolute inset-0 overflow-hidden opacity-35 dark:opacity-25"
+    >
+      <div
+        class="absolute -top-[25%] left-[15%] h-[420px] w-[600px] rounded-full bg-gradient-to-tr from-[#007cf0]/35 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -top-[20%] right-[10%] h-[380px] w-[500px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/35 to-[#ff4d4d]/30 blur-3xl"
+      >
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <!-- Status Pill -->
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"
+          ></span>
+          <span>{data.heroEyebrow}</span>
+        </div>
+
+        <h1
+          class="mt-5 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]"
+        >
+          {data.heroHeading}
+        </h1>
+
+        <p
+          class="mt-4 text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.heroParagraph}
+        </p>
+
+        <!-- Primary Dual-Tool Action Cards -->
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 text-left">
+          <!-- Card 1: Mixing Studio -->
+          <a
+            href={translatePath('/mix')}
+            class="group relative flex flex-col justify-between rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#111111] p-6 transition-all duration-200 hover:border-[#171717] dark:hover:border-white hover:shadow-lg dark:hover:shadow-2xl/40"
+          >
+            <div>
+              <div class="flex items-center justify-between">
+                <span
+                  class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#4d4d4d] dark:text-[#a1a1aa]"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+                  {data.toolMix.badge}
+                </span>
+                <span
+                  class="text-xs font-mono text-[#8f8f8f] group-hover:translate-x-0.5 transition-transform"
+                  >→</span
+                >
+              </div>
+              <h2
+                class="mt-4 text-xl font-semibold tracking-tight text-[#171717] dark:text-white"
+              >
+                {data.toolMix.title}
+              </h2>
+              <p
+                class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
+              >
+                {data.toolMix.description}
+              </p>
+            </div>
+            <div
+              class="mt-6 flex items-center gap-2 pt-4 border-t border-[#ebebeb] dark:border-[#222222]"
+            >
+              <span
+                class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline"
+                >{data.toolMix.cta}</span
+              >
+              <span class="text-xs text-[#8f8f8f]">{data.toolMix.subtext}</span>
+            </div>
+          </a>
+
+          <!-- Card 2: Artist Wheel Studio -->
+          <a
+            href={translatePath('/color-wheel')}
+            class="group relative flex flex-col justify-between rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#111111] p-6 transition-all duration-200 hover:border-[#171717] dark:hover:border-white hover:shadow-lg dark:hover:shadow-2xl/40"
+          >
+            <div>
+              <div class="flex items-center justify-between">
+                <span
+                  class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#4d4d4d] dark:text-[#a1a1aa]"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  {data.toolWheel.badge}
+                </span>
+                <span
+                  class="text-xs font-mono text-[#8f8f8f] group-hover:translate-x-0.5 transition-transform"
+                  >→</span
+                >
+              </div>
+              <h2
+                class="mt-4 text-xl font-semibold tracking-tight text-[#171717] dark:text-white"
+              >
+                {data.toolWheel.title}
+              </h2>
+              <p
+                class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed"
+              >
+                {data.toolWheel.description}
+              </p>
+            </div>
+            <div
+              class="mt-6 flex items-center gap-2 pt-4 border-t border-[#ebebeb] dark:border-[#222222]"
+            >
+              <span
+                class="text-xs font-semibold text-[#171717] dark:text-white group-hover:underline"
+                >{data.toolWheel.cta}</span
+              >
+              <span class="text-xs text-[#8f8f8f]">{data.toolWheel.subtext}</span
+              >
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Why Subtractive Pigment Physics Beats Digital RGB Mixing -->
+  <section
+    class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-16 sm:py-20"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <span
+          class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#141414] px-3 py-0.5 text-[11px] font-mono font-medium uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.comparison.eyebrow}
+        </span>
+        <h2
+          class="mt-4 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl lg:text-4xl"
+        >
+          {data.comparison.heading}
+        </h2>
+        <p
+          class="mt-3 text-sm sm:text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.comparison.subheading}
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <!-- Card A: Digital RGB Screen Mixing -->
+        <div
+          class="flex flex-col justify-between rounded-2xl border border-red-200 dark:border-red-950/50 bg-white dark:bg-[#0c0c0c] p-6 sm:p-8 shadow-xs"
+        >
+          <div>
+            <div
+              class="inline-flex items-center gap-2 rounded-full bg-red-50 dark:bg-red-950/30 px-3 py-1 font-mono text-xs font-medium text-red-600 dark:text-red-400"
+            >
+              <span>{data.comparison.rgbCard.badge}</span>
+            </div>
+            <h3
+              class="mt-4 text-xl font-semibold text-[#171717] dark:text-white"
+            >
+              {data.comparison.rgbCard.title}
+            </h3>
+            <p
+              class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]"
+            >
+              {data.comparison.rgbCard.body}
+            </p>
+          </div>
+          <div
+            class="mt-6 flex items-center gap-3 pt-4 border-t border-red-100 dark:border-red-950/40 text-xs font-mono text-[#8f8f8f]"
+          >
+            <span class="inline-block h-2 w-2 rounded-full bg-red-500"></span>
+            <span>Blue + Yellow = Brown-Grey (sRGB Average)</span>
+          </div>
+        </div>
+
+        <!-- Card B: Subtractive Pigment Optics -->
+        <div
+          class="flex flex-col justify-between rounded-2xl border border-emerald-200 dark:border-emerald-950/50 bg-white dark:bg-[#0c0c0c] p-6 sm:p-8 shadow-xs"
+        >
+          <div>
+            <div
+              class="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-3 py-1 font-mono text-xs font-medium text-emerald-600 dark:text-emerald-400"
+            >
+              <span>{data.comparison.kmCard.badge}</span>
+            </div>
+            <h3
+              class="mt-4 text-xl font-semibold text-[#171717] dark:text-white"
+            >
+              {data.comparison.kmCard.title}
+            </h3>
+            <p
+              class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]"
+            >
+              {data.comparison.kmCard.body}
+            </p>
+          </div>
+          <div
+            class="mt-6 flex items-center gap-3 pt-4 border-t border-emerald-100 dark:border-emerald-950/40 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-medium"
+          >
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"
+            ></span>
+            <span>Blue + Yellow = Emerald Green (Spectral Absorption)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Four Pillars / Key Features -->
+  <section
+    class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-20"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <span
+          class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3 py-0.5 text-[11px] font-mono font-medium uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.features.eyebrow}
+        </span>
+        <h2
+          class="mt-4 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl lg:text-4xl"
+        >
+          {data.features.heading}
+        </h2>
+        <p
+          class="mt-3 text-sm sm:text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.features.subheading}
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          data.features.cards.map((card) => (
+            <div class="flex flex-col justify-between rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#111111] p-6 shadow-2xs hover:border-[#171717] dark:hover:border-white transition-colors duration-200">
+              <div>
+                <span class="inline-block font-mono text-[11px] uppercase tracking-wider text-[#0070f3] dark:text-[#38bdf8]">
+                  {card.badge}
+                </span>
+                <h3 class="mt-3 text-base font-semibold tracking-tight text-[#171717] dark:text-white">
+                  {card.title}
+                </h3>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Supported Color Standards & Scientific Frameworks -->
+  <section
+    class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-16 sm:py-20"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <span
+          class="inline-flex items-center gap-1.5 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-white dark:bg-[#141414] px-3 py-0.5 text-[11px] font-mono font-medium uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.standards.eyebrow}
+        </span>
+        <h2
+          class="mt-4 text-2xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-3xl lg:text-4xl"
+        >
+          {data.standards.heading}
+        </h2>
+        <p
+          class="mt-3 text-sm sm:text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]"
+        >
+          {data.standards.subheading}
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          data.standards.items.map((item) => (
+            <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-5 shadow-2xs">
+              <div class="flex items-center justify-between gap-2">
+                <span class="inline-block rounded-md bg-[#f2f2f2] dark:bg-[#1a1a1a] px-2 py-0.5 font-mono text-[10px] font-medium text-[#4d4d4d] dark:text-[#a1a1aa]">
+                  {item.tag}
+                </span>
+              </div>
+              <h3 class="mt-3 text-sm font-semibold text-[#171717] dark:text-white">
+                {item.title}
+              </h3>
+              <p class="mt-1.5 text-xs leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Companion Tools Navigation -->
+  <ExploreColorTools lang={resolvedLang} currentPage="home" />
+</Layout>
