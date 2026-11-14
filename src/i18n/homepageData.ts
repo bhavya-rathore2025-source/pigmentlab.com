@@ -64,8 +64,8 @@ export interface HomepageData {
 
 export const homepageData: Record<SupportedLanguage, HomepageData> = {
   de: {
-    metaTitle: 'PigmentLab — Subtraktive Farbphysik & Johannes Itten Farblehre Suite',
-    metaDescription: 'Online-Farbplattform mit echter subtraktiver Pigmentabsorption nach Kubelka-Munk und Johannes Itten Bauhaus Farbkreis. Kostenlose wissenschaftliche Farbwerkzeuge.',
+    metaTitle: 'PigmentLab — Subtraktive Farbphysik & Johannes Itten Farblehre',
+    metaDescription: 'Online-Farbplattform mit echter subtraktiver Pigmentabsorption nach Kubelka-Munk und Johannes Itten Farblehre. Kostenlose wissenschaftliche Farbwerkzeuge.',
     metaKeywords: 'pigmentlab, pigment lab, subtraktive farbphysik, farbwissenschaft suite, pigmentoptik, farblabor online, kubelka munk simulator, itten bauhaus farbtheorie, farbwerkzeuge',
     heroEyebrow: 'Optische subtraktive Farbphysik & Bauhaus Farblehre',
     heroHeading: 'Farbwissenschaft mit echten physikalischen Pigmenten',
@@ -155,7 +155,7 @@ export const homepageData: Record<SupportedLanguage, HomepageData> = {
     },
   },
   en: {
-    metaTitle: 'PigmentLab — Subtractive Color Physics & Johannes Itten Theory Suite',
+    metaTitle: 'PigmentLab — Subtractive Color Physics & Johannes Itten Theory',
     metaDescription: 'Online color science suite modeling physical Kubelka-Munk pigment absorption and Johannes Itten Bauhaus color theory. Free optical tools for creators.',
     metaKeywords: 'pigmentlab, pigment lab, subtractive color physics, color science suite, pigment optics, kubelka munk simulator, itten bauhaus color theory, color suite',
     heroEyebrow: 'Optical Subtractive Science & Classical Theory',
@@ -246,8 +246,8 @@ export const homepageData: Record<SupportedLanguage, HomepageData> = {
     },
   },
   fr: {
-    metaTitle: 'PigmentLab — Physique des Couleurs Soustractives & Théorie Bauhaus',
-    metaDescription: 'Suite de science des couleurs basée sur l\'absorption soustractive des pigments selon Kubelka-Munk et le cercle chromatique de Johannes Itten.',
+    metaTitle: 'PigmentLab — Physique des Couleurs & Théorie Bauhaus',
+    metaDescription: 'Suite de science des couleurs basée sur l\'absorption soustractive des pigments selon Kubelka-Munk et la théorie des couleurs de Johannes Itten.',
     metaKeywords: 'pigmentlab, suite science des couleurs, physique soustractive, optique des pigments, kubelka munk, theorie bauhaus johannes itten, plateforme outils couleur',
     heroEyebrow: 'Science Optique Soustractive & Théorie Bauhaus',
     heroHeading: 'La science des couleurs avec de vrais pigments physiques',
@@ -337,8 +337,8 @@ export const homepageData: Record<SupportedLanguage, HomepageData> = {
     },
   },
   pt: {
-    metaTitle: 'PigmentLab — Física de Cores Subtrativas & Teoria Bauhaus de Itten',
-    metaDescription: 'Suíte de ciência das cores modelando absorção física de pigmentos segundo Kubelka-Munk e o círculo cromático Bauhaus de Johannes Itten.',
+    metaTitle: 'PigmentLab — Física de Cores & Teoria Bauhaus de Itten',
+    metaDescription: 'Suíte de ciência das cores modelando absorção física de pigmentos segundo Kubelka-Munk e a teoria Bauhaus de Johannes Itten.',
     metaKeywords: 'pigmentlab, suite de ciencia das cores, fisica de cores subtrativas, optica de pigmentos, kubelka munk, teoria bauhaus johannes itten, plataforma de cores',
     heroEyebrow: 'Ciência Óptica Subtrativa & Teoria Clássica Bauhaus',
     heroHeading: 'Ciência das cores construída com pigmentos físicos reais',
@@ -428,8 +428,8 @@ export const homepageData: Record<SupportedLanguage, HomepageData> = {
     },
   },
   es: {
-    metaTitle: 'PigmentLab — Física de Color Sustractivo & Teoría Bauhaus de Itten',
-    metaDescription: 'Plataforma de ciencia del color con absorción física de pigmentos según Kubelka-Munk y círculo cromático de Johannes Itten. Herramientas gratuitas.',
+    metaTitle: 'PigmentLab — Física de Color & Teoría Bauhaus de Itten',
+    metaDescription: 'Plataforma de ciencia del color con absorción física de pigmentos según Kubelka-Munk y teoría del color de Johannes Itten. Herramientas gratuitas.',
     metaKeywords: 'pigmentlab, suite de ciencia del color, fisica de color sustractivo, optica de pigmentos, kubelka munk, teoria bauhaus johannes itten, plataforma de color',
     heroEyebrow: 'Ciencia Óptica Sustractiva & Teoría Clásica Bauhaus',
     heroHeading: 'Ciencia del color construida con pigmentos físicos reales',
@@ -519,8 +519,8 @@ export const homepageData: Record<SupportedLanguage, HomepageData> = {
     },
   },
   ru: {
-    metaTitle: 'PigmentLab — Субтрактивная физика цвета & цветовой круг Иттена',
-    metaDescription: 'Комплекс инструментов физики цвета: спектральная абсорбция Кубелки-Мунка и цветовой круг Баухауса Иоганнеса Иттена. Бесплатные оптические инструменты.',
+    metaTitle: 'PigmentLab — Субтрактивная физика цвета & теория Баухауса',
+    metaDescription: 'Комплекс инструментов физики цвета: спектральная абсорбция Кубелки-Мунка и теория цвета Баухауса Иоганнеса Иттена. Бесплатные оптические инструменты.',
     metaKeywords: 'pigmentlab, комплекс колористики, субтрактивная физика цвета, спектральная оптика пигментов, теория кубелки мунка, теория баухауса иттен, инструменты цвета',
     heroEyebrow: 'Субтрактивная оптика & классическая теория Баухауса',
     heroHeading: 'Колористика на основе реальных физических пигментов',
