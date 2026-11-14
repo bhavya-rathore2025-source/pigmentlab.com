@@ -26,61 +26,93 @@ const isHomeActive = currentPath === translatePath('/') || currentPath === `/${l
 <header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-[#fafafa]/90 backdrop-blur-md dark:border-[#262626] dark:bg-[#000000]/85">
   <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
     <!-- Brand / Logo -->
-    <a href={translatePath('/')} class="group flex items-center gap-2.5 transition-opacity hover:opacity-80 shrink-0">
-      <img src="/favicon.svg" alt="PigmentLab" class="h-7 w-7 rounded-lg object-contain" width="28" height="28" />
-      <div class="flex flex-col">
-        <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">PigmentLab</span>
-        <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block dark:text-[#737373]">pigmentlaboratory.com</span>
-      </div>
-    </a>
+    {isHomeActive ? (
+      <span class="flex items-center gap-2.5 shrink-0 cursor-default" aria-current="page">
+        <img src="/favicon.svg" alt="PigmentLab" class="h-7 w-7 rounded-lg object-contain" width="28" height="28" />
+        <div class="flex flex-col">
+          <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">PigmentLab</span>
+          <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block dark:text-[#737373]">pigmentlaboratory.com</span>
+        </div>
+      </span>
+    ) : (
+      <a href={translatePath('/')} class="group flex items-center gap-2.5 transition-opacity hover:opacity-80 shrink-0">
+        <img src="/favicon.svg" alt="PigmentLab" class="h-7 w-7 rounded-lg object-contain" width="28" height="28" />
+        <div class="flex flex-col">
+          <span class="text-sm font-semibold tracking-tight text-[#171717] dark:text-[#ededed]">PigmentLab</span>
+          <span class="hidden text-[10px] text-[#8f8f8f] sm:inline-block dark:text-[#737373]">pigmentlaboratory.com</span>
+        </div>
+      </a>
+    )}
 
     <!-- Nav Links (Desktop md+) -->
     <nav class="hidden md:flex items-center gap-1 sm:gap-1.5">
-      <a
-        href={translatePath('/mix')}
-        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          isMixActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
-        <span>{t('nav.mixer')}</span>
-      </a>
+      {isMixActive ? (
+        <span
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
+          <span>{t('nav.mixer')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/mix')}
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
+          <span>{t('nav.mixer')}</span>
+        </a>
+      )}
 
-      <a
-        href={translatePath('/color-wheel')}
-        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          isWheelActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
-        <span>{t('nav.wheel')}</span>
-      </a>
+      {isWheelActive ? (
+        <span
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
+          <span>{t('nav.wheel')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/color-wheel')}
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
+          <span>{t('nav.wheel')}</span>
+        </a>
+      )}
 
-      <a
-        href={translatePath('/about')}
-        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          isAboutActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span>{t('nav.about')}</span>
-      </a>
+      {isAboutActive ? (
+        <span
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <span>{t('nav.about')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/about')}
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <span>{t('nav.about')}</span>
+        </a>
+      )}
 
-      <a
-        href={translatePath('/contact')}
-        class={`inline-flex h-8 items-center rounded-full px-3 text-xs font-medium transition-colors ${
-          isContactActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span>{t('nav.contact')}</span>
-      </a>
+      {isContactActive ? (
+        <span
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <span>{t('nav.contact')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/contact')}
+          class="inline-flex h-8 items-center rounded-full px-3 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <span>{t('nav.contact')}</span>
+        </a>
+      )}
     </nav>
 
     <!-- Language Selector Dropdown, Dark Mode & Mobile Menu Button -->
@@ -115,14 +147,18 @@ const isHomeActive = currentPath === translatePath('/') || currentPath === `/${l
             {Object.entries(languages).map(([code, label]) => {
               const targetUrl = translatePath(currentPath, code as SupportedLanguage);
               const isActive = code === lang;
-              return (
+              return isActive ? (
+                <span
+                  class="flex items-center justify-between px-3 py-1.5 text-xs font-semibold text-[#171717] bg-[#f5f5f5] dark:text-white dark:bg-[#222222] cursor-default"
+                  aria-current="true"
+                >
+                  <span>{label}</span>
+                  <span class="font-mono text-[10px] uppercase text-[#8f8f8f]">{code}</span>
+                </span>
+              ) : (
                 <a
                   href={targetUrl}
-                  class={`flex items-center justify-between px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? 'font-semibold text-[#171717] bg-[#f5f5f5] dark:text-white dark:bg-[#222222]'
-                      : 'text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] dark:text-[#a1a1aa] dark:hover:bg-[#1a1a1a] dark:hover:text-white'
-                  }`}
+                  class="flex items-center justify-between px-3 py-1.5 text-xs text-[#4d4d4d] hover:bg-[#fafafa] hover:text-[#171717] dark:text-[#a1a1aa] dark:hover:bg-[#1a1a1a] dark:hover:text-white transition-colors"
                   hreflang={code}
                 >
                   <span>{label}</span>
@@ -174,106 +210,148 @@ const isHomeActive = currentPath === translatePath('/') || currentPath === `/${l
     class="hidden border-t border-[#ebebeb] bg-white/95 px-4 py-3 backdrop-blur-md md:hidden dark:border-[#262626] dark:bg-[#0a0a0a]/95"
   >
     <div class="flex flex-col gap-2">
-      <a
-        href={translatePath('/mix')}
-        class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
-          isMixActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <div class="flex items-center gap-2.5">
-          <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
-          <span class="font-semibold">{t('nav.mixer')}</span>
-        </div>
-        <span class="font-mono text-[10px] opacity-75">{t('nav.mixerBadge')}</span>
-      </a>
+      {isMixActive ? (
+        <span
+          class="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
+            <span class="font-semibold">{t('nav.mixer')}</span>
+          </div>
+          <span class="font-mono text-[10px] opacity-75">{t('nav.mixerBadge')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/mix')}
+          class="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-amber-400 to-blue-500"></span>
+            <span class="font-semibold">{t('nav.mixer')}</span>
+          </div>
+          <span class="font-mono text-[10px] opacity-75">{t('nav.mixerBadge')}</span>
+        </a>
+      )}
 
-      <a
-        href={translatePath('/color-wheel')}
-        class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
-          isWheelActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <div class="flex items-center gap-2.5">
-          <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
-          <span class="font-semibold">{t('nav.wheel')}</span>
-        </div>
-        <span class="font-mono text-[10px] opacity-75">{t('nav.wheelBadge')}</span>
-      </a>
+      {isWheelActive ? (
+        <span
+          class="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
+            <span class="font-semibold">{t('nav.wheel')}</span>
+          </div>
+          <span class="font-mono text-[10px] opacity-75">{t('nav.wheelBadge')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/color-wheel')}
+          class="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-emerald-500"></span>
+            <span class="font-semibold">{t('nav.wheel')}</span>
+          </div>
+          <span class="font-mono text-[10px] opacity-75">{t('nav.wheelBadge')}</span>
+        </a>
+      )}
 
-      <a
-        href={translatePath('/')}
-        class={`flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-colors ${
-          isHomeActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <div class="flex items-center gap-2.5">
-          <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#0070f3] to-[#ff0080]"></span>
-          <span class="font-semibold">{t('nav.home')}</span>
-        </div>
-        <span class="font-mono text-[10px] opacity-75">PigmentLab</span>
-      </a>
+      {isHomeActive ? (
+        <span
+          class="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#0070f3] to-[#ff0080]"></span>
+            <span class="font-semibold">{t('nav.home')}</span>
+          </div>
+          <span class="font-mono text-[10px] opacity-75">PigmentLab</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/')}
+          class="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#0070f3] to-[#ff0080]"></span>
+            <span class="font-semibold">{t('nav.home')}</span>
+          </div>
+          <span class="font-mono text-[10px] opacity-75">PigmentLab</span>
+        </a>
+      )}
 
       <div class="my-1 border-t border-[#ebebeb] dark:border-[#222222]"></div>
 
-      <a
-        href={translatePath('/about')}
-        class={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
-          isAboutActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span class="font-medium">{t('nav.about')}</span>
-      </a>
+      {isAboutActive ? (
+        <span
+          class="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <span class="font-medium">{t('nav.about')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/about')}
+          class="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <span class="font-medium">{t('nav.about')}</span>
+        </a>
+      )}
 
-      <a
-        href={translatePath('/contact')}
-        class={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors ${
-          isContactActive
-            ? 'bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717]'
-            : 'text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed]'
-        }`}
-      >
-        <span class="font-medium">{t('nav.contact')}</span>
-      </a>
+      {isContactActive ? (
+        <span
+          class="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium bg-[#171717] text-white shadow-xs dark:bg-white dark:text-[#171717] cursor-default"
+          aria-current="page"
+        >
+          <span class="font-medium">{t('nav.contact')}</span>
+        </span>
+      ) : (
+        <a
+          href={translatePath('/contact')}
+          class="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-[#4d4d4d] hover:bg-[#ebebeb]/60 hover:text-[#171717] dark:text-[#a1a1a1] dark:hover:bg-[#1f1f1f] dark:hover:text-[#ededed] transition-colors"
+        >
+          <span class="font-medium">{t('nav.contact')}</span>
+        </a>
+      )}
 
-      <!-- Mobile Language Switcher List -->
-      <div class="mt-2 rounded-xl border border-[#ebebeb] bg-[#fafafa] p-2 dark:border-[#222222] dark:bg-[#121212]">
-        <div class="mb-1.5 px-2 text-[10px] font-mono uppercase tracking-wider text-[#8f8f8f] dark:text-[#737373]">
-          {t('nav.switchLang')}
-        </div>
-        <div class="grid grid-cols-3 gap-1">
-          {Object.entries(languages).map(([code, label]) => {
-            const targetUrl = translatePath(currentPath, code as SupportedLanguage);
-            const isActive = code === lang;
-            return (
-              <a
-                href={targetUrl}
-                class={`flex flex-col items-center justify-center rounded-lg py-1.5 text-center text-xs transition-colors ${
-                  isActive
-                    ? 'bg-[#171717] font-semibold text-white dark:bg-white dark:text-[#171717]'
-                    : 'bg-white text-[#4d4d4d] hover:bg-[#ebebeb] dark:bg-[#1a1a1a] dark:text-[#a1a1aa] dark:hover:bg-[#262626]'
-                }`}
-                hreflang={code}
-              >
-                <span class="font-mono text-[10px] uppercase font-bold">{code}</span>
-                <span class="text-[9px] opacity-80">{label}</span>
-              </a>
-            );
-          })}
+      <!-- Mobile Compact Language Selector (<select> avoids redundant crawler links) -->
+      <div class="mt-2 flex items-center justify-between rounded-xl border border-[#ebebeb] bg-[#fafafa] px-3 py-2 dark:border-[#222222] dark:bg-[#121212]">
+        <label for="mobile-lang-select" class="flex items-center gap-2 text-xs font-medium text-[#4d4d4d] dark:text-[#a1a1aa]">
+          <svg class="h-3.5 w-3.5 text-[#8f8f8f] dark:text-[#737373]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+          <span>{t('nav.switchLang')}</span>
+        </label>
+        <div class="relative">
+          <select
+            id="mobile-lang-select"
+            class="appearance-none rounded-lg border border-[#ebebeb] bg-white py-1 pl-2.5 pr-7 text-xs font-semibold text-[#171717] shadow-2xs transition-colors hover:border-[#171717] focus:outline-hidden focus:ring-1 focus:ring-[#171717] dark:border-[#262626] dark:bg-[#1a1a1a] dark:text-[#ededed] dark:hover:border-white cursor-pointer"
+            aria-label={t('nav.switchLang')}
+          >
+            {Object.entries(languages).map(([code, label]) => {
+              const targetUrl = translatePath(currentPath, code as SupportedLanguage);
+              const isActive = code === lang;
+              return (
+                <option value={targetUrl} selected={isActive}>
+                  {label} ({code.toUpperCase()})
+                </option>
+              );
+            })}
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-[#8f8f8f]">
+            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
       </div>
 
       <div class="flex items-center justify-between px-3 pt-2 text-[11px] text-[#8f8f8f] dark:text-[#737373]">
-        <a href={translatePath('/privacy')} class="hover:underline">{t('nav.privacy')}</a>
+        <a href={translatePath('/privacy')} class="hover:underline" rel="nofollow">{t('nav.privacy')}</a>
         <span>·</span>
-        <a href={translatePath('/terms')} class="hover:underline">{t('nav.terms')}</a>
+        <a href={translatePath('/terms')} class="hover:underline" rel="nofollow">{t('nav.terms')}</a>
       </div>
     </div>
   </div>
@@ -300,6 +378,14 @@ const isHomeActive = currentPath === translatePath('/') || currentPath === `/${l
     if (!langMenuDropdown?.contains(e.target as Node) && !langMenuBtn?.contains(e.target as Node)) {
       langMenuDropdown?.classList.add('hidden');
       langMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Mobile language select change handler
+  const mobileLangSelect = document.getElementById('mobile-lang-select') as HTMLSelectElement | null;
+  mobileLangSelect?.addEventListener('change', () => {
+    if (mobileLangSelect.value) {
+      window.location.href = mobileLangSelect.value;
     }
   });
 
