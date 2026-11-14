@@ -21,10 +21,10 @@ const frenchFaqSchema = {
     },
     {
       '@type': 'Question',
-      'name': 'Quelle est la différence entre le cercle chromatique Itten et la roue chromatique Adobe ?',
+      'name': 'Comment cet outil se compare-t-il à d\'autres roues chromatiques en ligne comme Adobe ?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'La roue chromatique Adobe utilise uniquement des coordonnées numériques RGB (Rouge opposé au Cyan). Le cercle chromatique de Johannes Itten (Bauhaus RYB) place le Rouge en face du Vert et le Bleu en face de l\'Orange, respectant la perception artistique traditionnelle et le mélange des pigments réels.'
+        'text': 'Contrairement aux roues chromatiques classiques comme celle d\'Adobe qui s\'appuient principalement sur des angles RVB additifs et requièrent un compte pour enregistrer vos palettes, PigmentLab permet de basculer en 1 clic vers le cercle chromatique de Johannes Itten (RYB), intègre le test de contraste WCAG 2.1 AA/AAA et reste 100% gratuit sans inscription.'
       }
     },
     {
@@ -60,8 +60,8 @@ const frenchWheelSchema = buildWheelPageSchemas({
 
 <Layout
   title="Roue Chromatique en Ligne Gratuite — Cercle & Couleurs"
-  description="Roue chromatique en ligne gratuite et cercle chromatique RYB/RVB. Palette de couleurs complémentaires, contrastes WCAG et alternative à la roue Adobe."
-  keywords="roue chromatique, roue couleur complémentaire, roue chromatique en ligne gratuit, roue chromatique des couleurs, roue chromatique couleur, roue chromatique couleur complémentaire, roue chromatique adobe, cercle chromatique en ligne, roue chromatique en ligne, roue chromatique photoshop"
+  description="Roue chromatique en ligne gratuite et cercle chromatique RYB/RVB. Palette de couleurs complémentaires, contrastes WCAG, sans inscription et gratuit."
+  keywords="roue chromatique, roue couleur complémentaire, roue chromatique en ligne gratuit, roue chromatique des couleurs, roue chromatique couleur, roue chromatique couleur complémentaire, roue chromatique ryb, cercle chromatique en ligne, roue chromatique en ligne, roue chromatique photoshop"
   currentPath="/fr/color-wheel"
   lang="fr"
   schema={frenchWheelSchema}
@@ -85,7 +85,7 @@ const frenchWheelSchema = buildWheelPageSchemas({
         </h1>
 
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
-          Les sélecteurs comme la roue chromatique Adobe n'utilisent que des angles RVB numériques. PigmentLab vous permet de basculer en 1 clic vers le véritable <strong class="text-[#171717] dark:text-white">cercle chromatique de Johannes Itten (Bauhaus RYB)</strong>, où le <span class="text-[#c41e3a] font-semibold">Rouge</span> fait face au <span class="text-[#14b82a] font-semibold">Vert</span> pour une harmonie naturelle.
+          La plupart des sélecteurs numériques classiques n'utilisent que des angles RVB numériques. PigmentLab vous permet de basculer en 1 clic vers le véritable <strong class="text-[#171717] dark:text-white">cercle chromatique de Johannes Itten (Bauhaus RYB)</strong>, où le <span class="text-[#c41e3a] font-semibold">Rouge</span> fait face au <span class="text-[#14b82a] font-semibold">Vert</span> pour une harmonie naturelle.
         </p>
         <JumpNav items={wheelJumpLinks.fr} ariaLabel="Navigation rapide" />
       </div>

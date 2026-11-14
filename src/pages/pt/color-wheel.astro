@@ -37,10 +37,10 @@ const ptFaqSchema = {
     },
     {
       '@type': 'Question',
-      'name': 'Como este círculo cromático online se compara à roda de cores Adobe?',
+      'name': 'Como este círculo cromático se compara a outras ferramentas online como a Adobe?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': 'A PigmentLab oferece um botão direto para alternar entre o círculo cromático de Itten (RYB) e o digital RGB, cálculo imediato de contraste WCAG 2.1 (AA e AAA) e não exige cadastro nem assinatura Adobe Creative Cloud.'
+        'text': 'Ao contrário de ferramentas convencionais como a roda de cores Adobe que operam exclusivamente no espaço digital RGB e costumam exigir cadastro, a PigmentLab oferece alternância em 1 clique entre o círculo de Itten (RYB) e o digital RGB, cálculo instantâneo de contraste WCAG 2.1 (AA e AAA) e não exige login.'
       }
     }
   ]
@@ -60,8 +60,8 @@ const ptWheelSchema = buildWheelPageSchemas({
 
 <Layout
   title="Círculo Cromático Online & Roda de Cores — Paletas"
-  description="Círculo cromático online interativo e roda de cores (RYB e RGB). Cores complementares, harmonia de paletas e contraste WCAG. Alternativa à roda Adobe."
-  keywords="círculo cromático, circulo cromatico, roda de cores, circulo cromatico cores, roda de cores complementares, roda de cores adobe, roda de cores ryb, roda de cores terciária, paleta de cores online, combinacao de cores"
+  description="Círculo cromático online interativo e roda de cores (RYB e RGB). Cores complementares, harmonia de paletas e contraste WCAG. Sem necessidade de cadastro."
+  keywords="círculo cromático, circulo cromatico, roda de cores, circulo cromatico cores, roda de cores complementares, roda de cores rgb e ryb, roda de cores ryb, roda de cores terciária, paleta de cores online, combinacao de cores"
   currentPath="/pt/color-wheel"
   lang="pt"
   schema={ptWheelSchema}
@@ -85,7 +85,7 @@ const ptWheelSchema = buildWheelPageSchemas({
         </h1>
 
         <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
-          A maioria dos aplicativos na web como a roda de cores Adobe usa apenas coordenadas RGB. A PigmentLab permite alternar com 1 clique para o autêntico <strong class="text-[#171717] dark:text-white">círculo cromático de Johannes Itten (RYB)</strong>, onde o <span class="text-[#c41e3a] font-semibold">Vermelho</span> opõe-se ao <span class="text-[#14b82a] font-semibold">Verde</span> — ideal para moda, consultoria de cores e arte.
+          A maioria dos aplicativos na web usa apenas coordenadas RGB convencionais. A PigmentLab permite alternar com 1 clique para o autêntico <strong class="text-[#171717] dark:text-white">círculo cromático de Johannes Itten (RYB)</strong>, onde o <span class="text-[#c41e3a] font-semibold">Vermelho</span> opõe-se ao <span class="text-[#14b82a] font-semibold">Verde</span> — ideal para moda, consultoria de cores e arte.
         </p>
         <JumpNav items={wheelJumpLinks.pt} ariaLabel="Navegação da página" />
       </div>
