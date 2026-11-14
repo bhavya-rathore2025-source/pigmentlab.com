@@ -5,6 +5,7 @@ export const languages = {
   pt: 'Português',
   es: 'Español',
   ru: 'Русский',
+  ja: '日本語',
 } as const;
 
 export type SupportedLanguage = keyof typeof languages;
@@ -138,6 +139,27 @@ export const ui = {
     'footer.wheelLink': 'Цветовой Круг Онлайн',
     'footer.overviewLink': 'Обзор PigmentLab',
     'footer.multilingual': 'Многоязычные инструменты цвета',
+  },
+  ja: {
+    'nav.mixer': '色を混ぜる',
+    'nav.wheel': '色相環',
+    'nav.about': 'PigmentLabについて',
+    'nav.contact': 'お問い合わせ',
+    'nav.privacy': 'プライバシーポリシー',
+    'nav.terms': '利用規約',
+    'nav.mixerBadge': '絵の具の光学',
+    'nav.wheelBadge': 'イッテンRYB',
+    'nav.home': 'ホーム・概要',
+    'nav.switchLang': '言語を切り替える',
+    'footer.tagline': '減法混色の物理光学とヨハネス・イッテンのバウハウスRYB色彩理論に基づくリアルな色彩ツール。',
+    'footer.copyright': '商用およびクリエイティブ用途で完全無料。',
+    'footer.tools': 'ツール',
+    'footer.colorScience': '色彩科学',
+    'footer.legal': '企業情報 & 法的表記',
+    'footer.mixerLink': '色混ぜるシミュレーション（混色）',
+    'footer.wheelLink': '12色相環・配色ツール',
+    'footer.overviewLink': 'PigmentLab 概要',
+    'footer.multilingual': '多言語カラーツール',
   },
 } as const;
 

@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactFormCard from '../../components/ContactFormCard.astro';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  'name': 'お問い合わせ — PigmentLab',
+  'url': 'https://pigmentlaboratory.com/ja/contact',
+  'description': 'PigmentLabチームへのお問い合わせ。フィードバック、新しい絵の具顔料のリクエスト、バグ報告、色彩科学に関する提携などを受け付けています。',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'PigmentLab',
+    'url': 'https://pigmentlaboratory.com',
+    'email': 'contact@pigmentlaboratory.com'
+  }
+};
+---
+
+<Layout
+  title="お問い合わせ — PigmentLab"
+  description="クベルカ・ムンクの減法混色物理やヨハネス・イッテン色彩論に関するご質問、絵の具プリセットのご提案など、PigmentLabチームへのお問い合わせはこちらから。"
+  keywords="お問い合わせ pigmentlab, pigmentlab サポート, 色彩科学 フィードバック, 絵の具 顔料 リクエスト, 混色ツール 質問"
+  currentPath="/ja/contact"
+  lang="ja"
+  schema={contactSchema}
+>
+  <!-- Header -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+        <span>ご意見・ご質問をお待ちしております</span>
+      </div>
+
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
+        PigmentLab お問い合わせ
+      </h1>
+
+      <p class="mx-auto mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        減法混色の物理光学に関するご質問、新しいアーティスト絵の具のリクエスト、技術的な不具合の報告など、お気軽にお問い合わせください。
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Grid: Form + Direct Contact Details -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-14 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Form Column (7 cols) -->
+        <ContactFormCard lang="ja" />
+
+        <!-- Details Column (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Direct Emails Card -->
+          <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 shadow-xs">
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">
+              直接メールでのお問い合わせ
+            </h3>
+            <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+              用途に応じたメール窓口へ直接お問い合わせいただくことも可能です:
+            </p>
+
+            <ul class="mt-4 space-y-3.5 text-xs sm:text-sm">
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-base">💬</span>
+                <div>
+                  <strong class="text-[#171717] dark:text-white block font-medium">一般的なお問い合わせ ＆ サポート</strong>
+                  <a href="mailto:contact@pigmentlaboratory.com" class="text-[#0070f3] hover:underline font-mono text-xs">
+                    contact@pigmentlaboratory.com
+                  </a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-base">🔬</span>
+                <div>
+                  <strong class="text-[#171717] dark:text-white block font-medium">色彩科学 ＆ 新顔料のリクエスト</strong>
+                  <a href="mailto:physics@pigmentlaboratory.com" class="text-[#0070f3] hover:underline font-mono text-xs">
+                    physics@pigmentlaboratory.com
+                  </a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-base">🔒</span>
+                <div>
+                  <strong class="text-[#171717] dark:text-white block font-medium">プライバシー ＆ 法的表記</strong>
+                  <a href="mailto:privacy@pigmentlaboratory.com" class="text-[#0070f3] hover:underline font-mono text-xs">
+                    privacy@pigmentlaboratory.com
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Response Expectation Card -->
+          <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 shadow-xs">
+            <h3 class="text-sm font-semibold text-[#171717] dark:text-white flex items-center gap-2">
+              <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              返信にかかる目安時間
+            </h3>
+            <p class="mt-2 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+              いただいたお問い合わせは、通常営業日の<strong class="text-[#171717] dark:text-white">24〜48時間以内</strong>に順次確認・返信しております。
+            </p>
+          </div>
+
+          <!-- Useful Links -->
+          <div class="rounded-2xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-6 shadow-xs">
+            <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#737373]">
+              関連コンテンツ
+            </h3>
+            <ul class="mt-3 space-y-2 text-xs">
+              <li>
+                <a href="/ja/about" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>PigmentLabの光学色彩理論</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/ja/mix" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>色混ぜるシミュレーション（減法混色）</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/ja/color-wheel" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>ヨハネス・イッテン12色相環ツール</span>
+                  <span>→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/ja/privacy" class="text-[#171717] dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] flex items-center justify-between">
+                  <span>プライバシーポリシー ＆ LocalStorage</span>
+                  <span>→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
+          よくある質問 (FAQ)
+        </h2>
+        <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
+          色彩物理、ライセンス、PigmentLabの利用に関する質問と回答。
+        </p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <!-- Q1 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>PigmentLabで作成したカラーコードやCSSコードは商用利用できますか？</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            はい、100%自由に商用利用可能です。PigmentLabで生成された配合レシピ、HEXコード、OKLCH値、CSSコードは、個人利用・オープンソース・商用プロジェクトを問わず、ロイヤリティフリー・クレジット表記不要でご利用いただけます。
+          </p>
+        </details>
+
+        <!-- Q2 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>減法混色と一般的な画面のRGB混色の違いは何ですか？</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            標準的なデジタルソフトはRGB光の数値を線形平均するため、青と黄色を混ぜると濁った灰色になります。PigmentLabは顔料粒子による光の吸収と散乱（クベルカ・ムンク理論）をシミュレートするため、青と黄色から鮮やかな本物の緑色が生まれます。
+          </p>
+        </details>
+
+        <!-- Q3 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>特定の絵の具顔料をミキサーに追加するようリクエストできますか？</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            大歓迎です！私たちは分光データベースを定期的に拡充しています。キナクリドンマゼンタやローアンバー、ネープルスイエローなど、追加してほしい絵の具顔料がございましたら、上記フォームの「新しい顔料のご提案」からお知らせください。
+          </p>
+        </details>
+
+        <!-- Q4 -->
+        <details class="group rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#121212] p-5 [&_svg]:open:-rotate-180">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-sm text-[#171717] dark:text-white list-none">
+            <span>保存したプリセットやパレットはどこに保存されますか？</span>
+            <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            保存されたプリセットやお気に入りの配色は、お使いのブラウザの <code class="font-mono text-xs">localStorage</code> にのみ保存されます。データが外部サーバーに送信されることは一切なく、プライバシーは完全に保護されます。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+</Layout>

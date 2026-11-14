@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MixerStudio from '../../components/MixerStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { mixJumpLinks } from '../../i18n/toolGuides';
+import { buildMixPageSchemas } from '../../utils/seoSchema';
+
+const mixFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': '減法混色とは？（絵の具や印刷の混色原理）',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '減法混色（Subtractive Color Mixing）とは、絵の具の顔料や印刷インキが特定の光の波長を吸収（減法）し、吸収されずに反射された光が目に入ることで色として認識される混色原理です。顔料同士を混ぜるほど吸収される波長が増えるため、明度が低下し、最終的に暗い黒褐色に近づきます。PigmentLabはクベルカ・ムンク理論を用いてこの波長吸収を忠実にシミュレートしています。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '加法混色とは？（画面・光の混色原理）',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '加法混色（Additive Color Mixing）とは、ディスプレイや照明など、自ら発光する光の波長を足し合わせる混色原理です。光の三原色は赤（Red）・緑（Green）・青（Blue）のRGBです。光を重ねるほどエネルギーが加算されて明るくなり、RGBの光を均等に最大出力で重ねると純粋な白（White）になります。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '加法混色と減法混色の違いは？なぜ絵の具は混ぜると暗くなるのか？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '最大の違いは「光を足すか（加法）」それとも「光を吸収して引くか（減法）」という物理メカニズムにあります。加法混色（RGB）は光が網膜に加算されるため混ぜるほど明るく白に近づきます。一方、減法混色（絵の具）は複数の顔料がそれぞれ異なる波長の光を吸収（遮断）するため、反射される光の総量が減少し、混ぜるほど暗く濁った色になります。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '減法混色（絵の具）では、混ぜる色が増えるほどどうなる？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '減法混色では、混ぜる顔料の数が増えるほど吸収される光の波長域が広がり、反射される光エネルギー（明度）が低下します。そのため色が徐々に暗く濁っていき、最終的には暗褐色や黒に近い色へと変化します。鮮やかな混色を作りたい場合は、混色する色の数を2〜3色以内に抑えるのが基本テクニックです。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '3色混ぜるシミュレーションで茶色を作るには？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '赤・黄・青の3原色をブレンドすることで自然な茶色を調色できます。PigmentLabのシミュレーターで「赤1：黄2：青1」前後の比率に設定すると、温かみのある黄土色（オーカー）〜栗色（チェスナット）になります。また、補色である「赤＋緑」や「青＋オレンジ」をベースに少量ずつ混ぜる方法でも濁りのない上品なアースブラウンが作れます。'
+      }
+    }
+  ]
+};
+
+const pageSchema = buildMixPageSchemas({
+  lang: 'ja',
+  url: 'https://pigmentlaboratory.com/ja/mix',
+  appName: 'PigmentLab 色混ぜるシミュレーション・混色ツール',
+  appDescription: '絵の具の減法混色（クベルカ・ムンク理論）と光の加法混色を両方体験できる無料の色混ぜるシミュレーションサイト。青＋黄＝緑になるリアルな物理混色、3色混ぜる比率計算、CSS color-mix()出力に対応。',
+  articleHeadline: '色混ぜるシミュレーション徹底解説：減法混色と加法混色の違いと混色配合比率',
+  articleDescription: '物理的な減法混色の光学原理から、加法混色（RGB）との違い、3色混ぜるシミュレーションによる茶色調色レシピ、CSS color-mix()コード出力までを完全網羅。',
+  currency: 'JPY',
+  faqSchema: mixFaqSchema,
+});
+---
+
+<Layout
+  title="色混ぜるシミュレーション｜減法混色・加法混色ツール — PigmentLab"
+  description="【無料・登録不要】絵の具の減法混色を忠実に再現する本格的な色混ぜるシミュレーションサイト。青＋黄＝緑になる物理光学、3色混ぜるシミュレーション、加法混色との比較、CSS color-mix()生成に対応。"
+  keywords="色混ぜる シミュレーション, 減法混色, 加法混色, 混色, 3色混ぜる シミュレーション, 加法混色 減法混色, 加法混色とは, 色混ぜる シミュレーション サイト, 色混ぜる シミュレーション アプリ, クベルカ・ムンク"
+  currentPath="/ja/mix"
+  lang="ja"
+  schema={pageSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[350px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/40 via-[#7928ca]/30 to-[#ff0080]/30 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[300px] w-[400px] rounded-full bg-gradient-to-br from-[#00dfd8]/30 via-[#f9cb28]/30 to-[#ff4d4d]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3] animate-pulse"></span>
+          <span>減法混色・物理光学 ＆ 加法混色（RGB）</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          色混ぜるシミュレーション・混色ツール
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          一般的な画面ツールはRGBの光を単純平均するため、青と黄色を混ぜると濁った灰色になります。PigmentLabの<strong class="text-[#171717] dark:text-white">色混ぜるシミュレーション</strong>は、光の波長吸収（クベルカ・ムンク理論）に基づく<strong class="text-[#171717] dark:text-white">減法混色</strong>と、画面の<strong class="text-[#171717] dark:text-white">加法混色</strong>を両方体験できる本格的な混色シミュレーションサイトです。<span class="font-medium text-[#002185] dark:text-[#4d79ff]">青</span>と<span class="font-medium text-[#cda000] dark:text-[#ffd233]">黄</span>を混ぜて、本物の絵の具と同じ鮮やかな<span class="font-medium text-[#168a35] dark:text-[#47d169]">緑</span>を再現します。
+        </p>
+
+        <JumpNav items={mixJumpLinks.ja} ariaLabel="混色シミュレーターのセクションナビゲーション" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <MixerStudio lang="ja" />
+
+  <!-- Educational Guide & SEO Section -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">顔料の光学科学 ＆ Webコード生成</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          色混ぜるシミュレーション徹底解説：減法混色と加法混色の原理
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          本物の絵の具の物理的減法混色、3色混ぜる調色レシピ、加法混色との比較、CSS color-mix()コード生成を解説します。
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section id="pigment-physics" class="scroll-mt-20 space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. なぜ「色混ぜるシミュレーション」で減法混色の物理が必要なのか？
+          </h3>
+          <p>
+            画家、イラストレーター、デザイナー、ウェブ開発者にとって、複数の色を混ぜた結果を事前に予測できる<strong>色混ぜるシミュレーション</strong>は不可欠なツールです。しかし、既存の多くのグラフィックソフトやWebカラーツールには重大な欠陥があります。それは、色を<strong>加法混色（RGBチャンネルの線形平均）</strong>で計算しているという点です。
+          </p>
+          <p>
+            一般的なRGBツール上で純粋な青（#0000FF）と鮮やかな黄（#FFFF00）を混ぜると、数学的平均値（128, 128, 128）が計算され、くすんだ濁った灰色（#808080）になってしまいます。現実の絵の具で青と黄色を混ぜたときに生まれるはずの美しい緑色は、画面上の単純計算では決して現れません。
+          </p>
+          <p>
+            PigmentLabの<strong>色混ぜるシミュレーションサイト</strong>は、学術的な物理モデルである「クベルカ・ムンク理論」を実装することでこの課題を解決しました。顔料粒子が特定の光の波長を吸収・散乱する物理現象を計算するため、青と黄色を混ぜると本物の油絵具やアクリル絵の具と同様に、鮮やかなエメラルドグリーン（#3D933E）が美しく生まれます。
+          </p>
+        </section>
+
+        <section id="mixing-table" class="scroll-mt-20 space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. 混色表：代表的な絵の具の混色配合（減法混色 vs 加法混色RGB）
+          </h3>
+          <p>
+            以下の混色表は、本物の絵の具の光学（減法混色）と、一般的なデジタルツール（加法混色RGBの単純平均）の混色結果の違いを比較したものです。
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#111111] shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#171717] text-xs font-mono uppercase text-[#8f8f8f] dark:text-[#a1a1aa]">
+                <tr>
+                  <th class="p-4 sm:p-5">色1</th>
+                  <th class="p-4 sm:p-5">色2</th>
+                  <th class="p-4 sm:p-5">絵の具の混色結果（減法混色・物理光学）</th>
+                  <th class="p-4 sm:p-5">一般的なデジタルRGB結果（単純平均）</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] dark:divide-[#222222] text-[#4d4d4d] dark:text-[#a1a1aa]">
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">シアン / 青 (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">カドミウムイエロー (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-emerald-600 dark:text-emerald-400">鮮やかな緑色 (#3D933E)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">濁った灰色 (#808C43)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">カドミウムレッド (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#cda000] dark:text-[#ffd233]">カドミウムイエロー (#FFF600)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-orange-600 dark:text-orange-400">鮮やかなオレンジ (#F27B13)</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">くすんだ橙色 (#F37B13)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5 font-medium text-[#002185] dark:text-[#4d79ff]">フタロブルー (#002185)</td>
+                  <td class="p-4 sm:p-5 font-medium text-[#c41e3a] dark:text-[#ff4d6d]">カドミウムレッド (#E60026)</td>
+                  <td class="p-4 sm:p-5 font-semibold text-purple-600 dark:text-purple-400">深みのある紫色（バイオレット）</td>
+                  <td class="p-4 sm:p-5 text-[#8f8f8f]">色あせたマゼンタ調</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Subtractive vs Additive Deep Dive -->
+        <section id="subtractive-vs-additive" class="scroll-mt-20 space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            加法混色と減法混色の仕組み（加法混色とは・減法混色とは）
+          </h3>
+          <p>
+            <strong>加法混色</strong>と<strong>減法混色</strong>は、人間が色を認識する二大混色メカニズムです。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-block rounded-full bg-blue-100 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 px-2.5 py-0.5 text-xs font-mono font-semibold">減法混色（絵の具・印刷）</span>
+              <h4 class="mt-2 text-base font-semibold text-[#111827] dark:text-white">光を吸収して暗くなる混色</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                顔料粒子に当たった白色光のうち、特定波長が吸収（減法）され、残った波長が反射して目に届きます。色を混ぜるほど吸収される波長域が増加するため、徐々に明度が下がり、最終的には黒褐色へと近づきます。
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-5">
+              <span class="inline-block rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 px-2.5 py-0.5 text-xs font-mono font-semibold">加法混色（画面・光）</span>
+              <h4 class="mt-2 text-base font-semibold text-[#111827] dark:text-white">光を重ねて明るくなる混色</h4>
+              <p class="mt-2 text-xs sm:text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                自ら光を発する光源（モニターのRGBサブピクセルやスポットライト）を重ね合わせます。網膜に届く光エネルギーが足し合わされるため、混ぜるほど明るくなり、RGBの光を均等に重ねると純粋な白になります。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <ModularToolSections tool="mix" lang="ja" includeBrownGuide={true} />
+
+        <!-- FAQs Section with Rich JSON-LD match -->
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            よくある質問 (FAQ) — 混色と減法混色の疑問を解消
+          </h3>
+          <div class="space-y-4">
+            {mixFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <ExploreColorTools lang="ja" currentPage="mix" />
+</Layout>

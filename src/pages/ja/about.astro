@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import AboutBodySection from '../../components/AboutBodySection.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildAboutPageSchemas } from '../../utils/seoSchema';
+import { aboutJumpLinks } from '../../i18n/toolGuides';
+
+const aboutSchema = buildAboutPageSchemas({
+  lang: 'ja',
+  url: 'https://pigmentlaboratory.com/ja/about',
+  pageName: 'PigmentLabについて — 物理的減法混色と色彩科学',
+  pageDescription: 'PigmentLabのミッション、クベルカ・ムンク理論による減法混色光学、ヨハネス・イッテンのバウハウス色彩調和の科学的根拠をご紹介します。',
+  orgDescription: '減法混色の物理光学とヨハネス・イッテンのバウハウスRYB色彩理論に基づくリアルな色彩ツール。',
+  articleHeadline: 'なぜ単純なRGB混色は失敗するのか：クベルカ・ムンク顔料物理とバウハウス色彩論',
+  articleDescription: 'PigmentLabが加法混色RGBの単純平均を排し、波長吸収に基づく物理的混色とイッテン12色相環、W3C OKLCHおよびWCAG 2.1標準を融合した理由を解説。',
+});
+---
+
+<Layout
+  title="PigmentLabについて — 減法混色の物理光学と色彩理論"
+  description="PigmentLabの開発背景、光学物理モデル、ミッションについて。ヨハネス・イッテンのバウハウス色彩論とクベルカ・ムンク顔料分光吸収理論の架け橋となるプラットフォーム。"
+  keywords="pigmentlabについて, ピグメントラボ, 減法混色の物理, クベルカ・ムンク理論, ヨハネス・イッテン, 光学色彩科学, 色彩論"
+  currentPath="/ja/about"
+  lang="ja"
+  schema={aboutSchema}
+>
+  <!-- Hero Section -->
+  <section id="mission" class="scroll-mt-20 relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24 overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[30%] left-[20%] h-[400px] w-[500px] rounded-full bg-gradient-to-tr from-[#007cf0]/30 via-[#7928ca]/25 to-[#ff0080]/25 blur-3xl"></div>
+      <div class="absolute -top-[20%] right-[15%] h-[360px] w-[460px] rounded-full bg-gradient-to-br from-[#00dfd8]/25 via-[#f9cb28]/30 to-[#ff4d4d]/25 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#0070f3]"></span>
+          <span>ミッション ＆ 科学的根拠</span>
+        </div>
+
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl lg:text-6xl leading-[1.12]">
+          本物の絵の具の光学リアリズムをデジタルの世界へ
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+          何十年もの間、コンピューター画面はクリエイターに<strong class="text-[#171717] dark:text-white font-medium">加法混色（RGB光の単純平均）</strong>を強い、絵の具の混色を濁った灰色へと劣化させてきました。<strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong>は、物理的な光の波長吸収とクラシックなバウハウスの色彩調和をWeb上で忠実に復活させるために生まれました。
+        </p>
+
+        <JumpNav items={aboutJumpLinks.ja} ariaLabel="セクションナビゲーション" />
+      </div>
+    </div>
+  </section>
+
+  <AboutBodySection lang="ja" />
+
+  <ExploreColorTools lang="ja" currentPage="about" />
+</Layout>

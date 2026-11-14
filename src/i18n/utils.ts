@@ -123,6 +123,7 @@ const OG_LOCALES: Record<SupportedLanguage, string> = {
   pt: 'pt_BR',
   es: 'es_ES',
   ru: 'ru_RU',
+  ja: 'ja_JP',
 };
 
 export function getOgLocale(lang: SupportedLanguage): string {

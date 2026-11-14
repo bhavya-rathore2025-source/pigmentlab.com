@@ -195,6 +195,37 @@ const studioI18n = {
     onBlack: 'На черном фоне',
     largeText: 'Крупный текст',
   },
+  ja: {
+    modePaint: '🎨 減法混色・絵の具 (RYB)',
+    modeOklch: '💻 モダンWeb (OKLCH)',
+    modeRgb: '🖥️ 加法混色・デジタル画面 (RGB)',
+    modeCmyk: '🖨️ 印刷インキ (CMYK)',
+    resultTitle: '混色結果',
+    paletteTitle: '混色パレット',
+    paletteSubtitle: '配合比率と色を調整してオリジナル混色を作成。',
+    presetBtn: 'レシピ',
+    resetBtn: 'リセット',
+    addColor: '色を追加 (最大6色)',
+    formula: '配合比率:',
+    uiPreviewTitle: 'リアルタイムUIコンポーネントプレビュー',
+    uiPreviewSubtitle: '混色した色が実際のデザインコンポーネントでどのように見えるか確認:',
+    ctaBtn: 'CTAボタン',
+    confirmAction: 'アクション確認',
+    statusTag: 'ステータスタグ',
+    verifiedMix: '混色検証済み',
+    cardHeadline: 'カードアクセント色',
+    cardSubtitle: '顔料混色のダイナミックプレビュー。',
+    quickPresetsTitle: '絵の具顔料クイックプリセット',
+    quickPresetsSubtitle: 'チューブをクリックしてパレットに読み込み:',
+    resetDefaults: '初期値に戻す',
+    pasteHex: 'HEXコード貼り付け (例: #3b82f6)...',
+    addPreset: '色を保存',
+    wcagTitle: 'WCAG 2.1 アクセシビリティ',
+    wcagSubtitle: '可読性・コントラストスコア',
+    onWhite: '白背景',
+    onBlack: '黒背景',
+    largeText: '大きな文字',
+  },
 };
 
 const labels = studioI18n[lang] || studioI18n.de;
@@ -943,8 +974,8 @@ const labels = studioI18n[lang] || studioI18n.de;
                 data-slot-index="${index}"
                 class="slot-weight-slider h-1.5 w-24 sm:w-32 cursor-pointer accent-[#171717] dark:accent-white"
               />
-              <span class="slot-weight-label w-10 text-right font-mono text-xs font-medium text-[#171717] dark:text-[#ededed]">
-                ${colorItem.weight}%
+              <span class="slot-weight-label min-w-[4rem] text-right font-mono text-xs font-medium text-[#171717] dark:text-[#ededed]">
+                ${colorItem.weight} parts
               </span>
             </div>
 
@@ -1014,7 +1045,7 @@ const labels = studioI18n[lang] || studioI18n.de;
         const val = parseInt((e.target as HTMLInputElement).value, 10);
         colors[idx].weight = val;
         const label = colorSlotsContainer?.querySelector(`.slot-weight-label[data-slot-index="${idx}"]`);
-        if (label) label.textContent = `${val}%`;
+        if (label) label.textContent = `${val} parts`;
         persistCurrentState();
         updateMix();
       });
@@ -1069,7 +1100,7 @@ const labels = studioI18n[lang] || studioI18n.de;
     }
 
     if (partsFormula) {
-      const parts = colors.map((c) => `${c.weight}% ${c.hex}`).join(" + ");
+      const parts = colors.map((c) => `${c.weight} parts ${c.hex}`).join(" + ");
       partsFormula.innerHTML = `Recipe: <span class="font-semibold text-[#171717] dark:text-white">${parts}</span>`;
     }
 

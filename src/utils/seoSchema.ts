@@ -65,6 +65,14 @@ const MIX_FEATURE_LISTS: Record<SupportedLanguage, string[]> = {
     'Проверка контрастности WCAG 2.1 AA/AAA в реальном времени',
     'Экспорт HEX, RGB, HSL, CMYK и OKLCH',
   ],
+  ja: [
+    'クベルカ・ムンク理論による物理的減法混色（RYB）',
+    'モダンWeb対応OKLCH知覚混色 ＆ CSS color-mix()書き出し',
+    'CMYK印刷インキシミュレーションと加法混色（RGB）',
+    '最大6色スロット＆1%〜100%配合比率スライダー',
+    'リアルタイムWCAG 2.1 AA/AAAアクセシビリティ検証',
+    'HEX、RGB、HSL、CMYK、OKLCHコード書き出し',
+  ],
 };
 
 const WHEEL_FEATURE_LISTS: Record<SupportedLanguage, string[]> = {
@@ -115,6 +123,14 @@ const WHEEL_FEATURE_LISTS: Record<SupportedLanguage, string[]> = {
     '9-ступенчатая шкала оттенков и теней (50-900)',
     'Симулятор дальтонизма (протанопия, дейтеранопия, тританопия, ахроматопсия)',
     'Матрица контрастности WCAG 2.1 и экспорт в Tailwind CSS v4, CSS-переменные и SVG',
+  ],
+  ja: [
+    'ヨハネス・イッテン伝統の12色相環（バウハウスRYB）',
+    'イッテンRYBとデジタルRGBカラーホイールの1クリック切り替え',
+    '6つの配色ハーモニー：補色、類似色、トライアド、テトラード、スプリット、モノクロ',
+    '9段階トーン＆シェードスケール（50〜900）',
+    '色覚異常シミュレーター（1型、2型、3型、全色盲）',
+    'WCAG 2.1コントラストマトリクス、Tailwind CSS v4、CSS変数＆SVG書き出し',
   ],
 };
 
@@ -428,6 +444,14 @@ export const SUITE_FEATURE_LISTS: Record<SupportedLanguage, string[]> = {
     'Симуляция 4 типов нарушения цветового зрения (дальтонизм)',
     'Экспорт в HEX, RGB, HSL, CMYK, OKLCH и Tailwind CSS v4',
   ],
+  ja: [
+    'クベルカ・ムンク理論による減法混色と絵の具光学（RYB）',
+    'ヨハネス・イッテンのバウハウス12色相環システム',
+    'W3C CSS color-mix()およびOKLCHによる最新Web色彩アーキテクチャ',
+    'WCAG 2.1 AA/AAAコントラスト比のリアルタイム検証',
+    '4種類の色覚異常（CVD）シミュレーション',
+    'HEX、RGB、HSL、CMYK、OKLCH、Tailwind CSS v4へのプロダクション書き出し',
+  ],
 };
 
 export function buildHomePageSchemas(params: {
@@ -518,6 +542,17 @@ export function buildHomePageSchemas(params: {
       wheelName: 'Цветовой круг Иоганнеса Иттена (Баухаус)',
       wheelDesc:
         'Классический 12-частный круг с комплементарными палитрами, 6 схемами гармонии и проверкой WCAG 2.1.',
+    },
+    ja: {
+      listName: 'PigmentLab インタラクティブ色彩科学＆色彩理論スイート',
+      listDesc:
+        'クベルカ・ムンクの減法混色物理とヨハネス・イッテンのバウハウス色彩調和を体験できる無料ツール。',
+      mixName: '色混ぜるシミュレーション（減法混色スタジオ）',
+      mixDesc:
+        '本物の絵の具の光学特性を再現したインタラクティブ混色ツール。最大6色ブレンドとCSS color-mix()出力に対応。',
+      wheelName: '12色相環・配色ジェネレーター（イッテンRYB）',
+      wheelDesc:
+        '補色配色、6つの調和ルール、WCAG 2.1コントラストマトリクスを備えた伝統的12色相環ツール。',
     },
   };
 

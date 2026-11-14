@@ -101,6 +101,15 @@ export const mixJumpLinks: Record<SupportedLanguage, JumpLinkItem[]> = {
     { href: '#sources', label: 'Источники' },
     { href: '#faq', label: 'FAQ' },
   ],
+  ja: [
+    { href: '#mixer-studio', label: 'シミュレーター' },
+    { href: '#mixing-table', label: '混色表' },
+    { href: '#mix-brown', label: '茶色の混色' },
+    { href: '#how-to', label: '使い方・手順' },
+    { href: '#who-uses', label: '活用対象' },
+    { href: '#sources', label: '科学的参考文献' },
+    { href: '#faq', label: 'よくある質問 (FAQ)' },
+  ],
 };
 
 export const wheelJumpLinks: Record<SupportedLanguage, JumpLinkItem[]> = {
@@ -158,6 +167,15 @@ export const wheelJumpLinks: Record<SupportedLanguage, JumpLinkItem[]> = {
     { href: '#sources', label: 'Источники' },
     { href: '#faq', label: 'FAQ' },
   ],
+  ja: [
+    { href: '#wheel-studio', label: '色相環ツール' },
+    { href: '#itten-vs-rgb', label: 'イッテン vs RGB' },
+    { href: '#harmonies', label: '配色ハーモニー' },
+    { href: '#how-to', label: '使い方・手順' },
+    { href: '#who-uses', label: '活用対象' },
+    { href: '#sources', label: '科学的参考文献' },
+    { href: '#faq', label: 'よくある質問 (FAQ)' },
+  ],
 };
 
 export const aboutJumpLinks: Record<SupportedLanguage, JumpLinkItem[]> = {
@@ -196,6 +214,12 @@ export const aboutJumpLinks: Record<SupportedLanguage, JumpLinkItem[]> = {
     { href: '#rgb-vs-kubelka-munk', label: 'RGB и Кубелка-Мунк' },
     { href: '#scientific-references', label: 'Источники' },
     { href: '#explore-tools', label: 'Инструменты' },
+  ],
+  ja: [
+    { href: '#mission', label: 'ミッション' },
+    { href: '#rgb-vs-kubelka-munk', label: 'RGB vs クベルカ・ムンク' },
+    { href: '#scientific-references', label: '科学的参考文献' },
+    { href: '#explore-tools', label: '色彩ツール' },
   ],
 };
 
@@ -257,6 +281,25 @@ export const extraMixBrownSections: Partial<Record<SupportedLanguage, BrownGuide
       },
     ],
   },
+  ja: {
+    heading: '3. 3色混ぜるシミュレーション：茶色の絵の具を作る混色比率',
+    intro:
+      '「絵の具で茶色を作るには何色を混ぜればいい？」は絵画制作やDIYで最も多い疑問です。茶色は単一の純色ではなくバランスの取れた中間色です。シミュレーターで以下の3つの配合を試してみましょう。',
+    cards: [
+      {
+        title: '方法1：3原色を混ぜる（赤＋黄＋青）',
+        text: '赤・黄・青をほぼ均等にブレンドします。黄色を多めにすると温かみのある黄土色（オーカー）、赤を多めにすると赤褐色（チェスナット）になります。',
+      },
+      {
+        title: '方法2：補色同士を混ぜる',
+        text: '赤＋緑、あるいは青＋オレンジなど、色相環で向かい合う補色ペアを混ぜると、濁らずに自然なアースブラウン（土色）が作れます。',
+      },
+      {
+        title: '方法3：明度・深みの調整',
+        text: 'チタニウムホワイトを加えてベージュやサンドカラーに、黒の代わりにウルトラマリンブルーを少量加えて濃厚なチョコレートブラウンに調整できます。',
+      },
+    ],
+  },
 };
 
 export const extraWheelHarmonySections: Partial<Record<SupportedLanguage, HarmonyGuideCopy>> = {
@@ -267,6 +310,10 @@ export const extraWheelHarmonySections: Partial<Record<SupportedLanguage, Harmon
   ru: {
     heading: '3. Комплементарные гармонии и одновременный контраст',
     body: 'Комплементарные (дополнительные) цвета расположены напротив друг друга под углом 180 градусов. В круге Иттена (RYB) пары Красный–Зеленый и Синий–Оранжевый усиливают взаимную яркость за счет одновременного контраста, помогая выделить ключевые акценты и кнопки интерфейса.',
+  },
+  ja: {
+    heading: '3. 色相環における配色組み合わせと補色の原理',
+    body: '色相環で向かい合う180度の色同士は「補色（コンプリメンタリー）」と呼ばれます。イッテン色相環（RYB）における赤と緑、青とオレンジはお互いの鮮やかさを最も引き立て合う同時対比効果を持ち、CTAボタンやアクセントカラーの設計に最適です。',
   },
 };
 
@@ -611,6 +658,63 @@ export const mixModularGuide: Record<SupportedLanguage, ModularGuideCopy> = {
     ],
     inlineLinkPrompt: 'Хотите подобрать точный комплементарный оттенок или гармоничную палитру?',
     inlineLinkText: 'Открыть цветовой круг Иоганнеса Иттена →',
+    inlineLinkPath: '/color-wheel',
+  },
+  ja: {
+    howToTitle: '4. ステップ解説：色混ぜるシミュレーションの使い方とCSS出力',
+    howToIntro: '直感的な4つのステップで物理的な減法混色を計算し、Web用コードを生成できます:',
+    steps: [
+      {
+        title: '混色モードを選択',
+        description: '絵の具の光吸収を再現する「絵の具（RYB）」、CSS color-mix()用の「モダンWeb（OKLCH）」、RGBやCMYKから選択します。',
+      },
+      {
+        title: '顔料またはHEXコードを指定',
+        description: '最大6色までスロットを追加可能。お好みのHEXコードを入力するか、プルシャンブルーやカドミウムイエローなどの絵の具プリセットを選択します。',
+      },
+      {
+        title: 'スライダーで配合比率を調整（1%〜100%）',
+        description: '各スロットのスライダーを動かして比率を変更すると、混色結果のスウォッチと配合比率がリアルタイムに更新されます。',
+      },
+      {
+        title: 'WCAGコントラスト検証とコードコピー',
+        description: 'UIコンポーネントプレビューで視認性を確認し、WCAG 2.1 AA/AAA判定をチェック。HEX、RGB、HSL、CMYK、OKLCH、CSSコードをコピーできます。',
+      },
+    ],
+    whoUsesTitle: '5. PigmentLab 混色シミュレーターはどのような方に使われているか？',
+    whoUsesIntro: 'アナログのアトリエ制作からデジタルのプロダクト開発まで幅広く活用されています:',
+    personas: [
+      {
+        badge: '絵画・アトリエ',
+        title: '油絵・アクリル・水彩画家',
+        description: 'パレットの上で高価な絵の具を無駄にする前に、デジタル上で混色結果や茶色の作り方を事前シミュレーションできます。',
+      },
+      {
+        badge: 'UI/UX & Web',
+        title: 'フロントエンド開発者・デザイナー',
+        description: 'OKLCH色空間での滑らかなグラデーションやCSS color-mix()コードを生成し、WCAG 2.1のコントラスト比を即座に確認できます。',
+      },
+      {
+        badge: 'DIY・クラフト',
+        title: 'ペイント施工・レジン・染織作家',
+        description: '混色表を参考に塗料やレジン着色剤の配合を計画し、濁りのない理想の色合いを調色できます。',
+      },
+      {
+        badge: '美術教育',
+        title: '美術講師・デザイン科の学生',
+        description: '画面の加法混色（RGB）と絵の具の減法混色（RYB）の違いを直感的に学び、色彩物理の理解を深められます。',
+      },
+    ],
+    benefitsTitle: '6. 本シミュレーターの主な特長',
+    benefits: [
+      'クベルカ・ムンク理論による物理的減法混色（青＋黄＝鮮やかな緑を実現）。',
+      '絵の具（RYB）、OKLCH、画面RGB、印刷CMYKの4つの混色エンジンを搭載。',
+      '最大6色ブレンド、精密なパーセンテージ配合レシピとプリセット保存。',
+      '白背景・黒背景でのWCAG 2.1 AA/AAAコントラスト比リアルタイム検証。',
+      '完全無料・登録不要・ブラウザ完結でプライバシーも安心。',
+    ],
+    inlineLinkPrompt: '混色するだけでなく、調和する補色やカラーパレットを見つけたいですか？',
+    inlineLinkText: 'ヨハネス・イッテン12色相環ツールを開く →',
     inlineLinkPath: '/color-wheel',
   },
 };
@@ -958,6 +1062,63 @@ export const wheelModularGuide: Record<SupportedLanguage, ModularGuideCopy> = {
     inlineLinkText: 'Перейти в симулятор смешивания цветов →',
     inlineLinkPath: '/mix',
   },
+  ja: {
+    howToTitle: '5. ステップ解説：12色相環を使った美しい配色パレットの作り方',
+    howToIntro: 'ヨハネス・イッテンの幾何学色彩調和を活用し、調和の取れた配色を作成する手順:',
+    steps: [
+      {
+        title: '色相環モデルの選択（イッテンRYBまたはRGB）',
+        description: '赤の対面が緑になる伝統的なバウハウス・イッテンRYB色相環と、デジタル画面用のRGBカラーホイールを1クリックで切り替えられます。',
+      },
+      {
+        title: '配色ルール（ハーモニー）を選択',
+        description: '補色（対照色）、類似色、トライアド（3色）、テトラード（4色）、スプリット補色、モノクロマティックから選択します。',
+      },
+      {
+        title: '色相ノードをドラッグまたはHEX入力',
+        description: 'キャンバス上のノードを回転させてベースカラーを決定するか、色相・彩度・明度スライダーやHEXコードで精密に指定します。',
+      },
+      {
+        title: 'アクセシビリティ検証とトークン書き出し',
+        description: 'WCAG 2.1コントラストマトリクスと色覚シミュレーターで可読性を確認し、Tailwind CSS v4、CSS変数、SVGパレットをエクスポートします。',
+      },
+    ],
+    whoUsesTitle: '6. PigmentLab 色相環ツールはどのような方に使われているか？',
+    whoUsesIntro: '美術理論とアクセシブルなインターフェースデザインの両立を目指すプロフェッショナルのためのツール:',
+    personas: [
+      {
+        badge: 'UI & デザインシステム',
+        title: 'Webデザイナー & Tailwind開発者',
+        description: '50〜900の9段階シェードスケールをTailwind CSS設定として書き出し、WCAGコントラストをクリアした安全なUIを構築。',
+      },
+      {
+        badge: '絵画 & イラスト',
+        title: '画家・イラストレーター・アニメーター',
+        description: 'イッテンの伝統的なRYB補色（赤–緑、青–オレンジ、黄–紫）を活用し、ドラマチックな色彩対比を演出。',
+      },
+      {
+        badge: 'アクセシビリティ',
+        title: 'アクセシビリティ検証担当者 (CVD)',
+        description: '1型2色覚（P型）、2型2色覚（D型）、3型2色覚（T型）、全色盲のシミュレーションで誰にでも識別しやすい配色を検証。',
+      },
+      {
+        badge: 'デザイン教育',
+        title: '色彩検定・美術指導者・学生',
+        description: 'ヨハネス・イッテンのバウハウス色彩論とデジタルRGB色空間の違いを画面上で直接比較・検証。',
+      },
+    ],
+    benefitsTitle: '7. PigmentLab 色相環ツールの特長',
+    benefits: [
+      'イッテンRYB芸術家色相環とデジタルRGBホイールの1クリック切り替え。',
+      '6種類の幾何学的配色ハーモニーと自動9段階シェードスケール（50〜900）。',
+      '4種の色覚異常シミュレーションとWCAG 2.1リアルタイムコントラストマトリクス。',
+      'Tailwind CSS v4、CSS変数（:root）、SVGファイルへのワンクリック書き出し。',
+      'Adobeアカウント等のログイン不要、完全無料でブラウザ上で高速動作。',
+    ],
+    inlineLinkPrompt: '色相環で選んだ配色を、実際の絵の具のように物理的に混ぜ合わせてみたいですか？',
+    inlineLinkText: '本格的な減法混色シミュレーターで試す →',
+    inlineLinkPath: '/mix',
+  },
 };
 
 export interface AboutPageCopy {
@@ -1031,6 +1192,16 @@ export const aboutBodyContent: Record<SupportedLanguage, AboutPageCopy> = {
     kmBadge: '✓ Субтрактивная физика PigmentLab',
     kmTitle: 'Спектральное поглощение Кубелки-Мунка',
     kmBody: 'Реальные пигменты поглощают определенные длины волн света. PigmentLab точно моделирует этот процесс, позволяя получить чистый изумрудно-зеленый из Синего и Желтого.',
+  },
+  ja: {
+    problemHeading: '従来のデジタル色彩ツールが抱える課題',
+    problemSubheading: 'なぜ一般的な画面のカラーピッカーは、本物の油絵具やアクリル絵の具と違って不自然に見えるのか？',
+    rgbBadge: '✕ 単純なRGB線形平均',
+    rgbTitle: 'モニターは光（フォトン）を発光する',
+    rgbBody: '一般的なディスプレイは光を加法混色します。標準的なソフトウェアで青（0, 0, 255）と黄（255, 255, 0）を混ぜると、数学的平均は濁った暗い灰色（#808080）になってしまいます。',
+    kmBadge: '✓ PigmentLabの減法混色物理',
+    kmTitle: 'クベルカ・ムンク分光吸収モデル',
+    kmBody: '本物の絵の具の顔料は特定の光の波長を吸収（カット）します。PigmentLabはこの減法混色プロセスを正確に再現するため、青と黄色を混ぜると本物の絵の具と同じ鮮やかなエメラルドグリーンが生まれます。',
   },
 };
 

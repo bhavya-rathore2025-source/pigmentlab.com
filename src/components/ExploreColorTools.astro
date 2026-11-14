@@ -226,16 +226,57 @@ const copyByLang: Record<SupportedLanguage, ExploreCopy> = {
       dotClass: 'bg-purple-500',
     },
   },
+  ja: {
+    eyebrow: 'PigmentLab ツール ＆ 理論クラスター',
+    heading: '色彩ツールと科学的理論をさらに詳しく知る',
+    subheading: '物理的な減法混色、ヨハネス・イッテンの12色相環、WCAGアクセシビリティ検証を体験しましょう。',
+    mix: {
+      badge: 'クベルカ・ムンク混色シミュレーター',
+      title: '色混ぜるシミュレーション＆混色表',
+      description: '本物の絵の具の光学（青＋黄＝緑）を体験し、OKLCHやCMYKモードの検証、CSS color-mix()コードを出力できます。',
+      cta: '色混ぜるシミュレーターを開く →',
+      dotClass: 'bg-amber-500',
+    },
+    wheel: {
+      badge: 'イッテン・バウハウスRYB',
+      title: '12色相環＆配色ジェネレーター',
+      description: '伝統的なイッテンRYBとRGBを切り替え、補色パレットの生成、9段階シェードスケール、WCAGコントラスト検証を実行。',
+      cta: '12色相環ツールを開く →',
+      dotClass: 'bg-emerald-500',
+    },
+    about: {
+      badge: '光学色彩科学',
+      title: 'クベルカ・ムンク理論とバウハウス色彩論',
+      description: '画面のRGB平均が濁る理由や、光波長の吸収をモデル化する科学的根拠について解説します。',
+      cta: '科学的理論を読む →',
+      dotClass: 'bg-[#0070f3]',
+    },
+    home: {
+      badge: 'プラットフォーム概要',
+      title: 'すべての色彩ツール一覧',
+      description: '色彩科学プラットフォームPigmentLabのトップページに戻る。',
+      cta: 'トップページへ戻る →',
+      dotClass: 'bg-purple-500',
+    },
+  },
 };
 
 const t = copyByLang[lang] || copyByLang.en;
 
-const targets: Array<{ key: 'mix' | 'wheel' | 'about' | 'home'; path: string; card: ToolCardCopy }> = [
+interface TargetItem {
+  key: 'mix' | 'wheel' | 'about' | 'home';
+  path: string;
+  card: ToolCardCopy;
+}
+
+const allTargets: TargetItem[] = [
   { key: 'mix', path: '/mix', card: t.mix },
   { key: 'wheel', path: '/color-wheel', card: t.wheel },
   { key: 'about', path: '/about', card: t.about },
   { key: 'home', path: '/', card: t.home },
-].filter((item) => item.key !== currentPage);
+];
+
+const targets = allTargets.filter((item) => item.key !== currentPage);
 ---
 
 <section

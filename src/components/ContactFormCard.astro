@@ -187,6 +187,31 @@ const copyByLang: Record<SupportedLanguage, ContactFormCopy> = {
     successBody: 'Спасибо за обращение в PigmentLab. Мы получили ваше сообщение и внимательно его рассмотрим. Обычно мы отвечаем в течение 24–48 часов в рабочие дни.',
     resetBtn: 'Отправить ещё одно сообщение',
   },
+  ja: {
+    heading: 'メッセージを送信',
+    subheading: '以下のフォームに入力してください。できるだけ早くご返信いたします。',
+    nameLabel: 'お名前',
+    namePlaceholder: '例: 山田 太郎',
+    emailLabel: 'メールアドレス',
+    emailPlaceholder: 'name@example.com',
+    subjectLabel: 'お問い合わせ内容の種別',
+    subjects: [
+      { value: 'General Inquiry', label: '一般的なご質問 / お問い合わせ' },
+      { value: 'Pigment Suggestion', label: '新しい絵の具顔料・プリセットのご提案' },
+      { value: 'Physics Feedback', label: '色彩科学・クベルカ・ムンク理論に関するフィードバック' },
+      { value: 'Bug Report', label: '不具合報告 / 技術的な問題' },
+      { value: 'Collaboration', label: 'コラボレーション / パートナーシップ' },
+    ],
+    messageLabel: 'メッセージ本文',
+    messagePlaceholder: 'ご質問やご要望をご記入ください...',
+    validationError: '必須項目をすべて入力し、有効なメールアドレスをご指定ください。',
+    networkError: 'メッセージを送信できませんでした。接続環境をご確認のうえ再試行いただくか、contact@pigmentlaboratory.com まで直接ご連絡ください。',
+    submitBtn: 'メッセージを送信 →',
+    sendingBtn: '送信中...',
+    successTitle: 'メッセージを受け付けました！',
+    successBody: 'PigmentLabへのお問い合わせありがとうございます。内容を確認のうえ、通常24〜48時間以内にご返答いたします。',
+    resetBtn: '別のメッセージを送信',
+  },
 };
 
 const t = copyByLang[lang] || copyByLang.en;

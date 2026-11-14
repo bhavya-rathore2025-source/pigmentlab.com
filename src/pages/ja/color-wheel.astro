@@ -1,0 +1,213 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ColorWheelStudio from '../../components/ColorWheelStudio.astro';
+import JumpNav from '../../components/JumpNav.astro';
+import ModularToolSections from '../../components/ModularToolSections.astro';
+import ExploreColorTools from '../../components/ExploreColorTools.astro';
+import { buildWheelPageSchemas } from '../../utils/seoSchema';
+import { wheelJumpLinks } from '../../i18n/toolGuides';
+
+const colorWheelFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': '色相環とは？（簡単に解説）',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '色相環（カラーホイール）とは、赤・橙・黄・緑・青・紫といった色の相違（色相）を光の波長の順序に従って円環状（リング状）に並べた図面です。隣り合う色同士は滑らかに移り変わり、円の向かい側に位置する色同士はお互いを最も引き立て合う「補色」になります。美術教育やWeb・UIデザインで調和のとれた配色を選ぶための基本ツールです。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '12色相環とは？何色の色で構成されている？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '12色相環とは、バウハウスの巨匠ヨハネス・イッテンが体系化した12色で構成される伝統的な色相環です。3つの第1次色（原色：赤・黄・青）、それらを混色した3つの第2次色（橙・緑・紫）、さらに原色と第2次色の中間となる6つの第3次色（赤橙、黄橙、黄緑、青緑、青紫、赤紫）の合計12色から構成されています。絵の具の混色と最も調和する伝統的な芸術体系です。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '色相環における「補色」とは？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '色相環において、円の中心を通る正反対（180度向かい側）に位置する2色のペアを「補色（コンプリメンタリー）」と呼びます。イッテン色相環では「赤と緑」「青と橙」「黄と紫」が補色です。補色同士を並べると同時対比によってお互いの鮮やかさが強調され、CTAボタンなどのアクセントに最適です。一方、絵の具として混ぜ合わせると無彩色（落ち着いた黒や褐色）に中和されます。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '色相環で「類似色」は何度の範囲？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '色相環において、基準となる色から約30度〜60度の範囲内にある隣り合った色を「類似色（アナロジー）」と呼びます。類似色は色相の共通性が高いため、組み合わせた際にコントラストが穏やかで、統一感と安心感のある美しいグラデーション配色を作ることができます。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '色相環に「茶色」や「白」はどこにある？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '一般的な色相環の円周上には、純粋な有彩色（最も彩度が高い色相）のみが配置されているため、茶色や白、黒は直接円周上には存在しません。白や黒は明度軸に位置する「無彩色」です。また「茶色」は、色相としてはオレンジ色や赤色に属し、その彩度や明度を落とした（暗くした）トーンです。PigmentLabの9段階トーンスケールを使うと、オレンジや赤の明度を下げることで茶色を確認できます。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '色相環は誰が作った？歴史と由来',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '虹のスペクトルを円環状につないで最初の色相環を考案したのは、物理学者のアイザック・ニュートン（1704年『光学』）です。その後、詩人・自然科学者のゲーテ（1810年『色彩論』）、マンセル表色系のマンセル、そして現代のデザイン・美術教育の礎を築いたバウハウスのヨハネス・イッテン（1921年/1961年『色彩の芸術』）へと受け継がれ、現在広く使われている12色相環が確立されました。'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': '12色相環を使った配色の組み合わせのやり方は？',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': '12色相環を使った配色は、幾何学的な角度を基準に選びます。代表的な手法として、180度対向する「補色配色」、隣接する「類似色配色」、正三角形を結ぶ120度の「トライアド（3色配色）」、長方形を結ぶ「テトラード（4色配色）」、補色の両隣を選ぶ「スプリット・コンプリメンタリー」があります。PigmentLabの色相環ツールでは、ノードを回すだけでこれらの幾何学調和配色をワンクリックで自動算出できます。'
+      }
+    }
+  ]
+};
+
+const pageSchema = buildWheelPageSchemas({
+  lang: 'ja',
+  url: 'https://pigmentlaboratory.com/ja/color-wheel',
+  appName: 'PigmentLab 12色相環ツール＆配色ジェネレーター',
+  appDescription: 'ヨハネス・イッテン伝統の12色相環（バウハウスRYB）とデジタルRGBを1クリック切り替えできる無料オンライン色相環ツール。補色、類似色、トライアド配色組み合わせ生成、WCAG 2.1コントラスト検証、Tailwind CSS書き出しに対応。',
+  articleHeadline: 'ヨハネス・イッテン12色相環と配色組み合わせ完全ガイド：補色・幾何学調和・歴史',
+  articleDescription: '伝統的なバウハウス12色相環の構造、補色（赤と緑）の原理、類似色やトライアドなどの配色組み合わせ手法、アイザック・ニュートンからイッテンに至る歴史を徹底解説。',
+  currency: 'JPY',
+  faqSchema: colorWheelFaqSchema,
+});
+---
+
+<Layout
+  title="色相環ツール｜12色相環・補色・配色組み合わせ — PigmentLab"
+  description="【無料】ヨハネス・イッテンの12色相環（RYB）とデジタルRGBを切り替えできる色相環ツール。補色・類似色・3色配色の組み合わせ、WCAG 2.1コントラスト検証、Tailwind CSS書き出しに対応。"
+  keywords="色相環, 12色相環, 色相環 補色, 色相環 配色 組み合わせ, 色相環とは, カラーホイール, イッテン色相環, 配色ツール, 色彩調和"
+  currentPath="/ja/color-wheel"
+  lang="ja"
+  schema={pageSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-10 sm:py-14">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
+      <div class="absolute -top-[20%] left-[10%] h-[320px] w-[450px] rounded-full bg-gradient-to-tr from-[#ff4d4d]/30 via-[#f9cb28]/30 to-[#00dfd8]/30 blur-3xl"></div>
+      <div class="absolute -top-[25%] right-[20%] h-[320px] w-[450px] rounded-full bg-gradient-to-bl from-[#7928ca]/30 via-[#ff0080]/30 to-[#007cf0]/30 blur-3xl"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff0080] animate-pulse"></span>
+          <span>ヨハネス・イッテン 12色相環 ＆ 配色ハーモニー</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl lg:text-5xl">
+          色相環ツール ＆ 配色ジェネレーター
+        </h1>
+
+        <p class="mt-3 text-sm leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa] sm:text-base">
+          Adobe Colorなど一般的な画面ツールはデジタルRGB角度（赤の対面がシアン）のみを使用します。PigmentLabは、芸術家やデザイナーに親しまれてきた伝統的な<strong class="text-[#171717] dark:text-white">ヨハネス・イッテンのバウハウス12色相環（RYB）</strong>（<span class="text-[#c41e3a] font-semibold">赤</span>の対面が<span class="text-[#14b82a] font-semibold">緑</span>）と、Web標準のデジタルRGBホイールを1クリックで切り替えられる本格的な色相環ツールです。
+        </p>
+
+        <JumpNav items={wheelJumpLinks.ja} ariaLabel="色相環ツールのセクションナビゲーション" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Component -->
+  <ColorWheelStudio lang="ja" />
+
+  <!-- Educational Guide & SEO Section -->
+  <article class="border-t border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#71717a]">バウハウスの色彩論 ＆ 幾何学配色</span>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-[#171717] dark:text-white sm:text-4xl">
+          12色相環と配色組み合わせ完全ガイド：補色と調和の幾何学
+        </h2>
+        <p class="mt-3 text-base text-[#4d4d4d] dark:text-[#a1a1aa]">
+          ヨハネス・イッテンの12色相環の構造、補色の仕組み、6つの配色組み合わせパターン、アクセシブルなUI設計を解説します。
+        </p>
+      </div>
+
+      <div class="space-y-12 text-sm sm:text-base leading-relaxed text-[#374151] dark:text-[#d1d5db]">
+        <section id="itten-vs-rgb" class="scroll-mt-20 space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            1. イッテン12色相環（RYB）とデジタルRGBカラーホイールの違い
+          </h3>
+          <p>
+            デザインや美術で使われる<strong>色相環</strong>には、大きく分けて「絵の具（顔料）に基づくRYBモデル」と「画面の光に基づくRGBモデル」の2種類が存在します。
+          </p>
+          <p>
+            バウハウスの指導者<strong>ヨハネス・イッテンが考案した12色相環</strong>は、伝統的な絵の具の3原色（赤・黄・青）を起点としています。この体系では、<strong>赤（Red）の対向（180度）に緑（Green）</strong>が配置され、<strong>青（Blue）の対向に橙（Orange）</strong>、<strong>黄（Yellow）の対向に紫（Violet）</strong>が配置されます。絵の具を混ぜて作品を創る画家やイラストレーターにとって、最も直感的に補色関係を把握できる配置です。
+          </p>
+          <p>
+            一方、一般的なデジタル画面のRGBホイールでは、赤の対向はシアン（水色）になり、青の対向は黄色になります。PigmentLabでは、上部のタブを切り替えるだけで、これら2つの色相環モデルを行き来しながら配色を検証できます。
+          </p>
+        </section>
+
+        <section id="harmonies" class="scroll-mt-20 space-y-4">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            2. 色相環を使った配色組み合わせの基本ルール（6つのハーモニー）
+          </h3>
+          <p>
+            美しい配色を作るためには、色相環の幾何学的な位置関係を利用するのが最も効果的です。PigmentLabは以下の6つの調和ルールを自動算出します。
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4">
+              <span class="font-mono text-xs font-bold text-red-600 dark:text-red-400">補色（コンプリメンタリー / 180°）</span>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                色相環で正反対にある2色。最大の明度・色相対比を生み出し、視線を引きつけるCTAボタンや強調ポイントに最適です。
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4">
+              <span class="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">類似色（アナロジー / 30°〜60°）</span>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                隣接する3色〜5色。共通の色相成分を持つため統一感があり、穏やかで安心感を与えるグラデーション配色が作れます。
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4">
+              <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">トライアド（3色配色 / 120°）</span>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                正三角形を形成する等間隔の3色。色彩のバランスが非常に良く、活気と調和を両立させたデザインに仕上がります。
+              </p>
+            </div>
+            <div class="rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4">
+              <span class="font-mono text-xs font-bold text-purple-600 dark:text-purple-400">テトラード（4色配色 / 90°長方形）</span>
+              <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa]">
+                2組の補色ペアから成る豊かな4色配色。多色を使いながらも幾何学的均衡を保つことができます。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <ModularToolSections tool="wheel" lang="ja" />
+
+        <!-- FAQs Section with Rich JSON-LD match -->
+        <section id="faq" class="scroll-mt-20 space-y-4 border-t border-[#ebebeb] dark:border-[#222222] pt-8">
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#111827] dark:text-white">
+            よくある質問 (FAQ) — 12色相環と補色配色の疑問を解消
+          </h3>
+          <div class="space-y-4">
+            {colorWheelFaqSchema.mainEntity.map(faq => (
+              <details class="group rounded-xl border border-[#ebebeb] dark:border-[#222222] bg-[#f9fafb] dark:bg-[#121212] p-4 open:border-[#171717] dark:open:border-white">
+                <summary class="flex cursor-pointer items-center justify-between font-medium text-[#111827] dark:text-white">
+                  <span>{faq.name}</span>
+                  <span class="ml-2 text-xs text-[#8f8f8f] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+                  {faq.acceptedAnswer.text}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <ExploreColorTools lang="ja" currentPage="wheel" />
+</Layout>

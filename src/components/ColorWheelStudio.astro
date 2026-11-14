@@ -237,6 +237,44 @@ const studioI18n = {
     copyCss: 'Копировать CSS',
     copied: 'Скопировано!',
   },
+  ja: {
+    modeItten: '🎨 伝統的イッテン（RYB色相環）',
+    modeRgb: '💻 デジタル色相環（RGB / Web）',
+    comp: '補色（ダイアード / 対照色）',
+    ana: '類似色（アナロジー）',
+    tri: 'トライアド（3色配色）',
+    tet: 'テトラード（4色配色）',
+    split: 'スプリット・コンプリメンタリー',
+    mono: 'モノクロマティック（単色濃淡）',
+    canvasTitle: 'インタラクティブ12色相環',
+    canvasDesc: 'ノードをドラッグして配色を回転。モード：イッテンRYB（赤の対面が緑）。',
+    shuffle: 'シャッフル',
+    reset: 'リセット',
+    hue: '色相 (Hue)',
+    sat: '彩度 (Saturation)',
+    light: '明度 (Lightness)',
+    baseHex: '基準色HEX',
+    cvdTitle: '色覚多様性（色盲）シミュレーター',
+    cvdDesc: '色覚特性を持つユーザーにどのように見えるかをリアルタイム確認:',
+    cvdNormal: '一般色覚（通常）',
+    cvdProtanopia: '1型2色覚（赤色盲）',
+    cvdDeuteranopia: '2型2色覚（緑色盲）',
+    cvdTritanopia: '3型2色覚（青色盲）',
+    cvdAchromatopsia: '全色盲（モノクロ）',
+    paletteTitle: '調和カラーパレット',
+    paletteColors: '色',
+    scaleTitle: '9段階トーン＆シェードスケール',
+    scaleDesc: 'スウォッチをクリックしてHEXコードをコピー:',
+    wcagTitle: 'WCAG 2.1 コントラストマトリクス',
+    wcagSubtitle: 'パレットカラー間の可読性比率',
+    exportTitle: '開発者・デザイナー用エクスポート',
+    exportSvg: 'SVGパレット',
+    tailwindTitle: 'Tailwind CSS トークン設定',
+    copyCode: 'コードをコピー',
+    cssVarsTitle: 'CSSカスタムプロパティ (:root)',
+    copyCss: 'CSSをコピー',
+    copied: 'コピー完了！',
+  },
 };
 
 const labels = studioI18n[lang] || studioI18n.en;
@@ -596,7 +634,7 @@ const labels = studioI18n[lang] || studioI18n.en;
     currentSat: number;
     currentLight: number;
     currentCvd: 'normal' | 'protanopia' | 'deuteranopia' | 'tritanopia' | 'achromatopsia';
-    selectedSwatchHex?: string;
+    selectedSwatchHex: string;
   }
 
   const DEFAULT_WHEEL_STATE: WheelState = {
@@ -1262,7 +1300,7 @@ const labels = studioI18n[lang] || studioI18n.en;
     currentSat = DEFAULT_WHEEL_STATE.currentSat;
     currentLight = DEFAULT_WHEEL_STATE.currentLight;
     currentCvd = DEFAULT_WHEEL_STATE.currentCvd;
-    selectedSwatchHex = DEFAULT_WHEEL_STATE.selectedSwatchHex;
+    selectedSwatchHex = DEFAULT_WHEEL_STATE.selectedSwatchHex || '';
 
     syncControlsWithState();
     saveWheelState();

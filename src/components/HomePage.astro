@@ -35,7 +35,7 @@ const schemas = buildHomePageSchemas({
   wheelUrl,
   title: data.metaTitle,
   description: data.metaDescription,
-  currency: resolvedLang === 'en' ? 'USD' : 'EUR',
+  currency: resolvedLang === 'ja' ? 'JPY' : resolvedLang === 'en' ? 'USD' : 'EUR',
 });
 ---
 
