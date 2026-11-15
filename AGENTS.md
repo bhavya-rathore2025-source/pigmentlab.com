@@ -20,3 +20,21 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## SEO Guidelines (Strict Bing & Google Constraints)
+
+Always validate and verify character lengths before modifying or creating `<title>` and `<meta name="description">` tags:
+
+1. **Page Title Tag**:
+   - **Recommended Target**: 50 to 60 characters (~580–600 px desktop width).
+   - **Hard Ceiling**: 65 characters maximum.
+   - **Strict Bing Limit**: Must NEVER reach or exceed 70 characters (triggers hard Bing Webmaster SEO error).
+
+2. **Meta Description Tag**:
+   - **Recommended Target**: 130 to 155 characters (~920–960 px desktop width).
+   - **Hard Ceiling**: 158 characters maximum.
+   - **Strict Bing Limits**: Must strictly be between 25 and 160 characters (outside this triggers hard Bing Webmaster SEO error).
+
+3. **Validation Rule**:
+   - Always count character lengths and report them when proposing or applying changes to page titles and descriptions.
+
