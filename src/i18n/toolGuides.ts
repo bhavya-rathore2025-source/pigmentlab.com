@@ -798,7 +798,7 @@ export const wheelModularGuide: Record<SupportedLanguage, ModularGuideCopy> = {
         description: 'Check WCAG 2.1 contrast scores, preview Protanopia/Deuteranopia/Tritanopia vision, and export Tailwind CSS, CSS vars, or SVG.',
       },
     ],
-    whoUsesTitle: '6. Who Uses the PigmentLab Color Wheel Picker?',
+    whoUsesTitle: '6. Who Uses the PigmentLab Color Wheel & Palette Generator?',
     whoUsesIntro: 'Designed to bridge classic Bauhaus pedagogy and modern web engineering:',
     personas: [
       {

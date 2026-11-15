@@ -52,7 +52,7 @@ export const ui = {
     'footer.colorScience': 'Color Science',
     'footer.legal': 'Company & Legal',
     'footer.mixerLink': 'Color Mixer Online',
-    'footer.wheelLink': 'Color Wheel Picker',
+    'footer.wheelLink': 'Color Wheel & Palette Generator',
     'footer.overviewLink': 'PigmentLab Overview',
     'footer.multilingual': 'Multilingual Color Tools',
   },
