@@ -39,7 +39,6 @@ export default defineConfig({
     '/about-us': '/about',
     '/terms-and-conditions': '/terms',
     '/contact-us': '/contact',
-    '/sitemap.xml': '/sitemap-index.xml',
   },
   vite: {
     plugins: [tailwindcss()],

@@ -2,4 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://pigmentlaboratory.com/sitemap-index.xml
-
+Sitemap: https://pigmentlaboratory.com/sitemap-0.xml
+Sitemap: https://pigmentlaboratory.com/sitemap.xml

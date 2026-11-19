@@ -1,0 +1,6 @@
+# Cloudflare Workers Static Assets redirects
+/sitemap.xml /sitemap-index.xml 301
+/privacy-policy /privacy 301
+/about-us /about 301
+/terms-and-conditions /terms 301
+/contact-us /contact 301

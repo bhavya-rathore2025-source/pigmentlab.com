@@ -974,7 +974,10 @@ const labels = studioI18n[lang] || studioI18n.de;
                 data-slot-index="${index}"
                 class="slot-weight-slider h-1.5 w-24 sm:w-32 cursor-pointer accent-[#171717] dark:accent-white"
               />
-              <span class="slot-weight-label min-w-[4rem] text-right font-mono text-xs font-medium text-[#171717] dark:text-[#ededed]">
+              <span
+                data-slot-index="${index}"
+                class="slot-weight-label min-w-[4rem] text-right font-mono text-xs font-medium text-[#171717] dark:text-[#ededed]"
+              >
                 ${colorItem.weight} parts
               </span>
             </div>
@@ -1044,7 +1047,9 @@ const labels = studioI18n[lang] || studioI18n.de;
         const idx = parseInt((e.target as HTMLElement).getAttribute("data-slot-index") || "0", 10);
         const val = parseInt((e.target as HTMLInputElement).value, 10);
         colors[idx].weight = val;
-        const label = colorSlotsContainer?.querySelector(`.slot-weight-label[data-slot-index="${idx}"]`);
+        const label =
+          (e.target as HTMLElement).parentElement?.querySelector(".slot-weight-label") ||
+          colorSlotsContainer?.querySelector(`.slot-weight-label[data-slot-index="${idx}"]`);
         if (label) label.textContent = `${val} parts`;
         persistCurrentState();
         updateMix();

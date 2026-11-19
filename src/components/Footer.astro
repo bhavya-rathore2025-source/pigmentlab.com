@@ -41,13 +41,13 @@ const isContactActive = currentPath === translatePath('/contact') || currentPath
         <h3 class="font-mono text-xs font-semibold tracking-wider text-[#171717] uppercase dark:text-[#ededed]">{t('footer.tools')}</h3>
         <ul class="space-y-1.5 text-xs text-[#8f8f8f] dark:text-[#a1a1a1]">
           <li>
-            <span class="text-[#4d4d4d] dark:text-[#d4d4d4] font-medium">{t('footer.mixerLink')}</span> <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">{t('nav.mixerBadge')}</span>
+            <a href={translatePath('/mix')} class="text-[#4d4d4d] hover:text-[#171717] dark:text-[#d4d4d4] dark:hover:text-white font-medium transition-colors">{t('footer.mixerLink')}</a> <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">{t('nav.mixerBadge')}</span>
           </li>
           <li>
-            <span class="text-[#4d4d4d] dark:text-[#d4d4d4] font-medium">{t('footer.wheelLink')}</span> <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">{t('nav.wheelBadge')}</span>
+            <a href={translatePath('/color-wheel')} class="text-[#4d4d4d] hover:text-[#171717] dark:text-[#d4d4d4] dark:hover:text-white font-medium transition-colors">{t('footer.wheelLink')}</a> <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">{t('nav.wheelBadge')}</span>
           </li>
           <li>
-            <span class="text-[#4d4d4d] dark:text-[#d4d4d4] font-medium">{t('footer.overviewLink')}</span> <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">Specs</span>
+            <a href={translatePath('/')} class="text-[#4d4d4d] hover:text-[#171717] dark:text-[#d4d4d4] dark:hover:text-white font-medium transition-colors">{t('footer.overviewLink')}</a> <span class="rounded bg-[#f2f2f2] px-1.5 py-0.5 text-[10px] text-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#a1a1a1]">Specs</span>
           </li>
         </ul>
       </div>
