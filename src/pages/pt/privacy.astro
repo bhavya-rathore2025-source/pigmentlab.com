@@ -6,7 +6,7 @@ const privacySchema = {
   '@type': 'WebPage',
   'name': 'Política de Privacidade — PigmentLab',
   'url': 'https://pigmentlaboratory.com/pt/privacy',
-  'description': 'Política de privacidade do PigmentLab. Arquitetura 100% no cliente, armazenamento local e compromisso com sua privacidade.',
+  'description': 'Política de Privacidade do PigmentLab: arquitetura no cliente, armazenamento local, Google AdSense, gestão de consentimento, LGPD e GDPR.',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
@@ -17,21 +17,274 @@ const privacySchema = {
 
 <Layout
   title="Política de Privacidade — PigmentLab"
-  description="Conheça nossa política de privacidade. O PigmentLab funciona localmente no seu navegador sem rastreamento ou venda de dados (conforme LGPD e GDPR)."
-  keywords="política de privacidade pigmentlab, lgpd, privacidade, ferramentas locais"
+  description="Política de Privacidade do PigmentLab: ferramentas locais no navegador, LocalStorage, Google AdSense, gestão de consentimento, LGPD e GDPR."
+  keywords="política de privacidade pigmentlab, lgpd, gdpr, ccpa, google adsense consentimento, cmp, localstorage"
   currentPath="/pt/privacy"
   lang="pt"
   schema={privacySchema}
 >
-  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20 text-center">
+  <!-- Header -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#ebebeb] dark:border-[#2e2e2e] bg-[#fafafa] dark:bg-[#141414] px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#4d4d4d] dark:text-[#a1a1aa] shadow-2xs">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+        <span>Arquitetura Focada em Privacidade</span>
+      </div>
+
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-[#171717] dark:text-white sm:text-5xl">
         Política de Privacidade
       </h1>
-      <p class="mt-4 text-sm text-[#4d4d4d] dark:text-[#a1a1aa]">
-        Todas as operações do PigmentLab rodam diretamente no navegador do usuário. Não gravamos nem rastreamos suas misturas ou paletas em servidores externos.
+
+      <p class="mt-3 text-xs sm:text-sm text-[#8f8f8f] dark:text-[#737373] font-mono">
+        Vigente e última atualização: novembro de 2026 · Versão 1.3
+      </p>
+
+      <p class="mt-5 text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+        No <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong> (<a href="https://pigmentlaboratory.com" class="underline hover:text-[#0070f3]">pigmentlaboratory.com</a>), acreditamos que ferramentas criativas devem ser rápidas, transparentes e privadas. Operamos com uma rigorosa <strong class="text-[#171717] dark:text-white font-medium">filosofia client-side</strong>: suas receitas de cores, paletas e testes de mistura são calculados diretamente no navegador, sem envio ou armazenamento em nossos servidores.
       </p>
     </div>
   </section>
-</Layout>
 
+  <!-- At a Glance Cards -->
+  <section class="border-b border-[#ebebeb] dark:border-[#222222] bg-[#fafafa] dark:bg-[#000000] py-10">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#8f8f8f] dark:text-[#737373]">
+        Principais Garantias de Privacidade
+      </h2>
+
+      <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-5 shadow-2xs">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400 font-bold text-sm">
+            ✓
+          </div>
+          <h3 class="mt-3 text-sm font-semibold text-[#171717] dark:text-white">Execução 100% no Navegador</h3>
+          <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Todos os cálculos ópticos de Kubelka-Munk e operações do círculo cromático de Itten rodam localmente no seu dispositivo.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-5 shadow-2xs">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400 font-bold text-sm">
+            ✓
+          </div>
+          <h3 class="mt-3 text-sm font-semibold text-[#171717] dark:text-white">Sem Contas Obrigatórias</h3>
+          <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Não exigimos cadastro, login nem autenticação social. Você pode usar todas as ferramentas imediatamente e de forma anônima.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#0e0e0e] p-5 shadow-2xs">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400 font-bold text-sm">
+            ✓
+          </div>
+          <h3 class="mt-3 text-sm font-semibold text-[#171717] dark:text-white">Nunca Vendemos Seus Dados</h3>
+          <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
+            Não vendemos, alugamos ou comercializamos suas informações pessoais ou hábitos de uso com corretores de dados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Policy Content -->
+  <section class="bg-white dark:bg-[#0a0a0a] py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-12 text-sm sm:text-base leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          1. Introdução e Visão Geral
+        </h2>
+        <p class="mt-4">
+          Esta Política de Privacidade explica como o PigmentLab (&ldquo;nós&rdquo; ou &ldquo;nosso&rdquo;) trata informações quando você visita ou utiliza nosso site (<a href="https://pigmentlaboratory.com" class="text-[#0070f3] underline">pigmentlaboratory.com</a>). Esta política se aplica a todas as páginas, ferramentas e idiomas do PigmentLab.
+        </p>
+        <p class="mt-3">
+          Ao acessar o PigmentLab, você reconhece as práticas descritas neste documento. Caso não concorde com algum ponto desta política, interrompa o uso do site.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          2. Informações que Não Coletamos
+        </h2>
+        <p class="mt-4">
+          Para proteger sua liberdade criativa e privacidade, o PigmentLab foi projetado sem mecanismos próprios de rastreamento:
+        </p>
+        <ul class="mt-3 list-disc pl-6 space-y-2 text-sm">
+          <li><strong>Sem registros de receitas ou paletas:</strong> Os pigmentos escolhidos, proporções de mistura e círculos cromáticos gerados não são transmitidos nem gravados em nossos servidores.</li>
+          <li><strong>Sem contas ou senhas:</strong> Não solicitamos nem armazenamos senhas, perfis pessoais ou dados de cartão de pagamento.</li>
+          <li><strong>Sem criação própria de perfis:</strong> O PigmentLab não cria perfis de comportamento, não executa rastreadores analíticos próprios e não vende dados pessoais. A exibição de anúncios via Google AdSense segue suas preferências de consentimento descritas na Seção 5.</li>
+        </ul>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          3. Informações que Podemos Coletar ou Armazenar
+        </h2>
+        <div class="mt-4 space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">A. Logs Padrão de Servidor Web</h3>
+            <p class="mt-1 text-sm">
+              Como praticamente todos os provedores de hospedagem e CDNs, nossa infraestrutura pode processar temporariamente logs técnicos de acesso quando seu navegador solicita recursos (IP truncado, tipo de navegador, sistema operacional, URL de referência e data/hora), usados exclusivamente para estabilidade, mitigação de DDoS e diagnóstico técnico.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">B. Envios Voluntários no Formulário de Contato</h3>
+            <p class="mt-1 text-sm">
+              Se você entrar em contato pelo nosso <a href="/pt/contact" class="text-[#0070f3] underline">Formulário de Contato</a> ou enviando e-mail para <code class="font-mono text-xs bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">contact@pigmentlaboratory.com</code>, coletamos apenas os dados enviados (nome, e-mail, assunto e mensagem) exclusivamente para responder à sua solicitação.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          4. Como Usamos o LocalStorage do Navegador
+        </h2>
+        <p class="mt-4">
+          O PigmentLab utiliza <code class="font-mono text-xs bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">localStorage</code> do HTML5 exclusivamente para preservar suas preferências entre sessões. Esses dados ficam no seu dispositivo e nunca são enviados a nós:
+        </p>
+
+        <div class="mt-4 overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#262626]">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-[#fafafa] dark:bg-[#141414] border-b border-[#ebebeb] dark:border-[#262626] text-[#171717] dark:text-white font-mono">
+              <tr>
+                <th class="px-4 py-3">Chave de Armazenamento</th>
+                <th class="px-4 py-3">Finalidade</th>
+                <th class="px-4 py-3">Local e Validade</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#ebebeb] dark:divide-[#262626]">
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_theme</td>
+                <td class="px-4 py-3">Lembra sua preferência de tema escuro ou claro</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">LocalStorage do navegador (até ser limpo)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_lang</td>
+                <td class="px-4 py-3">Armazena o idioma preferido da interface (ex.: PT, EN, DE, ES)</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">LocalStorage do navegador (até ser limpo)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_pigment_presets_v1</td>
+                <td class="px-4 py-3">Salva receitas de misturas personalizadas criadas por você</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">LocalStorage do navegador (apenas seu dispositivo)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_color_mixer_state_v1</td>
+                <td class="px-4 py-3">Preserva o modo de mistura, pigmentos ativos e proporções entre sessões</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">LocalStorage do navegador (apenas seu dispositivo)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_color_wheel_state_v1</td>
+                <td class="px-4 py-3">Preserva o modelo cromático, harmonia, ângulo, saturação, luminosidade e simulador visual</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">LocalStorage do navegador (apenas seu dispositivo)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-[#8f8f8f] dark:text-[#737373]">
+          Você pode apagar essas chaves a qualquer momento nas configurações do navegador ou nas Ferramentas do Desenvolvedor (Application &gt; Local Storage).
+        </p>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          5. Serviços de Terceiros, Google AdSense e Gestão de Consentimento
+        </h2>
+        <p class="mt-4">
+          Para manter o PigmentLab gratuito e garantir desempenho rápido em todo o mundo, utilizamos provedores técnicos terceirizados selecionados:
+        </p>
+        <ul class="mt-3 list-disc pl-6 space-y-3 text-sm">
+          <li>
+            <strong>Google AdSense (Publicidade):</strong> Utilizamos o Google AdSense (<code class="font-mono text-xs bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">pub-8553011422537383</code>) para exibir anúncios em nossas páginas. Conforme suas escolhas regionais de consentimento, o Google e seus parceiros podem usar cookies, web beacons ou armazenamento local para veicular anúncios com base em visitas anteriores a este ou a outros sites.
+          </li>
+          <li>
+            <strong>Gestão de Consentimento (EEE, Reino Unido e Suíça) e Anúncios Limitados:</strong> Visitantes no Espaço Econômico Europeu (EEE), Reino Unido e Suíça visualizam uma Plataforma de Gestão de Consentimento (CMP) certificada pelo Google e integrada ao padrão TCF da IAB antes do carregamento de anúncios personalizados ou cookies publicitários. Caso você recuse o consentimento, anúncios personalizados e cookies de publicidade não são utilizados; quando habilitado, o Google pode exibir <em>Anúncios Limitados</em> sem cookies baseados apenas em sinais contextuais gerais (conteúdo da página e região aproximada) ou suprimir os anúncios conforme as regras locais.
+          </li>
+          <li>
+            <strong>Gerenciando Suas Escolhas de Anúncios e Cookies:</strong> Você pode alterar ou revogar seu consentimento a qualquer momento pelo aviso de privacidade do site, ajustar preferências em <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">Configurações de Anúncios do Google</a> ou desativar publicidade baseada em interesses via <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">Your Online Choices</a> (UE) ou <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">YourAdChoices</a> (EUA). Saiba mais na <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">Política de Publicidade do Google</a>.
+          </li>
+          <li><strong>Google Fonts:</strong> Conectamos ao Google Fonts (<a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer" class="underline">fonts.googleapis.com</a>) para entregar as fontes Geist Sans e Geist Mono. Seu navegador baixa os arquivos diretamente dos servidores do Google, que pode processar seu IP conforme sua política de privacidade.</li>
+          <li><strong>Hospedagem Estática / CDN de Borda:</strong> Nossas páginas estáticas são distribuídas globalmente por redes CDN de alta velocidade com criptografia SSL/TLS.</li>
+        </ul>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          6. Seus Direitos sob LGPD, GDPR e CCPA/CPRA
+        </h2>
+        <div class="mt-4 space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">A. LGPD (Brasil) e GDPR (Europa / Reino Unido / Suíça)</h3>
+            <p class="mt-1 text-sm">
+              Nos termos da Lei Geral de Proteção de Dados (LGPD) e do GDPR, você tem direito de acesso, correção, eliminação, limitação do tratamento e revogação do consentimento. Como o PigmentLab opera sem contas de usuário e sem armazenamento de receitas de cores em servidor, não mantemos perfis pessoais além de eventual correspondência por e-mail. Para cookies e identificadores publicitários tratados pelo Google AdSense, o uso no EEE/Reino Unido/Suíça depende do seu consentimento explícito via CMP compatível com TCF.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">B. California Consumer Privacy Act (CCPA / CPRA)</h3>
+            <p class="mt-1 text-sm">
+              Residentes da Califórnia têm direito de saber quais informações pessoais são coletadas, solicitar exclusão e optar por não permitir venda ou compartilhamento para publicidade comportamental. <strong class="text-[#171717] dark:text-white font-medium">O PigmentLab não vende suas informações pessoais</strong>, e você pode restringir anúncios personalizados pelos controles listados na Seção 5.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          7. Proteção de Crianças (COPPA)
+        </h2>
+        <p class="mt-4">
+          O PigmentLab é uma ferramenta educacional e criativa adequada ao público geral. Não coletamos nem armazenamos intencionalmente dados pessoais de menores de 13 anos. Se acreditar que uma criança nos enviou dados por e-mail, entre em contato para remoção imediata.
+        </p>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          8. Medidas de Segurança
+        </h2>
+        <p class="mt-4">
+          Todo o tráfego de e para o PigmentLab é criptografado com Transport Layer Security (HTTPS / TLS 1.3). Ao não manter bancos de dados de usuários, reduzimos significativamente os riscos de exposição.
+        </p>
+      </div>
+
+      <!-- Section 9 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          9. Alterações nesta Política
+        </h2>
+        <p class="mt-4">
+          Podemos atualizar esta Política de Privacidade periodicamente para refletir melhorias operacionais ou exigências legais. Qualquer revisão será publicada nesta página com a data atualizada no topo.
+        </p>
+      </div>
+
+      <!-- Section 10 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          10. Fale Conosco
+        </h2>
+        <p class="mt-4">
+          Em caso de dúvidas ou sugestões sobre esta Política de Privacidade ou nossas práticas de proteção de dados, entre em contato:
+        </p>
+        <div class="mt-4 rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#141414] p-5">
+          <p class="font-mono text-sm text-[#171717] dark:text-white">
+            <strong>E-mail:</strong> <a href="mailto:privacy@pigmentlaboratory.com" class="text-[#0070f3] hover:underline">privacy@pigmentlaboratory.com</a>
+          </p>
+          <p class="mt-2 text-xs text-[#8f8f8f] dark:text-[#737373]">
+            Você também pode enviar uma solicitação diretamente pela nossa <a href="/pt/contact" class="text-[#171717] dark:text-white underline">Página de Contato</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

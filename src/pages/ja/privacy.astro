@@ -6,7 +6,7 @@ const privacySchema = {
   '@type': 'WebPage',
   'name': 'プライバシーポリシー — PigmentLab',
   'url': 'https://pigmentlaboratory.com/ja/privacy',
-  'description': 'PigmentLabのプライバシーポリシー。ブラウザ完結型のクライアントサイド設計、LocalStorageの利用方針、トラッキングを行わないプライバシー保護への取り組み。',
+  'description': 'PigmentLabのプライバシーポリシー。ブラウザ完結型設計、LocalStorage利用方針、Google AdSense広告配信と同意管理（CMP）、GDPR等の権利について説明します。',
   'publisher': {
     '@type': 'Organization',
     'name': 'PigmentLab',
@@ -17,8 +17,8 @@ const privacySchema = {
 
 <Layout
   title="プライバシーポリシー — PigmentLab"
-  description="PigmentLabプライバシーポリシー：全計算をブラウザ内で実行するクライアントサイド設計。ユーザー追跡・個人情報の収集・外部送信は行いません。"
-  keywords="pigmentlab プライバシーポリシー, プライバシー, 個人情報保護方針, クライアントサイド, ローカルストレージ"
+  description="PigmentLabプライバシーポリシー：ブラウザ完結型の色彩ツール、LocalStorage利用方針、Google AdSense広告配信と同意管理（CMP）、GDPRおよび個人情報保護への取り組み。"
+  keywords="pigmentlab プライバシーポリシー, プライバシー, 個人情報保護方針, google adsense, 同意管理, cmp, ローカルストレージ"
   currentPath="/ja/privacy"
   lang="ja"
   schema={privacySchema}
@@ -36,11 +36,11 @@ const privacySchema = {
       </h1>
 
       <p class="mt-3 text-xs sm:text-sm text-[#8f8f8f] dark:text-[#737373] font-mono">
-        制定・最終改定日: 2026年11月 · バージョン 1.2
+        制定・最終改定日: 2026年11月 · バージョン 1.3
       </p>
 
       <p class="mt-5 text-base sm:text-lg leading-relaxed text-[#4d4d4d] dark:text-[#a1a1aa]">
-        <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong>（<a href="https://pigmentlaboratory.com" class="underline hover:text-[#0070f3]">pigmentlaboratory.com</a>）では、クリエイティブツールは高速で透明性があり、プライバシーが守られているべきだと考えています。当サイトは厳格な<strong class="text-[#171717] dark:text-white font-medium">クライアントサイド優先設計</strong>を採用しており、作成した調色レシピ、カラーパレット、実験データはお使いのブラウザ内でのみ計算され、外部サーバーに送信または収益化されることは一切ありません。
+        <strong class="text-[#171717] dark:text-white font-medium">PigmentLab</strong>（<a href="https://pigmentlaboratory.com" class="underline hover:text-[#0070f3]">pigmentlaboratory.com</a>）では、クリエイティブツールは高速で透明性があり、プライバシーが守られているべきだと考えています。当サイトは厳格な<strong class="text-[#171717] dark:text-white font-medium">クライアントサイド優先設計</strong>を採用しており、作成した調色レシピ、カラーパレット、混色実験データはお使いのブラウザ内でのみ計算され、当サイトのサーバーへ送信・保存されることはありません。
       </p>
     </div>
   </section>
@@ -79,7 +79,7 @@ const privacySchema = {
           </div>
           <h3 class="mt-3 text-sm font-semibold text-[#171717] dark:text-white">データの第三者販売ゼロ</h3>
           <p class="mt-1 text-xs text-[#4d4d4d] dark:text-[#a1a1aa] leading-relaxed">
-            ユーザーの行動履歴や利用データをデータブローカー等に販売・譲渡することは決してありません。
+            ユーザーの個人情報や利用履歴をデータブローカー等に販売・貸与・取引することは決してありません。
           </p>
         </div>
       </div>
@@ -96,10 +96,10 @@ const privacySchema = {
           1. はじめに ＆ 概要
         </h2>
         <p class="mt-4">
-          本プライバシーポリシーは、PigmentLab（以下「当サイト」）における情報の取り扱い方針を説明するものです。当サイトが提供するすべてのツールおよびページに適用されます。
+          本プライバシーポリシーは、PigmentLab（<a href="https://pigmentlaboratory.com" class="text-[#0070f3] underline">pigmentlaboratory.com</a>、以下「当サイト」）における情報の取り扱い方針を説明するものです。当サイトが提供するすべてのページ、ツール、および言語版に適用されます。
         </p>
         <p class="mt-3">
-          当サイトを利用することにより、利用者は本ポリシーに記載された方針に同意したものとみなされます。
+          当サイトを利用することにより、利用者は本ポリシーに記載された方針を確認・同意したものとみなされます。同意いただけない場合は、当サイトのご利用をお控えください。
         </p>
       </div>
 
@@ -109,45 +109,180 @@ const privacySchema = {
           2. 当サイトが収集しない情報
         </h2>
         <p class="mt-4">
-          クリエイターの自由とプライバシーを守るため、PigmentLabは侵襲的な追跡を行いません:
+          クリエイターの自由とプライバシーを守るため、PigmentLabは独自の侵襲的な追跡を行いません：
         </p>
         <ul class="mt-3 list-disc pl-6 space-y-2 text-sm">
-          <li><strong>調色レシピやパレットのログ：</strong> 選択した顔料や混色比率、生成されたパレットデータはサーバーに記録されません。</li>
-          <li><strong>アカウント情報やパスワード：</strong> 個人アカウントの登録機能はなく、パスワードやクレジットカード情報を保持しません。</li>
-          <li><strong>クロスサイト追跡：</strong> ターゲティング広告用クッキーやクロスサイト行動追跡スクリプトは使用していません。</li>
+          <li><strong>調色レシピやパレットのログ：</strong> 選択した顔料、混色比率、生成された色相環データは当サイトのサーバーへ送信・記録されません。</li>
+          <li><strong>アカウント情報やパスワード：</strong> ユーザー登録機能はなく、パスワード、個人プロファイル、決済カード情報を収集・保持しません。</li>
+          <li><strong>独自の行動プロファイリング：</strong> PigmentLab自体がユーザープロファイルを作成したり、独自の解析トラッカーを実行したり、個人データを販売することはありません。Google AdSenseによる広告配信は、第5項に記載された同意設定に従って行われます。</li>
         </ul>
       </div>
 
       <!-- Section 3 -->
       <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
         <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
-          3. LocalStorage（ローカルストレージ）の利用
+          3. 処理または保存される可能性のある情報
         </h2>
-        <p class="mt-4">
-          当サイトでは、作業の利便性を高める目的でのみ、ブラウザの <code class="font-mono text-xs">localStorage</code> を使用します:
-        </p>
-        <ul class="mt-3 list-disc pl-6 space-y-2 text-sm">
-          <li><code class="font-mono text-xs">pl_theme</code>：ダークモード / ライトモードの表示設定</li>
-          <li><code class="font-mono text-xs">pl_pigment_presets_v1</code>：ユーザーが独自に保存したカスタム絵の具プリセット</li>
-          <li><code class="font-mono text-xs">pl_color_mixer_state_v1</code>：混色シミュレーターの前回作業状態</li>
-          <li><code class="font-mono text-xs">pl_color_wheel_state_v1</code>：色相環ツールの前回選択状態</li>
-        </ul>
-        <p class="mt-3">
-          これらは利用者のブラウザ内にのみ保存され、ブラウザ設定からいつでもキャッシュ・Cookie消去で削除できます。
-        </p>
+        <div class="mt-4 space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">A. 標準的なWebサーバーアクセスログ</h3>
+            <p class="mt-1 text-sm">
+              一般的なWebホスティングおよびCDN環境と同様に、ブラウザがページ資産を取得する際、インフラが一時的に技術的なアクセスログ（短縮されたIPアドレス、ブラウザ種別、OS、参照元URL、アクセス日時など）を処理する場合があります。これらはシステムの安定運用、DDoS攻撃の防御、障害調査のみに使用されます。
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">B. お問い合わせフォームからの任意送信</h3>
+            <p class="mt-1 text-sm">
+              <a href="/ja/contact" class="text-[#0070f3] underline">お問い合わせページ</a>または <code class="font-mono text-xs bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">contact@pigmentlaboratory.com</code> 宛てにご連絡いただいた場合、ご入力いただいたお名前、メールアドレス、件名、お問い合わせ内容のみを取得し、ご返信の目的に限定して利用します。
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Section 4 -->
       <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
         <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
-          4. お問い合わせ先
+          4. ブラウザの LocalStorage の利用方法
         </h2>
         <p class="mt-4">
-          プライバシーポリシーに関するご質問やご相談は、以下までお問い合わせください:
+          PigmentLabでは、セッションをまたいで個人の設定を保持する目的でのみ HTML5 の <code class="font-mono text-xs bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">localStorage</code> を使用します。これらのデータはお客様の端末内にのみ保存され、当サイトへ送信されることはありません：
         </p>
-        <p class="mt-2 font-mono text-sm text-[#171717] dark:text-white">
-          メール: <a href="mailto:privacy@pigmentlaboratory.com" class="text-[#0070f3] underline">privacy@pigmentlaboratory.com</a>
+
+        <div class="mt-4 overflow-x-auto rounded-xl border border-[#ebebeb] dark:border-[#262626]">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-[#fafafa] dark:bg-[#141414] border-b border-[#ebebeb] dark:border-[#262626] text-[#171717] dark:text-white font-mono">
+              <tr>
+                <th class="px-4 py-3">ストレージキー</th>
+                <th class="px-4 py-3">用途</th>
+                <th class="px-4 py-3">保存場所・保持期間</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#ebebeb] dark:divide-[#262626]">
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_theme</td>
+                <td class="px-4 py-3">ダークモード / ライトモードの表示設定を保持</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">ブラウザ LocalStorage（削除するまで保持）</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_lang</td>
+                <td class="px-4 py-3">選択した表示言語設定（JA, EN, DE 等）を保存</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">ブラウザ LocalStorage（削除するまで保持）</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_pigment_presets_v1</td>
+                <td class="px-4 py-3">ユーザーが任意で保存したカスタム顔料配合レシピを保持</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">ブラウザ LocalStorage（端末内のみ）</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_color_mixer_state_v1</td>
+                <td class="px-4 py-3">混色モード、選択顔料、配合比率の作業状態を復元</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">ブラウザ LocalStorage（端末内のみ）</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs text-[#0070f3]">pl_color_wheel_state_v1</td>
+                <td class="px-4 py-3">色相環モデル、配色ルール、角度、彩度、明度、色覚シミュレーター設定を保持</td>
+                <td class="px-4 py-3 text-xs text-[#8f8f8f]">ブラウザ LocalStorage（端末内のみ）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-[#8f8f8f] dark:text-[#737373]">
+          これらのキーはブラウザの設定や開発者ツール（Application &gt; Local Storage）からいつでも削除できます。
         </p>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          5. 第三者サービス、Google AdSense ＆ 同意管理（CMP）
+        </h2>
+        <p class="mt-4">
+          PigmentLabを無料で提供し、世界中のユーザーに高速かつ安定した表示環境を届けるため、厳選された第三者サービスを利用しています：
+        </p>
+        <ul class="mt-3 list-disc pl-6 space-y-3 text-sm">
+          <li>
+            <strong>Google AdSense（広告配信）：</strong> 当サイトでは広告表示のために Google AdSense（<code class="font-mono text-xs bg-[#f5f5f5] dark:bg-[#1a1a1a] px-1 py-0.5 rounded">pub-8553011422537383</code>）を利用しています。地域の同意設定に応じて、Google および広告配信パートナーは、当サイトや他サイトへの過去のアクセス情報に基づき広告を表示するため、Cookie、ウェブビーコン、またはローカルストレージを使用する場合があります。
+          </li>
+          <li>
+            <strong>同意管理（EEA・英国・スイス）と制限付き広告（Limited Ads）：</strong> 欧州経済領域（EEA）、英国、およびスイスからの訪問者に対しては、パーソナライズド広告や広告用 Cookie が読み込まれる前に、IAB TCF に準拠した Google 認定の同意管理プラットフォーム（CMP）が表示されます。利用者が同意を拒否した場合、パーソナライズド広告および広告用 Cookie は使用されません。設定が有効な場合、Google は Cookie を使用せずページ内容や大まかな地域などのコンテキスト信号のみに基づく非パーソナライズドの<em>制限付き広告（Limited Ads）</em>を表示するか、地域規制に応じて広告配信を停止します。
+          </li>
+          <li>
+            <strong>広告および Cookie 設定の管理方法：</strong> サイト上のプライバシー設定プロンプトからいつでも同意内容を変更・撤回できるほか、<a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">Google 広告設定</a>でのパーソナライズ管理、あるいは <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">YourAdChoices</a>（米国）や <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">Your Online Choices</a>（EU）を通じてインタレストベース広告をオプトアウトできます。詳細は <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-[#0070f3] underline">Google の広告に関するポリシー</a> をご覧ください。
+          </li>
+          <li><strong>Google Fonts：</strong> Geist Sans および Geist Mono フォントを表示するため Google Fonts（<a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer" class="underline">fonts.googleapis.com</a>）を利用しています。ブラウザがGoogleのサーバーから直接フォントを取得する際、Googleのプライバシーポリシーに従ってIPアドレスが処理される場合があります。</li>
+          <li><strong>静的ホスティング / エッジ CDN：</strong> 当サイトの静的ページは SSL/TLS 暗号化を備えた高速 CDN を通じて全世界へ配信されています。</li>
+        </ul>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          6. GDPR・CCPA/CPRA および各国法に基づく権利
+        </h2>
+        <div class="mt-4 space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">A. EU一般データ保護規則（GDPR）</h3>
+            <p class="mt-1 text-sm">
+              EEA、英国、またはスイスにお住まいの方は、ご自身のデータへのアクセス、訂正、削除、処理の制限、および同意の撤回を求める権利を有します。PigmentLabはアカウント制を採用せずサーバー上に色彩データを保存しないため、直接のメール連絡を除き提供・削除対象となる個人プロファイルは保持していません。Google AdSenseによる広告Cookieや識別子の処理は、TCF準拠CMPを通じた利用者の明示的同意に基づいて行われます。
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-[#171717] dark:text-white">B. カリフォルニア州消費者プライバシー法（CCPA / CPRA）</h3>
+            <p class="mt-1 text-sm">
+              カリフォルニア州居住者は、収集される個人情報の開示、削除請求、およびクロスコンテキスト行動ターゲティング広告のための販売・共有のオプトアウト権を有します。<strong class="text-[#171717] dark:text-white font-medium">PigmentLabは個人情報を販売いたしません</strong>。また第5項記載の設定からパーソナライズド広告をいつでも制限できます。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          7. 子どものプライバシー保護（COPPA）
+        </h2>
+        <p class="mt-4">
+          PigmentLabは一般向けの教育・創作支援ツールです。13歳未満の児童から意図的に個人情報を収集・保存することはありません。万一お子様がメール等で個人情報を送信したと思われる場合は、速やかに削除いたしますのでご連絡ください。
+        </p>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          8. セキュリティ対策
+        </h2>
+        <p class="mt-4">
+          PigmentLabとのすべての通信は Transport Layer Security（HTTPS / TLS 1.3）により暗号化されています。ユーザーデータベースを保持しない設計自体が情報漏洩リスクを最小限に抑えています。
+        </p>
+      </div>
+
+      <!-- Section 9 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          9. 本ポリシーの変更
+        </h2>
+        <p class="mt-4">
+          当サイトは、運用上の改善や法令改正に応じて本プライバシーポリシーを改定する場合があります。変更後は本ページ上部の改定日を更新して公開します。
+        </p>
+      </div>
+
+      <!-- Section 10 -->
+      <div class="pt-6 border-t border-[#ebebeb] dark:border-[#222222]">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[#171717] dark:text-white">
+          10. お問い合わせ先
+        </h2>
+        <p class="mt-4">
+          本プライバシーポリシーやデータ保護方針に関するご質問・ご意見は、以下までお問い合わせください：
+        </p>
+        <div class="mt-4 rounded-xl border border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#141414] p-5">
+          <p class="font-mono text-sm text-[#171717] dark:text-white">
+            <strong>メール:</strong> <a href="mailto:privacy@pigmentlaboratory.com" class="text-[#0070f3] hover:underline">privacy@pigmentlaboratory.com</a>
+          </p>
+          <p class="mt-2 text-xs text-[#8f8f8f] dark:text-[#737373]">
+            または <a href="/ja/contact" class="text-[#171717] dark:text-white underline">お問い合わせページ</a> からも直接ご連絡いただけます。
+          </p>
+        </div>
       </div>
 
     </div>
